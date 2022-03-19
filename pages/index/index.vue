@@ -47,6 +47,86 @@
 				<text :class="{jin:true,isjin: week7 == today}">今</text>
 			</view>
 		</view>
+		<view class="listbox">
+			<view class="linebox">
+				<view class="box">
+					<p class="classname">生活</p>
+					<p class="nums">10条清单</p>
+					<view class="itemlist">
+						<view class="listone">
+							已完成 3
+						</view>
+						<view class="listtwo">
+							未完成 2
+						</view>
+					</view>
+				</view>
+				<view class="box">
+					<p class="classname">工作</p>
+					<p class="nums">10条清单</p>
+					<view class="itemlist">
+						<view class="listone">
+							已完成 3
+						</view>
+						<view class="listtwo">
+							未完成 2
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="linebox">
+				<view class="box">
+					<p class="classname">学习</p>
+					<p class="nums">10条清单</p>
+					<view class="itemlist">
+						<view class="listone">
+							已完成 3
+						</view>
+						<view class="listtwo">
+							未完成 2
+						</view>
+					</view>
+				</view>
+				<view class="box">
+					<p class="classname">健康</p>
+					<p class="nums">10条清单</p>
+					<view class="itemlist">
+						<view class="listone">
+							已完成 3
+						</view>
+						<view class="listtwo">
+							未完成 2
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="linebox">
+				<view class="box">
+					<p class="classname">社交</p>
+					<p class="nums">10条清单</p>
+					<view class="itemlist">
+						<view class="listone">
+							已完成 3
+						</view>
+						<view class="listtwo">
+							未完成 2
+						</view>
+					</view>
+				</view>
+				<view class="box">
+					<p class="classname">其它</p>
+					<p class="nums">10条清单</p>
+					<view class="itemlist">
+						<view class="listone">
+							已完成 3
+						</view>
+						<view class="listtwo">
+							未完成 2
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -73,8 +153,13 @@
 </script>
 
 <style>
+	page {
+		background-color: #F8F8FB;
+	}
 	.content {
 		width: 100%;
+		height: 100%;
+		
 	}
 
 	.navigate {
@@ -87,7 +172,7 @@
 
 	.colorbg {
 		width: 100%;
-		height: 165px;
+		height: 200rpx;
 		background-color: #FFFFFF;
 		position: absolute;
 		top: 0;
@@ -106,7 +191,7 @@
 		margin-top: 30px;
 		float: left;
 		margin-left: 30px;
-		font-size: 25px;
+		font-size: 23px;
 		font-weight: bold;
 	}
 
@@ -156,5 +241,60 @@
 	}
 	.isjin {
 		opacity: 1;
+	}
+	.listbox {
+		display: flex;
+		flex-direction: column;
+	}
+	.linebox {
+		margin-top: 20px;
+		width: 100%;
+		height: 340rpx;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	.box {
+		width: 330rpx;
+		height: 325rpx;
+		background-color: #ffffff;
+		border-radius: 20px;
+	}
+	.classname {
+		color: #383636;
+		font-size: 28px;
+		margin: 40rpx 0 20rpx 40rpx;
+		font-weight: bold;
+	}
+	.nums {
+		font-size: 14px;
+		color: #7c7c7c;
+		margin-left: 40rpx;
+	}
+	.itemlist {
+		margin-top: 80rpx;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	.listone {
+		font-size: 12px;
+		height: 40rpx;
+		width: 120rpx;
+		background-color: #E8F7F3;
+		color: #4ECA9D;
+		text-align: center;
+		line-height: 20px;
+		border-radius: 12px;
+	}
+	.listtwo {
+		font-size: 12px;
+		height: 40rpx;
+		width: 120rpx;
+		background-color: #FFF1F3;
+		color: #FE8C9F;
+		text-align: center;
+		line-height: 20px;
+		border-radius: 12px;
 	}
 </style>

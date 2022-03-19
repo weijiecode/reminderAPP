@@ -47,13 +47,23 @@ export const datetimes = {
 		// var month = date.getMonth();
 		var nowDate = data.getDate();
 		var day = data.getDay();
-		this.week1 = (new Date(year, month, nowDate - day + 1));
-		this.week2 = (new Date(year, month, nowDate - day + 2));
-		this.week3 = (new Date(year, month, nowDate - day + 3));
-		this.week4 = (new Date(year, month, nowDate - day + 4));
-		this.week5 = (new Date(year, month, nowDate - day + 5));
-		this.week6 = (new Date(year, month, nowDate - day + 6));
-		this.week7 = (new Date(year, month, nowDate - day + 7));
+		if(day == 0) {
+			this.week1 = (new Date(year, month, nowDate - day - 6));
+			this.week2 = (new Date(year, month, nowDate - day - 5));
+			this.week3 = (new Date(year, month, nowDate - day - 4));
+			this.week4 = (new Date(year, month, nowDate - day - 3));
+			this.week5 = (new Date(year, month, nowDate - day - 2));
+			this.week6 = (new Date(year, month, nowDate - day - 1));
+			this.week7 = (new Date(year, month, nowDate - day));
+		}else {
+			this.week1 = (new Date(year, month, nowDate - day + 1));
+			this.week2 = (new Date(year, month, nowDate - day + 2));
+			this.week3 = (new Date(year, month, nowDate - day + 3));
+			this.week4 = (new Date(year, month, nowDate - day + 4));
+			this.week5 = (new Date(year, month, nowDate - day + 5));
+			this.week6 = (new Date(year, month, nowDate - day + 6));
+			this.week7 = (new Date(year, month, nowDate - day + 7));
+		}
 		this.week1 = this.week1.getDate() <= 9 ? "0" + this.week1.getDate() : this.week1.getDate()
 		this.week2 = this.week2.getDate() <= 9 ? "0" + this.week2.getDate() : this.week2.getDate()
 		this.week3 = this.week3.getDate() <= 9 ? "0" + this.week3.getDate() : this.week3.getDate()

@@ -8840,6 +8840,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.datetimes 
     // var month = date.getMonth();
     var nowDate = data.getDate();
     var day = data.getDay();
+    console.log(day);
     this.week1 = new Date(year, month, nowDate - day + 1);
     this.week2 = new Date(year, month, nowDate - day + 2);
     this.week3 = new Date(year, month, nowDate - day + 3);

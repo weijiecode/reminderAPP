@@ -1,4 +1,8 @@
 {
+	// 如果您是通过uni_modules形式引入uView，可以忽略此配置
+	"easycom": {
+		"^u-(.*)": "@/uni_modules/uview-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
@@ -12,58 +16,54 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/clock/clock",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/mycenter/mycenter",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	    ,{
-            "path" : "pages/clock/clock",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/mycenter/mycenter",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
-		"navigationStyle":"custom" // 去掉小程顶部的导航
-		
+		"navigationStyle": "custom" // 去掉小程顶部的导航
+
 	},
 	"tabBar": {
 		"list": [{
 				"pagePath": "pages/index/index",
-				"text":"待办",
+				"text": "待办",
 				"iconPath": "static/blocklog.png",
 				"selectedIconPath": "static/blocklog1.png"
 			},
 			{
 				"pagePath": "pages/more/more",
-				"text":"应用",
+				"text": "应用",
 				"iconPath": "static/more.png",
 				"selectedIconPath": "static/more1.png"
 			},
 			{
 				"pagePath": "pages/clock/clock",
-				"text":"打卡",
+				"text": "打卡",
 				"iconPath": "static/clock.png",
 				"selectedIconPath": "static/clock1.png"
 			},
 			{
 				"pagePath": "pages/mycenter/mycenter",
-				"text":"我的",
+				"text": "我的",
 				"iconPath": "static/mycenter.png",
 				"selectedIconPath": "static/mycenter1.png"
 			}
 		],
-		"borderStyle":"black",
-		"backgroundColor":"#FFFFFF",
-		"selectedColor":"#B1A9EF"
+		"borderStyle": "black",
+		"backgroundColor": "#FFFFFF",
+		"selectedColor": "#B1A9EF"
 	}
 }
