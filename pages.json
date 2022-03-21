@@ -7,59 +7,75 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "",
+				"navigationBarTextStyle": "black"
 			}
 		}, {
 			"path": "pages/more/more",
 			"style": {
 				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"navigationBarTextStyle": "black"
 			}
 
 		}, {
 			"path": "pages/clock/clock",
 			"style": {
 				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"navigationBarTextStyle": "black"
 			}
 
 		}, {
 			"path": "pages/mycenter/mycenter",
 			"style": {
 				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"navigationBarTextStyle": "black"
 			}
 
 		}
-	],
+	    ,{
+            "path" : "pages/login/login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationBarTextStyle": "black"
+            }
+            
+        }
+    ],
 	"globalStyle": {
-		"navigationStyle": "custom" // 去掉小程顶部的导航
-
+		"navigationStyle": "custom" ,// 去掉小程顶部的导航
+		"app-plus": {
+			"titleNView":false
+		}
 	},
 	"tabBar": {
 		"list": [{
 				"pagePath": "pages/index/index",
 				"text": "待办",
-				"iconPath": "static/blocklog.png",
-				"selectedIconPath": "static/blocklog1.png"
+				"iconPath": "static/tabbar/backlog.png",
+				"selectedIconPath": "static/tabbar/backlog1.png"
 			},
 			{
 				"pagePath": "pages/more/more",
 				"text": "应用",
-				"iconPath": "static/more.png",
-				"selectedIconPath": "static/more1.png"
+				"iconPath": "static/tabbar/more.png",
+				"selectedIconPath": "static/tabbar/more1.png"
 			},
 			{
 				"pagePath": "pages/clock/clock",
 				"text": "打卡",
-				"iconPath": "static/clock.png",
-				"selectedIconPath": "static/clock1.png"
+				"iconPath": "static/tabbar/clock.png",
+				"selectedIconPath": "static/tabbar/clock1.png"
 			},
 			{
 				"pagePath": "pages/mycenter/mycenter",
 				"text": "我的",
-				"iconPath": "static/mycenter.png",
-				"selectedIconPath": "static/mycenter1.png"
+				"iconPath": "static/tabbar/mycenter.png",
+				"selectedIconPath": "static/tabbar/mycenter1.png"
 			}
 		],
 		"borderStyle": "black",

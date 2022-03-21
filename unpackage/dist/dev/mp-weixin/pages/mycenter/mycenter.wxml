@@ -1,1 +1,1 @@
-<view></view>
+<view class="content data-v-0a9fd7a6"><view class="navigate data-v-0a9fd7a6"><navigator class="account data-v-0a9fd7a6" url="/pages/login/login" hover-class="navigator-hover"><image src="../../static/t.jpeg" mode class="data-v-0a9fd7a6"></image><view class="online data-v-0a9fd7a6"></view><text class="nickname data-v-0a9fd7a6">你吃晚饭了吗</text><view class="t-icon t-icon-xiangyou1 data-v-0a9fd7a6"></view></navigator><view class="setting data-v-0a9fd7a6"></view><view class="others data-v-0a9fd7a6"></view></view></view>

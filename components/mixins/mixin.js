@@ -42,9 +42,6 @@ export const datetimes = {
         let tragetTime = new Date(time)
         this.oldsevendate = tragetTime.getFullYear() +'-' + (tragetTime.getMonth() > 9?tragetTime.getMonth() + 1 :'0'+ (tragetTime.getMonth() + 1)) +'-' + (tragetTime.getDate() > 9 ? tragetTime.getDate() : '0' + tragetTime.getDate())
         // 获取当前周的日期
-		// var date = new Date();
-		// var year = date.getFullYear();
-		// var month = date.getMonth();
 		var nowDate = data.getDate();
 		var day = data.getDay();
 		if(day == 0) {

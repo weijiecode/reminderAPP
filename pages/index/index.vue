@@ -49,9 +49,10 @@
 		</view>
 		<view class="listbox">
 			<view class="linebox">
-				<view class="box">
+				<view class="box" @click="btn">
 					<p class="classname">生活</p>
 					<p class="nums">10条清单</p>
+					<view class="t-icon t-icon-yuandian"></view>
 					<view class="itemlist">
 						<view class="listone">
 							已完成 3
@@ -64,6 +65,7 @@
 				<view class="box">
 					<p class="classname">工作</p>
 					<p class="nums">10条清单</p>
+					<view class="t-icon t-icon-yuandian-copy-copy"></view>
 					<view class="itemlist">
 						<view class="listone">
 							已完成 3
@@ -78,6 +80,7 @@
 				<view class="box">
 					<p class="classname">学习</p>
 					<p class="nums">10条清单</p>
+					<view class="t-icon t-icon-yuandian-copy-copy-copy"></view>
 					<view class="itemlist">
 						<view class="listone">
 							已完成 3
@@ -90,6 +93,7 @@
 				<view class="box">
 					<p class="classname">健康</p>
 					<p class="nums">10条清单</p>
+					<view class="t-icon t-icon-yuandian-copy"></view>
 					<view class="itemlist">
 						<view class="listone">
 							已完成 3
@@ -104,6 +108,7 @@
 				<view class="box">
 					<p class="classname">社交</p>
 					<p class="nums">10条清单</p>
+					<view class="t-icon t-icon-yuandian-copy-copy1"></view>
 					<view class="itemlist">
 						<view class="listone">
 							已完成 3
@@ -116,6 +121,7 @@
 				<view class="box">
 					<p class="classname">其它</p>
 					<p class="nums">10条清单</p>
+					<view class="t-icon t-icon-yuandian-copy1"></view>
 					<view class="itemlist">
 						<view class="listone">
 							已完成 3
@@ -147,19 +153,23 @@
 
 		},
 		methods: {
+			async btn() {
+				const res = await this.$http({
+					url:"clock/selectclock"
+				})
+				console.log('123',res)
+			}
 		},
 
 	}
 </script>
 
-<style>
-	page {
-		background-color: #F8F8FB;
-	}
+<style scoped lang="scss">
 	.content {
 		width: 100%;
 		height: 100%;
-		
+		position: relative;
+		overflow: auto;
 	}
 
 	.navigate {
@@ -167,7 +177,6 @@
 		height: 165px;
 		background-color: #ffffff;
 		background-image: linear-gradient(62deg, #ffffff 9%, #8EC5FC 49%, #E0C3FC 63%);
-		position: relative;
 	}
 
 	.colorbg {
@@ -259,6 +268,16 @@
 		height: 325rpx;
 		background-color: #ffffff;
 		border-radius: 20px;
+		position: relative;
+		box-shadow:  5px 5px 10px #efeded,
+		             -5px -5px 10px #f6f6f6;
+		.t-icon {
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			right: 40rpx;
+			top: 40rpx;
+		}
 	}
 	.classname {
 		color: #383636;
