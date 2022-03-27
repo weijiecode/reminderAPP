@@ -4,7 +4,10 @@
     "pages/more/more",
     "pages/clock/clock",
     "pages/mycenter/mycenter",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/agreement/agreement",
+    "pages/private/private",
+    "pages/mycenter/submycenter"
   ],
   "subPackages": [],
   "window": {
@@ -38,7 +41,7 @@
       }
     ],
     "borderStyle": "black",
-    "backgroundColor": "#FFFFFF",
+    "backgroundColor": "#F8F8FB",
     "selectedColor": "#B1A9EF"
   },
   "usingComponents": {}

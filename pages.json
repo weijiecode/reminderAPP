@@ -8,14 +8,16 @@
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "",
-				"navigationBarTextStyle": "black"
+				"navigationBarTextStyle": "black",
+				"backgroundColor":"#F8F8FB"
 			}
 		}, {
 			"path": "pages/more/more",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false,
-				"navigationBarTextStyle": "black"
+				"navigationBarTextStyle": "black",
+				"backgroundColor":"#F8F8FB"
 			}
 
 		}, {
@@ -23,7 +25,8 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false,
-				"navigationBarTextStyle": "black"
+				"navigationBarTextStyle": "black",
+				"backgroundColor":"#F8F8FB"
 			}
 
 		}, {
@@ -31,7 +34,8 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false,
-				"navigationBarTextStyle": "black"
+				"navigationBarTextStyle": "black",
+				"backgroundColor":"#F8F8FB"
 			}
 
 		}
@@ -41,7 +45,40 @@
             {
                 "navigationBarTitleText": "",
                 "enablePullDownRefresh": false,
-				"navigationBarTextStyle": "black"
+				"navigationBarTextStyle": "black",
+				"backgroundColor":"#F8F8FB"
+            }
+            
+        }
+        ,{
+            "path" : "pages/agreement/agreement",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationBarTextStyle": "black",
+				"backgroundColor":"#F8F8FB"
+            }
+            
+        }
+        ,{
+            "path" : "pages/private/private",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationBarTextStyle": "black",
+				"backgroundColor":"#F8F8FB"
+            }
+            
+        }
+        ,{
+            "path" : "pages/mycenter/submycenter",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+				"navigationBarTextStyle": "black",
+                "enablePullDownRefresh": false
             }
             
         }
@@ -79,7 +116,7 @@
 			}
 		],
 		"borderStyle": "black",
-		"backgroundColor": "#FFFFFF",
+		"backgroundColor": "#F8F8FB",
 		"selectedColor": "#B1A9EF"
 	}
 }

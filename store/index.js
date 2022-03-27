@@ -6,9 +6,9 @@ export default new Vuex.Store({
 		token: ""
 	},
 	mutations: {
-		set_token(state,token) {
+		set_token(state, token) {
 			state.token = token
-			uni.setStorageSync('token',token)
+			uni.setStorageSync('token', token)
 		}
 	}
 })

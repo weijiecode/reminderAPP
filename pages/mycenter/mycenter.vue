@@ -1,13 +1,21 @@
 <template>
 	<view class="content">
 		<view class="navigate">
-			<navigator url="/pages/login/login" hover-class="navigator-hover" class="account">
-				<image src="../../static/t.jpeg" mode="">
+			<navigator url="/pages/mycenter/submycenter" hover-class="navigator-hover" class="account">
+				<image v-if="photo!=null" :src="photo" mode="">
+				<span id="nophoto" v-if="photo==null && sex==0" class="t-icon t-icon-icon-test"></span>
+				<span id="nophoto" v-if="photo==null && sex==1" class="t-icon t-icon-icon-test2"></span>
 				</image>
 				<view class="online">
 				</view>
-				<text class="nickname">你吃晚饭了吗</text>
-				<view class="t-icon t-icon-xiangyou1"></view>
+				<view class="nickname">
+				{{nickname}}
+				<span v-if="sex==0" style="margin-left: 20rpx;" class="t-icon t-icon-xingbie"></span>
+				<span v-if="sex==1" style="margin-left: 20rpx;" class="t-icon t-icon-xingbie1"></span>
+				</view>
+				<view style="position: absolute;bottom: 80rpx;right: 20rpx;" class="t-icon t-icon-xiangyou1"></view>
+				<p v-if="introduction!=null" class="pintroduction">{{introduction}}</p>
+				<p v-if="introduction==null" class="pintroduction">暂无简介</p>
 			</navigator>
 			<view class="setting">
 
@@ -21,17 +29,26 @@
 
 <script>
 	export default {
+		onShow(){
+			this.nickname = uni.getStorageSync('nickname')
+			this.photo = uni.getStorageSync('photo')
+			this.sex = uni.getStorageSync('sex')
+			this.introduction = uni.getStorageSync('introduction')
+		},
 		data() {
 			return {
+				nickname: "",
+				photo: "",
+				sex: "",
+				introduction: ""
 			}
 		},
 		methods: {
-			// login() {
-			// 	console.log('123')
-			// 	uni.navigateTo({
-			// 		url:"/pages/login/login"
-			// 	})
-			// }
+			async getuserdata(){
+				const res = await this.$http({
+					url:"account/userdata"
+				})
+			}
 		}
 	}
 </script>
@@ -66,20 +83,26 @@
 			border-radius: 100%;
 			box-shadow: 0 0 0 3px #f3efef;
 		}
+		#nophoto {
+			float: left;
+			margin-left: 60rpx;
+			margin-top: 35rpx;
+			width: 100rpx;
+			height: 100rpx;
+			border-radius: 100%;
+			box-shadow: 0 0 0 3px #f3efef;
+		}
 
 		.nickname {
 			float: left;
 			color: #6a6767;
 			font-weight: 600;
-			margin-top: 68rpx;
+			margin-top: 60rpx;
 			margin-left: 40rpx;
 			display: block;
 		}
 
 		.t-icon {
-			float: right;
-			margin-top: 76rpx;
-			margin-right: 40rpx;
 		}
 
 		.online {
@@ -91,6 +114,13 @@
 			top: 112rpx;
 			left: 140rpx;
 			border: 2rpx solid #FFFFFF;
+		}
+		.pintroduction {
+			font-size: 12px;
+			color: #aaa;
+			position: absolute;
+			bottom: 36rpx;
+			left: 200rpx;
 		}
 	}
 

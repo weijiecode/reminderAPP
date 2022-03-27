@@ -104,7 +104,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="linebox">
+			<view class="linebox" style="margin-bottom: 20rpx;">
 				<view class="box">
 					<p class="classname">社交</p>
 					<p class="nums">10条清单</p>
