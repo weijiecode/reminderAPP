@@ -4,71 +4,77 @@
 			<view class="topback">
 				<u-icon size="25" @click="backmycenter" name="arrow-left"></u-icon>
 			</view>
+			<view class="photo">
+				<!-- <u-upload :previewFullImage="true" :fileList="fileList1" @afterRead="afterRead"
+						@delete="deletePic" name="1" multiple :maxCount="1"></u-upload> -->
+				<u-upload :fileList="fileList6" @afterRead="afterRead" @delete="deletePic" name="6" multiple
+					:maxCount="1" :max-size="2 * 1024 * 1024" @oversize="oversize">
+					<image v-if="mycenterForm.photo!=null" :src="mycenterForm.photo" mode="">
+						<span id="nophoto" v-if="mycenterForm.photo==null && sex==0"
+							class="t-icon t-icon-icon-test"></span>
+						<span id="nophoto" v-if="mycenterForm.photo==null && sex==1"
+							class="t-icon t-icon-icon-test2"></span>
+				</u-upload>
+			</view>
+			<view class="titlephoto">
+				点击更换头像
+			</view>
 			<view class="listdata">
-				<view class="photo">
-					<view class="title">头像</view>
-					<view class="listcontent">
-						<image v-if="photo!=null" :src="photo" mode="">
-						<span id="nophoto" v-if="photo==null && sex==0" class="t-icon t-icon-icon-test"></span>
-						<span id="nophoto" v-if="photo==null && sex==1" class="t-icon t-icon-icon-test2"></span>
-						<view style="margin-left: 320rpx;" class="t-icon t-icon-xiangyou1"></view>
+				<u--form labelPosition="left" :model="mycenterForm" :rules="mycenterrules" ref="mycenterRef">
+					<view class="nickname">
+						<view class="title">昵称</view>
+						<view class="listcontent">
+							<u-form-item prop="nickname">
+								<u--input v-model="mycenterForm.nickname" placeholder="请输入内容" border="none"></u--input>
+							</u-form-item>
+							<view style="margin-left: 80rpx;" class="t-icon t-icon-xiangyou1"></view>
+						</view>
 					</view>
-				</view>
-				<view class="nickname">
-					<view class="title">昵称</view>
-					<view class="listcontent">
-						  <u--input
-						  v-model="nickname"
-						      placeholder="请输入内容"
-						      border="none"
-						    ></u--input>
-						<view style="margin-left: 80rpx;" class="t-icon t-icon-xiangyou1"></view>
+					<view class="sex" @click="mycenterForm.sex==0?mycenterForm.sex=1:mycenterForm.sex=0">
+						<view class="title">性别</view>
+						<view class="listcontent">
+							<span v-if="mycenterForm.sex==0" style="margin-left: 20rpx;"
+								class="t-icon t-icon-xingbie"></span>
+							<span v-if="mycenterForm.sex==1" style="margin-left: 20rpx;"
+								class="t-icon t-icon-xingbie1"></span>
+							<view style="margin-left: 380rpx;" class="t-icon t-icon-xiangyou1"></view>
+						</view>
 					</view>
-				</view>
-				<view class="sex">
-					<view class="title">性别</view>
-					<view class="listcontent">
-						<span v-if="sex==0" style="margin-left: 20rpx;" class="t-icon t-icon-xingbie"></span>
-						<span v-if="sex==1" style="margin-left: 20rpx;" class="t-icon t-icon-xingbie1"></span>
-						<view style="margin-left: 380rpx;" class="t-icon t-icon-xiangyou1"></view>
+					<view class="phone">
+						<view class="title">手机号码</view>
+						<view class="listcontent">
+							<u-form-item>
+								<u--input type="number" maxlength="11" v-model="mycenterForm.phone" placeholder="请输入号码"
+									border="none"></u--input>
+							</u-form-item>
+							<view style="margin-left: 80rpx;" class="t-icon t-icon-xiangyou1"></view>
+						</view>
 					</view>
-				</view>
-				<view class="phone">
-					<view class="title">手机号码</view>
-					<view class="listcontent">
-						<u--input
-						v-model="phone"
-						    placeholder="请输入内容"
-						    border="none"
-						  ></u--input>
-						<view style="margin-left: 80rpx;" class="t-icon t-icon-xiangyou1"></view>
+					<view class="email">
+						<view class="title">电子邮箱</view>
+						<view class="listcontent">
+							<u-form-item>
+								<u--input maxlength="20" v-model="mycenterForm.email" placeholder="请输入电子邮箱"
+									border="none"></u--input>
+							</u-form-item>
+							<view style="margin-left: 80rpx;" class="t-icon t-icon-xiangyou1"></view>
+						</view>
 					</view>
-				</view>
-				<view class="email">
-					<view class="title">电子邮箱</view>
-					<view class="listcontent">
-						<u--input
-						v-model="email"
-						    placeholder="请输入内容"
-						    border="none"
-						  ></u--input>
-						<view style="margin-left: 80rpx;" class="t-icon t-icon-xiangyou1"></view>
+					<view class="introduction">
+						<view class="title">个人简介</view>
+						<view class="listcontent">
+							<u-form-item>
+								<u--input maxlength="15" v-model="mycenterForm.introduction" placeholder="请输入个人简介"
+									border="none">
+								</u--input>
+							</u-form-item>
+							<view style="margin-left: 80rpx;" class="t-icon t-icon-xiangyou1"></view>
+						</view>
 					</view>
-				</view>
-				<view class="introduction">
-					<view class="title">个人简介</view>
-					<view class="listcontent">
-						<u--input
-						v-model="introduction"
-						    placeholder="请输入内容"
-						    border="none"
-						  ></u--input>
-						<view style="margin-left: 80rpx;" class="t-icon t-icon-xiangyou1"></view>
-					</view>
-				</view>
+				</u--form>
 			</view>
 			<view class="submit">
-				<u-button type="primary" text="保存"></u-button>
+				<u-button @click="submitdata" type="primary" text="保存"></u-button>
 			</view>
 		</view>
 	</view>
@@ -76,41 +82,162 @@
 
 <script>
 	export default {
-		onShow(){
+		onShow() {
 			this.getuserdata()
 		},
 		data() {
 			return {
-				nickname: "",
-				photo: "",
-				sex: "",
-				introduction: "",
-				email: "",
-				phone: ""
+				mycenterForm: {
+					nickname: "",
+					photo: "",
+					sex: "",
+					introduction: "",
+					email: "",
+					phone: "",
+				},
+				newphone: "",
+				// 头像
+				fileList6: [],
+				// 个人信息表单验证规则
+				mycenterrules: {
+					'nickname': [{
+						min: 3,
+						max: 8,
+						message: '昵称长度在3-8个字符之间',
+						trigger: ['blur', 'change']
+					}, {
+						type: 'string',
+						max: 8,
+						required: true,
+						message: '请输入昵称',
+						trigger: ['blur', 'change']
+					}]
+				},
 			}
 		},
 		methods: {
 			// 返回我的
 			backmycenter() {
 				uni.switchTab({
-					url:"mycenter"
+					url: "mycenter"
 				})
 			},
+			// 获取个人信息
 			async getuserdata() {
 				const result = await this.$http({
 					url: "mycenter/userdata",
 					method: "POST"
 				})
-				if(result.data.code == 200) {
-					this.nickname = result.data.data[0].nickname
-					this.photo = result.data.data[0].photo
-					this.sex = result.data.data[0].sex
-					this.introduction = result.data.data[0].introduction
-					this.email = result.data.data[0].email
-					this.phone = result.data.data[0].phone
-				}else {
+				if (result.data.code == 200) {
+					this.mycenterForm.nickname = result.data.data[0].nickname
+					this.mycenterForm.photo = result.data.data[0].photo
+					this.mycenterForm.sex = result.data.data[0].sex
+					this.mycenterForm.introduction = result.data.data[0].introduction
+					this.mycenterForm.email = result.data.data[0].email
+					this.mycenterForm.phone = result.data.data[0].phone
+				} else {
 					uni.$u.toast('获取个人信息失败，请重试')
 				}
+			},
+			// 头像超出大小限制
+			oversize() {
+				uni.showToast({
+					title: "图片最大不能超过2M",
+					icon: 'none'
+				})
+			},
+			// 删除图片
+			deletePic(event) {
+				this[`fileList${event.name}`].splice(event.index, 1)
+			},
+			// 新增图片
+			async afterRead(event) {
+				// 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+				let lists = [].concat(event.file)
+				let fileListLen = this[`fileList${event.name}`].length
+				lists.map((item) => {
+					this[`fileList${event.name}`].push({
+						...item,
+						status: 'uploading',
+						message: '上传中'
+					})
+				})
+				for (let i = 0; i < lists.length; i++) {
+					const result = await this.uploadFilePromise(lists[i].url)
+					let item = this[`fileList${event.name}`][fileListLen]
+					this[`fileList${event.name}`].splice(fileListLen, 1, Object.assign(item, {
+						status: 'success',
+						message: '',
+						url: result
+					}))
+					fileListLen++
+				}
+			},
+			// 上传
+			uploadFilePromise(url) {
+				return new Promise((resolve, reject) => {
+					let a = uni.uploadFile({
+						url: 'http://localhost:5001/mycenter/mobilephotouploadurl', // 接口地址
+						filePath: url,
+						header: this.getAuthHeaders(),
+						name: 'file',
+						success: (res) => {
+							setTimeout(() => {
+								resolve(res.data.data)
+							}, 1000)
+							this.newphoto = res.data.slice(1, res.data.length - 1)
+							this.setphoto()
+						}
+					});
+				})
+			},
+			async setphoto() {
+				const result = await this.$http({
+					url: "mycenter/updatephoto",
+					method: "POST",
+					data: {
+						photo: this.newphoto,
+						oldphoto: this.mycenterForm.photo
+					}
+				})
+				if (result.data.code == 200) {
+					uni.setStorageSync('photo', this.newphoto)
+					uni.$u.toast('修改头像成功')
+				}
+			},
+			submitdata() {
+				this.$refs.mycenterRef.validate().then(async res => {
+					const result = await this.$http({
+						url: "mycenter/updateuserdata",
+						method: "POST",
+						data: {
+							nickname: this.mycenterForm.nickname,
+							phone: this.mycenterForm.phone,
+							sex: this.mycenterForm.sex,
+							email: this.mycenterForm.email,
+							introduction: this.mycenterForm.introduction
+						}
+					})
+					if (result.data.code == 200) {
+						setTimeout(() => {
+							uni.$u.toast('修改个人信息成功')
+						}, 500)
+						uni.setStorageSync('nickname', this.mycenterForm.nickname)
+						uni.setStorageSync('phone', this.mycenterForm.phone)
+						uni.setStorageSync('sex', this.mycenterForm.sex)
+						uni.setStorageSync('email', this.mycenterForm.email)
+						uni.setStorageSync('introduction', this.mycenterForm.introduction)
+						setTimeout(() => {
+							uni.switchTab({
+								url: "mycenter"
+							}, 1000)
+						})
+					} else {
+						uni.$u.toast('修改失败，请重试')
+					}
+				}).catch(errors => {
+					uni.$u.toast('服务器异常，请重试')
+				})
 			}
 		}
 	}
@@ -122,26 +249,35 @@
 		height: 100%;
 		background-color: #F8F8FB;
 	}
+
 	.submycenterbox {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
+
 	.topback {
 		margin-top: 60rpx;
 		margin-left: 40rpx;
 		align-self: flex-start;
 	}
+
 	.listdata {
-		margin-top: 80rpx;
-		width: 640rpx;
+		margin-top: 50rpx;
+		width: 600rpx;
 		background-color: #ffffff;
 		border-radius: 10px;
 		box-shadow: 5px 5px 10px #efeded;
 		display: flex;
 		flex-direction: column;
 		padding: 40rpx;
-		.photo,.nickname,.sex,.phone,.email,.introduction {
+
+		.photo,
+		.nickname,
+		.sex,
+		.phone,
+		.email,
+		.introduction {
 			display: flex;
 			flex-direction: row;
 			background-color: #ffffff;
@@ -149,33 +285,52 @@
 			align-items: center;
 			position: relative;
 		}
-		image {
-			margin-left: 60rpx;
-			width: 90rpx;
-			height: 90rpx;
-			border-radius: 100%;
-			box-shadow: 0 0 0 3px #f3efef;
-		}
-		#nophoto {
-			margin-left: 60rpx;
-			width: 90rpx;
-			height: 90rpx;
-			border-radius: 100%;
-			box-shadow: 0 0 0 3px #f3efef;
-		}
 	}
+
 	.listcontent {
 		position: absolute;
 		right: 0;
 		display: flex;
 		align-items: center;
 	}
+
 	.submit {
 		margin-top: 100rpx;
 		width: 340rpx;
 	}
-	::v-deep .u-border-bottom{
+
+	::v-deep .u-border-bottom {
 		border-bottom-style: none;
 	}
 
+	::v-deep .u-upload__wrap__preview__image {
+		width: 140rpx !important;
+		height: 140rpx !important;
+		border-radius: 100%;
+		box-shadow: 0 0 0 3px #f3efef;
+	}
+
+	image {
+		width: 140rpx;
+		height: 140rpx;
+		border-radius: 100%;
+		box-shadow: 0 0 0 3px #f3efef;
+	}
+
+	#nophoto {
+		width: 140rpx;
+		height: 140rpx;
+		border-radius: 100%;
+		box-shadow: 0 0 0 3px #f3efef;
+	}
+
+	::v-deep .u-upload {
+		width: 140rpx;
+	}
+
+	.titlephoto {
+		font-size: 13px;
+		color: #aaa;
+		margin-top: 10rpx;
+	}
 </style>

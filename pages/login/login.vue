@@ -219,7 +219,7 @@
 					'reg_nickname': [{
 						min: 3,
 						max: 8,
-						message: '账号长度在3-8个字符之间',
+						message: '昵称长度在3-8个字符之间',
 						trigger: ['blur', 'change']
 					}, {
 						type: 'string',

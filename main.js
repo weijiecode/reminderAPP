@@ -5,6 +5,16 @@ import Vue from 'vue'
 import uView from '@/uni_modules/uview-ui'
 import { http} from 'util/api.js' 
 Vue.prototype.$http = http //封装myRequest方法挂载到vue全局
+Vue.mixin({
+  methods: {
+    getAuthHeaders() {
+      return {
+        Authorization: `Bearer ${uni.getStorageSync('token') || ''}`
+      }
+    }
+  }
+})
+
 Vue.use(uView)
 Vue.prototype.$store = store
 Vue.config.productionTip = false

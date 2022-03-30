@@ -274,22 +274,55 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
 
 {
   mixins: [_mixin.datetimes],
-  created: function created() {
-  },
+  created: function created() {},
   data: function data() {
     return {
-      title: 'Hello' };
+      // 各分类统计
+      colorclass: {
+        a: 0,
+        b: 0,
+        c: 0,
+        d: 0,
+        e: 0,
+        f: 0 } };
+
 
   },
-  onLoad: function onLoad() {
-
+  onShow: function onShow() {
+    this.getbacklog();
   },
   methods: {
-    btn: function btn() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+    getbacklog: function getbacklog() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   _this.$http({
-                    url: "clock/selectclock" }));case 2:res = _context.sent;
+                    url: "backlog/selectbacklog",
+                    method: "GET" }));case 2:result = _context.sent;
 
-                console.log('123', res);case 4:case "end":return _context.stop();}}}, _callee);}))();
+                console.log(result);
+                if (result.data.code == 200) {
+                  // 初始化
+                  _this.colorclass.a = 0;
+                  _this.colorclass.b = 0;
+                  _this.colorclass.c = 0;
+                  _this.colorclass.d = 0;
+                  _this.colorclass.e = 0;
+                  _this.colorclass.f = 0;
+                  result.data.data.forEach(function (item, index) {
+                    if (item.colorbg == '#5da7f1') {
+                      _this.colorclass.a++;
+                    } else if (item.colorbg == '#d81e06') {
+                      _this.colorclass.b++;
+                    } else if (item.colorbg == '#82529d') {
+                      _this.colorclass.c++;
+                    } else if (item.colorbg == '#f36372') {
+                      _this.colorclass.d++;
+                    } else if (item.colorbg == '#2aa515') {
+                      _this.colorclass.e++;
+                    } else if (item.colorbg == '#e0620d') {
+                      _this.colorclass.f++;
+                    }
+                  });
+                }
+                console.log(_this.colorclass);case 6:case "end":return _context.stop();}}}, _callee);}))();
     } } };exports.default = _default;
 
 /***/ }),

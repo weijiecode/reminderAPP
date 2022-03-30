@@ -8,50 +8,50 @@
 		</view>
 		<view class="datetime">
 			<view class="datebox">
-				<view :class="{column:true,iscolumn: week1 == today}">
+				<view :class="{column:true,iscolumn: week[0] == today}">
 					<text>一</text>
-					<text>{{week1}}</text>
+					<text>{{week[0]}}</text>
 				</view>
-				<view :class="{column:true,iscolumn: week2 == today}">
+				<view :class="{column:true,iscolumn: week[1] == today}">
 					<text>二</text>
-					<text>{{week2}}</text>
+					<text>{{week[1]}}</text>
 				</view>
-				<view :class="{column:true,iscolumn: week3 == today}">
+				<view :class="{column:true,iscolumn: week[2] == today}">
 					<text>三</text>
-					<text>{{week3}}</text>
+					<text>{{week[2]}}</text>
 				</view>
-				<view :class="{column:true,iscolumn: week4 == today}">
+				<view :class="{column:true,iscolumn: week[3] == today}">
 					<text>四</text>
-					<text>{{week4}}</text>
+					<text>{{week[3]}}</text>
 				</view>
-				<view :class="{column:true,iscolumn: week5 == today}">
+				<view :class="{column:true,iscolumn: week[4] == today}">
 					<text>五</text>
-					<text>{{week5}}</text>
+					<text>{{week[4]}}</text>
 				</view>
-				<view :class="{column:true,iscolumn: week6 == today}">
+				<view :class="{column:true,iscolumn: week[5] == today}">
 					<text>六</text>
-					<text>{{week6}}</text>
+					<text>{{week[5]}}</text>
 				</view>
-				<view :class="{column:true,iscolumn: week7 == today}">
+				<view :class="{column:true,iscolumn: week[6] == today}">
 					<text>日</text>
-					<text>{{week7}}</text>
+					<text>{{week[6]}}</text>
 				</view>
 			</view>
 			<view class="jinbox">
-				<text :class="{jin:true,isjin: week1 == today}">今</text>
-				<text :class="{jin:true,isjin: week2 == today}">今</text>
-				<text :class="{jin:true,isjin: week3 == today}">今</text>
-				<text :class="{jin:true,isjin: week4 == today}">今</text>
-				<text :class="{jin:true,isjin: week5 == today}">今</text>
-				<text :class="{jin:true,isjin: week6 == today}">今</text>
-				<text :class="{jin:true,isjin: week7 == today}">今</text>
+				<text :class="{jin:true,isjin: week[0] == today}">今</text>
+				<text :class="{jin:true,isjin: week[1] == today}">今</text>
+				<text :class="{jin:true,isjin: week[2] == today}">今</text>
+				<text :class="{jin:true,isjin: week[3] == today}">今</text>
+				<text :class="{jin:true,isjin: week[4] == today}">今</text>
+				<text :class="{jin:true,isjin: week[5] == today}">今</text>
+				<text :class="{jin:true,isjin: week[6] == today}">今</text>
 			</view>
 		</view>
 		<view class="listbox">
 			<view class="linebox">
-				<view class="box" @click="btn">
+				<view class="box">
 					<p class="classname">生活</p>
-					<p class="nums">10条清单</p>
+					<p class="nums">共{{colorclass.a}}条清单</p>
 					<view class="t-icon t-icon-yuandian"></view>
 					<view class="itemlist">
 						<view class="listone">
@@ -64,7 +64,7 @@
 				</view>
 				<view class="box">
 					<p class="classname">工作</p>
-					<p class="nums">10条清单</p>
+					<p class="nums">共{{colorclass.b}}条清单</p>
 					<view class="t-icon t-icon-yuandian-copy-copy"></view>
 					<view class="itemlist">
 						<view class="listone">
@@ -79,7 +79,7 @@
 			<view class="linebox">
 				<view class="box">
 					<p class="classname">学习</p>
-					<p class="nums">10条清单</p>
+					<p class="nums">共{{colorclass.c}}条清单</p>
 					<view class="t-icon t-icon-yuandian-copy-copy-copy"></view>
 					<view class="itemlist">
 						<view class="listone">
@@ -92,7 +92,7 @@
 				</view>
 				<view class="box">
 					<p class="classname">健康</p>
-					<p class="nums">10条清单</p>
+					<p class="nums">共{{colorclass.d}}条清单</p>
 					<view class="t-icon t-icon-yuandian-copy"></view>
 					<view class="itemlist">
 						<view class="listone">
@@ -107,7 +107,7 @@
 			<view class="linebox" style="margin-bottom: 20rpx;">
 				<view class="box">
 					<p class="classname">社交</p>
-					<p class="nums">10条清单</p>
+					<p class="nums">共{{colorclass.e}}条清单</p>
 					<view class="t-icon t-icon-yuandian-copy-copy1"></view>
 					<view class="itemlist">
 						<view class="listone">
@@ -120,7 +120,7 @@
 				</view>
 				<view class="box">
 					<p class="classname">其它</p>
-					<p class="nums">10条清单</p>
+					<p class="nums">共{{colorclass.f}}条清单</p>
 					<view class="t-icon t-icon-yuandian-copy1"></view>
 					<view class="itemlist">
 						<view class="listone">
@@ -142,22 +142,55 @@
 	} from "../../components/mixins/mixin.js"
 	export default {
 		mixins: [datetimes],
-		created() {
-		},
+		created() {},
 		data() {
 			return {
-				title: 'Hello'
+				// 各分类统计
+				colorclass: {
+					a: 0,
+					b: 0,
+					c: 0,
+					d: 0,
+					e: 0,
+					f: 0,
+				}
 			}
 		},
-		onLoad() {
-
+		onShow() {
+			this.getbacklog()
 		},
 		methods: {
-			async btn() {
-				const res = await this.$http({
-					url:"clock/selectclock"
+			async getbacklog() {
+				const result = await this.$http({
+					url: "backlog/selectbacklog",
+					method: "GET"
 				})
-				console.log('123',res)
+				console.log(result)
+				if (result.data.code == 200) {
+					// 初始化
+					this.colorclass.a = 0
+					this.colorclass.b = 0
+					this.colorclass.c = 0
+					this.colorclass.d = 0
+					this.colorclass.e = 0
+					this.colorclass.f = 0
+					result.data.data.forEach((item, index) => {
+						if (item.colorbg == '#5da7f1') {
+							this.colorclass.a++
+						} else if (item.colorbg == '#d81e06') {
+							this.colorclass.b++
+						} else if (item.colorbg == '#82529d') {
+							this.colorclass.c++
+						} else if (item.colorbg == '#f36372') {
+							this.colorclass.d++
+						} else if (item.colorbg == '#2aa515') {
+							this.colorclass.e++
+						} else if (item.colorbg == '#e0620d') {
+							this.colorclass.f++
+						}
+					})
+				}
+				console.log(this.colorclass)
 			}
 		},
 
@@ -230,15 +263,18 @@
 		justify-content: inherit;
 		align-items: center;
 	}
+
 	.iscolumn {
 		background-color: #7364e3;
 		color: #FFFFFF;
 	}
+
 	.jinbox {
 		display: flex;
 		flex-direction: row;
-		justify-content: space-around ;
+		justify-content: space-around;
 	}
+
 	.jin {
 		background-color: #7364e3;
 		border-radius: 100%;
@@ -248,13 +284,16 @@
 		border: 3px solid #7364e3;
 		opacity: 0;
 	}
+
 	.isjin {
 		opacity: 1;
 	}
+
 	.listbox {
 		display: flex;
 		flex-direction: column;
 	}
+
 	.linebox {
 		margin-top: 20px;
 		width: 100%;
@@ -263,14 +302,16 @@
 		flex-direction: row;
 		justify-content: space-around;
 	}
+
 	.box {
 		width: 330rpx;
-		height: 325rpx;
+		height: 340rpx;
 		background-color: #ffffff;
 		border-radius: 20px;
 		position: relative;
-		box-shadow:  5px 5px 10px #efeded,
-		             -5px -5px 10px #f6f6f6;
+		box-shadow: 5px 5px 10px #efeded,
+			-5px -5px 10px #f6f6f6;
+
 		.t-icon {
 			position: absolute;
 			width: 20px;
@@ -279,23 +320,27 @@
 			top: 40rpx;
 		}
 	}
+
 	.classname {
 		color: #383636;
 		font-size: 28px;
 		margin: 40rpx 0 20rpx 40rpx;
 		font-weight: bold;
 	}
+
 	.nums {
 		font-size: 14px;
 		color: #7c7c7c;
 		margin-left: 40rpx;
 	}
+
 	.itemlist {
 		margin-top: 80rpx;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
 	}
+
 	.listone {
 		font-size: 12px;
 		height: 40rpx;
@@ -306,6 +351,7 @@
 		line-height: 20px;
 		border-radius: 12px;
 	}
+
 	.listtwo {
 		font-size: 12px;
 		height: 40rpx;

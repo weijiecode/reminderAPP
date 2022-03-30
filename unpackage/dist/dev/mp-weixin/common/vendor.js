@@ -19229,13 +19229,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.datetimes 
       yeardate: "",
       oldsevendate: "",
       hours: "",
-      week1: "",
-      week2: "",
-      week3: "",
-      week4: "",
-      week5: "",
-      week6: "",
-      week7: "" };
+      week: [] };
 
   },
   created: function created() {
@@ -19261,34 +19255,20 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.datetimes 
     // 前七天
     var time = data.getTime() - 7 * 24 * 60 * 60 * 1000;
     var tragetTime = new Date(time);
-    this.oldsevendate = tragetTime.getFullYear() + '-' + (tragetTime.getMonth() > 9 ? tragetTime.getMonth() + 1 : '0' + (tragetTime.getMonth() + 1)) + '-' + (tragetTime.getDate() > 9 ? tragetTime.getDate() : '0' + tragetTime.getDate());
+    this.oldsevendate = tragetTime.getFullYear() + '-' + (tragetTime.getMonth() > 9 ? tragetTime.getMonth() +
+    1 : '0' + (tragetTime.getMonth() + 1)) + '-' + (tragetTime.getDate() > 9 ? tragetTime.getDate() :
+    '0' + tragetTime.getDate());
     // 获取当前周的日期
-    var nowDate = data.getDate();
-    var day = data.getDay();
-    if (day == 0) {
-      this.week1 = new Date(year, month, nowDate - day - 6);
-      this.week2 = new Date(year, month, nowDate - day - 5);
-      this.week3 = new Date(year, month, nowDate - day - 4);
-      this.week4 = new Date(year, month, nowDate - day - 3);
-      this.week5 = new Date(year, month, nowDate - day - 2);
-      this.week6 = new Date(year, month, nowDate - day - 1);
-      this.week7 = new Date(year, month, nowDate - day);
-    } else {
-      this.week1 = new Date(year, month, nowDate - day + 1);
-      this.week2 = new Date(year, month, nowDate - day + 2);
-      this.week3 = new Date(year, month, nowDate - day + 3);
-      this.week4 = new Date(year, month, nowDate - day + 4);
-      this.week5 = new Date(year, month, nowDate - day + 5);
-      this.week6 = new Date(year, month, nowDate - day + 6);
-      this.week7 = new Date(year, month, nowDate - day + 7);
+    var new_Date = new Date();
+    var timesStamp = new_Date.getTime();
+    var currenDay = new_Date.getDay();
+    var dates = [];
+    for (var i = 0; i < 7; i++) {
+      dates.push(new Date(timesStamp + 24 * 60 * 60 * 1000 * (i - (currenDay + 6) % 7)).toLocaleDateString().
+      replace(/[年月]/g, '-').replace(/[日上下午]/g, ''));
+      this.week[i] = dates[i].split('/')[2] <= 9 ? "0" + dates[i].split('/')[2] : dates[i].split('/')[2];
     }
-    this.week1 = this.week1.getDate() <= 9 ? "0" + this.week1.getDate() : this.week1.getDate();
-    this.week2 = this.week2.getDate() <= 9 ? "0" + this.week2.getDate() : this.week2.getDate();
-    this.week3 = this.week3.getDate() <= 9 ? "0" + this.week3.getDate() : this.week3.getDate();
-    this.week4 = this.week4.getDate() <= 9 ? "0" + this.week4.getDate() : this.week4.getDate();
-    this.week5 = this.week5.getDate() <= 9 ? "0" + this.week5.getDate() : this.week5.getDate();
-    this.week6 = this.week6.getDate() <= 9 ? "0" + this.week6.getDate() : this.week6.getDate();
-    this.week7 = this.week7.getDate() <= 9 ? "0" + this.week7.getDate() : this.week7.getDate();
+    //console.log(this.week)   
   },
   methods: {} };exports.datetimes = datetimes;
 
@@ -19344,7 +19324,15 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.datetimes 
 /* 194 */,
 /* 195 */,
 /* 196 */,
-/* 197 */
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */
 /*!*********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-notify/props.js ***!
   \*********************************************************************************************************/
@@ -19401,14 +19389,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.datetimes 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-form/props.js ***!
   \*******************************************************************************************************/
@@ -19461,12 +19449,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.datetimes 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 206 */,
-/* 207 */,
-/* 208 */,
-/* 209 */,
-/* 210 */,
-/* 211 */
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */
 /*!************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-form-item/props.js ***!
   \************************************************************************************************************/
@@ -19517,14 +19505,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.datetimes 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 212 */,
-/* 213 */,
-/* 214 */,
-/* 215 */,
-/* 216 */,
-/* 217 */,
-/* 218 */,
-/* 219 */
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */
 /*!********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-input/props.js ***!
   \********************************************************************************************************/
@@ -19714,12 +19702,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.datetimes 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 220 */,
-/* 221 */,
-/* 222 */,
-/* 223 */,
-/* 224 */,
-/* 225 */
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */
 /*!*************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/mixin/button.js ***!
   \*************************************************************************************************/
@@ -19740,7 +19728,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     openType: String } };exports.default = _default;
 
 /***/ }),
-/* 226 */
+/* 234 */
 /*!***************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/mixin/openType.js ***!
   \***************************************************************************************************/
@@ -19773,7 +19761,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     } } };exports.default = _default;
 
 /***/ }),
-/* 227 */
+/* 235 */
 /*!*********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-button/props.js ***!
   \*********************************************************************************************************/
@@ -19942,14 +19930,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 228 */,
-/* 229 */,
-/* 230 */,
-/* 231 */,
-/* 232 */,
-/* 233 */,
-/* 234 */,
-/* 235 */
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */
 /*!********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-steps/props.js ***!
   \********************************************************************************************************/
@@ -19996,14 +19984,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 236 */,
-/* 237 */,
-/* 238 */,
-/* 239 */,
-/* 240 */,
-/* 241 */,
-/* 242 */,
-/* 243 */
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */
 /*!*************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-steps-item/props.js ***!
   \*************************************************************************************************************/
@@ -20035,14 +20023,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 244 */,
-/* 245 */,
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */,
-/* 250 */,
-/* 251 */
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */
 /*!**************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-radio-group/props.js ***!
   \**************************************************************************************************************/
@@ -20135,14 +20123,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 252 */,
-/* 253 */,
-/* 254 */,
-/* 255 */,
-/* 256 */,
-/* 257 */,
-/* 258 */,
-/* 259 */
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */
 /*!********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-radio/props.js ***!
   \********************************************************************************************************/
@@ -20214,14 +20202,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 260 */,
-/* 261 */,
-/* 262 */,
-/* 263 */,
-/* 264 */,
-/* 265 */,
-/* 266 */,
-/* 267 */
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-icon/icons.js ***!
   \*******************************************************************************************************/
@@ -20444,7 +20432,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   'uicon-en': "\uE692" };exports.default = _default;
 
 /***/ }),
-/* 268 */
+/* 276 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-icon/props.js ***!
   \*******************************************************************************************************/
@@ -20541,14 +20529,343 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 269 */,
-/* 270 */,
-/* 271 */,
-/* 272 */,
-/* 273 */,
-/* 274 */,
-/* 275 */,
-/* 276 */
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */
+/*!*********************************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-upload/utils.js ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.chooseFile = chooseFile;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function pickExclude(obj, keys) {
+  // 某些情况下，type可能会为
+  if (!['[object Object]', '[object File]'].includes(Object.prototype.toString.call(obj))) {
+    return {};
+  }
+  return Object.keys(obj).reduce(function (prev, key) {
+    if (!keys.includes(key)) {
+      prev[key] = obj[key];
+    }
+    return prev;
+  }, {});
+}
+
+function formatImage(res) {
+  return res.tempFiles.map(function (item) {return _objectSpread(_objectSpread({},
+    pickExclude(item, ['path'])), {}, {
+      type: 'image',
+      url: item.path,
+      thumb: item.path,
+      size: item.size });});
+
+
+
+
+}
+
+function formatVideo(res) {
+  return [_objectSpread(_objectSpread({},
+
+  pickExclude(res, ['tempFilePath', 'thumbTempFilePath', 'errMsg'])), {}, {
+    type: 'video',
+    url: res.tempFilePath,
+    thumb: res.thumbTempFilePath,
+    size: res.size })];
+
+
+
+
+
+}
+
+function formatMedia(res) {
+  return res.tempFiles.map(function (item) {return _objectSpread(_objectSpread({},
+    pickExclude(item, ['fileType', 'thumbTempFilePath', 'tempFilePath'])), {}, {
+      type: res.type,
+      url: item.tempFilePath,
+      thumb: res.type === 'video' ? item.thumbTempFilePath : item.tempFilePath,
+      size: item.size });});
+
+}
+
+function formatFile(res) {
+  return res.tempFiles.map(function (item) {return _objectSpread(_objectSpread({},
+    pickExclude(item, ['path'])), {}, {
+      url: item.path,
+      size: item.size });});
+
+
+
+
+
+}
+function chooseFile(_ref)
+
+
+
+
+
+
+
+
+{var accept = _ref.accept,multiple = _ref.multiple,capture = _ref.capture,compressed = _ref.compressed,maxDuration = _ref.maxDuration,sizeType = _ref.sizeType,camera = _ref.camera,maxCount = _ref.maxCount;
+  return new Promise(function (resolve, reject) {
+    switch (accept) {
+      case 'image':
+        uni.chooseImage({
+          count: multiple ? Math.min(maxCount, 9) : 1,
+          sourceType: capture,
+          sizeType: sizeType,
+          success: function success(res) {return resolve(formatImage(res));},
+          fail: reject });
+
+        break;
+
+      // 只有微信小程序才支持chooseMedia接口
+      case 'media':
+        wx.chooseMedia({
+          count: multiple ? Math.min(maxCount, 9) : 1,
+          sourceType: capture,
+          maxDuration: maxDuration,
+          sizeType: sizeType,
+          camera: camera,
+          success: function success(res) {return resolve(formatMedia(res));},
+          fail: reject });
+
+        break;
+
+      case 'video':
+        uni.chooseVideo({
+          sourceType: capture,
+          compressed: compressed,
+          maxDuration: maxDuration,
+          camera: camera,
+          success: function success(res) {return resolve(formatVideo(res));},
+          fail: reject });
+
+        break;
+
+      // 只有微信小程序才支持chooseMessageFile接口
+      case 'file':
+
+        wx.chooseMessageFile({
+          count: multiple ? maxCount : 1,
+          type: accept,
+          success: function success(res) {return resolve(formatFile(res));},
+          fail: reject });
+
+
+
+
+
+
+
+
+
+
+
+        break;
+
+      default:
+        // 此为保底选项，在accept不为上面任意一项的时候选取全部文件
+
+        wx.chooseMessageFile({
+          count: multiple ? maxCount : 1,
+          type: 'all',
+          success: function success(res) {return resolve(formatFile(res));},
+          fail: reject });}
+
+
+
+
+
+
+
+
+
+
+
+
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 285 */
+/*!*********************************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-upload/mixin.js ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  watch: {
+    // 监听accept的变化，判断是否符合个平台要求
+    // 只有微信小程序才支持选择媒体，文件类型，所以这里做一个判断提示
+    accept: {
+      immediate: true,
+      handler: function handler(val) {
+
+
+
+
+
+
+
+
+
+
+      } } } };exports.default = _default;
+
+/***/ }),
+/* 286 */
+/*!*********************************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-upload/props.js ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  props: {
+    // 接受的文件类型, 可选值为all media image file video
+    accept: {
+      type: String,
+      default: uni.$u.props.upload.accept },
+
+    // 	图片或视频拾取模式，当accept为image类型时设置capture可选额外camera可以直接调起摄像头
+    capture: {
+      type: [String, Array],
+      default: uni.$u.props.upload.capture },
+
+    // 当accept为video时生效，是否压缩视频，默认为true
+    compressed: {
+      type: Boolean,
+      default: uni.$u.props.upload.compressed },
+
+    // 当accept为video时生效，可选值为back或front
+    camera: {
+      type: String,
+      default: uni.$u.props.upload.camera },
+
+    // 当accept为video时生效，拍摄视频最长拍摄时间，单位秒
+    maxDuration: {
+      type: Number,
+      default: uni.$u.props.upload.maxDuration },
+
+    // 上传区域的图标，只能内置图标
+    uploadIcon: {
+      type: String,
+      default: uni.$u.props.upload.uploadIcon },
+
+    // 上传区域的图标的颜色，默认
+    uploadIconColor: {
+      type: String,
+      default: uni.$u.props.upload.uploadIconColor },
+
+    // 是否开启文件读取前事件
+    useBeforeRead: {
+      type: Boolean,
+      default: uni.$u.props.upload.useBeforeRead },
+
+    // 读取后的处理函数
+    afterRead: {
+      type: Function,
+      default: null },
+
+    // 读取前的处理函数
+    beforeRead: {
+      type: Function,
+      default: null },
+
+    // 是否显示组件自带的图片预览功能
+    previewFullImage: {
+      type: Boolean,
+      default: uni.$u.props.upload.previewFullImage },
+
+    // 最大上传数量
+    maxCount: {
+      type: [String, Number],
+      default: uni.$u.props.upload.maxCount },
+
+    // 是否启用
+    disabled: {
+      type: Boolean,
+      default: uni.$u.props.upload.disabled },
+
+    // 预览上传的图片时的裁剪模式，和image组件mode属性一致
+    imageMode: {
+      type: String,
+      default: uni.$u.props.upload.imageMode },
+
+    // 标识符，可以在回调函数的第二项参数中获取
+    name: {
+      type: String,
+      default: uni.$u.props.upload.name },
+
+    // 所选的图片的尺寸, 可选值为original compressed
+    sizeType: {
+      type: Array,
+      default: uni.$u.props.upload.sizeType },
+
+    // 是否开启图片多选，部分安卓机型不支持
+    multiple: {
+      type: Boolean,
+      default: uni.$u.props.upload.multiple },
+
+    // 是否展示删除按钮
+    deletable: {
+      type: Boolean,
+      default: uni.$u.props.upload.deletable },
+
+    // 文件大小限制，单位为byte
+    maxSize: {
+      type: [String, Number],
+      default: uni.$u.props.upload.maxSize },
+
+    // 显示已上传的文件列表
+    fileList: {
+      type: Array,
+      default: uni.$u.props.upload.fileList },
+
+    // 上传区域的提示文字
+    uploadText: {
+      type: String,
+      default: uni.$u.props.upload.uploadText },
+
+    // 内部预览图片区域和选择图片按钮的区域宽度
+    width: {
+      type: [String, Number],
+      default: uni.$u.props.upload.width },
+
+    // 内部预览图片区域和选择图片按钮的区域高度
+    height: {
+      type: [String, Number],
+      default: uni.$u.props.upload.height },
+
+    // 是否在上传完成后展示预览图
+    previewImage: {
+      type: Boolean,
+      default: uni.$u.props.upload.previewImage } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */
 /*!*************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-transition/props.js ***!
   \*************************************************************************************************************/
@@ -20580,7 +20897,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 277 */
+/* 295 */
 /*!******************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-transition/transition.js ***!
   \******************************************************************************************************************/
@@ -20591,7 +20908,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 36));
 
 
-var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 278));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} // 定义一个一定时间后自动成功的promise，让调用nextTick方法处，进入下一个then方法
+var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 296));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} // 定义一个一定时间后自动成功的promise，让调用nextTick方法处，进入下一个then方法
 var nextTick = function nextTick() {return new Promise(function (resolve) {return setTimeout(resolve, 1000 / 50);});}; // nvue动画模块实现细节抽离在外部文件
 
 // 定义类名，通过给元素动态切换类名，赋予元素一定的css动画样式
@@ -20743,7 +21060,7 @@ var getClassNames = function getClassNames(name) {return {
     } } };exports.default = _default;
 
 /***/ }),
-/* 278 */
+/* 296 */
 /*!********************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-transition/nvue.ani-map.js ***!
   \********************************************************************************************************************/
@@ -20819,14 +21136,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     'leave-to': { opacity: 0, transform: 'scale(0.95)' } } };exports.default = _default;
 
 /***/ }),
-/* 279 */,
-/* 280 */,
-/* 281 */,
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */,
-/* 286 */
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */
 /*!*************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-status-bar/props.js ***!
   \*************************************************************************************************************/
@@ -20842,14 +21159,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 287 */,
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */
 /*!*********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/util/async-validator.js ***!
   \*********************************************************************************************************/
@@ -22201,10 +22518,10 @@ Schema.messages = messages;var _default =
 Schema;
 // # sourceMappingURL=index.js.map
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 295)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 313)))
 
 /***/ }),
-/* 295 */
+/* 313 */
 /*!********************************************************!*\
   !*** ./node_modules/node-libs-browser/mock/process.js ***!
   \********************************************************/
@@ -22235,7 +22552,7 @@ exports.binding = function (name) {
     var path;
     exports.cwd = function () { return cwd };
     exports.chdir = function (dir) {
-        if (!path) path = __webpack_require__(/*! path */ 296);
+        if (!path) path = __webpack_require__(/*! path */ 314);
         cwd = path.resolve(dir, cwd);
     };
 })();
@@ -22248,7 +22565,7 @@ exports.features = {};
 
 
 /***/ }),
-/* 296 */
+/* 314 */
 /*!***********************************************!*\
   !*** ./node_modules/path-browserify/index.js ***!
   \***********************************************/
@@ -22558,15 +22875,15 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 295)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 313)))
 
 /***/ }),
-/* 297 */,
-/* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */,
-/* 302 */
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-line/props.js ***!
   \*******************************************************************************************************/
@@ -22607,21 +22924,21 @@ var substr = 'ab'.substr(-1) === 'b'
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 303 */,
-/* 304 */,
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */
 /*!***************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-loading-icon/props.js ***!
   \***************************************************************************************************************/
@@ -22688,14 +23005,14 @@ var substr = 'ab'.substr(-1) === 'b'
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 318 */,
-/* 319 */,
-/* 320 */,
-/* 321 */,
-/* 322 */,
-/* 323 */,
-/* 324 */,
-/* 325 */
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-text/props.js ***!
   \*******************************************************************************************************/
@@ -22813,12 +23130,12 @@ var substr = 'ab'.substr(-1) === 'b'
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 326 */,
-/* 327 */,
-/* 328 */,
-/* 329 */,
-/* 330 */,
-/* 331 */
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-text/value.js ***!
   \*******************************************************************************************************/
@@ -22912,14 +23229,14 @@ var substr = 'ab'.substr(-1) === 'b'
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 332 */,
-/* 333 */,
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-link/props.js ***!
   \*******************************************************************************************************/
