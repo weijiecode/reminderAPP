@@ -7,7 +7,8 @@
     "pages/login/login",
     "pages/agreement/agreement",
     "pages/private/private",
-    "pages/mycenter/submycenter"
+    "pages/mycenter/submycenter",
+    "pages/index/backlog"
   ],
   "subPackages": [],
   "window": {

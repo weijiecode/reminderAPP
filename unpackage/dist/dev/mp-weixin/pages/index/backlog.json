@@ -1,8 +1,8 @@
 {
   "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
   "navigationBarTextStyle": "black",
-  "backgroundColor": "#F8F8FB",
   "usingComponents": {
-    "u-empty": "/uni_modules/uview-ui/components/u-empty/u-empty"
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon"
   }
 }

@@ -1,7 +1,9 @@
 <template>
 	<view class="content">
 		<view class="navigate">
-			<text class="lefttitle">待办</text>
+			<text v-if="showclass == 0" class="lefttitle">待办总览</text>
+			<text v-if="showclass == 1" class="lefttitle">今日待办</text>
+			<span @click="showclass == 0 ? showclass=1 : showclass=0" class="btnshow t-icon t-icon-qiehuan3"></span>
 			<text class="rightdatetime">{{todaydatem}}</text>
 		</view>
 		<view class="colorbg">
@@ -47,7 +49,8 @@
 				<text :class="{jin:true,isjin: week[6] == today}">今</text>
 			</view>
 		</view>
-		<view class="listbox">
+		<!-- 所有待办总览 -->
+		<view v-if="showclass == 0" class="listbox">
 			<view class="linebox">
 				<view class="box">
 					<p class="classname">生活</p>
@@ -55,10 +58,10 @@
 					<view class="t-icon t-icon-yuandian"></view>
 					<view class="itemlist">
 						<view class="listone">
-							已完成 3
+							已完成 {{colorclass.adone}}
 						</view>
 						<view class="listtwo">
-							未完成 2
+							未完成 {{colorclass.a-colorclass.adone}}
 						</view>
 					</view>
 				</view>
@@ -68,10 +71,10 @@
 					<view class="t-icon t-icon-yuandian-copy-copy"></view>
 					<view class="itemlist">
 						<view class="listone">
-							已完成 3
+							已完成 {{colorclass.bdone}}
 						</view>
 						<view class="listtwo">
-							未完成 2
+							未完成 {{colorclass.b-colorclass.bdone}}
 						</view>
 					</view>
 				</view>
@@ -83,10 +86,10 @@
 					<view class="t-icon t-icon-yuandian-copy-copy-copy"></view>
 					<view class="itemlist">
 						<view class="listone">
-							已完成 3
+							已完成 {{colorclass.cdone}}
 						</view>
 						<view class="listtwo">
-							未完成 2
+							未完成 {{colorclass.c-colorclass.cdone}}
 						</view>
 					</view>
 				</view>
@@ -96,10 +99,10 @@
 					<view class="t-icon t-icon-yuandian-copy"></view>
 					<view class="itemlist">
 						<view class="listone">
-							已完成 3
+							已完成 {{colorclass.ddone}}
 						</view>
 						<view class="listtwo">
-							未完成 2
+							未完成 {{colorclass.d-colorclass.ddone}}
 						</view>
 					</view>
 				</view>
@@ -111,10 +114,10 @@
 					<view class="t-icon t-icon-yuandian-copy-copy1"></view>
 					<view class="itemlist">
 						<view class="listone">
-							已完成 3
+							已完成 {{colorclass.edone}}
 						</view>
 						<view class="listtwo">
-							未完成 2
+							未完成 {{colorclass.e-colorclass.edone}}
 						</view>
 					</view>
 				</view>
@@ -124,12 +127,81 @@
 					<view class="t-icon t-icon-yuandian-copy1"></view>
 					<view class="itemlist">
 						<view class="listone">
-							已完成 3
+							已完成 {{colorclass.fdone}}
 						</view>
 						<view class="listtwo">
-							未完成 2
+							未完成 {{colorclass.f-colorclass.fdone}}
 						</view>
 					</view>
+				</view>
+			</view>
+		</view>
+		<!-- 今日待办 -->
+		<view v-if="showclass == 1" class="listbox">
+			<view class="linebox">
+				<view @click="backlogitem()" class="box">
+					<p class="classname">生活</p>
+					<view v-if="aback!=''" class="contentbox">
+						<p class="nums" v-for="(item,index) in aback" :key="index">{{item.contents}}</p>
+					</view>
+					<u-empty v-if="aback==''" text="" iconSize="10"
+						icon="http://cdn.uviewui.com/uview/empty/list.png">
+					</u-empty>
+					<view class="t-icon t-icon-yuandian"></view>
+				</view>
+				<view @click="backlogitem()" class="box">
+					<p class="classname">工作</p>
+					<view v-if="bback!=''" class="contentbox">
+						<p class="nums" v-for="(item,index) in bback" :key="index">{{item.contents}}</p>
+					</view>
+					<u-empty v-if="bback==''" text="" iconSize="10"
+						icon="http://cdn.uviewui.com/uview/empty/list.png">
+					</u-empty>
+					<view class="t-icon t-icon-yuandian-copy-copy"></view>
+				</view>
+			</view>
+			<view class="linebox">
+				<view @click="backlogitem()" class="box">
+					<p class="classname">学习</p>
+					<view v-if="cback!=''" class="contentbox">
+						<p class="nums" v-for="(item,index) in cback" :key="index">{{item.contents}}</p>
+					</view>
+					<u-empty v-if="cback==''" text="" iconSize="10"
+						icon="http://cdn.uviewui.com/uview/empty/list.png">
+					</u-empty>
+					<view class="t-icon t-icon-yuandian-copy-copy-copy"></view>
+				</view>
+				<view class="box">
+					<p class="classname">健康</p>
+					<view v-if="dback!=''" class="contentbox">
+						<p class="nums" v-for="(item,index) in dback" :key="index">{{item.contents}}</p>
+					</view>
+					<u-empty v-if="dback==''" text="" iconSize="10"
+						icon="http://cdn.uviewui.com/uview/empty/list.png">
+					</u-empty>
+					<view class="t-icon t-icon-yuandian-copy"></view>
+				</view>
+			</view>
+			<view class="linebox" style="margin-bottom: 20rpx;">
+				<view class="box">
+					<p class="classname">社交</p>
+					<view v-if="eback!=''" class="contentbox">
+						<p class="nums" v-for="(item,index) in eback" :key="index">{{item.contents}}</p>
+					</view>
+					<u-empty v-if="eback==''" text="" iconSize="10"
+						icon="http://cdn.uviewui.com/uview/empty/list.png">
+					</u-empty>
+					<view class="t-icon t-icon-yuandian-copy-copy1"></view>
+				</view>
+				<view class="box">
+					<p class="classname">其它</p>
+					<view v-if="fback!=''" class="contentbox">
+						<p class="nums" v-for="(item,index) in fback" :key="index">{{item.contents}}</p>
+					</view>
+					<u-empty v-if="fback==''" text="" iconSize="10"
+						icon="http://cdn.uviewui.com/uview/empty/list.png">
+					</u-empty>
+					<view class="t-icon t-icon-yuandian-copy1"></view>
 				</view>
 			</view>
 		</view>
@@ -153,7 +225,24 @@
 					d: 0,
 					e: 0,
 					f: 0,
-				}
+					adone: 0,
+					bdone: 0,
+					cdone: 0,
+					ddone: 0,
+					edone: 0,
+					fdone: 0,
+				},
+				// 切换视图
+				showclass: 0,
+				// 当天所有待办事项
+				backlogdata: {},
+				// 当天各个分类的待办事项
+				aback: {},
+				bback: {},
+				cback: {},
+				dback: {},
+				eback: {},
+				fback: {}
 			}
 		},
 		onShow() {
@@ -165,7 +254,8 @@
 					url: "backlog/selectbacklog",
 					method: "GET"
 				})
-				console.log(result)
+				this.backlogdata = result.data.data
+				console.log(this.backlogdata)
 				if (result.data.code == 200) {
 					// 初始化
 					this.colorclass.a = 0
@@ -174,23 +264,64 @@
 					this.colorclass.d = 0
 					this.colorclass.e = 0
 					this.colorclass.f = 0
+					this.colorclass.adone = 0
+					this.colorclass.bdone = 0
+					this.colorclass.cdone = 0
+					this.colorclass.ddone = 0
+					this.colorclass.edone = 0
+					this.colorclass.fdone = 0
 					result.data.data.forEach((item, index) => {
 						if (item.colorbg == '#5da7f1') {
+							if (item.done == 1) this.colorclass.adone++;
 							this.colorclass.a++
 						} else if (item.colorbg == '#d81e06') {
+							if (item.done == 1) this.colorclass.bdone++;
 							this.colorclass.b++
 						} else if (item.colorbg == '#82529d') {
+							if (item.done == 1) this.colorclass.cdone++;
 							this.colorclass.c++
 						} else if (item.colorbg == '#f36372') {
+							if (item.done == 1) this.colorclass.ddone++;
 							this.colorclass.d++
 						} else if (item.colorbg == '#2aa515') {
+							if (item.done == 1) this.colorclass.edone++;
 							this.colorclass.e++
 						} else if (item.colorbg == '#e0620d') {
+							if (item.colorbg == '#e0620d' && item.done == 1) this.colorclass.fdone++;
 							this.colorclass.f++
 						}
 					})
+					// 当天所有待办事项
+					this.backlogdata = result.data.data.filter((item) => {
+						return item.datetime.split(" ").shift() == this.todaydate
+					})
+					// 当天各个分类的待办事项
+					this.aback = this.backlogdata.filter((item) => {
+						return item.colorbg == '#5da7f1'
+					})
+					this.bback = this.backlogdata.filter((item) => {
+						return item.colorbg == '#d81e06'
+					})
+					this.cback = this.backlogdata.filter((item) => {
+						return item.colorbg == '#82529d'
+					})
+					this.dback = this.backlogdata.filter((item) => {
+						return item.colorbg == '#f36372'
+					})
+					this.eback = this.backlogdata.filter((item) => {
+						return item.colorbg == '#2aa515'
+					})
+					this.fback = this.backlogdata.filter((item) => {
+						return item.colorbg == '#e0620d'
+					})
+					console.log(this.aback)
 				}
-				console.log(this.colorclass)
+			},
+			backlogitem(e) {
+				uni.navigateTo({
+					url:"./backlog"
+				})
+				//console.log(e)
 			}
 		},
 
@@ -213,6 +344,7 @@
 	}
 
 	.colorbg {
+		pointer-events: none; // 遮罩层下面的按钮才能点击
 		width: 100%;
 		height: 200rpx;
 		background-color: #FFFFFF;
@@ -230,17 +362,17 @@
 	}
 
 	.lefttitle {
-		margin-top: 30px;
+		margin-top: 60rpx;
 		float: left;
-		margin-left: 30px;
+		margin-left: 60rpx;
 		font-size: 23px;
 		font-weight: bold;
 	}
 
 	.rightdatetime {
-		margin-top: 30px;
+		margin-top: 62rpx;
 		float: right;
-		margin-right: 30px;
+		margin-right: 60rpx;
 		font-weight: bold;
 		line-height: 35px;
 		font-size: 18px;
@@ -328,6 +460,12 @@
 		font-weight: bold;
 	}
 
+	.contentbox {
+		margin-right: 40rpx;
+		height: 190rpx;
+		overflow: auto;
+	}
+
 	.nums {
 		font-size: 14px;
 		color: #7c7c7c;
@@ -361,5 +499,23 @@
 		text-align: center;
 		line-height: 20px;
 		border-radius: 12px;
+	}
+
+	.btnshow {
+		margin-top: 70rpx;
+		width: 48rpx;
+		height: 48rpx;
+		margin-left: 30rpx;
+	}
+	
+	::v-deep .u-empty {
+		margin-top: -80rpx !important;
+		span {
+			opacity: 0 !important;
+		}
+	}
+	
+	::v-deep .u-empty__text {
+		display: none !important;
 	}
 </style>

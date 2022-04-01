@@ -93,10 +93,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uEmpty: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-empty/u-empty */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-empty/u-empty")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-empty/u-empty.vue */ 383))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.showclass == 0 ? (_vm.showclass = 1) : (_vm.showclass = 0)
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -130,7 +158,79 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 36));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 36));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -284,8 +384,25 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
         c: 0,
         d: 0,
         e: 0,
-        f: 0 } };
+        f: 0,
+        adone: 0,
+        bdone: 0,
+        cdone: 0,
+        ddone: 0,
+        edone: 0,
+        fdone: 0 },
 
+      // 切换视图
+      showclass: 0,
+      // 当天所有待办事项
+      backlogdata: {},
+      // 当天各个分类的待办事项
+      aback: {},
+      bback: {},
+      cback: {},
+      dback: {},
+      eback: {},
+      fback: {} };
 
   },
   onShow: function onShow() {
@@ -297,7 +414,8 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
                     url: "backlog/selectbacklog",
                     method: "GET" }));case 2:result = _context.sent;
 
-                console.log(result);
+                _this.backlogdata = result.data.data;
+                console.log(_this.backlogdata);
                 if (result.data.code == 200) {
                   // 初始化
                   _this.colorclass.a = 0;
@@ -306,24 +424,66 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
                   _this.colorclass.d = 0;
                   _this.colorclass.e = 0;
                   _this.colorclass.f = 0;
+                  _this.colorclass.adone = 0;
+                  _this.colorclass.bdone = 0;
+                  _this.colorclass.cdone = 0;
+                  _this.colorclass.ddone = 0;
+                  _this.colorclass.edone = 0;
+                  _this.colorclass.fdone = 0;
                   result.data.data.forEach(function (item, index) {
                     if (item.colorbg == '#5da7f1') {
+                      if (item.done == 1) _this.colorclass.adone++;
                       _this.colorclass.a++;
                     } else if (item.colorbg == '#d81e06') {
+                      if (item.done == 1) _this.colorclass.bdone++;
                       _this.colorclass.b++;
                     } else if (item.colorbg == '#82529d') {
+                      if (item.done == 1) _this.colorclass.cdone++;
                       _this.colorclass.c++;
                     } else if (item.colorbg == '#f36372') {
+                      if (item.done == 1) _this.colorclass.ddone++;
                       _this.colorclass.d++;
                     } else if (item.colorbg == '#2aa515') {
+                      if (item.done == 1) _this.colorclass.edone++;
                       _this.colorclass.e++;
                     } else if (item.colorbg == '#e0620d') {
+                      if (item.colorbg == '#e0620d' && item.done == 1) _this.colorclass.fdone++;
                       _this.colorclass.f++;
                     }
                   });
-                }
-                console.log(_this.colorclass);case 6:case "end":return _context.stop();}}}, _callee);}))();
+                  // 当天所有待办事项
+                  _this.backlogdata = result.data.data.filter(function (item) {
+                    return item.datetime.split(" ").shift() == _this.todaydate;
+                  });
+                  // 当天各个分类的待办事项
+                  _this.aback = _this.backlogdata.filter(function (item) {
+                    return item.colorbg == '#5da7f1';
+                  });
+                  _this.bback = _this.backlogdata.filter(function (item) {
+                    return item.colorbg == '#d81e06';
+                  });
+                  _this.cback = _this.backlogdata.filter(function (item) {
+                    return item.colorbg == '#82529d';
+                  });
+                  _this.dback = _this.backlogdata.filter(function (item) {
+                    return item.colorbg == '#f36372';
+                  });
+                  _this.eback = _this.backlogdata.filter(function (item) {
+                    return item.colorbg == '#2aa515';
+                  });
+                  _this.fback = _this.backlogdata.filter(function (item) {
+                    return item.colorbg == '#e0620d';
+                  });
+                  console.log(_this.aback);
+                }case 6:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    backlogitem: function backlogitem(e) {
+      uni.navigateTo({
+        url: "./backlog" });
+
+      //console.log(e)
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

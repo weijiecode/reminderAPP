@@ -82,6 +82,16 @@
             }
             
         }
+        ,{
+            "path" : "pages/index/backlog",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationBarTextStyle": "black"
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom" ,// 去掉小程顶部的导航
