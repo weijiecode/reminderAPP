@@ -96,7 +96,7 @@ var components
 try {
   components = {
     uEmpty: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-empty/u-empty */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-empty/u-empty")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-empty/u-empty.vue */ 383))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-empty/u-empty */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-empty/u-empty")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-empty/u-empty.vue */ 208))
     }
   }
 } catch (e) {
@@ -369,14 +369,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
 var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 
 
+
+
+
+
+
 {
-  mixins: [_mixin.datetimes],
+
+
+
+
+  mixins: [_mixin.getstatusBarHeight, _mixin.datetimes],
+
   created: function created() {},
+  onLoad: function onLoad() {
+    var res = uni.getSystemInfoSync();
+    this.wHeight = res.windowHeight;
+    this.wWidth = res.windowWidth;
+    console.log(res.windowHeight);
+    console.log(res.windowWidth);
+  },
   data: function data() {
     return {
+      // 可使用窗口宽度
+      wWidth: "",
+      // 可使用窗口高度
+      wHeight: "",
       // 各分类统计
       colorclass: {
         a: 0,
@@ -415,7 +444,7 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
                     method: "GET" }));case 2:result = _context.sent;
 
                 _this.backlogdata = result.data.data;
-                console.log(_this.backlogdata);
+                //console.log(this.backlogdata)
                 if (result.data.code == 200) {
                   // 初始化
                   _this.colorclass.a = 0;
@@ -474,14 +503,14 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
                   _this.fback = _this.backlogdata.filter(function (item) {
                     return item.colorbg == '#e0620d';
                   });
-                  console.log(_this.aback);
-                }case 6:case "end":return _context.stop();}}}, _callee);}))();
+                  //console.log(this.aback)
+                }case 5:case "end":return _context.stop();}}}, _callee);}))();
     },
-    backlogitem: function backlogitem(e) {
+    backlogitem: function backlogitem(i) {
       uni.navigateTo({
-        url: "./backlog" });
+        url: "./backlog?id=" + i });
 
-      //console.log(e)
+      //console.log(i)
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

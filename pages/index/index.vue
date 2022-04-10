@@ -1,52 +1,60 @@
 <template>
 	<view class="content">
-		<view class="navigate">
+		<view class="topcontent">
+			<!-- #ifdef MP-WEIXIN -->
 			<text v-if="showclass == 0" class="lefttitle">待办总览</text>
 			<text v-if="showclass == 1" class="lefttitle">今日待办</text>
 			<span @click="showclass == 0 ? showclass=1 : showclass=0" class="btnshow t-icon t-icon-qiehuan3"></span>
 			<text class="rightdatetime">{{todaydatem}}</text>
-		</view>
-		<view class="colorbg">
-		</view>
-		<view class="datetime">
-			<view class="datebox">
-				<view :class="{column:true,iscolumn: week[0] == today}">
-					<text>一</text>
-					<text>{{week[0]}}</text>
+			<!-- #endif -->
+			<!-- #ifndef MP-WEIXIN -->
+			<text v-if="showclass == 0" class="lefttitle">待办总览</text>
+			<text v-if="showclass == 1" class="lefttitle">今日待办</text>
+			<span @click="showclass == 0 ? showclass=1 : showclass=0" class="btnshow t-icon t-icon-qiehuan3"></span>
+			<text class="rightdatetime">{{todaydatem}}</text>
+			<!-- #endif -->
+			<!-- <view class="colorbg">
+			</view> -->
+			<view class="datetime">
+				<view class="datebox">
+					<view :class="{column:true,iscolumn: week[0] == today}">
+						<text>一</text>
+						<text>{{week[0]}}</text>
+					</view>
+					<view :class="{column:true,iscolumn: week[1] == today}">
+						<text>二</text>
+						<text>{{week[1]}}</text>
+					</view>
+					<view :class="{column:true,iscolumn: week[2] == today}">
+						<text>三</text>
+						<text>{{week[2]}}</text>
+					</view>
+					<view :class="{column:true,iscolumn: week[3] == today}">
+						<text>四</text>
+						<text>{{week[3]}}</text>
+					</view>
+					<view :class="{column:true,iscolumn: week[4] == today}">
+						<text>五</text>
+						<text>{{week[4]}}</text>
+					</view>
+					<view :class="{column:true,iscolumn: week[5] == today}">
+						<text>六</text>
+						<text>{{week[5]}}</text>
+					</view>
+					<view :class="{column:true,iscolumn: week[6] == today}">
+						<text>日</text>
+						<text>{{week[6]}}</text>
+					</view>
 				</view>
-				<view :class="{column:true,iscolumn: week[1] == today}">
-					<text>二</text>
-					<text>{{week[1]}}</text>
+				<view class="jinbox">
+					<text :class="{jin:true,isjin: week[0] == today}">今</text>
+					<text :class="{jin:true,isjin: week[1] == today}">今</text>
+					<text :class="{jin:true,isjin: week[2] == today}">今</text>
+					<text :class="{jin:true,isjin: week[3] == today}">今</text>
+					<text :class="{jin:true,isjin: week[4] == today}">今</text>
+					<text :class="{jin:true,isjin: week[5] == today}">今</text>
+					<text :class="{jin:true,isjin: week[6] == today}">今</text>
 				</view>
-				<view :class="{column:true,iscolumn: week[2] == today}">
-					<text>三</text>
-					<text>{{week[2]}}</text>
-				</view>
-				<view :class="{column:true,iscolumn: week[3] == today}">
-					<text>四</text>
-					<text>{{week[3]}}</text>
-				</view>
-				<view :class="{column:true,iscolumn: week[4] == today}">
-					<text>五</text>
-					<text>{{week[4]}}</text>
-				</view>
-				<view :class="{column:true,iscolumn: week[5] == today}">
-					<text>六</text>
-					<text>{{week[5]}}</text>
-				</view>
-				<view :class="{column:true,iscolumn: week[6] == today}">
-					<text>日</text>
-					<text>{{week[6]}}</text>
-				</view>
-			</view>
-			<view class="jinbox">
-				<text :class="{jin:true,isjin: week[0] == today}">今</text>
-				<text :class="{jin:true,isjin: week[1] == today}">今</text>
-				<text :class="{jin:true,isjin: week[2] == today}">今</text>
-				<text :class="{jin:true,isjin: week[3] == today}">今</text>
-				<text :class="{jin:true,isjin: week[4] == today}">今</text>
-				<text :class="{jin:true,isjin: week[5] == today}">今</text>
-				<text :class="{jin:true,isjin: week[6] == today}">今</text>
 			</view>
 		</view>
 		<!-- 所有待办总览 -->
@@ -139,66 +147,66 @@
 		<!-- 今日待办 -->
 		<view v-if="showclass == 1" class="listbox">
 			<view class="linebox">
-				<view @click="backlogitem()" class="box">
+				<view @click="backlogitem(1)" class="box">
 					<p class="classname">生活</p>
 					<view v-if="aback!=''" class="contentbox">
 						<p class="nums" v-for="(item,index) in aback" :key="index">{{item.contents}}</p>
 					</view>
-					<u-empty v-if="aback==''" text="" iconSize="10"
+					<u-empty v-if="aback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 					<view class="t-icon t-icon-yuandian"></view>
 				</view>
-				<view @click="backlogitem()" class="box">
+				<view @click="backlogitem(2)" class="box">
 					<p class="classname">工作</p>
 					<view v-if="bback!=''" class="contentbox">
 						<p class="nums" v-for="(item,index) in bback" :key="index">{{item.contents}}</p>
 					</view>
-					<u-empty v-if="bback==''" text="" iconSize="10"
+					<u-empty v-if="bback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 					<view class="t-icon t-icon-yuandian-copy-copy"></view>
 				</view>
 			</view>
 			<view class="linebox">
-				<view @click="backlogitem()" class="box">
+				<view @click="backlogitem(3)" class="box">
 					<p class="classname">学习</p>
 					<view v-if="cback!=''" class="contentbox">
 						<p class="nums" v-for="(item,index) in cback" :key="index">{{item.contents}}</p>
 					</view>
-					<u-empty v-if="cback==''" text="" iconSize="10"
+					<u-empty v-if="cback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 					<view class="t-icon t-icon-yuandian-copy-copy-copy"></view>
 				</view>
-				<view class="box">
+				<view class="box" @click="backlogitem(4)">
 					<p class="classname">健康</p>
 					<view v-if="dback!=''" class="contentbox">
 						<p class="nums" v-for="(item,index) in dback" :key="index">{{item.contents}}</p>
 					</view>
-					<u-empty v-if="dback==''" text="" iconSize="10"
+					<u-empty v-if="dback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 					<view class="t-icon t-icon-yuandian-copy"></view>
 				</view>
 			</view>
 			<view class="linebox" style="margin-bottom: 20rpx;">
-				<view class="box">
+				<view class="box" @click="backlogitem(5)">
 					<p class="classname">社交</p>
 					<view v-if="eback!=''" class="contentbox">
 						<p class="nums" v-for="(item,index) in eback" :key="index">{{item.contents}}</p>
 					</view>
-					<u-empty v-if="eback==''" text="" iconSize="10"
+					<u-empty v-if="eback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 					<view class="t-icon t-icon-yuandian-copy-copy1"></view>
 				</view>
-				<view class="box">
+				<view class="box" @click="backlogitem(6)">
 					<p class="classname">其它</p>
 					<view v-if="fback!=''" class="contentbox">
 						<p class="nums" v-for="(item,index) in fback" :key="index">{{item.contents}}</p>
 					</view>
-					<u-empty v-if="fback==''" text="" iconSize="10"
+					<u-empty v-if="fback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 					<view class="t-icon t-icon-yuandian-copy1"></view>
@@ -212,11 +220,32 @@
 	import {
 		datetimes
 	} from "../../components/mixins/mixin.js"
+	// #ifdef MP-WEIXIN
+	import {
+		getstatusBarHeight
+	} from '../../components/mixins/mixin.js'
+	// #endif
 	export default {
+		// #ifndef MP-WEIXIN
 		mixins: [datetimes],
+		// #endif
+		// #ifdef MP-WEIXIN
+		mixins: [getstatusBarHeight, datetimes],
+		// #endif
 		created() {},
+		onLoad() {
+			const res = uni.getSystemInfoSync();
+			this.wHeight = res.windowHeight
+			this.wWidth = res.windowWidth
+			console.log(res.windowHeight);
+			console.log(res.windowWidth);
+		},
 		data() {
 			return {
+				// 可使用窗口宽度
+				wWidth: "",
+				// 可使用窗口高度
+				wHeight: "",
 				// 各分类统计
 				colorclass: {
 					a: 0,
@@ -255,7 +284,7 @@
 					method: "GET"
 				})
 				this.backlogdata = result.data.data
-				console.log(this.backlogdata)
+				//console.log(this.backlogdata)
 				if (result.data.code == 200) {
 					// 初始化
 					this.colorclass.a = 0
@@ -314,14 +343,14 @@
 					this.fback = this.backlogdata.filter((item) => {
 						return item.colorbg == '#e0620d'
 					})
-					console.log(this.aback)
+					//console.log(this.aback)
 				}
 			},
-			backlogitem(e) {
+			backlogitem(i) {
 				uni.navigateTo({
-					url:"./backlog"
+					url: "./backlog?id=" + i
 				})
-				//console.log(e)
+				//console.log(i)
 			}
 		},
 
@@ -336,29 +365,29 @@
 		overflow: auto;
 	}
 
-	.navigate {
+	.topcontent {
 		width: 100%;
-		height: 165px;
+		height: 350rpx;
 		background-color: #ffffff;
 		background-image: linear-gradient(62deg, #ffffff 9%, #8EC5FC 49%, #E0C3FC 63%);
 	}
 
-	.colorbg {
-		pointer-events: none; // 遮罩层下面的按钮才能点击
-		width: 100%;
-		height: 200rpx;
-		background-color: #FFFFFF;
-		position: absolute;
-		top: 0;
-		filter: blur(100px);
-		z-index: 1;
-	}
+	// .colorbg {
+	// 	pointer-events: none; // 遮罩层下面的按钮才能点击
+	// 	width: 100%;
+	// 	height: 200rpx;
+	// 	background-color: #FFFFFF;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	filter: blur(100px);
+	// 	z-index: 1;
+	// }
 
 	.datetime {
 		width: 100%;
-		height: 100px;
+		height: 200rpx;
 		position: absolute;
-		top: 60px;
+		top: 120rpx;
 	}
 
 	.lefttitle {
@@ -486,7 +515,7 @@
 		background-color: #E8F7F3;
 		color: #4ECA9D;
 		text-align: center;
-		line-height: 20px;
+		line-height: 40rpx;
 		border-radius: 12px;
 	}
 
@@ -497,7 +526,7 @@
 		background-color: #FFF1F3;
 		color: #FE8C9F;
 		text-align: center;
-		line-height: 20px;
+		line-height: 40rpx;
 		border-radius: 12px;
 	}
 
@@ -507,15 +536,12 @@
 		height: 48rpx;
 		margin-left: 30rpx;
 	}
-	
+
 	::v-deep .u-empty {
 		margin-top: -80rpx !important;
-		span {
-			opacity: 0 !important;
-		}
 	}
-	
+
 	::v-deep .u-empty__text {
-		display: none !important;
+		margin-top: -80rpx !important;
 	}
 </style>

@@ -45,9 +45,28 @@ export const datetimes = {
 		for (var i = 0; i < 7; i++) {
 			dates.push(new Date(timesStamp + 24 * 60 * 60 * 1000 * (i - (currenDay + 6) % 7)).toLocaleDateString()
 				.replace(/[年月]/g, '-').replace(/[日上下午]/g, ''));
-				this.week[i]=dates[i].split('/')[2] <= 9 ? "0" +dates[i].split('/')[2] : dates[i].split('/')[2]
+			this.week[i] = dates[i].split('/')[2] <= 9 ? "0" + dates[i].split('/')[2] : dates[i].split('/')[2]
 		}
 		//console.log(this.week)   
 	},
 	methods: {}
+}
+
+export const getstatusBarHeight = {
+	data() {
+		return {
+			statusBarHeight: 0,
+			titleBarHeight: 0,
+		}
+	},
+	onLoad() {
+		const SystemInfo = wx.getSystemInfoSync();
+		this.statusBarHeight = SystemInfo.statusBarHeight;
+		console.log(this.statusBarHeight)
+	},
+	onReady() {
+		this.titleBarHeight = (uni.getMenuButtonBoundingClientRect().top - this.statusBarHeight) * 2 +
+			uni.getMenuButtonBoundingClientRect().height;
+			console.log(this.titleBarHeight)
+	},
 }

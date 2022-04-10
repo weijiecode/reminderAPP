@@ -8,7 +8,7 @@
     "pages/agreement/agreement",
     "pages/private/private",
     "pages/mycenter/submycenter",
-    "pages/index/backlog"
+    "pages/backlog/backlog"
   ],
   "subPackages": [],
   "window": {
@@ -45,5 +45,6 @@
     "backgroundColor": "#F8F8FB",
     "selectedColor": "#B1A9EF"
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

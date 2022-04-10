@@ -1,1 +1,0 @@
-<view class="content data-v-84c85dd2"><view class="topback data-v-84c85dd2"><u-icon vue-id="14425a62-1" size="25" name="arrow-left" data-event-opts="{{[['^click',[['backmycenter']]]]}}" bind:click="__e" class="data-v-84c85dd2" bind:__l="__l"></u-icon></view></view>

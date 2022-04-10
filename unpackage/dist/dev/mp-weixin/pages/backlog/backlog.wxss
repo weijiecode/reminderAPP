@@ -25,9 +25,13 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.topback.data-v-84c85dd2 {
+.topback.data-v-0d696d02 {
+  top: 60rpx;
+  left: 40rpx;
+  position: fixed;
+}
+.title.data-v-0d696d02 {
   margin-top: 60rpx;
-  margin-left: 40rpx;
-  align-self: flex-start;
+  text-align: center;
 }
 

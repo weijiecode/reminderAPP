@@ -18,7 +18,7 @@
 				"enablePullDownRefresh": false,
 				"navigationBarTextStyle": "black",
 				"backgroundColor":"#F8F8FB"
-			}
+			} 
 
 		}, {
 			"path": "pages/clock/clock",
@@ -71,7 +71,7 @@
 				"backgroundColor":"#F8F8FB"
             }
             
-        }
+        } 
         ,{
             "path" : "pages/mycenter/submycenter",
             "style" :                                                                                    
@@ -80,15 +80,14 @@
 				"navigationBarTextStyle": "black",
                 "enablePullDownRefresh": false
             }
-            
+              
         }
         ,{
-            "path" : "pages/index/backlog",
+            "path" : "pages/backlog/backlog",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-				"navigationBarTextStyle": "black"
+                "enablePullDownRefresh": false
             }
             
         }
