@@ -2,10 +2,14 @@
 	<view class="content">
 		<view class="topcontent">
 			<!-- #ifdef MP-WEIXIN -->
-			<text v-if="showclass == 0" class="lefttitle">待办总览</text>
-			<text v-if="showclass == 1" class="lefttitle">今日待办</text>
-			<span @click="showclass == 0 ? showclass=1 : showclass=0" class="btnshow t-icon t-icon-qiehuan3"></span>
-			<text class="rightdatetime">{{todaydatem}}</text>
+			<view class="leftmenu">
+				<text v-if="showclass == 0" class="lefttitle"
+					:style="{marginTop: statusBarHeight,lineHeight:titleBarHeight}">待办总览</text>
+				<text v-if="showclass == 1" class="lefttitle"
+					:style="{marginTop: statusBarHeight,lineHeight:titleBarHeight}">今日待办</text>
+				<span @click="showclass == 0 ? showclass=1 : showclass=0" class="btnshow t-icon t-icon-qiehuan3"
+					:style="{marginTop: statusBarHeight,lineHeight:titleBarHeight}"></span>
+			</view>
 			<!-- #endif -->
 			<!-- #ifndef MP-WEIXIN -->
 			<text v-if="showclass == 0" class="lefttitle">待办总览</text>
@@ -58,7 +62,7 @@
 			</view>
 		</view>
 		<!-- 所有待办总览 -->
-		<view v-if="showclass == 0" class="listbox">
+		<view v-if="showclass == 0" class="listbox" :style="{overflow:'auto',height:topheight}">
 			<view class="linebox">
 				<view class="box">
 					<p class="classname">生活</p>
@@ -233,12 +237,14 @@
 		mixins: [getstatusBarHeight, datetimes],
 		// #endif
 		created() {},
-		onLoad() {
-			const res = uni.getSystemInfoSync();
-			this.wHeight = res.windowHeight
-			this.wWidth = res.windowWidth
-			console.log(res.windowHeight);
-			console.log(res.windowWidth);
+		onLoad() {},
+		onReady() {
+			uni.createSelectorQuery().in(this).select(".listbox").boundingClientRect((data) => {
+					this.topheight = "calc(100% - "+data.top+"px)";
+					console.log('123',this.topheight)
+				})
+				.exec();
+
 		},
 		data() {
 			return {
@@ -246,6 +252,8 @@
 				wWidth: "",
 				// 可使用窗口高度
 				wHeight: "",
+				// 距离top高度
+				topheight: "",
 				// 各分类统计
 				colorclass: {
 					a: 0,
@@ -365,9 +373,15 @@
 		overflow: auto;
 	}
 
+	.leftmenu {
+		display: flex;
+		align-items: center;
+	}
+
 	.topcontent {
+		opacity: 0.9;
 		width: 100%;
-		height: 350rpx;
+		// height: 350rpx;
 		background-color: #ffffff;
 		background-image: linear-gradient(62deg, #ffffff 9%, #8EC5FC 49%, #E0C3FC 63%);
 	}
@@ -385,12 +399,13 @@
 
 	.datetime {
 		width: 100%;
-		height: 200rpx;
-		position: absolute;
-		top: 120rpx;
+		// height: 200rpx;
+		// position: absolute;
+		// top: 120rpx;
 	}
 
 	.lefttitle {
+		display: block;
 		margin-top: 60rpx;
 		float: left;
 		margin-left: 60rpx;
@@ -434,6 +449,7 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
+		padding-bottom: 10rpx;
 	}
 
 	.jin {

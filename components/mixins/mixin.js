@@ -62,11 +62,14 @@ export const getstatusBarHeight = {
 	onLoad() {
 		const SystemInfo = wx.getSystemInfoSync();
 		this.statusBarHeight = SystemInfo.statusBarHeight;
-		console.log(this.statusBarHeight)
+		//console.log(this.statusBarHeight)
 	},
 	onReady() {
 		this.titleBarHeight = (uni.getMenuButtonBoundingClientRect().top - this.statusBarHeight) * 2 +
 			uni.getMenuButtonBoundingClientRect().height;
+			this.statusBarHeight = this.statusBarHeight + 'px'
+			this.titleBarHeight = this.titleBarHeight + 'px'
+			console.log(this.statusBarHeight)
 			console.log(this.titleBarHeight)
 	},
 }

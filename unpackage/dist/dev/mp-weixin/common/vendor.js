@@ -947,7 +947,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_NAME":"reminderAPP","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"reminderAPP","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7647,7 +7647,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_NAME":"reminderAPP","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"reminderAPP","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7668,14 +7668,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_NAME":"reminderAPP","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"reminderAPP","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_NAME":"reminderAPP","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"reminderAPP","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7761,7 +7761,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_NAME":"reminderAPP","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"reminderAPP","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8635,9 +8635,9 @@ function resolveLocaleChain(locale) {
 
 /***/ }),
 /* 5 */
-/*!******************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/pages.json ***!
-  \******************************************************************/
+/*!****************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/pages.json ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8778,9 +8778,9 @@ function normalizeComponent (
 
 /***/ }),
 /* 12 */
-/*!**********************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/store/index.js ***!
-  \**********************************************************************/
+/*!********************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/store/index.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10057,9 +10057,9 @@ module.exports = index_cjs;
 
 /***/ }),
 /* 14 */
-/*!*************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/index.js ***!
-  \*************************************************************************************/
+/*!***********************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/index.js ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10146,9 +10146,9 @@ var install = function install(Vue) {
 
 /***/ }),
 /* 15 */
-/*!************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/mixin/mixin.js ***!
-  \************************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/mixin/mixin.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10315,9 +10315,9 @@ var install = function install(Vue) {
 
 /***/ }),
 /* 16 */
-/*!**************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/mixin/mpMixin.js ***!
-  \**************************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/mixin/mpMixin.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10330,9 +10330,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 17 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/index.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/index.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10343,9 +10343,9 @@ _Request.default;exports.default = _default;
 
 /***/ }),
 /* 18 */
-/*!**************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/Request.js ***!
-  \**************************************************************************************************************/
+/*!************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/Request.js ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10551,9 +10551,9 @@ Request = /*#__PURE__*/function () {
 
 /***/ }),
 /* 19 */
-/*!**********************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/dispatchRequest.js ***!
-  \**********************************************************************************************************************/
+/*!********************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/dispatchRequest.js ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10564,9 +10564,9 @@ function _default(config) {return (0, _index.default)(config);};exports.default 
 
 /***/ }),
 /* 20 */
-/*!****************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/adapters/index.js ***!
-  \****************************************************************************************************************/
+/*!**************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/adapters/index.js ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10672,9 +10672,9 @@ function _default(config) {return new Promise(function (resolve, reject) {
 
 /***/ }),
 /* 21 */
-/*!******************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/helpers/buildURL.js ***!
-  \******************************************************************************************************************/
+/*!****************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/helpers/buildURL.js ***!
+  \****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10751,9 +10751,9 @@ function buildURL(url, params) {
 
 /***/ }),
 /* 22 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/utils.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/utils.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10892,9 +10892,9 @@ function isUndefined(val) {
 
 /***/ }),
 /* 23 */
-/*!********************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/buildFullPath.js ***!
-  \********************************************************************************************************************/
+/*!******************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/buildFullPath.js ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10922,9 +10922,9 @@ function buildFullPath(baseURL, requestedURL) {
 
 /***/ }),
 /* 24 */
-/*!***********************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/helpers/isAbsoluteURL.js ***!
-  \***********************************************************************************************************************/
+/*!*********************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/helpers/isAbsoluteURL.js ***!
+  \*********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10946,9 +10946,9 @@ function isAbsoluteURL(url) {
 
 /***/ }),
 /* 25 */
-/*!*********************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/helpers/combineURLs.js ***!
-  \*********************************************************************************************************************/
+/*!*******************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/helpers/combineURLs.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10970,9 +10970,9 @@ function combineURLs(baseURL, relativeURL) {
 
 /***/ }),
 /* 26 */
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/settle.js ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/settle.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10996,9 +10996,9 @@ function settle(resolve, reject, response) {var
 
 /***/ }),
 /* 27 */
-/*!*************************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/InterceptorManager.js ***!
-  \*************************************************************************************************************************/
+/*!***********************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/InterceptorManager.js ***!
+  \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11056,9 +11056,9 @@ InterceptorManager;exports.default = _default;
 
 /***/ }),
 /* 28 */
-/*!******************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/mergeConfig.js ***!
-  \******************************************************************************************************************/
+/*!****************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/mergeConfig.js ***!
+  \****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11169,9 +11169,9 @@ function _default(globalsConfig) {var config2 = arguments.length > 1 && argument
 
 /***/ }),
 /* 29 */
-/*!***************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/defaults.js ***!
-  \***************************************************************************************************************/
+/*!*************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/core/defaults.js ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11207,9 +11207,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 30 */
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/luch-request/utils/clone.js ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/luch-request/utils/clone.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11478,7 +11478,7 @@ var clone = function () {
 }();var _default =
 
 clone;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/buffer/index.js */ 31).Buffer))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/buffer/index.js */ 31).Buffer))
 
 /***/ }),
 /* 31 */
@@ -13555,17 +13555,17 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 /* 35 */
-/*!***********************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/util/route.js ***!
-  \***********************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/util/route.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 36));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         * 路由跳转方法，该方法相对于直接使用uni.xxx的好处是使用更加简单快捷
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         * 并且带有路由拦截功能
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         */var
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  * 路由跳转方法，该方法相对于直接使用uni.xxx的好处是使用更加简单快捷
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  * 并且带有路由拦截功能
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  */var
 
 Router = /*#__PURE__*/function () {
   function Router() {_classCallCheck(this, Router);
@@ -14478,9 +14478,9 @@ if (hadRuntime) {
 
 /***/ }),
 /* 39 */
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/function/colorGradient.js ***!
-  \***********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/function/colorGradient.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14621,9 +14621,9 @@ function colorToRgba(color, alpha) {
 
 /***/ }),
 /* 40 */
-/*!**************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/function/test.js ***!
-  \**************************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/function/test.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14918,9 +14918,9 @@ function regExp(o) {
 
 /***/ }),
 /* 41 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/function/debounce.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/function/debounce.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14957,9 +14957,9 @@ debounce;exports.default = _default;
 
 /***/ }),
 /* 42 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/function/throttle.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/function/throttle.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14997,9 +14997,9 @@ throttle;exports.default = _default;
 
 /***/ }),
 /* 43 */
-/*!***************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/function/index.js ***!
-  \***************************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/function/index.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15712,9 +15712,9 @@ function setConfig(_ref3)
 
 /***/ }),
 /* 44 */
-/*!***************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/function/digit.js ***!
-  \***************************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/function/digit.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15887,9 +15887,9 @@ function enableBoundaryChecking() {var flag = arguments.length > 0 && arguments[
 
 /***/ }),
 /* 45 */
-/*!**************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/config.js ***!
-  \**************************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/config.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15930,9 +15930,9 @@ if (true) {
 
 /***/ }),
 /* 46 */
-/*!*************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props.js ***!
-  \*************************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16129,9 +16129,9 @@ _upload.default);exports.default = _default;
 
 /***/ }),
 /* 47 */
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/actionSheet.js ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/actionSheet.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16162,9 +16162,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 48 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/album.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/album.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16195,9 +16195,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 49 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/alert.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/alert.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16225,9 +16225,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 50 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/avatar.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/avatar.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16261,9 +16261,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 51 */
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/avatarGroup.js ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/avatarGroup.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16292,9 +16292,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 52 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/backtop.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/backtop.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16326,9 +16326,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 53 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/badge.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/badge.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16361,9 +16361,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 54 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/button.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/button.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16411,9 +16411,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 55 */
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/calendar.js ***!
-  \**********************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/calendar.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16461,9 +16461,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 56 */
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/carKeyboard.js ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/carKeyboard.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16484,9 +16484,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 57 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/cell.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/cell.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16527,9 +16527,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 58 */
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/cellGroup.js ***!
-  \***********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/cellGroup.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16552,9 +16552,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 59 */
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/checkbox.js ***!
-  \**********************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/checkbox.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16587,9 +16587,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 60 */
-/*!***************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/checkboxGroup.js ***!
-  \***************************************************************************************************************/
+/*!*************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/checkboxGroup.js ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16624,9 +16624,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 61 */
-/*!****************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/circleProgress.js ***!
-  \****************************************************************************************************************/
+/*!**************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/circleProgress.js ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16647,9 +16647,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 62 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/code.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/code.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16676,9 +16676,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 63 */
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/codeInput.js ***!
-  \***********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/codeInput.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16712,9 +16712,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 64 */
-/*!*****************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/col.js ***!
-  \*****************************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/col.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16739,9 +16739,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 65 */
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/collapse.js ***!
-  \**********************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/collapse.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16764,9 +16764,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 66 */
-/*!**************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/collapseItem.js ***!
-  \**************************************************************************************************************/
+/*!************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/collapseItem.js ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16797,9 +16797,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 67 */
-/*!**************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/columnNotice.js ***!
-  \**************************************************************************************************************/
+/*!************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/columnNotice.js ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16829,9 +16829,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 68 */
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/countDown.js ***!
-  \***********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/countDown.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16855,9 +16855,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 69 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/countTo.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/countTo.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16888,9 +16888,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 70 */
-/*!****************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/datetimePicker.js ***!
-  \****************************************************************************************************************/
+/*!**************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/datetimePicker.js ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16932,9 +16932,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 71 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/divider.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/divider.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16962,9 +16962,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 72 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/empty.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/empty.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16995,9 +16995,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 73 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/form.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/form.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17025,9 +17025,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 74 */
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/formItem.js ***!
-  \**********************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/formItem.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17055,9 +17055,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 75 */
-/*!*****************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/gap.js ***!
-  \*****************************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/gap.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17082,9 +17082,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 76 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/grid.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/grid.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17107,9 +17107,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 77 */
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/gridItem.js ***!
-  \**********************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/gridItem.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17131,9 +17131,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 78 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/icon.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/icon.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17175,9 +17175,9 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 45));f
 
 /***/ }),
 /* 79 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/image.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/image.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17213,9 +17213,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 80 */
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/indexAnchor.js ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/indexAnchor.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17240,9 +17240,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 81 */
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/indexList.js ***!
-  \***********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/indexList.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17267,9 +17267,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 82 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/input.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/input.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17323,9 +17323,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 83 */
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/keyboard.js ***!
-  \**********************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/keyboard.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17361,9 +17361,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 84 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/line.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/line.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17389,9 +17389,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 85 */
-/*!**************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/lineProgress.js ***!
-  \**************************************************************************************************************/
+/*!************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/lineProgress.js ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17416,9 +17416,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 86 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/link.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/link.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17450,9 +17450,9 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 45));f
 
 /***/ }),
 /* 87 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/list.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/list.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17486,9 +17486,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 88 */
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/listItem.js ***!
-  \**********************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/listItem.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17509,9 +17509,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 89 */
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/loadingIcon.js ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/loadingIcon.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17547,9 +17547,9 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 45));f
 
 /***/ }),
 /* 90 */
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/loadingPage.js ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/loadingPage.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17577,9 +17577,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 91 */
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/loadmore.js ***!
-  \**********************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/loadmore.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17614,9 +17614,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 92 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/modal.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/modal.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17652,9 +17652,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 93 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/navbar.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/navbar.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17691,9 +17691,9 @@ var _color = _interopRequireDefault(__webpack_require__(/*! ../color */ 94));fun
 
 /***/ }),
 /* 94 */
-/*!*************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/color.js ***!
-  \*************************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/color.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17718,9 +17718,9 @@ color;exports.default = _default;
 
 /***/ }),
 /* 95 */
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/noNetwork.js ***!
-  \***********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/noNetwork.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17743,9 +17743,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 96 */
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/noticeBar.js ***!
-  \***********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/noticeBar.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17778,9 +17778,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 97 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/notify.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/notify.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17808,9 +17808,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 98 */
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/numberBox.js ***!
-  \***********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/numberBox.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17851,9 +17851,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 99 */
-/*!****************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/numberKeyboard.js ***!
-  \****************************************************************************************************************/
+/*!**************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/numberKeyboard.js ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17876,9 +17876,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 100 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/overlay.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/overlay.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17902,9 +17902,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 101 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/parse.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/parse.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17932,9 +17932,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 102 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/picker.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/picker.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17970,9 +17970,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 103 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/popup.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/popup.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18007,9 +18007,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 104 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/radio.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/radio.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18042,9 +18042,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 105 */
-/*!************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/radioGroup.js ***!
-  \************************************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/radioGroup.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18080,9 +18080,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 106 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/rate.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/rate.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18114,9 +18114,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 107 */
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/readMore.js ***!
-  \**********************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/readMore.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18144,9 +18144,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 108 */
-/*!*****************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/row.js ***!
-  \*****************************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/row.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18169,9 +18169,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 109 */
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/rowNotice.js ***!
-  \***********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/rowNotice.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18198,9 +18198,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 110 */
-/*!************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/scrollList.js ***!
-  \************************************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/scrollList.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18226,9 +18226,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 111 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/search.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/search.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18271,9 +18271,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 112 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/section.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/section.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18303,9 +18303,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 113 */
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/skeleton.js ***!
-  \**********************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/skeleton.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18336,9 +18336,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 114 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/slider.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/slider.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18369,9 +18369,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 115 */
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/statusBar.js ***!
-  \***********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/statusBar.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18392,9 +18392,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 116 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/steps.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/steps.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18421,9 +18421,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 117 */
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/stepsItem.js ***!
-  \***********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/stepsItem.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18447,9 +18447,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 118 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/sticky.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/sticky.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18475,9 +18475,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 119 */
-/*!************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/subsection.js ***!
-  \************************************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/subsection.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18506,9 +18506,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 120 */
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/swipeAction.js ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/swipeAction.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18529,9 +18529,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 121 */
-/*!*****************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/swipeActionItem.js ***!
-  \*****************************************************************************************************************/
+/*!***************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/swipeActionItem.js ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18558,9 +18558,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 122 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/swiper.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/swiper.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18604,9 +18604,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 123 */
-/*!******************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/swipterIndicator.js ***!
-  \******************************************************************************************************************/
+/*!****************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/swipterIndicator.js ***!
+  \****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18631,9 +18631,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 124 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/switch.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/switch.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18663,9 +18663,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 125 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/tabbar.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/tabbar.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18693,9 +18693,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 126 */
-/*!************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/tabbarItem.js ***!
-  \************************************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/tabbarItem.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18721,9 +18721,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 127 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/tabs.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/tabs.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18760,9 +18760,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 128 */
-/*!*****************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/tag.js ***!
-  \*****************************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/tag.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18797,9 +18797,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 129 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/text.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/text.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18842,9 +18842,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 130 */
-/*!**********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/textarea.js ***!
-  \**********************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/textarea.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18886,9 +18886,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 131 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/toast.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/toast.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18923,9 +18923,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 132 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/toolbar.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/toolbar.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18951,9 +18951,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 133 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/tooltip.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/tooltip.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18984,9 +18984,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 134 */
-/*!************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/transition.js ***!
-  \************************************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/transition.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19010,9 +19010,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 135 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/props/upload.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/props/upload.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19054,9 +19054,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 136 */
-/*!**************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/config/zIndex.js ***!
-  \**************************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/config/zIndex.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19083,9 +19083,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 137 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/function/platform.js ***!
-  \******************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/function/platform.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19168,9 +19168,9 @@ platform;exports.default = _default;
 
 /***/ }),
 /* 138 */
-/*!*******************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/util/api.js ***!
-  \*******************************************************************/
+/*!*****************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/util/api.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19212,9 +19212,9 @@ var http = function http(options) {
 /* 143 */,
 /* 144 */,
 /* 145 */
-/*!**********************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/components/mixins/mixin.js ***!
-  \**********************************************************************************/
+/*!********************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/components/mixins/mixin.js ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19283,11 +19283,14 @@ var getstatusBarHeight = {
   onLoad: function onLoad() {
     var SystemInfo = wx.getSystemInfoSync();
     this.statusBarHeight = SystemInfo.statusBarHeight;
-    console.log(this.statusBarHeight);
+    //console.log(this.statusBarHeight)
   },
   onReady: function onReady() {
     this.titleBarHeight = (uni.getMenuButtonBoundingClientRect().top - this.statusBarHeight) * 2 +
     uni.getMenuButtonBoundingClientRect().height;
+    this.statusBarHeight = this.statusBarHeight + 'px';
+    this.titleBarHeight = this.titleBarHeight + 'px';
+    console.log(this.statusBarHeight);
     console.log(this.titleBarHeight);
   } };exports.getstatusBarHeight = getstatusBarHeight;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
@@ -19361,9 +19364,9 @@ var getstatusBarHeight = {
 /* 211 */,
 /* 212 */,
 /* 213 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-empty/props.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-empty/props.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19435,9 +19438,9 @@ var getstatusBarHeight = {
 /* 219 */,
 /* 220 */,
 /* 221 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-notify/props.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-notify/props.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19499,9 +19502,9 @@ var getstatusBarHeight = {
 /* 227 */,
 /* 228 */,
 /* 229 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-form/props.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-form/props.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19557,9 +19560,9 @@ var getstatusBarHeight = {
 /* 233 */,
 /* 234 */,
 /* 235 */
-/*!************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-form-item/props.js ***!
-  \************************************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-form-item/props.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19615,9 +19618,9 @@ var getstatusBarHeight = {
 /* 241 */,
 /* 242 */,
 /* 243 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-input/props.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-input/props.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19810,9 +19813,9 @@ var getstatusBarHeight = {
 /* 247 */,
 /* 248 */,
 /* 249 */
-/*!*************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/mixin/button.js ***!
-  \*************************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/mixin/button.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19831,9 +19834,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 250 */
-/*!***************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/mixin/openType.js ***!
-  \***************************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/mixin/openType.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19864,9 +19867,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 251 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-button/props.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-button/props.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20040,9 +20043,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 257 */,
 /* 258 */,
 /* 259 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-steps/props.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-steps/props.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20094,9 +20097,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 265 */,
 /* 266 */,
 /* 267 */
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-steps-item/props.js ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-steps-item/props.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20133,9 +20136,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 273 */,
 /* 274 */,
 /* 275 */
-/*!**************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-radio-group/props.js ***!
-  \**************************************************************************************************************/
+/*!************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-radio-group/props.js ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20233,9 +20236,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 281 */,
 /* 282 */,
 /* 283 */
-/*!********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-radio/props.js ***!
-  \********************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-radio/props.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20312,9 +20315,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 289 */,
 /* 290 */,
 /* 291 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-icon/icons.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-icon/icons.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20535,9 +20538,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 292 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-icon/props.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-icon/props.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20639,9 +20642,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 298 */,
 /* 299 */,
 /* 300 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-upload/utils.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-upload/utils.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20801,9 +20804,9 @@ function chooseFile(_ref)
 
 /***/ }),
 /* 301 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-upload/mixin.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-upload/mixin.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20829,9 +20832,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 302 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-upload/props.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-upload/props.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20968,9 +20971,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 308 */,
 /* 309 */,
 /* 310 */
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-transition/props.js ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-transition/props.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21000,9 +21003,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 311 */
-/*!******************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-transition/transition.js ***!
-  \******************************************************************************************************************/
+/*!****************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-transition/transition.js ***!
+  \****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21163,9 +21166,9 @@ var getClassNames = function getClassNames(name) {return {
 
 /***/ }),
 /* 312 */
-/*!********************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-transition/nvue.ani-map.js ***!
-  \********************************************************************************************************************/
+/*!******************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-transition/nvue.ani-map.js ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21246,9 +21249,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 318 */,
 /* 319 */,
 /* 320 */
-/*!*************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-status-bar/props.js ***!
-  \*************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-status-bar/props.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21269,9 +21272,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 326 */,
 /* 327 */,
 /* 328 */
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/util/async-validator.js ***!
-  \*********************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/libs/util/async-validator.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21298,7 +21301,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 var formatRegExp = /%[sdj%]/g;
 var warning = function warning() {}; // don't print warning message when in production env or node runtime
 
-if (typeof process !== 'undefined' && Object({"VUE_APP_NAME":"reminderAPP","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}) && "development" !== 'production' && typeof window !==
+if (typeof process !== 'undefined' && Object({"NODE_ENV":"development","VUE_APP_NAME":"reminderAPP","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}) && "development" !== 'production' && typeof window !==
 'undefined' && typeof document !== 'undefined') {
   warning = function warning(type, errors) {
     if (typeof console !== 'undefined' && console.warn) {
@@ -22620,7 +22623,7 @@ Schema.messages = messages;var _default =
 Schema;
 // # sourceMappingURL=index.js.map
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 329)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 329)))
 
 /***/ }),
 /* 329 */
@@ -22986,9 +22989,9 @@ var substr = 'ab'.substr(-1) === 'b'
 /* 334 */,
 /* 335 */,
 /* 336 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-line/props.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-line/props.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23041,9 +23044,9 @@ var substr = 'ab'.substr(-1) === 'b'
 /* 349 */,
 /* 350 */,
 /* 351 */
-/*!***************************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-loading-icon/props.js ***!
-  \***************************************************************************************************************/
+/*!*************************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-loading-icon/props.js ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23115,9 +23118,9 @@ var substr = 'ab'.substr(-1) === 'b'
 /* 357 */,
 /* 358 */,
 /* 359 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-text/props.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-text/props.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23238,9 +23241,9 @@ var substr = 'ab'.substr(-1) === 'b'
 /* 363 */,
 /* 364 */,
 /* 365 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-text/value.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-text/value.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23339,9 +23342,9 @@ var substr = 'ab'.substr(-1) === 'b'
 /* 371 */,
 /* 372 */,
 /* 373 */
-/*!*******************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-link/props.js ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/tangweijie/Desktop/web/vue/reminderAPP/uni_modules/uview-ui/components/u-link/props.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

@@ -76,6 +76,9 @@
 			<view class="submit">
 				<u-button @click="submitdata" type="primary" text="保存"></u-button>
 			</view>
+			<view class="login" @click="logintest">
+				登录test
+			</view>
 		</view>
 	</view>
 </template>
@@ -116,6 +119,11 @@
 			}
 		},
 		methods: {
+			logintest() {
+				uni.navigateTo({
+					url: "../login/login"
+				})
+			},
 			// 返回我的
 			backmycenter() {
 				uni.switchTab({
