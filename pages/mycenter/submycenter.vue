@@ -311,11 +311,15 @@
 		border-bottom-style: none;
 	}
 
-	::v-deep .u-upload__wrap__preview__image {
+	::v-deep .u-upload__wrap__preview__image { 
 		width: 140rpx !important;
 		height: 140rpx !important;
 		border-radius: 100%;
 		box-shadow: 0 0 0 3px #f3efef;
+	}
+	
+	::v-deep .uni-input-input {
+		color: #aaa !important;
 	}
 
 	image {

@@ -151,7 +151,7 @@
 		<!-- 今日待办 -->
 		<view v-if="showclass == 1" class="listbox">
 			<view class="linebox">
-				<view @click="backlogitem(1)" class="box">
+				<view @click="backlogitem('生活')" class="box">
 					<p class="classname">生活</p>
 					<view v-if="aback!=''" class="contentbox">
 						<p class="nums" v-for="(item,index) in aback" :key="index">{{item.contents}}</p>
@@ -161,7 +161,7 @@
 					</u-empty>
 					<view class="t-icon t-icon-yuandian"></view>
 				</view>
-				<view @click="backlogitem(2)" class="box">
+				<view @click="backlogitem('工作')" class="box">
 					<p class="classname">工作</p>
 					<view v-if="bback!=''" class="contentbox">
 						<p class="nums" v-for="(item,index) in bback" :key="index">{{item.contents}}</p>
@@ -173,7 +173,7 @@
 				</view>
 			</view>
 			<view class="linebox">
-				<view @click="backlogitem(3)" class="box">
+				<view @click="backlogitem('学习')" class="box">
 					<p class="classname">学习</p>
 					<view v-if="cback!=''" class="contentbox">
 						<p class="nums" v-for="(item,index) in cback" :key="index">{{item.contents}}</p>
@@ -183,7 +183,7 @@
 					</u-empty>
 					<view class="t-icon t-icon-yuandian-copy-copy-copy"></view>
 				</view>
-				<view class="box" @click="backlogitem(4)">
+				<view class="box" @click="backlogitem('健康')">
 					<p class="classname">健康</p>
 					<view v-if="dback!=''" class="contentbox">
 						<p class="nums" v-for="(item,index) in dback" :key="index">{{item.contents}}</p>
@@ -195,7 +195,7 @@
 				</view>
 			</view>
 			<view class="linebox" style="margin-bottom: 20rpx;">
-				<view class="box" @click="backlogitem(5)">
+				<view class="box" @click="backlogitem('社交')">
 					<p class="classname">社交</p>
 					<view v-if="eback!=''" class="contentbox">
 						<p class="nums" v-for="(item,index) in eback" :key="index">{{item.contents}}</p>
@@ -205,7 +205,7 @@
 					</u-empty>
 					<view class="t-icon t-icon-yuandian-copy-copy1"></view>
 				</view>
-				<view class="box" @click="backlogitem(6)">
+				<view class="box" @click="backlogitem('其它')">
 					<p class="classname">其它</p>
 					<view v-if="fback!=''" class="contentbox">
 						<p class="nums" v-for="(item,index) in fback" :key="index">{{item.contents}}</p>
@@ -241,7 +241,6 @@
 		onReady() {
 			uni.createSelectorQuery().in(this).select(".listbox").boundingClientRect((data) => {
 					this.topheight = "calc(100% - "+data.top+"px)";
-					console.log('123',this.topheight)
 				})
 				.exec();
 
@@ -354,9 +353,10 @@
 					//console.log(this.aback)
 				}
 			},
-			backlogitem(i) {
+			backlogitem(t) {
 				uni.navigateTo({
-					url: "./backlog?id=" + i
+					// url: "./backlog?id=" + i
+					url: "../backlog/backlog?type=" + t
 				})
 				//console.log(i)
 			}

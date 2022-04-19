@@ -82,6 +82,9 @@
   border-radius: 100%;
   box-shadow: 0 0 0 3px #f3efef;
 }
+.data-v-28de85ac .uni-input-input {
+  color: #aaa !important;
+}
 image.data-v-28de85ac {
   width: 140rpx;
   height: 140rpx;

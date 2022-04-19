@@ -401,7 +401,6 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
   onReady: function onReady() {var _this = this;
     uni.createSelectorQuery().in(this).select(".listbox").boundingClientRect(function (data) {
       _this.topheight = "calc(100% - " + data.top + "px)";
-      console.log('123', _this.topheight);
     }).
     exec();
 
@@ -514,9 +513,10 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
                   //console.log(this.aback)
                 }case 5:case "end":return _context.stop();}}}, _callee);}))();
     },
-    backlogitem: function backlogitem(i) {
+    backlogitem: function backlogitem(t) {
       uni.navigateTo({
-        url: "./backlog?id=" + i });
+        // url: "./backlog?id=" + i
+        url: "../backlog/backlog?type=" + t });
 
       //console.log(i)
     } } };exports.default = _default;

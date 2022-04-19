@@ -4,6 +4,7 @@ export const datetimes = {
 			todaydate: "",
 			todaydatem: "",
 			today: "",
+			todaymd: "",
 			sevendate: "",
 			yeardate: "",
 			oldsevendate: "",
@@ -19,14 +20,16 @@ export const datetimes = {
 		var date = data.getDate() <= 9 ? "0" + data.getDate() : data.getDate();
 		var sdate =
 			data.getDate() <= 1 ? "0" + (data.getDate() + 8) : data.getDate() + 8;
-		// 今天日期
+		// 当天 年-月-日
 		this.todaydate = data.getFullYear() + "-" + month + "-" + date;
-		// 当天
-		this.today = date
-		// 当月
-		this.todaydatem = data.getFullYear() + "-" + month
+		// 当天 月-日
+		this.todaymd = month + "-" + date;
+		// 当天 日
+		this.today = date;
+		// 当月 月
+		this.todaydatem = data.getFullYear() + "-" + month;
 		// 当前小时
-		this.hours = data.getHours()
+		this.hours = data.getHours();
 		// 未来七天的日期
 		this.sevendate = data.getFullYear() + "-" + month + "-" + sdate;
 		// 今年的年份
@@ -69,7 +72,7 @@ export const getstatusBarHeight = {
 			uni.getMenuButtonBoundingClientRect().height;
 			this.statusBarHeight = this.statusBarHeight + 'px'
 			this.titleBarHeight = this.titleBarHeight + 'px'
-			console.log(this.statusBarHeight)
-			console.log(this.titleBarHeight)
+			// console.log(this.statusBarHeight)
+			// console.log(this.titleBarHeight)
 	},
 }
