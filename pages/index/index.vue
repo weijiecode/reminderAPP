@@ -67,7 +67,7 @@
 				<view class="box">
 					<p class="classname">生活</p>
 					<p class="nums">共{{colorclass.a}}条清单</p>
-					<view class="t-icon t-icon-yuandian"></view>
+					<view class="t-icon t-icon-life"></view>
 					<view class="itemlist">
 						<view class="listone">
 							已完成 {{colorclass.adone}}
@@ -80,7 +80,7 @@
 				<view class="box">
 					<p class="classname">工作</p>
 					<p class="nums">共{{colorclass.b}}条清单</p>
-					<view class="t-icon t-icon-yuandian-copy-copy"></view>
+					<view class="t-icon t-icon-work"></view>
 					<view class="itemlist">
 						<view class="listone">
 							已完成 {{colorclass.bdone}}
@@ -95,7 +95,7 @@
 				<view class="box">
 					<p class="classname">学习</p>
 					<p class="nums">共{{colorclass.c}}条清单</p>
-					<view class="t-icon t-icon-yuandian-copy-copy-copy"></view>
+					<view class="t-icon t-icon-study"></view>
 					<view class="itemlist">
 						<view class="listone">
 							已完成 {{colorclass.cdone}}
@@ -108,7 +108,7 @@
 				<view class="box">
 					<p class="classname">健康</p>
 					<p class="nums">共{{colorclass.d}}条清单</p>
-					<view class="t-icon t-icon-yuandian-copy"></view>
+					<view class="t-icon t-icon-health"></view>
 					<view class="itemlist">
 						<view class="listone">
 							已完成 {{colorclass.ddone}}
@@ -123,7 +123,7 @@
 				<view class="box">
 					<p class="classname">社交</p>
 					<p class="nums">共{{colorclass.e}}条清单</p>
-					<view class="t-icon t-icon-yuandian-copy-copy1"></view>
+					<view class="t-icon t-icon-social"></view>
 					<view class="itemlist">
 						<view class="listone">
 							已完成 {{colorclass.edone}}
@@ -136,7 +136,7 @@
 				<view class="box">
 					<p class="classname">其它</p>
 					<p class="nums">共{{colorclass.f}}条清单</p>
-					<view class="t-icon t-icon-yuandian-copy1"></view>
+					<view class="t-icon t-icon-other"></view>
 					<view class="itemlist">
 						<view class="listone">
 							已完成 {{colorclass.fdone}}
@@ -149,7 +149,7 @@
 			</view>
 		</view>
 		<!-- 今日待办 -->
-		<view v-if="showclass == 1" class="listbox">
+		<view v-if="showclass == 1" class="listbox" :style="{overflow:'auto',height:topheight}">
 			<view class="linebox">
 				<view @click="backlogitem('生活')" class="box">
 					<p class="classname">生活</p>
@@ -331,6 +331,8 @@
 					this.backlogdata = result.data.data.filter((item) => {
 						return item.datetime.split(" ").shift() == this.todaydate
 					})
+					uni.setStorageSync('todayBacklog',this.backlogdata)
+					uni.setStorageSync('allBacklog',result.data.data)
 					// 当天各个分类的待办事项
 					this.aback = this.backlogdata.filter((item) => {
 						return item.colorbg == '#5da7f1'
@@ -355,7 +357,7 @@
 			},
 			backlogitem(t) {
 				uni.navigateTo({
-					// url: "./backlog?id=" + i
+					// url: "../backlog/backlog"
 					url: "../backlog/backlog?type=" + t
 				})
 				//console.log(i)
@@ -491,8 +493,8 @@
 
 		.t-icon {
 			position: absolute;
-			width: 20px;
-			height: 20px;
+			width: 60rpx;
+			height: 60rpx;
 			right: 40rpx;
 			top: 40rpx;
 		}

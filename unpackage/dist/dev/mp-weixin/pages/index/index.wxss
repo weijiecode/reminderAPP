@@ -120,8 +120,8 @@
 }
 .box .t-icon.data-v-57280228 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 60rpx;
+  height: 60rpx;
   right: 40rpx;
   top: 40rpx;
 }

@@ -21,7 +21,7 @@
 				今日{{backlogtype}}清单有<view class="backlognum">5</view>条，请尽快完成！
 			</view>
 			<view class="subtitleright">
-				<u-icon name="calendar"></u-icon>
+				<u-icon size="22" name="calendar"></u-icon>
 				<view class="subtitledate">
 					{{todaymd}}
 				</view>
@@ -30,40 +30,10 @@
 		<view class="listcontent">
 			<view>
 				<u-swipe-action>
-					<u-swipe-action-item :options="options2">
+					<u-swipe-action-item v-for="(item) in todayBacklog" :key="item.id" :options="options2">
 						<view class="swipe-action u-border-top u-border-bottom">
-							<view class="swipe-action__content">
-								<text class="swipe-action__content__text">测试测试</text>
-								<text class="swipe-action__content__text">{{todaymd}}</text>
-							</view>
-						</view>
-					</u-swipe-action-item>
-				</u-swipe-action>
-				<u-swipe-action>
-					<u-swipe-action-item :options="options2">
-						<view class="swipe-action u-border-top u-border-bottom">
-							<view class="swipe-action__content">
-								<text class="swipe-action__content__text">测试测试</text>
-								<text class="swipe-action__content__text">{{todaymd}}</text>
-							</view>
-						</view>
-					</u-swipe-action-item>
-				</u-swipe-action>
-				<u-swipe-action>
-					<u-swipe-action-item :options="options2">
-						<view class="swipe-action u-border-top u-border-bottom">
-							<view class="swipe-action__content">
-								<text class="swipe-action__content__text">测试测试</text>
-								<text class="swipe-action__content__text">{{todaymd}}</text>
-							</view>
-						</view>
-					</u-swipe-action-item>
-				</u-swipe-action>
-				<u-swipe-action>
-					<u-swipe-action-item :options="options2">
-						<view class="swipe-action u-border-top u-border-bottom">
-							<view class="swipe-action__content">
-								<text class="swipe-action__content__text">测试测试</text>
+							<view style="background-color: #f9f4e2;border: 1px solid #FFCD00;border-radius: 30rpx;" class="swipe-action__content">
+								<text class="swipe-action__content__text">{{item.contents}}</text>
 								<text class="swipe-action__content__text">{{todaymd}}</text>
 							</view>
 						</view>
@@ -93,21 +63,33 @@
 		onLoad(option) {
 			this.backlogtype = option.type
 			console.log(this.backlogtype)
+			this.todayBacklog = uni.getStorageSync('todayBacklog')
+			console.log(this.todayBacklog)
 		},
 		data() {
 			return {
+				// 今日待办
+				todayBacklog: [],
 				// 类别
 				backlogtype: "",
 				// 向左滑动两个按钮
 				options2: [{
-					text: '编辑',
+					icon: 'edit-pen',
 					style: {
-						backgroundColor: '#3c9cff'
+						backgroundColor: '#7766E7',
+						fontSize: '36rpx',
+						borderRadius: '50%',
+						width: '100rpx',
+						height: '100rpx'
 					}
 				}, {
-					text: '删除',
+					icon: 'trash',
 					style: {
-						backgroundColor: '#f56c6c'
+						backgroundColor: '#FE748B',
+						fontSize: '36rpx',
+						borderRadius: '50%',
+						width: '100rpx',
+						height: '100rpx'
 					}
 				}],
 			}
@@ -180,7 +162,7 @@
 	}
 
 	.u-demo-block__title {
-		padding: 10px 0 2px 15px;
+		padding: 20rpx 0 4rpx 30rpx;
 	}
 
 	.swipe-action {
@@ -188,7 +170,7 @@
 			padding: 50rpx 0;
 
 			&__text {
-				font-size: 15px;
+				font-size: 30rpx;
 				color: $u-main-color;
 				padding-left: 30rpx;
 			}
@@ -198,8 +180,6 @@
 	::v-deep .u-swipe-action-item__content {
 		margin-left: 30rpx !important;
 		margin-right: 30rpx !important;
-		background-color: rgb(244, 197, 89) !important;
-		border-radius: 30rpx !important;
 	}
 
 	::v-deep .u-border-bottom {
@@ -222,5 +202,8 @@
 	
 	::v-deep .u-swipe-action-item {
 		margin-top: 20rpx !important;
+	}
+	::v-deep .u-swipe-action-item__content {
+		background-color: #F8F8FB !important;
 	}
 </style>

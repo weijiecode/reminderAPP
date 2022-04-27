@@ -69,21 +69,19 @@
   padding: 0;
 }
 .u-demo-block__title.data-v-0d696d02 {
-  padding: 10px 0 2px 15px;
+  padding: 20rpx 0 4rpx 30rpx;
 }
 .swipe-action__content.data-v-0d696d02 {
   padding: 50rpx 0;
 }
 .swipe-action__content__text.data-v-0d696d02 {
-  font-size: 15px;
+  font-size: 30rpx;
   color: #303133;
   padding-left: 30rpx;
 }
 .data-v-0d696d02 .u-swipe-action-item__content {
   margin-left: 30rpx !important;
   margin-right: 30rpx !important;
-  background-color: #f4c559 !important;
-  border-radius: 30rpx !important;
 }
 .data-v-0d696d02 .u-border-bottom {
   border-bottom-style: none !important;
@@ -99,5 +97,8 @@
 }
 .data-v-0d696d02 .u-swipe-action-item {
   margin-top: 20rpx !important;
+}
+.data-v-0d696d02 .u-swipe-action-item__content {
+  background-color: #F8F8FB !important;
 }
 
