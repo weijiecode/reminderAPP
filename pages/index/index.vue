@@ -153,67 +153,79 @@
 			<view class="linebox">
 				<view @click="backlogitem('生活')" class="box">
 					<p class="classname">生活</p>
-					<view v-if="aback!=''" class="contentbox">
-						<p class="nums" v-for="(item,index) in aback" :key="index">{{item.contents}}</p>
+					<view v-if="aback!=''" class="alllist">
+						<view class="contentbox" v-for="(item,index) in aback" :key="index">
+							<view style="background-color: #7766E7;" class="flage"></view>
+							<view class="nums">{{item.contents}}</view>
+						</view>
 					</view>
 					<u-empty v-if="aback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
-					<view class="t-icon t-icon-yuandian"></view>
 				</view>
 				<view @click="backlogitem('工作')" class="box">
 					<p class="classname">工作</p>
-					<view v-if="bback!=''" class="contentbox">
-						<p class="nums" v-for="(item,index) in bback" :key="index">{{item.contents}}</p>
+					<view v-if="bback!=''" class="alllist">
+						<view class="contentbox" v-for="(item,index) in bback" :key="index">
+							<view style="background-color: #518BF1;" class="flage"></view>
+							<view class="nums">{{item.contents}}</view>
+						</view>
 					</view>
 					<u-empty v-if="bback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
-					<view class="t-icon t-icon-yuandian-copy-copy"></view>
 				</view>
 			</view>
 			<view class="linebox">
 				<view @click="backlogitem('学习')" class="box">
 					<p class="classname">学习</p>
-					<view v-if="cback!=''" class="contentbox">
-						<p class="nums" v-for="(item,index) in cback" :key="index">{{item.contents}}</p>
+					<view v-if="cback!=''" class="alllist">
+						<view class="contentbox" v-for="(item,index) in cback" :key="index">
+							<view style="background-color: #FFCD00;" class="flage"></view>
+							<view class="nums">{{item.contents}}</view>
+						</view>
 					</view>
 					<u-empty v-if="cback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
-					<view class="t-icon t-icon-yuandian-copy-copy-copy"></view>
 				</view>
 				<view class="box" @click="backlogitem('健康')">
 					<p class="classname">健康</p>
-					<view v-if="dback!=''" class="contentbox">
-						<p class="nums" v-for="(item,index) in dback" :key="index">{{item.contents}}</p>
+					<view v-if="dback!=''" class="alllist">
+						<view class="contentbox" v-for="(item,index) in dback" :key="index">
+							<view style="background-color: #1DBD84;" class="flage"></view>
+							<view class="nums">{{item.contents}}</view>
+						</view>
 					</view>
 					<u-empty v-if="dback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
-					<view class="t-icon t-icon-yuandian-copy"></view>
 				</view>
 			</view>
 			<view class="linebox" style="margin-bottom: 20rpx;">
 				<view class="box" @click="backlogitem('社交')">
 					<p class="classname">社交</p>
-					<view v-if="eback!=''" class="contentbox">
-						<p class="nums" v-for="(item,index) in eback" :key="index">{{item.contents}}</p>
+					<view v-if="eback!=''" class="alllist">
+						<view class="contentbox" v-for="(item,index) in eback" :key="index">
+							<view style="background-color: #FE738A;" class="flage"></view>
+							<view class="nums">{{item.contents}}</view>
+						</view>
 					</view>
 					<u-empty v-if="eback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
-					<view class="t-icon t-icon-yuandian-copy-copy1"></view>
 				</view>
 				<view class="box" @click="backlogitem('其它')">
 					<p class="classname">其它</p>
-					<view v-if="fback!=''" class="contentbox">
-						<p class="nums" v-for="(item,index) in fback" :key="index">{{item.contents}}</p>
+					<view v-if="fback!=''" class="alllist">
+						<view class="contentbox" v-for="(item,index) in fback" :key="index">
+							<view style="background-color: #C4C4C4;" class="flage"></view>
+							<view class="nums">{{item.contents}}</view>
+						</view>
 					</view>
 					<u-empty v-if="fback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
-					<view class="t-icon t-icon-yuandian-copy1"></view>
 				</view>
 			</view>
 		</view>
@@ -240,7 +252,7 @@
 		onLoad() {},
 		onReady() {
 			uni.createSelectorQuery().in(this).select(".listbox").boundingClientRect((data) => {
-					this.topheight = "calc(100% - "+data.top+"px)";
+					this.topheight = "calc(100% - " + data.top + "px)";
 				})
 				.exec();
 
@@ -271,14 +283,14 @@
 				// 切换视图
 				showclass: 0,
 				// 当天所有待办事项
-				backlogdata: {},
+				backlogdata: [],
 				// 当天各个分类的待办事项
-				aback: {},
-				bback: {},
-				cback: {},
-				dback: {},
-				eback: {},
-				fback: {}
+				aback: [],
+				bback: [],
+				cback: [],
+				dback: [],
+				eback: [],
+				fback: []
 			}
 		},
 		onShow() {
@@ -307,23 +319,23 @@
 					this.colorclass.edone = 0
 					this.colorclass.fdone = 0
 					result.data.data.forEach((item, index) => {
-						if (item.colorbg == '#5da7f1') {
+						if (item.colorbg == '#7766E7') {
 							if (item.done == 1) this.colorclass.adone++;
 							this.colorclass.a++
-						} else if (item.colorbg == '#d81e06') {
+						} else if (item.colorbg == '#518BF1') {
 							if (item.done == 1) this.colorclass.bdone++;
 							this.colorclass.b++
-						} else if (item.colorbg == '#82529d') {
+						} else if (item.colorbg == '#FFCD00') {
 							if (item.done == 1) this.colorclass.cdone++;
 							this.colorclass.c++
-						} else if (item.colorbg == '#f36372') {
+						} else if (item.colorbg == '#1DBD84') {
 							if (item.done == 1) this.colorclass.ddone++;
 							this.colorclass.d++
-						} else if (item.colorbg == '#2aa515') {
+						} else if (item.colorbg == '#FE738A') {
 							if (item.done == 1) this.colorclass.edone++;
 							this.colorclass.e++
-						} else if (item.colorbg == '#e0620d') {
-							if (item.colorbg == '#e0620d' && item.done == 1) this.colorclass.fdone++;
+						} else if (item.colorbg == '#C4C4C4') {
+							if (item.colorbg == '#C4C4C4' && item.done == 1) this.colorclass.fdone++;
 							this.colorclass.f++
 						}
 					})
@@ -331,26 +343,26 @@
 					this.backlogdata = result.data.data.filter((item) => {
 						return item.datetime.split(" ").shift() == this.todaydate
 					})
-					uni.setStorageSync('todayBacklog',this.backlogdata)
-					uni.setStorageSync('allBacklog',result.data.data)
+					uni.setStorageSync('todayBacklog', this.backlogdata)
+					uni.setStorageSync('allBacklog', result.data.data)
 					// 当天各个分类的待办事项
 					this.aback = this.backlogdata.filter((item) => {
-						return item.colorbg == '#5da7f1'
+						return item.colorbg == '#7766E7'
 					})
 					this.bback = this.backlogdata.filter((item) => {
-						return item.colorbg == '#d81e06'
+						return item.colorbg == '#518BF1'
 					})
 					this.cback = this.backlogdata.filter((item) => {
-						return item.colorbg == '#82529d'
+						return item.colorbg == '#FFCD00'
 					})
 					this.dback = this.backlogdata.filter((item) => {
-						return item.colorbg == '#f36372'
+						return item.colorbg == '#1DBD84'
 					})
 					this.eback = this.backlogdata.filter((item) => {
-						return item.colorbg == '#2aa515'
+						return item.colorbg == '#FE738A'
 					})
 					this.fback = this.backlogdata.filter((item) => {
-						return item.colorbg == '#e0620d'
+						return item.colorbg == '#C4C4C4'
 					})
 					//console.log(this.aback)
 				}
@@ -378,6 +390,12 @@
 	.leftmenu {
 		display: flex;
 		align-items: center;
+	}
+
+	.flage {
+		width: 20rpx;
+		height: 20rpx;
+		border-radius: 50%;
 	}
 
 	.topcontent {
@@ -499,6 +517,11 @@
 			top: 40rpx;
 		}
 	}
+	
+	.alllist {
+		height: 200rpx;
+		overflow: auto;
+	}
 
 	.classname {
 		color: #383636;
@@ -508,15 +531,20 @@
 	}
 
 	.contentbox {
-		margin-right: 40rpx;
-		height: 190rpx;
+		margin-left: 40rpx;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 		overflow: auto;
 	}
 
 	.nums {
 		font-size: 14px;
 		color: #7c7c7c;
-		margin-left: 40rpx;
+		margin-left: 20rpx;
+		width: 200rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.itemlist {

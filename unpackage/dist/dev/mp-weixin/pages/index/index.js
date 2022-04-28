@@ -381,6 +381,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 
 
@@ -431,14 +443,14 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
       // 切换视图
       showclass: 0,
       // 当天所有待办事项
-      backlogdata: {},
+      backlogdata: [],
       // 当天各个分类的待办事项
-      aback: {},
-      bback: {},
-      cback: {},
-      dback: {},
-      eback: {},
-      fback: {} };
+      aback: [],
+      bback: [],
+      cback: [],
+      dback: [],
+      eback: [],
+      fback: [] };
 
   },
   onShow: function onShow() {
@@ -467,23 +479,23 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
                   _this2.colorclass.edone = 0;
                   _this2.colorclass.fdone = 0;
                   result.data.data.forEach(function (item, index) {
-                    if (item.colorbg == '#5da7f1') {
+                    if (item.colorbg == '#7766E7') {
                       if (item.done == 1) _this2.colorclass.adone++;
                       _this2.colorclass.a++;
-                    } else if (item.colorbg == '#d81e06') {
+                    } else if (item.colorbg == '#518BF1') {
                       if (item.done == 1) _this2.colorclass.bdone++;
                       _this2.colorclass.b++;
-                    } else if (item.colorbg == '#82529d') {
+                    } else if (item.colorbg == '#FFCD00') {
                       if (item.done == 1) _this2.colorclass.cdone++;
                       _this2.colorclass.c++;
-                    } else if (item.colorbg == '#f36372') {
+                    } else if (item.colorbg == '#1DBD84') {
                       if (item.done == 1) _this2.colorclass.ddone++;
                       _this2.colorclass.d++;
-                    } else if (item.colorbg == '#2aa515') {
+                    } else if (item.colorbg == '#FE738A') {
                       if (item.done == 1) _this2.colorclass.edone++;
                       _this2.colorclass.e++;
-                    } else if (item.colorbg == '#e0620d') {
-                      if (item.colorbg == '#e0620d' && item.done == 1) _this2.colorclass.fdone++;
+                    } else if (item.colorbg == '#C4C4C4') {
+                      if (item.colorbg == '#C4C4C4' && item.done == 1) _this2.colorclass.fdone++;
                       _this2.colorclass.f++;
                     }
                   });
@@ -495,22 +507,22 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
                   uni.setStorageSync('allBacklog', result.data.data);
                   // 当天各个分类的待办事项
                   _this2.aback = _this2.backlogdata.filter(function (item) {
-                    return item.colorbg == '#5da7f1';
+                    return item.colorbg == '#7766E7';
                   });
                   _this2.bback = _this2.backlogdata.filter(function (item) {
-                    return item.colorbg == '#d81e06';
+                    return item.colorbg == '#518BF1';
                   });
                   _this2.cback = _this2.backlogdata.filter(function (item) {
-                    return item.colorbg == '#82529d';
+                    return item.colorbg == '#FFCD00';
                   });
                   _this2.dback = _this2.backlogdata.filter(function (item) {
-                    return item.colorbg == '#f36372';
+                    return item.colorbg == '#1DBD84';
                   });
                   _this2.eback = _this2.backlogdata.filter(function (item) {
-                    return item.colorbg == '#2aa515';
+                    return item.colorbg == '#FE738A';
                   });
                   _this2.fback = _this2.backlogdata.filter(function (item) {
-                    return item.colorbg == '#e0620d';
+                    return item.colorbg == '#C4C4C4';
                   });
                   //console.log(this.aback)
                 }case 5:case "end":return _context.stop();}}}, _callee);}))();

@@ -35,6 +35,11 @@
   display: flex;
   align-items: center;
 }
+.flage.data-v-57280228 {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+}
 .topcontent.data-v-57280228 {
   opacity: 0.9;
   width: 100%;
@@ -125,6 +130,10 @@
   right: 40rpx;
   top: 40rpx;
 }
+.alllist.data-v-57280228 {
+  height: 200rpx;
+  overflow: auto;
+}
 .classname.data-v-57280228 {
   color: #383636;
   font-size: 28px;
@@ -132,14 +141,19 @@
   font-weight: bold;
 }
 .contentbox.data-v-57280228 {
-  margin-right: 40rpx;
-  height: 190rpx;
+  margin-left: 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   overflow: auto;
 }
 .nums.data-v-57280228 {
   font-size: 14px;
   color: #7c7c7c;
-  margin-left: 40rpx;
+  margin-left: 20rpx;
+  width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .itemlist.data-v-57280228 {
   margin-top: 80rpx;
