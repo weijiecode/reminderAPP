@@ -25,6 +25,10 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.content.data-v-0d696d02 {
+  height: 100%;
+  overflow: hidden;
+}
 .topback.data-v-0d696d02 {
   top: 60rpx;
   left: 40rpx;
@@ -37,6 +41,15 @@
 #backtop.data-v-0d696d02 {
   width: 40rpx;
   height: 40rpx;
+}
+#textone.data-v-0d696d02 {
+  font-size: 16px;
+  font-weight: bold;
+}
+.line.data-v-0d696d02 {
+  height: 60rpx;
+  width: 10rpx;
+  border-radius: 10rpx;
 }
 .subtitle.data-v-0d696d02 {
   padding: 30rpx 40rpx 0 40rpx;
@@ -54,6 +67,16 @@
   padding-left: 8rpx;
   color: #aaa;
   font-size: 14px;
+}
+#doneicon.data-v-0d696d02 {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 15px;
+}
+.itemcontent.data-v-0d696d02 {
+  display: flex;
+  flex-direction: column;
 }
 .backlognum.data-v-0d696d02 {
   color: #FAC81D;
@@ -82,6 +105,15 @@
 .data-v-0d696d02 .u-swipe-action-item__content {
   margin-left: 30rpx !important;
   margin-right: 30rpx !important;
+}
+.data-v-0d696d02 .swipe-action__content {
+  display: flex !important;
+  align-items: center;
+  position: relative;
+  padding: 30rpx 0;
+  border-radius: 30rpx;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
 }
 .data-v-0d696d02 .u-border-bottom {
   border-bottom-style: none !important;

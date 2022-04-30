@@ -161,11 +161,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 var _default =
 {
-  onShow: function onShow() {
-    this.nickname = uni.getStorageSync('nickname');
-    this.photo = uni.getStorageSync('photo');
-    this.sex = uni.getStorageSync('sex');
-    this.introduction = uni.getStorageSync('introduction');
+  onShow: function onShow() {var _JSON$parse =
+    JSON.parse(uni.getStorageSync('userdata')),nickname = _JSON$parse.nickname,photo = _JSON$parse.photo,sex = _JSON$parse.sex,introduction = _JSON$parse.introduction;
+    this.nickname = nickname;
+    this.photo = photo;
+    this.sex = sex;
+    this.introduction = introduction;
   },
   data: function data() {
     return {

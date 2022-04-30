@@ -1,9 +1,22 @@
 <template>
 	<view class="content">
-		<view class="submycenterbox">
-			<view class="topback">
-				<u-icon size="25" @click="backmycenter" name="arrow-left"></u-icon>
+		<!-- #ifdef MP-WEIXIN -->
+		<view :style="{paddingTop: statusBarHeight}">
+			<view :style="{height: titleBarHeight, display: 'flex',alignItems: 'center',paddingLeft: '40rpx'}">
+				<span @click="backmycenter" id="backtop" class="btnshow t-icon t-icon-fanhui2"></span>
 			</view>
+		</view>
+		<!-- #endif -->
+		<!-- #ifndef MP-WEIXIN -->
+		<view class="topback">
+			<!-- <u-icon size="25" @click="backmycenter" name="arrow-left"></u-icon> -->
+			<span @click="backmycenter" id="backtop" class="btnshow t-icon t-icon-fanhui2"></span>
+		</view>
+		<!-- #endif -->
+		<view class="submycenterbox">
+			<!-- <view class="topback">
+				<u-icon size="25" @click="backmycenter" name="arrow-left"></u-icon>
+			</view> -->
 			<view class="photo">
 				<!-- <u-upload :previewFullImage="true" :fileList="fileList1" @afterRead="afterRead"
 						@delete="deletePic" name="1" multiple :maxCount="1"></u-upload> -->
@@ -84,7 +97,11 @@
 </template>
 
 <script>
+	import {getstatusBarHeight} from '../../components/mixins/mixin.js'
 	export default {
+		// #ifdef MP-WEIXIN
+		mixins: [getstatusBarHeight],
+		// #endif
 		onShow() {
 			this.getuserdata()
 		},
@@ -97,6 +114,13 @@
 					introduction: "",
 					email: "",
 					phone: "",
+				},
+				// storage用户数据
+				userdata: {
+					nickname: '',
+					photo: '',
+					sex: '',
+					introduction: ''
 				},
 				newphone: "",
 				// 头像
@@ -209,7 +233,14 @@
 					}
 				})
 				if (result.data.code == 200) {
-					uni.setStorageSync('photo', this.newphoto)
+					// uni.setStorageSync('photo', this.newphoto)
+					this.userdata = {
+						nickname: this.mycenterForm.nickname,
+						photo: this.newphoto,
+						sex: this.mycenterForm.sex,
+						introduction: this.mycenterForm.introduction
+					}
+					uni.setStorageSync('userdata', JSON.stringify(this.userdata))
 					uni.$u.toast('修改头像成功')
 				}
 			},
@@ -230,11 +261,18 @@
 						setTimeout(() => {
 							uni.$u.toast('修改个人信息成功')
 						}, 500)
-						uni.setStorageSync('nickname', this.mycenterForm.nickname)
-						uni.setStorageSync('phone', this.mycenterForm.phone)
-						uni.setStorageSync('sex', this.mycenterForm.sex)
-						uni.setStorageSync('email', this.mycenterForm.email)
-						uni.setStorageSync('introduction', this.mycenterForm.introduction)
+						// uni.setStorageSync('nickname', this.mycenterForm.nickname)
+						// uni.setStorageSync('phone', this.mycenterForm.phone)
+						// uni.setStorageSync('sex', this.mycenterForm.sex)
+						// uni.setStorageSync('email', this.mycenterForm.email)
+						// uni.setStorageSync('introduction', this.mycenterForm.introduction)
+						this.userdata = {
+							nickname: this.mycenterForm.nickname,
+							photo: this.mycenterForm.photo,
+							sex: this.mycenterForm.sex,
+							introduction: this.mycenterForm.introduction
+						}
+						uni.setStorageSync('userdata', JSON.stringify(this.userdata))
 						setTimeout(() => {
 							uni.switchTab({
 								url: "mycenter"

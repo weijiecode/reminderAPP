@@ -329,6 +329,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {var _this = this;
@@ -355,6 +357,13 @@ var _default =
     return {
       // 注册和登录界面
       isloginorregister: 0,
+      // storage用户数据
+      userdata: {
+        nickname: '',
+        photo: '',
+        sex: '',
+        introduction: '' },
+
       // 步骤条
       indexnum: 0,
       // 登录表单
@@ -491,11 +500,17 @@ var _default =
                   if (result.data.code == 200) {
                     _this2.$refs.uNotify.success('登录成功');
                     _this2.$store.commit('set_token', result.data.token);
+                    _this2.userdata = {
+                      nickname: result.data.data.nickname,
+                      photo: result.data.data.photo,
+                      sex: result.data.data.sex,
+                      introduction: result.data.data.introduction };
+
                     uni.setStorageSync('username', result.data.data.username);
-                    uni.setStorageSync('nickname', result.data.data.nickname);
-                    uni.setStorageSync('photo', result.data.data.photo);
-                    uni.setStorageSync('sex', result.data.data.sex);
-                    uni.setStorageSync('introduction', result.data.data.introduction);
+                    uni.setStorageSync('userdata', JSON.stringify(_this2.userdata));
+                    // uni.setStorageSync('photo', result.data.data.photo)
+                    // uni.setStorageSync('sex', result.data.data.sex)
+                    // uni.setStorageSync('introduction', result.data.data.introduction)
                     uni.switchTab({
                       url: "../index/index" });
 

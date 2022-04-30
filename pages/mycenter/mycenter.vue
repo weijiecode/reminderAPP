@@ -30,10 +30,11 @@
 <script>
 	export default {
 		onShow(){
-			this.nickname = uni.getStorageSync('nickname')
-			this.photo = uni.getStorageSync('photo')
-			this.sex = uni.getStorageSync('sex')
-			this.introduction = uni.getStorageSync('introduction')
+			const {nickname,photo,sex,introduction} = JSON.parse(uni.getStorageSync('userdata'))
+			this.nickname = nickname
+			this.photo = photo
+			this.sex = sex
+			this.introduction = introduction
 		},
 		data() {
 			return {

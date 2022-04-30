@@ -3,7 +3,6 @@
   "navigationBarTextStyle": "black",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
     "u-upload": "/uni_modules/uview-ui/components/u-upload/u-upload",
     "u--form": "/uni_modules/uview-ui/components/u--form/u--form",
     "u-form-item": "/uni_modules/uview-ui/components/u-form-item/u-form-item",

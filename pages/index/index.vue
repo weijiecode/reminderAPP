@@ -153,25 +153,25 @@
 			<view class="linebox">
 				<view @click="backlogitem('生活')" class="box">
 					<p class="classname">生活</p>
-					<view v-if="aback!=''" class="alllist">
-						<view class="contentbox" v-for="(item,index) in aback" :key="index">
+					<view v-if="todayaback!=''" class="alllist">
+						<view class="contentbox" v-for="(item,index) in todayaback" :key="index">
 							<view style="background-color: #7766E7;" class="flage"></view>
-							<view class="nums">{{item.contents}}</view>
+							<view class="subnums">{{item.contents}}</view>
 						</view>
 					</view>
-					<u-empty v-if="aback==''" text="今日暂无待办" iconSize="10"
+					<u-empty v-if="todayaback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 				</view>
 				<view @click="backlogitem('工作')" class="box">
 					<p class="classname">工作</p>
-					<view v-if="bback!=''" class="alllist">
-						<view class="contentbox" v-for="(item,index) in bback" :key="index">
+					<view v-if="todaybback!=''" class="alllist">
+						<view class="contentbox" v-for="(item,index) in todaybback" :key="index">
 							<view style="background-color: #518BF1;" class="flage"></view>
-							<view class="nums">{{item.contents}}</view>
+							<view class="subnums">{{item.contents}}</view>
 						</view>
 					</view>
-					<u-empty v-if="bback==''" text="今日暂无待办" iconSize="10"
+					<u-empty v-if="todaybback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 				</view>
@@ -179,25 +179,25 @@
 			<view class="linebox">
 				<view @click="backlogitem('学习')" class="box">
 					<p class="classname">学习</p>
-					<view v-if="cback!=''" class="alllist">
-						<view class="contentbox" v-for="(item,index) in cback" :key="index">
+					<view v-if="todaycback!=''" class="alllist">
+						<view class="contentbox" v-for="(item,index) in todaycback" :key="index">
 							<view style="background-color: #FFCD00;" class="flage"></view>
-							<view class="nums">{{item.contents}}</view>
+							<view class="subnums">{{item.contents}}</view>
 						</view>
 					</view>
-					<u-empty v-if="cback==''" text="今日暂无待办" iconSize="10"
+					<u-empty v-if="todaycback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 				</view>
 				<view class="box" @click="backlogitem('健康')">
 					<p class="classname">健康</p>
-					<view v-if="dback!=''" class="alllist">
-						<view class="contentbox" v-for="(item,index) in dback" :key="index">
+					<view v-if="todaydback!=''" class="alllist">
+						<view class="contentbox" v-for="(item,index) in todaydback" :key="index">
 							<view style="background-color: #1DBD84;" class="flage"></view>
-							<view class="nums">{{item.contents}}</view>
+							<view class="subnums">{{item.contents}}</view>
 						</view>
 					</view>
-					<u-empty v-if="dback==''" text="今日暂无待办" iconSize="10"
+					<u-empty v-if="todaydback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 				</view>
@@ -205,25 +205,25 @@
 			<view class="linebox" style="margin-bottom: 20rpx;">
 				<view class="box" @click="backlogitem('社交')">
 					<p class="classname">社交</p>
-					<view v-if="eback!=''" class="alllist">
-						<view class="contentbox" v-for="(item,index) in eback" :key="index">
+					<view v-if="todayeback!=''" class="alllist">
+						<view class="contentbox" v-for="(item,index) in todayeback" :key="index">
 							<view style="background-color: #FE738A;" class="flage"></view>
-							<view class="nums">{{item.contents}}</view>
+							<view class="subnums">{{item.contents}}</view>
 						</view>
 					</view>
-					<u-empty v-if="eback==''" text="今日暂无待办" iconSize="10"
+					<u-empty v-if="todayeback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 				</view>
 				<view class="box" @click="backlogitem('其它')">
 					<p class="classname">其它</p>
-					<view v-if="fback!=''" class="alllist">
-						<view class="contentbox" v-for="(item,index) in fback" :key="index">
+					<view v-if="todayfback!=''" class="alllist">
+						<view class="contentbox" v-for="(item,index) in todayfback" :key="index">
 							<view style="background-color: #C4C4C4;" class="flage"></view>
-							<view class="nums">{{item.contents}}</view>
+							<view class="subnums">{{item.contents}}</view>
 						</view>
 					</view>
-					<u-empty v-if="fback==''" text="今日暂无待办" iconSize="10"
+					<u-empty v-if="todayfback==''" text="今日暂无待办" iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 				</view>
@@ -282,15 +282,44 @@
 				},
 				// 切换视图
 				showclass: 0,
-				// 当天所有待办事项
-				backlogdata: [],
+				// 所有分类待办事项
+				allbacklogdata: [],
+				// 当天分类待办事项
+				todaybacklogdata: [],
+				// 当天所有分类待办事项
+				todaybacklogdata: [],
+				// storage所有分类待办事项
+				allbacklogstorage: {
+					alla:[],
+					allb:[],
+					allc:[],
+					alld:[],
+					alle:[],
+					allf:[],
+				},
+				// storage当天所有分类待办事项
+				todaybacklogstorage: {
+					todaya:[],
+					todayb:[],
+					todayc:[],
+					todayd:[],
+					todaye:[],
+					todayf:[],
+				},
+				// 所有各个分类的待办事项
+				allaback: [],
+				allbback: [],
+				allcback: [],
+				alldback: [],
+				alleback: [],
+				allfback: [],
 				// 当天各个分类的待办事项
-				aback: [],
-				bback: [],
-				cback: [],
-				dback: [],
-				eback: [],
-				fback: []
+				todayaback: [],
+				todaybback: [],
+				todaycback: [],
+				todaydback: [],
+				todayeback: [],
+				todayfback: []
 			}
 		},
 		onShow() {
@@ -302,8 +331,8 @@
 					url: "backlog/selectbacklog",
 					method: "GET"
 				})
-				this.backlogdata = result.data.data
-				//console.log(this.backlogdata)
+				// this.allbacklogdata = result.data.data
+				//console.log(this.allbacklogdata)
 				if (result.data.code == 200) {
 					// 初始化
 					this.colorclass.a = 0
@@ -339,32 +368,70 @@
 							this.colorclass.f++
 						}
 					})
+					// 所有待办事项
+					this.allbacklogdata = result.data.data
 					// 当天所有待办事项
-					this.backlogdata = result.data.data.filter((item) => {
+					this.todaybacklogdata = result.data.data.filter((item) => {
 						return item.datetime.split(" ").shift() == this.todaydate
 					})
-					uni.setStorageSync('todayBacklog', this.backlogdata)
-					uni.setStorageSync('allBacklog', result.data.data)
-					// 当天各个分类的待办事项
-					this.aback = this.backlogdata.filter((item) => {
+					// uni.setStorageSync('todayBacklog', this.allbacklogdata)
+					// uni.setStorageSync('allBacklog', result.data.data)
+					// 所有各个分类的待办事项
+					this.allaback = this.allbacklogdata.filter((item) => {
 						return item.colorbg == '#7766E7'
 					})
-					this.bback = this.backlogdata.filter((item) => {
+					this.allbback = this.allbacklogdata.filter((item) => {
 						return item.colorbg == '#518BF1'
 					})
-					this.cback = this.backlogdata.filter((item) => {
+					this.allcback = this.allbacklogdata.filter((item) => {
 						return item.colorbg == '#FFCD00'
 					})
-					this.dback = this.backlogdata.filter((item) => {
+					this.alldback = this.allbacklogdata.filter((item) => {
 						return item.colorbg == '#1DBD84'
 					})
-					this.eback = this.backlogdata.filter((item) => {
+					this.alleback = this.allbacklogdata.filter((item) => {
 						return item.colorbg == '#FE738A'
 					})
-					this.fback = this.backlogdata.filter((item) => {
+					this.allfback = this.allbacklogdata.filter((item) => {
 						return item.colorbg == '#C4C4C4'
 					})
-					//console.log(this.aback)
+					this.allbacklogstorage = {
+						alla: this.allaback,
+						allb: this.allbback,
+						allc: this.allcback,
+						alld: this.alldback,
+						alle: this.alleback,
+						allf: this.allfback
+					}
+					uni.setStorageSync('allbacklogstorage', JSON.stringify(this.allbacklogstorage))
+					// 当天各个分类的待办事项
+					this.todayaback = this.todaybacklogdata.filter((item) => {
+						return item.colorbg == '#7766E7'
+					})
+					this.todaybback = this.todaybacklogdata.filter((item) => {
+						return item.colorbg == '#518BF1'
+					})
+					this.todaycback = this.todaybacklogdata.filter((item) => {
+						return item.colorbg == '#FFCD00'
+					})
+					this.todaydback = this.todaybacklogdata.filter((item) => {
+						return item.colorbg == '#1DBD84'
+					})
+					this.todayeback = this.todaybacklogdata.filter((item) => {
+						return item.colorbg == '#FE738A'
+					})
+					this.todayfback = this.todaybacklogdata.filter((item) => {
+						return item.colorbg == '#C4C4C4'
+					})
+					this.todaybacklogdata = {
+						todaya: this.todayaback,
+						todayb: this.todaybback,
+						todayc: this.todaycback,
+						todayd: this.todaydback,
+						todaye: this.todayeback,
+						todayf: this.todayfback
+					}
+					uni.setStorageSync('todaybacklogstorage', JSON.stringify(this.todaybacklogdata))
 				}
 			},
 			backlogitem(t) {
@@ -384,7 +451,7 @@
 		width: 100%;
 		height: 100%;
 		position: relative;
-		overflow: auto;
+		overflow: hidden;
 	}
 
 	.leftmenu {
@@ -541,12 +608,21 @@
 	.nums {
 		font-size: 14px;
 		color: #7c7c7c;
+		margin-left: 40rpx;
+		width: 200rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	.subnums {
+		font-size: 14px;
+		color: #7c7c7c;
 		margin-left: 20rpx;
 		width: 200rpx;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-
+	
 	.itemlist {
 		margin-top: 80rpx;
 		display: flex;

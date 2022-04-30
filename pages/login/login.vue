@@ -127,8 +127,10 @@
 				<text style="margin-top: 100rpx;" @click="isloginorregister=0" class="nouser">已经有账号？<text
 						class="subnouser">登录账号</text></text>
 			</view>
-			<p class="agree">登录或完成注册即代表你同意<navigator style="display: inline;" url="../agreement/agreement" class="subtitle">用户协议</navigator>和<navigator
-					class="subtitle" style="display: inline;" url="../private/private">隐私政策</navigator></p>
+			<p class="agree">登录或完成注册即代表你同意<navigator style="display: inline;" url="../agreement/agreement"
+					class="subtitle">用户协议</navigator>和<navigator class="subtitle" style="display: inline;"
+					url="../private/private">隐私政策</navigator>
+			</p>
 		</view>
 	</view>
 </template>
@@ -159,6 +161,13 @@
 			return {
 				// 注册和登录界面
 				isloginorregister: 0,
+				// storage用户数据
+				userdata: {
+					nickname: '',
+					photo: '',
+					sex: '',
+					introduction: ''
+				},
 				// 步骤条
 				indexnum: 0,
 				// 登录表单
@@ -295,11 +304,17 @@
 					if (result.data.code == 200) {
 						this.$refs.uNotify.success('登录成功')
 						this.$store.commit('set_token', result.data.token)
+						this.userdata = {
+							nickname: result.data.data.nickname,
+							photo: result.data.data.photo,
+							sex: result.data.data.sex,
+							introduction: result.data.data.introduction
+						}
 						uni.setStorageSync('username', result.data.data.username)
-						uni.setStorageSync('nickname', result.data.data.nickname)
-						uni.setStorageSync('photo', result.data.data.photo)
-						uni.setStorageSync('sex', result.data.data.sex)
-						uni.setStorageSync('introduction', result.data.data.introduction)
+						uni.setStorageSync('userdata', JSON.stringify(this.userdata))
+						// uni.setStorageSync('photo', result.data.data.photo)
+						// uni.setStorageSync('sex', result.data.data.sex)
+						// uni.setStorageSync('introduction', result.data.data.introduction)
 						uni.switchTab({
 							url: "../index/index"
 						})
@@ -331,7 +346,7 @@
 					}
 					if (c == 1) {
 						uni.$u.toast('用户名只能为数字或字母，请修改后重试')
-					} else if(c == 0){
+					} else if (c == 0) {
 						this.$refs.regRef.validate().then(async res => {
 							const result = await this.$http({
 								url: "account/selectusername",
@@ -376,7 +391,7 @@
 				if (res.data.code == 200) {
 					this.$refs.uNotify.success('注册成功，请登录')
 					uni.navigateTo({
-						url:'../login/login'
+						url: '../login/login'
 					})
 				} else {
 					this.$refs.uNotify.error('注册失败，请重试')

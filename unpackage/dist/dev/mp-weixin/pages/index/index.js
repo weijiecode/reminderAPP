@@ -393,7 +393,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 
 
 
@@ -417,8 +417,8 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
     exec();
 
   },
-  data: function data() {
-    return {
+  data: function data() {var _ref;
+    return _ref = {
       // 可使用窗口宽度
       wWidth: "",
       // 可使用窗口高度
@@ -442,15 +442,44 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
 
       // 切换视图
       showclass: 0,
-      // 当天所有待办事项
-      backlogdata: [],
-      // 当天各个分类的待办事项
-      aback: [],
-      bback: [],
-      cback: [],
-      dback: [],
-      eback: [],
-      fback: [] };
+      // 所有分类待办事项
+      allbacklogdata: [],
+      // 当天分类待办事项
+      todaybacklogdata: [] }, _defineProperty(_ref, "todaybacklogdata",
+
+    []), _defineProperty(_ref, "allbacklogstorage",
+
+    {
+      alla: [],
+      allb: [],
+      allc: [],
+      alld: [],
+      alle: [],
+      allf: [] }), _defineProperty(_ref, "todaybacklogstorage",
+
+
+    {
+      todaya: [],
+      todayb: [],
+      todayc: [],
+      todayd: [],
+      todaye: [],
+      todayf: [] }), _defineProperty(_ref, "allaback",
+
+
+    []), _defineProperty(_ref, "allbback",
+    []), _defineProperty(_ref, "allcback",
+    []), _defineProperty(_ref, "alldback",
+    []), _defineProperty(_ref, "alleback",
+    []), _defineProperty(_ref, "allfback",
+    []), _defineProperty(_ref, "todayaback",
+
+    []), _defineProperty(_ref, "todaybback",
+    []), _defineProperty(_ref, "todaycback",
+    []), _defineProperty(_ref, "todaydback",
+    []), _defineProperty(_ref, "todayeback",
+    []), _defineProperty(_ref, "todayfback",
+    []), _ref;
 
   },
   onShow: function onShow() {
@@ -462,8 +491,8 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
                     url: "backlog/selectbacklog",
                     method: "GET" }));case 2:result = _context.sent;
 
-                _this2.backlogdata = result.data.data;
-                //console.log(this.backlogdata)
+                // this.allbacklogdata = result.data.data
+                //console.log(this.allbacklogdata)
                 if (result.data.code == 200) {
                   // 初始化
                   _this2.colorclass.a = 0;
@@ -499,33 +528,71 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
                       _this2.colorclass.f++;
                     }
                   });
+                  // 所有待办事项
+                  _this2.allbacklogdata = result.data.data;
                   // 当天所有待办事项
-                  _this2.backlogdata = result.data.data.filter(function (item) {
+                  _this2.todaybacklogdata = result.data.data.filter(function (item) {
                     return item.datetime.split(" ").shift() == _this2.todaydate;
                   });
-                  uni.setStorageSync('todayBacklog', _this2.backlogdata);
-                  uni.setStorageSync('allBacklog', result.data.data);
-                  // 当天各个分类的待办事项
-                  _this2.aback = _this2.backlogdata.filter(function (item) {
+                  // uni.setStorageSync('todayBacklog', this.allbacklogdata)
+                  // uni.setStorageSync('allBacklog', result.data.data)
+                  // 所有各个分类的待办事项
+                  _this2.allaback = _this2.allbacklogdata.filter(function (item) {
                     return item.colorbg == '#7766E7';
                   });
-                  _this2.bback = _this2.backlogdata.filter(function (item) {
+                  _this2.allbback = _this2.allbacklogdata.filter(function (item) {
                     return item.colorbg == '#518BF1';
                   });
-                  _this2.cback = _this2.backlogdata.filter(function (item) {
+                  _this2.allcback = _this2.allbacklogdata.filter(function (item) {
                     return item.colorbg == '#FFCD00';
                   });
-                  _this2.dback = _this2.backlogdata.filter(function (item) {
+                  _this2.alldback = _this2.allbacklogdata.filter(function (item) {
                     return item.colorbg == '#1DBD84';
                   });
-                  _this2.eback = _this2.backlogdata.filter(function (item) {
+                  _this2.alleback = _this2.allbacklogdata.filter(function (item) {
                     return item.colorbg == '#FE738A';
                   });
-                  _this2.fback = _this2.backlogdata.filter(function (item) {
+                  _this2.allfback = _this2.allbacklogdata.filter(function (item) {
                     return item.colorbg == '#C4C4C4';
                   });
-                  //console.log(this.aback)
-                }case 5:case "end":return _context.stop();}}}, _callee);}))();
+                  _this2.allbacklogstorage = {
+                    alla: _this2.allaback,
+                    allb: _this2.allbback,
+                    allc: _this2.allcback,
+                    alld: _this2.alldback,
+                    alle: _this2.alleback,
+                    allf: _this2.allfback };
+
+                  uni.setStorageSync('allbacklogstorage', JSON.stringify(_this2.allbacklogstorage));
+                  // 当天各个分类的待办事项
+                  _this2.todayaback = _this2.todaybacklogdata.filter(function (item) {
+                    return item.colorbg == '#7766E7';
+                  });
+                  _this2.todaybback = _this2.todaybacklogdata.filter(function (item) {
+                    return item.colorbg == '#518BF1';
+                  });
+                  _this2.todaycback = _this2.todaybacklogdata.filter(function (item) {
+                    return item.colorbg == '#FFCD00';
+                  });
+                  _this2.todaydback = _this2.todaybacklogdata.filter(function (item) {
+                    return item.colorbg == '#1DBD84';
+                  });
+                  _this2.todayeback = _this2.todaybacklogdata.filter(function (item) {
+                    return item.colorbg == '#FE738A';
+                  });
+                  _this2.todayfback = _this2.todaybacklogdata.filter(function (item) {
+                    return item.colorbg == '#C4C4C4';
+                  });
+                  _this2.todaybacklogdata = {
+                    todaya: _this2.todayaback,
+                    todayb: _this2.todaybback,
+                    todayc: _this2.todaycback,
+                    todayd: _this2.todaydback,
+                    todaye: _this2.todayeback,
+                    todayf: _this2.todayfback };
+
+                  uni.setStorageSync('todaybacklogstorage', JSON.stringify(_this2.todaybacklogdata));
+                }case 4:case "end":return _context.stop();}}}, _callee);}))();
     },
     backlogitem: function backlogitem(t) {
       uni.navigateTo({

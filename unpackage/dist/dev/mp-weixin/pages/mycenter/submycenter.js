@@ -95,9 +95,6 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    uIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 286))
-    },
     uUpload: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-upload/u-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-upload/u-upload")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-upload/u-upload.vue */ 295))
     },
@@ -175,93 +172,110 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 36));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 36));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
+
+  mixins: [_mixin.getstatusBarHeight],
+
   onShow: function onShow() {
     this.getuserdata();
   },
@@ -274,6 +288,13 @@ var _default =
         introduction: "",
         email: "",
         phone: "" },
+
+      // storage用户数据
+      userdata: {
+        nickname: '',
+        photo: '',
+        sex: '',
+        introduction: '' },
 
       newphone: "",
       // 头像
@@ -386,7 +407,14 @@ var _default =
 
 
                 if (result.data.code == 200) {
-                  uni.setStorageSync('photo', _this4.newphoto);
+                  // uni.setStorageSync('photo', this.newphoto)
+                  _this4.userdata = {
+                    nickname: _this4.mycenterForm.nickname,
+                    photo: _this4.newphoto,
+                    sex: _this4.mycenterForm.sex,
+                    introduction: _this4.mycenterForm.introduction };
+
+                  uni.setStorageSync('userdata', JSON.stringify(_this4.userdata));
                   uni.$u.toast('修改头像成功');
                 }case 4:case "end":return _context3.stop();}}}, _callee3);}))();
     },
@@ -407,11 +435,18 @@ var _default =
                     setTimeout(function () {
                       uni.$u.toast('修改个人信息成功');
                     }, 500);
-                    uni.setStorageSync('nickname', _this5.mycenterForm.nickname);
-                    uni.setStorageSync('phone', _this5.mycenterForm.phone);
-                    uni.setStorageSync('sex', _this5.mycenterForm.sex);
-                    uni.setStorageSync('email', _this5.mycenterForm.email);
-                    uni.setStorageSync('introduction', _this5.mycenterForm.introduction);
+                    // uni.setStorageSync('nickname', this.mycenterForm.nickname)
+                    // uni.setStorageSync('phone', this.mycenterForm.phone)
+                    // uni.setStorageSync('sex', this.mycenterForm.sex)
+                    // uni.setStorageSync('email', this.mycenterForm.email)
+                    // uni.setStorageSync('introduction', this.mycenterForm.introduction)
+                    _this5.userdata = {
+                      nickname: _this5.mycenterForm.nickname,
+                      photo: _this5.mycenterForm.photo,
+                      sex: _this5.mycenterForm.sex,
+                      introduction: _this5.mycenterForm.introduction };
+
+                    uni.setStorageSync('userdata', JSON.stringify(_this5.userdata));
                     setTimeout(function () {
                       uni.switchTab({
                         url: "mycenter" },
