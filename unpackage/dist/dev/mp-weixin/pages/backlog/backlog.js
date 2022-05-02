@@ -95,6 +95,15 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
+    uToast: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 420))
+    },
+    uPopup: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 455))
+    },
+    uButton: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 244))
+    },
     uIcon: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 286))
     },
@@ -126,6 +135,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.showdel = false
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -159,7 +173,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 36));
 
 
 
@@ -343,197 +357,203 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = { mixins: [_mixin.getstatusBarHeight, _mixin.datetimes], onLoad: function onLoad(option) {this.backlogtype = option.type; // console.log(this.backlogtype)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+
+
+
+
+
+
+{
+
+  mixins: [_mixin.getstatusBarHeight, _mixin.datetimes],
+
+
+
+
+  onLoad: function onLoad(option) {
+    this.backlogtype = option.type;
+    // console.log(this.backlogtype)
     // this.todayBacklog = uni.getStorageSync('todayBacklog')
     // console.log(this.todayBacklog)
-    var _JSON$parse = JSON.parse(uni.getStorageSync('todaybacklogstorage')),todaya = _JSON$parse.todaya,todayb = _JSON$parse.todayb,todayc = _JSON$parse.todayc,todayd = _JSON$parse.todayd,todaye = _JSON$parse.todaye,todayf = _JSON$parse.todayf;this.todaya = todaya;this.todayb = todayb;this.todayc = todayc;this.todayd = todayd;this.todaye = todaye;this.todayf = todayf;}, onReady: function onReady() {var _this = this;uni.createSelectorQuery().in(this).select(".listcontent").boundingClientRect(function (data) {_this.topheight = "calc(100% - " + data.top + "px)";}).exec();}, data: function data() {return { // 今日待办
-      todaya: [], todayb: [], todayc: [], todayd: [], todaye: [], todayf: [], // 距离top高度
-      topheight: "", // 类别
-      backlogtype: "", // 向左滑动两个按钮
-      options2: [{ icon: 'edit-pen', style: { backgroundColor: '#7766E7', fontSize: '36rpx', borderRadius: '50%', width: '100rpx', height: '100rpx' } }, { icon: 'trash', style: { backgroundColor: '#FE748B', fontSize: '36rpx', borderRadius: '50%', width: '100rpx', height: '100rpx' } }] };}, methods: { // 返回首页
-    backmycenter: function backmycenter() {uni.switchTab({ url: "../index/index" });} } };exports.default = _default;
+    var _JSON$parse =
+
+
+
+
+
+
+    JSON.parse(uni.getStorageSync('todaybacklogstorage')),todaya = _JSON$parse.todaya,todayb = _JSON$parse.todayb,todayc = _JSON$parse.todayc,todayd = _JSON$parse.todayd,todaye = _JSON$parse.todaye,todayf = _JSON$parse.todayf;
+    this.todaya = todaya;
+    this.todayb = todayb;
+    this.todayc = todayc;
+    this.todayd = todayd;
+    this.todaye = todaye;
+    this.todayf = todayf;
+  },
+  onReady: function onReady() {var _this = this;
+    uni.createSelectorQuery().in(this).select(".listcontent").boundingClientRect(function (data) {
+      _this.topheight = "calc(100% - " + data.top + "px)";
+    }).
+    exec();
+  },
+  data: function data() {
+    return {
+      // 今日待办
+      todaya: [],
+      todayb: [],
+      todayc: [],
+      todayd: [],
+      todaye: [],
+      todayf: [],
+      // 距离top高度
+      topheight: "",
+      // 是否删除提示框
+      showdel: false,
+      // 指定待办的id、按钮索引、所属分类
+      toid: "",
+      toindex: "",
+      totype: "",
+      // 类别
+      backlogtype: "",
+      // 向左滑动两个按钮
+      options2: [{
+        icon: 'edit-pen',
+        style: {
+          backgroundColor: '#7766E7',
+          fontSize: '36rpx',
+          borderRadius: '50%',
+          width: '100rpx',
+          height: '100rpx' } },
+
+      {
+        icon: 'trash',
+        style: {
+          backgroundColor: '#FE748B',
+          fontSize: '36rpx',
+          borderRadius: '50%',
+          width: '100rpx',
+          height: '100rpx' } }] };
+
+
+
+  },
+  methods: {
+    // 返回首页
+    backmycenter: function backmycenter() {
+      uni.switchTab({
+        url: "../index/index" });
+
+    },
+    // 确定完成
+    todone: function todone(item, type) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var id, done, _yield$_this2$$http, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+
+                id =
+
+                item.id, done = item.done;
+                done == '0' ? done = '1' : done = '0';_context.next = 4;return (
+
+
+                  _this2.$http({
+                    url: "backlog/updatebacklog",
+                    method: "POST",
+                    data: {
+                      done: done,
+                      id: id } }));case 4:_yield$_this2$$http = _context.sent;res = _yield$_this2$$http.data;
+
+
+                if (res.code == '200') {
+                  if (done == '1') {
+                    _this2[type].forEach(function (p, index) {
+                      if (id == p.id) {
+                        p.done = 1;
+                      }
+                    });
+                    _this2.$refs.uToast.show({
+                      type: 'success',
+                      duration: 1000,
+                      message: "该条待办清单已完成",
+                      iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/success.png' });
+
+                  } else if (done == '0') {
+                    _this2[type].forEach(function (p, index) {
+                      if (id == p.id) {
+                        p.done = 0;
+                      }
+                    });
+                    _this2.$refs.uToast.show({
+                      type: 'default',
+                      duration: 1000,
+                      message: "该条待办清单已修改为待完成",
+                      iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/success.png' });
+
+                  }
+
+                }case 7:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    changebacklog: function changebacklog(data) {
+      this.toid = data.name.split(' ')[0];
+      this.totype = data.name.split(' ')[1];
+      this.toindex = data.index;
+      console.log(this.toid);
+      console.log(this.totype);
+      console.log(this.toindex);
+      console.log(data);
+      if (data.index == '1') {
+        this.showdel = true;
+
+      } else if (data.index == '0') {
+        console.log('65');
+      }
+    },
+    confirmdel: function confirmdel() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _yield$_this3$$http, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _this3.$http({
+                    url: "backlog/deletebacklog",
+                    method: "POST",
+                    data: {
+                      id: _this3.toid } }));case 2:_yield$_this3$$http = _context2.sent;res = _yield$_this3$$http.data;
+
+
+                if (res.code == '200') {
+                  _this3.showdel = false;
+                  _this3[_this3.totype].forEach(function (p, index) {
+                    if (_this3.toid == p.id) {
+                      _this3[_this3.totype].splice(index, 1);
+                    }
+                  });
+                }case 5:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+    open: function open() {
+      // console.log('open');
+    },
+    close: function close() {
+      this.showdel = false;
+      // console.log('close');
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

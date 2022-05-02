@@ -61,10 +61,11 @@
 				</view>
 			</view>
 		</view>
+		<view id="addbacklog" class="t-icon t-icon-tianjia"></view>
 		<!-- 所有待办总览 -->
 		<view v-if="showclass == 0" class="listbox" :style="{overflow:'auto',height:topheight}">
 			<view class="linebox">
-				<view class="box">
+				<view @click="allbacklogitem('生活')" class="box">
 					<p class="classname">生活</p>
 					<p class="nums">共{{colorclass.a}}条清单</p>
 					<view class="t-icon t-icon-life"></view>
@@ -77,7 +78,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="box">
+				<view @click="allbacklogitem('工作')" class="box">
 					<p class="classname">工作</p>
 					<p class="nums">共{{colorclass.b}}条清单</p>
 					<view class="t-icon t-icon-work"></view>
@@ -92,7 +93,7 @@
 				</view>
 			</view>
 			<view class="linebox">
-				<view class="box">
+				<view @click="allbacklogitem('学习')" class="box">
 					<p class="classname">学习</p>
 					<p class="nums">共{{colorclass.c}}条清单</p>
 					<view class="t-icon t-icon-study"></view>
@@ -105,7 +106,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="box">
+				<view @click="allbacklogitem('健康')" class="box">
 					<p class="classname">健康</p>
 					<p class="nums">共{{colorclass.d}}条清单</p>
 					<view class="t-icon t-icon-health"></view>
@@ -120,7 +121,7 @@
 				</view>
 			</view>
 			<view class="linebox" style="margin-bottom: 20rpx;">
-				<view class="box">
+				<view @click="allbacklogitem('社交')" class="box">
 					<p class="classname">社交</p>
 					<p class="nums">共{{colorclass.e}}条清单</p>
 					<view class="t-icon t-icon-social"></view>
@@ -133,7 +134,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="box">
+				<view @click="allbacklogitem('其它')" class="box">
 					<p class="classname">其它</p>
 					<p class="nums">共{{colorclass.f}}条清单</p>
 					<view class="t-icon t-icon-other"></view>
@@ -248,7 +249,8 @@
 		// #ifdef MP-WEIXIN
 		mixins: [getstatusBarHeight, datetimes],
 		// #endif
-		created() {},
+		created() {
+		},
 		onLoad() {},
 		onReady() {
 			uni.createSelectorQuery().in(this).select(".listbox").boundingClientRect((data) => {
@@ -290,21 +292,21 @@
 				todaybacklogdata: [],
 				// storage所有分类待办事项
 				allbacklogstorage: {
-					alla:[],
-					allb:[],
-					allc:[],
-					alld:[],
-					alle:[],
-					allf:[],
+					alla: [],
+					allb: [],
+					allc: [],
+					alld: [],
+					alle: [],
+					allf: [],
 				},
 				// storage当天所有分类待办事项
 				todaybacklogstorage: {
-					todaya:[],
-					todayb:[],
-					todayc:[],
-					todayd:[],
-					todaye:[],
-					todayf:[],
+					todaya: [],
+					todayb: [],
+					todayc: [],
+					todayd: [],
+					todaye: [],
+					todayf: [],
 				},
 				// 所有各个分类的待办事项
 				allaback: [],
@@ -436,10 +438,13 @@
 			},
 			backlogitem(t) {
 				uni.navigateTo({
-					// url: "../backlog/backlog"
 					url: "../backlog/backlog?type=" + t
 				})
-				//console.log(i)
+			},
+			allbacklogitem(t) {
+				uni.navigateTo({
+					url: "../backlog/allbacklog?type=" + t
+				})
 			}
 		},
 
@@ -456,6 +461,18 @@
 
 	.leftmenu {
 		display: flex;
+		align-items: center;
+	}
+	
+	#addbacklog {
+		width: 150rpx;
+		height: 150rpx;
+		z-index: 99;
+		position: fixed;
+		bottom: 160rpx;
+		right: 40rpx;
+		display: flex;
+		justify-content: center;
 		align-items: center;
 	}
 
@@ -584,7 +601,7 @@
 			top: 40rpx;
 		}
 	}
-	
+
 	.alllist {
 		height: 200rpx;
 		overflow: auto;
@@ -613,7 +630,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-	
+
 	.subnums {
 		font-size: 14px;
 		color: #7c7c7c;
@@ -622,7 +639,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-	
+
 	.itemlist {
 		margin-top: 80rpx;
 		display: flex;

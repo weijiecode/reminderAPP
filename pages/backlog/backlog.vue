@@ -19,6 +19,18 @@
 			{{backlogtype}}
 		</view>
 		<!-- #endif -->
+		<!-- toast消息提示 -->
+		<u-toast ref="uToast"></u-toast>
+		<!-- 是否删除 -->
+		<u-popup :show="showdel" :round="10" mode="bottom" @close="close" @open="open">
+			<view>
+				<view class="popuptext">确认是否删除该条待办事项？</view>
+				<view class="bothbtn">
+					<u-button @click="showdel=false" text="取消" size="normal" type="info"></u-button>
+					<u-button @click="confirmdel" text="确认" size="normal" type="error"></u-button>
+				</view>
+			</view>
+		</u-popup>
 		<view class="subtitle">
 			<view class="subtitleleft">
 				今日{{backlogtype}}清单有
@@ -40,9 +52,11 @@
 		<view class="listcontent" :style="{height: topheight,overflow: 'auto'}">
 			<view v-if="backlogtype==='生活'">
 				<u-swipe-action>
-					<u-swipe-action-item v-for="(item) in todaya" :key="item.id" :options="options2">
+					<u-swipe-action-item v-for="(item) in todaya" :key="item.id" :options="options2" :name="item.id+' '+'todaya'"
+						@click="changebacklog">
 						<view class="swipe-action u-border-top u-border-bottom">
-							<view v-if="item.done===1" style="background-color: #E3E0F3;border: 1px solid #7766E7;"
+							<view @click="todone(item,'todaya')" v-if="item.done===1"
+								style="background-color: #E3E0F3;border: 1px solid #7766E7;"
 								class="swipe-action__content">
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
@@ -50,7 +64,7 @@
 								</view>
 								<view id="doneicon" class="t-icon t-icon-lifedone-copy"></view>
 							</view>
-							<view v-if="item.done===0" class="swipe-action__content">
+							<view @click="todone(item,'todaya')" v-if="item.done===0" class="swipe-action__content">
 								<view style="background-color:#7766E7;" class="line"></view>
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
@@ -63,9 +77,11 @@
 			</view>
 			<view v-if="backlogtype==='工作'">
 				<u-swipe-action>
-					<u-swipe-action-item v-for="(item) in todayb" :key="item.id" :options="options2">
+					<u-swipe-action-item v-for="(item) in todayb" :key="item.id" :options="options2" :name="item.id+' '+'todayb'"
+						@click="changebacklog">
 						<view class="swipe-action u-border-top u-border-bottom">
-							<view v-if="item.done===1" style="background-color: #CDDDF7;border: 1px solid #518BF1;"
+							<view @click="todone(item,'todayb')" v-if="item.done===1"
+								style="background-color: #CDDDF7;border: 1px solid #518BF1;"
 								class="swipe-action__content">
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
@@ -73,7 +89,7 @@
 								</view>
 								<view id="doneicon" class="t-icon t-icon-workdone-copy"></view>
 							</view>
-							<view v-if="item.done===0" class="swipe-action__content">
+							<view @click="todone(item,'todayb')" v-if="item.done===0" class="swipe-action__content">
 								<view style="background-color:#518BF1;" class="line"></view>
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
@@ -86,9 +102,11 @@
 			</view>
 			<view v-if="backlogtype==='学习'">
 				<u-swipe-action>
-					<u-swipe-action-item v-for="(item) in todayc" :key="item.id" :options="options2">
+					<u-swipe-action-item v-for="(item) in todayc" :key="item.id" :options="options2" :name="item.id+' '+'todayc'"
+						@click="changebacklog">
 						<view class="swipe-action u-border-top u-border-bottom">
-							<view v-if="item.done===1" style="background-color: #f9f4e2;border: 1px solid #FFCD00;"
+							<view @click="todone(item,'todayc')" v-if="item.done===1"
+								style="background-color: #f9f4e2;border: 1px solid #FFCD00;"
 								class="swipe-action__content">
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
@@ -96,7 +114,7 @@
 								</view>
 								<view id="doneicon" class="t-icon t-icon-studydone-copy"></view>
 							</view>
-							<view v-if="item.done===0" class="swipe-action__content">
+							<view @click="todone(item,'todayc')" v-if="item.done===0" class="swipe-action__content">
 								<view style="background-color:#FFCD00;" class="line"></view>
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
@@ -109,9 +127,11 @@
 			</view>
 			<view v-if="backlogtype==='健康'">
 				<u-swipe-action>
-					<u-swipe-action-item v-for="(item) in todayd" :key="item.id" :options="options2">
+					<u-swipe-action-item v-for="(item) in todayd" :key="item.id" :options="options2" :name="item.id+' '+'todayd'"
+						@click="changebacklog">
 						<view class="swipe-action u-border-top u-border-bottom">
-							<view v-if="item.done===1" style="background-color: #E2F2F0;border: 1px solid #1DBD84;"
+							<view @click="todone(item,'todayd')" v-if="item.done===1"
+								style="background-color: #E2F2F0;border: 1px solid #1DBD84;"
 								class="swipe-action__content">
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
@@ -119,7 +139,7 @@
 								</view>
 								<view id="doneicon" class="t-icon t-icon-healthdone-copy"></view>
 							</view>
-							<view v-if="item.done===0" class="swipe-action__content">
+							<view @click="todone(item,'todayd')" v-if="item.done===0" class="swipe-action__content">
 								<view style="background-color:#1DBD84;" class="line"></view>
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
@@ -132,9 +152,11 @@
 			</view>
 			<view v-if="backlogtype==='社交'">
 				<u-swipe-action>
-					<u-swipe-action-item v-for="(item) in todaye" :key="item.id" :options="options2">
+					<u-swipe-action-item v-for="(item) in todaye" :key="item.id" :options="options2" :name="item.id+' '+'todaye'"
+						@click="changebacklog">
 						<view class="swipe-action u-border-top u-border-bottom">
-							<view v-if="item.done===1" style="background-color: #FFF1F4;border: 1px solid #FE738A;"
+							<view @click="todone(item,'todaye')" v-if="item.done===1"
+								style="background-color: #FFF1F4;border: 1px solid #FE738A;"
 								class="swipe-action__content">
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
@@ -142,7 +164,7 @@
 								</view>
 								<view id="doneicon" class="t-icon t-icon-socialdone-copy"></view>
 							</view>
-							<view v-if="item.done===0" class="swipe-action__content">
+							<view @click="todone(item,'todaye')" v-if="item.done===0" class="swipe-action__content">
 								<view style="background-color:#FE738A;" class="line"></view>
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
@@ -155,9 +177,11 @@
 			</view>
 			<view v-if="backlogtype==='其它'">
 				<u-swipe-action>
-					<u-swipe-action-item v-for="(item) in todayf" :key="item.id" :options="options2">
+					<u-swipe-action-item v-for="(item) in todayf" :key="item.id" :options="options2" :name="item.id+' '+'todayf'"
+						@click="changebacklog">
 						<view class="swipe-action u-border-top u-border-bottom">
-							<view v-if="item.done===1" style="background-color: #E8E8E8;border: 1px solid #C4C4C4;"
+							<view @click="todone(item,'todayf')" v-if="item.done===1"
+								style="background-color: #E8E8E8;border: 1px solid #C4C4C4;"
 								class="swipe-action__content">
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
@@ -165,7 +189,7 @@
 								</view>
 								<view id="doneicon" class="t-icon t-icon-otherdone-copy"></view>
 							</view>
-							<view v-if="item.done===0" class="swipe-action__content">
+							<view @click="todone(item,'todayf')" v-if="item.done===0" class="swipe-action__content">
 								<view style="background-color:#C4C4C4;" class="line"></view>
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
@@ -233,6 +257,12 @@
 				todayf: [],
 				// 距离top高度
 				topheight: "",
+				// 是否删除提示框
+				showdel: false,
+				// 指定待办的id、按钮索引、所属分类
+				toid: "",
+				toindex: "",
+				totype: "",
 				// 类别
 				backlogtype: "",
 				// 向左滑动两个按钮
@@ -264,7 +294,91 @@
 					url: "../index/index"
 				})
 			},
+			// 确定完成
+			async todone(item, type) {
+				let {
+					id,
+					done
+				} = item
+				done == '0' ? done = '1' : done = '0'
+				const {
+					data: res
+				} = await this.$http({
+					url: "backlog/updatebacklog",
+					method: "POST",
+					data: {
+						done: done,
+						id: id
+					}
+				})
+				if (res.code == '200') {
+					if (done == '1') {
+						this[type].forEach((p, index) => {
+							if (id == p.id) {
+								p.done = 1
+							}
+						})
+						this.$refs.uToast.show({
+							type: 'success',
+							duration: 1000,
+							message: "该条待办清单已完成",
+							iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/success.png'
+						})
+					} else if (done == '0') {
+						this[type].forEach((p, index) => {
+							if (id == p.id) {
+								p.done = 0
+							}
+						})
+						this.$refs.uToast.show({
+							type: 'default',
+							duration: 1000,
+							message: "该条待办清单已修改为待完成",
+							iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/success.png'
+						})
+					}
 
+				}
+			},
+			changebacklog(data) {
+				this.toid = data.name.split(' ')[0]
+				this.totype = data.name.split(' ')[1]
+				this.toindex = data.index
+				console.log(this.toid)
+				console.log(this.totype)
+				console.log(this.toindex)
+				console.log(data)
+				if (data.index == '1') {
+					this.showdel = true
+					
+				} else if (data.index == '0') {
+					console.log('65')
+				}
+			},
+			async confirmdel() {
+				const { data:res } = await this.$http({
+					url: "backlog/deletebacklog",
+					method: "POST",
+					data: {
+						id: this.toid
+					}
+				})
+				if(res.code == '200') {
+					this.showdel = false
+					this[this.totype].forEach((p, index) => {
+						if (this.toid == p.id) {
+							this[this.totype].splice(index,1)
+						}
+					})
+				}
+			},
+			open() {
+				// console.log('open');
+			},
+			close() {
+				this.showdel = false
+				// console.log('close');
+			}
 		}
 	}
 </script>
@@ -286,6 +400,11 @@
 		text-align: center;
 	}
 
+	.popuptext {
+		text-align: center;
+		margin: 100rpx;
+	}
+
 	#backtop {
 		width: 40rpx;
 		height: 40rpx;
@@ -300,6 +419,11 @@
 		height: 60rpx;
 		width: 10rpx;
 		border-radius: 10rpx;
+	}
+
+	.bothbtn {
+		display: flex;
+		flex-direction: row;
 	}
 
 	.subtitle {
@@ -375,6 +499,7 @@
 	}
 
 	::v-deep .swipe-action__content {
+		box-shadow: 0 12px 5px -10px rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
 		display: flex !important;
 		align-items: center;
 		position: relative;
