@@ -61,7 +61,21 @@
 				</view>
 			</view>
 		</view>
-		<view id="addbacklog" class="t-icon t-icon-tianjia"></view>
+		<!-- 新建按钮 -->
+		<view @click="shownewbacklog=true" id="addbacklog" class="t-icon t-icon-tianjia"></view>
+		<!-- 新建待办 -->
+		<view class="newbacklog">
+			<u-popup :show="shownewbacklog" :round="10" mode="bottom" @close="close" @open="open">
+				<view style="height: 300rpx;">
+					<u--input placeholder="把事情记录下来~" border="bottom" maxlength="30" clearable :focus="true"></u--input>
+					<view class="allbtns">
+						<u-icon class="dateicon" name="clock-fill" color="#aaa" size="24"></u-icon>
+						<u-icon class="dateicon" name="clock-fill" color="#aaa" size="24"></u-icon>
+						<u-icon class="dateicon" name="clock-fill" color="#aaa" size="24"></u-icon>
+					</view>
+				</view>
+			</u-popup>
+		</view>
 		<!-- 所有待办总览 -->
 		<view v-if="showclass == 0" class="listbox" :style="{overflow:'auto',height:topheight}">
 			<view class="linebox">
@@ -249,8 +263,7 @@
 		// #ifdef MP-WEIXIN
 		mixins: [getstatusBarHeight, datetimes],
 		// #endif
-		created() {
-		},
+		created() {},
 		onLoad() {},
 		onReady() {
 			uni.createSelectorQuery().in(this).select(".listbox").boundingClientRect((data) => {
@@ -267,6 +280,8 @@
 				wHeight: "",
 				// 距离top高度
 				topheight: "",
+				// 新建待办清单
+				shownewbacklog: false,
 				// 各分类统计
 				colorclass: {
 					a: 0,
@@ -445,6 +460,13 @@
 				uni.navigateTo({
 					url: "../backlog/allbacklog?type=" + t
 				})
+			},
+			open() {
+				// console.log('open');
+			},
+			close() {
+				this.shownewbacklog = false
+				// console.log('close');
 			}
 		},
 
@@ -463,13 +485,13 @@
 		display: flex;
 		align-items: center;
 	}
-	
+
 	#addbacklog {
 		width: 150rpx;
 		height: 150rpx;
 		z-index: 99;
 		position: fixed;
-		bottom: 160rpx;
+		bottom: 140rpx;
 		right: 40rpx;
 		display: flex;
 		justify-content: center;
@@ -515,6 +537,10 @@
 		margin-left: 60rpx;
 		font-size: 23px;
 		font-weight: bold;
+	}
+	
+	::v-deep .u-popup__content {
+		padding: 30rpx;
 	}
 
 	.rightdatetime {
@@ -675,7 +701,12 @@
 		height: 48rpx;
 		margin-left: 30rpx;
 	}
-
+	
+	.allbtns {
+		margin-top: 16rpx;
+		display: flex;
+	}
+	
 	::v-deep .u-empty {
 		margin-top: -80rpx !important;
 	}
@@ -683,4 +714,9 @@
 	::v-deep .u-empty__text {
 		margin-top: -80rpx !important;
 	}
+	
+	::v-deep .u-popup__content {
+		opacity: 0.9 !important;
+	}
+	
 </style>

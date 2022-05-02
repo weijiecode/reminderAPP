@@ -40,7 +40,7 @@
   height: 150rpx;
   z-index: 99;
   position: fixed;
-  bottom: 160rpx;
+  bottom: 140rpx;
   right: 40rpx;
   display: flex;
   justify-content: center;
@@ -67,6 +67,9 @@
   margin-left: 60rpx;
   font-size: 23px;
   font-weight: bold;
+}
+.data-v-57280228 .u-popup__content {
+  padding: 30rpx;
 }
 .rightdatetime.data-v-57280228 {
   margin-top: 62rpx;
@@ -206,10 +209,17 @@
   height: 48rpx;
   margin-left: 30rpx;
 }
+.allbtns.data-v-57280228 {
+  margin-top: 16rpx;
+  display: flex;
+}
 .data-v-57280228 .u-empty {
   margin-top: -80rpx !important;
 }
 .data-v-57280228 .u-empty__text {
   margin-top: -80rpx !important;
+}
+.data-v-57280228 .u-popup__content {
+  opacity: 0.9 !important;
 }
 
