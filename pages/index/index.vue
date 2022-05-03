@@ -67,10 +67,21 @@
 		<view class="newbacklog">
 			<u-popup :show="shownewbacklog" :round="10" mode="bottom" @close="close" @open="open">
 				<view style="height: 300rpx;">
-					<u--input placeholder="把事情记录下来~" border="bottom" maxlength="30" clearable :focus="true"></u--input>
+					<u--input v-model="backlogForm.contents" placeholder="把事情记录下来~" border="bottom" maxlength="30"
+						clearable :focus="true"></u--input>
 					<view class="allbtns">
-						<u-icon class="dateicon" name="clock-fill" color="#aaa" size="24"></u-icon>
-						<u-icon class="dateicon" name="clock-fill" color="#aaa" size="24"></u-icon>
+						<!-- 日历按钮 -->
+						<u-icon @click="showcalendar=true" class="dateicon" name="clock-fill" color="#aaa" size="24">
+						</u-icon>
+						<!-- 日历显示器 -->
+						<u-calendar :show="showcalendar" @confirm="confirmdate" @close="showcalendar=false"></u-calendar>
+						<!-- 类别按钮 -->
+						<view class="typestyle">
+							<view @click="showtypepicker=true" class="t-icon t-icon-life"></view>
+							<view>{{backlogForm.classvalue}}</view>
+						</view>
+						<!-- 类别选择器 -->
+						<u-picker showLunar @confirm="confirmtype" :show="showtypepicker" :columns="columns" @cancel="showtypepicker=false"></u-picker>
 						<u-icon class="dateicon" name="clock-fill" color="#aaa" size="24"></u-icon>
 					</view>
 				</view>
@@ -282,6 +293,14 @@
 				topheight: "",
 				// 新建待办清单
 				shownewbacklog: false,
+				// 日历显示
+				showcalendar: false,
+				// 分类选择显示
+				showtypepicker: false,
+				// 类别
+				columns: [
+					['生活', '工作', '学习', '健康', '社交', '其它']
+				],
 				// 各分类统计
 				colorclass: {
 					a: 0,
@@ -305,6 +324,14 @@
 				todaybacklogdata: [],
 				// 当天所有分类待办事项
 				todaybacklogdata: [],
+				// 新建待办事项表单
+				backlogForm: {
+					contents: "",
+					datetime: "",
+					// 颜色分类 提交颜色类别的id
+					classvalue: "#icon-life",
+					colorbg: "#7766E7",
+				},
 				// storage所有分类待办事项
 				allbacklogstorage: {
 					alla: [],
@@ -467,6 +494,18 @@
 			close() {
 				this.shownewbacklog = false
 				// console.log('close');
+			},
+			// 日期确定
+			confirmdate(e) {
+				this.showcalendar = false
+				console.log(e)
+				this.backlogForm.datetime = e
+			},
+			// 类别确定
+			confirmtype(e) {
+				this.showtypepicker = false
+				console.log(e.value)
+				this.backlogForm.classvalue = e.value
 			}
 		},
 
@@ -538,7 +577,7 @@
 		font-size: 23px;
 		font-weight: bold;
 	}
-	
+
 	::v-deep .u-popup__content {
 		padding: 30rpx;
 	}
@@ -701,12 +740,12 @@
 		height: 48rpx;
 		margin-left: 30rpx;
 	}
-	
+
 	.allbtns {
 		margin-top: 16rpx;
 		display: flex;
 	}
-	
+
 	::v-deep .u-empty {
 		margin-top: -80rpx !important;
 	}
@@ -714,9 +753,8 @@
 	::v-deep .u-empty__text {
 		margin-top: -80rpx !important;
 	}
-	
+
 	::v-deep .u-popup__content {
 		opacity: 0.9 !important;
 	}
-	
 </style>
