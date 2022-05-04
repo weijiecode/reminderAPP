@@ -60,7 +60,7 @@
 								class="swipe-action__content">
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
-									<text class="swipe-action__content__text">{{todaymd}}</text>
+									<text class="swipe-action__content__text">{{item.datetime}}</text>
 								</view>
 								<view id="doneicon" class="t-icon t-icon-lifedone-copy"></view>
 							</view>
@@ -68,7 +68,7 @@
 								<view style="background-color:#7766E7;" class="line"></view>
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
-									<text class="swipe-action__content__text">{{todaymd}}</text>
+									<text class="swipe-action__content__text">{{item.datetime}}</text>
 								</view>
 							</view>
 						</view>
@@ -85,7 +85,7 @@
 								class="swipe-action__content">
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
-									<text class="swipe-action__content__text">{{todaymd}}</text>
+									<text class="swipe-action__content__text">{{item.datetime}}</text>
 								</view>
 								<view id="doneicon" class="t-icon t-icon-workdone-copy"></view>
 							</view>
@@ -93,7 +93,7 @@
 								<view style="background-color:#518BF1;" class="line"></view>
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
-									<text class="swipe-action__content__text">{{todaymd}}</text>
+									<text class="swipe-action__content__text">{{item.datetime}}</text>
 								</view>
 							</view>
 						</view>
@@ -110,7 +110,7 @@
 								class="swipe-action__content">
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
-									<text class="swipe-action__content__text">{{todaymd}}</text>
+									<text class="swipe-action__content__text">{{item.datetime}}</text>
 								</view>
 								<view id="doneicon" class="t-icon t-icon-studydone-copy"></view>
 							</view>
@@ -118,7 +118,7 @@
 								<view style="background-color:#FFCD00;" class="line"></view>
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
-									<text class="swipe-action__content__text">{{todaymd}}</text>
+									<text class="swipe-action__content__text">{{item.datetime}}</text>
 								</view>
 							</view>
 						</view>
@@ -135,7 +135,7 @@
 								class="swipe-action__content">
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
-									<text class="swipe-action__content__text">{{todaymd}}</text>
+									<text class="swipe-action__content__text">{{item.datetime}}</text>
 								</view>
 								<view id="doneicon" class="t-icon t-icon-healthdone-copy"></view>
 							</view>
@@ -143,7 +143,7 @@
 								<view style="background-color:#1DBD84;" class="line"></view>
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
-									<text class="swipe-action__content__text">{{todaymd}}</text>
+									<text class="swipe-action__content__text">{{item.datetime}}</text>
 								</view>
 							</view>
 						</view>
@@ -160,7 +160,7 @@
 								class="swipe-action__content">
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
-									<text class="swipe-action__content__text">{{todaymd}}</text>
+									<text class="swipe-action__content__text">{{item.datetime}}</text>
 								</view>
 								<view id="doneicon" class="t-icon t-icon-socialdone-copy"></view>
 							</view>
@@ -168,7 +168,7 @@
 								<view style="background-color:#FE738A;" class="line"></view>
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
-									<text class="swipe-action__content__text">{{todaymd}}</text>
+									<text class="swipe-action__content__text">{{item.datetime}}</text>
 								</view>
 							</view>
 						</view>
@@ -185,7 +185,7 @@
 								class="swipe-action__content">
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
-									<text class="swipe-action__content__text">{{todaymd}}</text>
+									<text class="swipe-action__content__text">{{item.datetime}}</text>
 								</view>
 								<view id="doneicon" class="t-icon t-icon-otherdone-copy"></view>
 							</view>
@@ -193,7 +193,7 @@
 								<view style="background-color:#C4C4C4;" class="line"></view>
 								<view class="itemcontent">
 									<text id="textone" class="swipe-action__content__text">{{item.contents}}</text>
-									<text class="swipe-action__content__text">{{todaymd}}</text>
+									<text class="swipe-action__content__text">{{item.datetime}}</text>
 								</view>
 							</view>
 						</view>

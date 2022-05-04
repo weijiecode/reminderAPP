@@ -61,28 +61,47 @@
 				</view>
 			</view>
 		</view>
+		<!-- 消息提示 -->
+		<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
 		<!-- 新建按钮 -->
-		<view @click="shownewbacklog=true" id="addbacklog" class="t-icon t-icon-tianjia"></view>
+		<view @click="shownewbacklog=true" id="addbacklog" class="t-icon t-icon-add"></view>
 		<!-- 新建待办 -->
 		<view class="newbacklog">
-			<u-popup :show="shownewbacklog" :round="10" mode="bottom" @close="close" @open="open">
-				<view style="height: 300rpx;">
+			<u-popup :show="shownewbacklog" :round="10" mode="bottom" @close="shownewbacklog=false">
+				<view style="height: 360rpx;">
 					<u--input v-model="backlogForm.contents" placeholder="把事情记录下来~" border="bottom" maxlength="30"
 						clearable :focus="true"></u--input>
 					<view class="allbtns">
 						<!-- 日历按钮 -->
-						<u-icon @click="showcalendar=true" class="dateicon" name="clock-fill" color="#aaa" size="24">
-						</u-icon>
+						<view @click="showcalendar=true" class="iconbtn t-icon t-icon-riqi"></view>
 						<!-- 日历显示器 -->
-						<u-calendar :show="showcalendar" @confirm="confirmdate" @close="showcalendar=false"></u-calendar>
+						<u-calendar closeOnClickOverlay monthNum="10" :show="showcalendar" @confirm="confirmdate"
+							@close="showcalendar=false">
+						</u-calendar>
+						<!-- 时间按钮 -->
+						<view @click="showdatetime=true" class="iconbtn t-icon t-icon-shijian"></view>
+						<!-- 时间显示器 -->
+						<u-datetime-picker :show="showdatetime" mode="time" closeOnClickOverlay
+							@confirm="confirmdatetime" @cancel="showdatetime=false" @close="showdatetime=false">
+						</u-datetime-picker>
 						<!-- 类别按钮 -->
-						<view class="typestyle">
-							<view @click="showtypepicker=true" class="t-icon t-icon-life"></view>
-							<view>{{backlogForm.classvalue}}</view>
+						<view style="float: none;" @click="showtypepicker=true" class="iconbtn t-icon t-icon-leibie">
 						</view>
 						<!-- 类别选择器 -->
-						<u-picker showLunar @confirm="confirmtype" :show="showtypepicker" :columns="columns" @cancel="showtypepicker=false"></u-picker>
-						<u-icon class="dateicon" name="clock-fill" color="#aaa" size="24"></u-icon>
+						<u-picker closeOnClickOverlay showLunar @confirm="confirmtype" :show="showtypepicker"
+							:columns="columns" keyName="name" @cancel="showtypepicker=false"
+							@close="showtypepicker=false"></u-picker>
+					</view>
+					<view class="choosedata">
+						<u-tag :show="tagshow1" @close="tagclose1" color="#4f4f4f" borderColor="#7766E7"
+							:text="datebacklog" type="success" plain size="large" closable></u-tag>
+						<u-tag :show="tagshow2" @close="tagclose2" color="#4f4f4f" borderColor="#7766E7"
+							:text="timebacklog" type="success" plain size="large" closable></u-tag>
+						<u-tag :show="tagshow3" @close="tagclose3" color="#4f4f4f" borderColor="#7766E7"
+							:text="backlogForm.name" type="success" plain size="large" closable></u-tag>
+					</view>
+					<view class="bottomadd">
+						<view @click="addbacklog" class="addbtn t-icon t-icon-tianjia2"></view>
 					</view>
 				</view>
 			</u-popup>
@@ -295,11 +314,61 @@
 				shownewbacklog: false,
 				// 日历显示
 				showcalendar: false,
+				// 时间显示
+				showdatetime: false,
 				// 分类选择显示
 				showtypepicker: false,
 				// 类别
 				columns: [
-					['生活', '工作', '学习', '健康', '社交', '其它']
+					[{
+						name: "生活",
+						names: {
+							cvalue: "#icon-life",
+							cbg: "#7766E7",
+							cname: "生活"
+						},
+						classvalue: "#icon-life"
+					}, {
+						name: "工作",
+						names: {
+							cvalue: "#icon-work",
+							cbg: "#518BF1",
+							cname: "工作"
+						},
+						classvalue: "#icon-work"
+					}, {
+						name: "学习",
+						names: {
+							cvalue: "#icon-study",
+							cbg: "#FFCD00",
+							cname: "学习"
+						},
+						classvalue: "#icon-study"
+					}, {
+						name: "健康",
+						names: {
+							cvalue: "#icon-health",
+							cbg: "#1DBD84",
+							cname: "健康"
+						},
+						classvalue: "#icon-health"
+					}, {
+						name: "社交",
+						names: {
+							cvalue: "#icon-social",
+							cbg: "#FE738A",
+							cname: "社交"
+						},
+						classvalue: "#icon-social"
+					}, {
+						name: "其它",
+						names: {
+							cvalue: "#icon-other",
+							cbg: "#C4C4C4",
+							cname: "其它"
+						},
+						classvalue: "#icon-other"
+					}]
 				],
 				// 各分类统计
 				colorclass: {
@@ -329,9 +398,18 @@
 					contents: "",
 					datetime: "",
 					// 颜色分类 提交颜色类别的id
-					classvalue: "#icon-life",
-					colorbg: "#7766E7",
+					classvalue: "",
+					name: "",
+					colorbg: "",
 				},
+				// 临时日期（待拼接）
+				datebacklog: "",
+				// 临时时间（待拼接）
+				timebacklog: "",
+				// tag三个标签
+				tagshow1: false,
+				tagshow2: false,
+				tagshow3: false,
 				// storage所有分类待办事项
 				allbacklogstorage: {
 					alla: [],
@@ -488,25 +566,102 @@
 					url: "../backlog/allbacklog?type=" + t
 				})
 			},
-			open() {
-				// console.log('open');
-			},
-			close() {
-				this.shownewbacklog = false
-				// console.log('close');
-			},
 			// 日期确定
 			confirmdate(e) {
 				this.showcalendar = false
-				console.log(e)
-				this.backlogForm.datetime = e
+				this.datebacklog = e[0]
+				this.tagshow1 = true
+				console.log(this.datebacklog)
+			},
+			// 时间确定
+			confirmdatetime(e) {
+				this.showdatetime = false
+				this.timebacklog = e.value
+				this.tagshow2 = true
+				console.log(this.timebacklog)
 			},
 			// 类别确定
 			confirmtype(e) {
+				console.log(e)
 				this.showtypepicker = false
-				console.log(e.value)
-				this.backlogForm.classvalue = e.value
-			}
+				this.backlogForm.classvalue = e.value[0].names.cvalue
+				this.backlogForm.colorbg = e.value[0].names.cbg
+				this.backlogForm.name = e.value[0].name
+				this.tagshow3 = true
+			},
+			// 三个tag的关闭
+			tagclose1() {
+				this.tagshow1 = false
+				this.datebacklog = ""
+			},
+			tagclose2() {
+				this.tagshow2 = false
+				this.timebacklog = ""
+			},
+			tagclose3() {
+				this.tagshow3 = false
+				this.backlogForm.name = ""
+			},
+			// 提交待办事项
+			async addbacklog() {
+				if (this.backlogForm.contents == "") {
+					this.$refs.uToast.show({
+						type: 'error',
+						icon: false,
+						message: "请填写待办内容后再添加待办",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
+					})
+				} else {
+					if (this.datebacklog == "" || this.backlogForm.name == "") {
+						this.$refs.uToast.show({
+							type: 'error',
+							icon: false,
+							message: "请选择日期或分类",
+							iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
+						})
+					} else {
+						// 拼接日期时间
+						this.backlogForm.datetime = this.datebacklog + " " + this.timebacklog
+						// console.log(this.backlogForm.contents)
+						// console.log(this.backlogForm.datetime)
+						// console.log(this.backlogForm.classvalue)
+						// console.log(this.backlogForm.colorbg)
+						const {
+							data: res
+						} = await this.$http({
+							url: "backlog/insertbacklog",
+							method: "POST",
+							data: {
+								contents: this.backlogForm.contents,
+								datetime: this.backlogForm.datetime,
+								classvalue: this.backlogForm.classvalue,
+								colorbg: this.backlogForm.colorbg,
+							}
+						})
+						if (res.code == 200) {
+							// 更新数据
+							this.getbacklog()
+							// 初始化
+							this.backlogForm.contents = ""
+							this.backlogForm.datetime = ""
+							this.backlogForm.classvalue = ""
+							this.backlogForm.name = ""
+							this.backlogForm.colorbg = ""
+							this.datebacklog = ""
+							this.timebacklog = ""
+							this.shownewbacklog = false
+							this.$refs.uToast.show({
+								type: 'success',
+								duration: 1000,
+								message: "添加成功",
+								iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/success.png'
+							})
+						}
+					}
+				}
+
+			},
+
 		},
 
 	}
@@ -526,8 +681,8 @@
 	}
 
 	#addbacklog {
-		width: 150rpx;
-		height: 150rpx;
+		width: 120rpx;
+		height: 120rpx;
 		z-index: 99;
 		position: fixed;
 		bottom: 140rpx;
@@ -535,6 +690,11 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+
+	.addbtn {
+		width: 100rpx;
+		height: 100rpx;
 	}
 
 	.flage {
@@ -582,6 +742,18 @@
 		padding: 30rpx;
 	}
 
+	.iconbtn {
+		width: 40rpx;
+		height: 40rpx;
+		float: left;
+		margin-right: 60rpx;
+	}
+
+	.choosedata {
+		display: flex;
+		margin-top: 20rpx;
+	}
+
 	.rightdatetime {
 		margin-top: 62rpx;
 		float: right;
@@ -608,6 +780,13 @@
 		justify-content: inherit;
 		align-items: center;
 	}
+
+	.bottomadd {
+		display: flex;
+		justify-content: center;
+		margin-top: 40rpx;
+	}
+
 
 	.iscolumn {
 		background-color: #7364e3;
@@ -742,9 +921,9 @@
 	}
 
 	.allbtns {
-		margin-top: 16rpx;
-		display: flex;
+		margin-top: 20rpx;
 	}
+
 
 	::v-deep .u-empty {
 		margin-top: -80rpx !important;

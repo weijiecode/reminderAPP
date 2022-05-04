@@ -134,9 +134,9 @@
 				"iconPath": "static/tabbar/mycenter.png",
 				"selectedIconPath": "static/tabbar/mycenter1.png"
 			}
-		],
+		], 
 		"borderStyle": "black",
 		"backgroundColor": "#F8F8FB",
-		"selectedColor": "#B1A9EF"
+		"selectedColor": "#7766E7"
 	}
 }
