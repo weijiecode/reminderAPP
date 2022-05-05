@@ -3,5 +3,7 @@
   "enablePullDownRefresh": false,
   "navigationBarTextStyle": "black",
   "backgroundColor": "#F8F8FB",
-  "usingComponents": {}
+  "usingComponents": {
+    "submemorial": "/components/submemorial"
+  }
 }

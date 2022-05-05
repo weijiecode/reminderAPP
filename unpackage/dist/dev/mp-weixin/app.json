@@ -9,7 +9,8 @@
     "pages/private/private",
     "pages/mycenter/submycenter",
     "pages/backlog/backlog",
-    "pages/backlog/allbacklog"
+    "pages/backlog/allbacklog",
+    "pages/memorial/memorial"
   ],
   "subPackages": [],
   "window": {

@@ -102,6 +102,16 @@
             }
             
         }
+        ,{
+            "path" : "pages/memorial/memorial",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+				"navigationBarTextStyle": "black",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom" ,// 去掉小程顶部的导航

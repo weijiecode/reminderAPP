@@ -75,29 +75,29 @@
 						<!-- 日历按钮 -->
 						<view @click="showcalendar=true" class="iconbtn t-icon t-icon-riqi"></view>
 						<!-- 日历显示器 -->
-						<u-calendar closeOnClickOverlay monthNum="10" :show="showcalendar" @confirm="confirmdate"
+						<u-calendar color="#7766E7" closeOnClickOverlay monthNum="10" :show="showcalendar" @confirm="confirmdate"
 							@close="showcalendar=false">
 						</u-calendar>
 						<!-- 时间按钮 -->
 						<view @click="showdatetime=true" class="iconbtn t-icon t-icon-shijian"></view>
 						<!-- 时间显示器 -->
-						<u-datetime-picker :show="showdatetime" mode="time" closeOnClickOverlay
+						<u-datetime-picker confirmColor="#7766E7" :show="showdatetime" mode="time" closeOnClickOverlay
 							@confirm="confirmdatetime" @cancel="showdatetime=false" @close="showdatetime=false">
 						</u-datetime-picker>
 						<!-- 类别按钮 -->
 						<view style="float: none;" @click="showtypepicker=true" class="iconbtn t-icon t-icon-leibie">
 						</view>
 						<!-- 类别选择器 -->
-						<u-picker closeOnClickOverlay showLunar @confirm="confirmtype" :show="showtypepicker"
+						<u-picker confirmColor="#7766E7" closeOnClickOverlay showLunar @confirm="confirmtype" :show="showtypepicker"
 							:columns="columns" keyName="name" @cancel="showtypepicker=false"
 							@close="showtypepicker=false"></u-picker>
 					</view>
 					<view class="choosedata">
-						<u-tag :show="tagshow1" @close="tagclose1" color="#4f4f4f" borderColor="#7766E7"
+						<u-tag v-if="datebacklog!=''" :show="tagshow1" @close="tagclose1" color="#4f4f4f" borderColor="#7766E7"
 							:text="datebacklog" type="success" plain size="large" closable></u-tag>
-						<u-tag :show="tagshow2" @close="tagclose2" color="#4f4f4f" borderColor="#7766E7"
+						<u-tag v-if="timebacklog!=''" :show="tagshow2" @close="tagclose2" color="#4f4f4f" borderColor="#7766E7"
 							:text="timebacklog" type="success" plain size="large" closable></u-tag>
-						<u-tag :show="tagshow3" @close="tagclose3" color="#4f4f4f" borderColor="#7766E7"
+						<u-tag v-if="backlogForm.name!=''" :show="tagshow3" @close="tagclose3" color="#4f4f4f" borderColor="#7766E7"
 							:text="backlogForm.name" type="success" plain size="large" closable></u-tag>
 					</view>
 					<view class="bottomadd">
@@ -571,14 +571,14 @@
 				this.showcalendar = false
 				this.datebacklog = e[0]
 				this.tagshow1 = true
-				console.log(this.datebacklog)
+				// console.log(this.datebacklog)
 			},
 			// 时间确定
 			confirmdatetime(e) {
 				this.showdatetime = false
 				this.timebacklog = e.value
 				this.tagshow2 = true
-				console.log(this.timebacklog)
+				// console.log(this.timebacklog)
 			},
 			// 类别确定
 			confirmtype(e) {

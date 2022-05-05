@@ -1,0 +1,61 @@
+
+.content {
+	height: 100%;
+	overflow: hidden;
+}
+.topback {
+	left: 40rpx;
+	position: fixed;
+	width: 140rpx;
+}
+.topback1 {
+	top: 60rpx;
+	left: 40rpx;
+	position: fixed;
+	width: 140rpx;
+}
+.title {
+	margin-top: 60rpx;
+	text-align: center;
+	font-size: larger;
+}
+#typetop {
+	width: 38rpx;
+	height: 38rpx;
+}
+.btnsty {
+	background-color: rgb(119, 102, 231);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 60rpx;
+	height: 60rpx;
+	border-radius: 50%;
+}
+.btnsty1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 60rpx;
+	height: 60rpx;
+	border-radius: 50%;
+}
+.allbtnsty {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.allitem {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	
+	height: 1800px;
+	width: 100%;
+}
+
+
+
+
+
