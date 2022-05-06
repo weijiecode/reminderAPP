@@ -139,7 +139,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 36));
 
 
 
@@ -211,79 +211,63 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var Submemorial = function Submemorial() {__webpack_require__.e(/*! require.ensure | components/submemorial */ "components/submemorial").then((function () {return resolve(__webpack_require__(/*! ../../components/submemorial.vue */ 288));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { mixins: [_mixin.getstatusBarHeight], components: { Submemorial: Submemorial }, created: function created() {}, onReady: function onReady() {var _this = this;uni.createSelectorQuery().in(this).select(".listcontent").boundingClientRect(function (data) {_this.topheight = "calc(100% - " + data.top + "px)";}).exec();}, data: function data() {return { // 类型显示
-      showtype: 0, // 距离top高度
-      topheight: "" };}, methods: {} };exports.default = _default;
+var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var Submemorial = function Submemorial() {__webpack_require__.e(/*! require.ensure | components/submemorial */ "components/submemorial").then((function () {return resolve(__webpack_require__(/*! ../../components/submemorial.vue */ 290));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+{
+
+  mixins: [_mixin.getstatusBarHeight],
+
+  components: {
+    Submemorial: Submemorial },
+
+  created: function created() {},
+  onShow: function onShow() {
+    this.getmemorial();
+  },
+  onReady: function onReady() {var _this = this;
+    uni.createSelectorQuery().in(this).select(".listcontent").boundingClientRect(function (data) {
+      _this.topheight = "calc(100% - " + data.top + "px)";
+    }).
+    exec();
+  },
+  data: function data() {
+    return {
+      // 类型显示
+      showtype: 0,
+      // 距离top高度
+      topheight: "",
+      // 用户纪念日数据
+      memorialdata: [] };
+
+  },
+  methods: {
+    // 获取用户所有纪念日数据
+    getmemorial: function getmemorial() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$_this2$$http, res, nowTIme;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this2.$http({
+                    url: "memorial/usermemorial",
+                    method: "POST" }));case 2:_yield$_this2$$http = _context.sent;res = _yield$_this2$$http.data;
+
+                // console.log(res)
+                if (res.code == '200') {
+                  nowTIme = new Date();
+                  _this2.memorialdata = res.data;
+                  _this2.memorialdata.forEach(function (item, index) {
+                    var setTime = new Date(item.datetime);
+                    _this2.memorialdata[index].nums = parseInt((setTime.getTime() - nowTIme.getTime()) / (60 * 60 * 24 * 1000));
+                  });
+                } else {
+                  _this2.$refs.uToast.show({
+                    type: 'error',
+                    icon: false,
+                    message: "纪念日数据获取失败",
+                    iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png' });
+
+                }case 5:case "end":return _context.stop();}}}, _callee);}))();
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

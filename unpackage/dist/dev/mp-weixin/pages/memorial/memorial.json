@@ -2,5 +2,15 @@
   "navigationBarTitleText": "",
   "navigationBarTextStyle": "black",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "u-divider": "/uni_modules/uview-ui/components/u-divider/u-divider",
+    "u-toast": "/uni_modules/uview-ui/components/u-toast/u-toast",
+    "u-popup": "/uni_modules/uview-ui/components/u-popup/u-popup",
+    "u--input": "/uni_modules/uview-ui/components/u--input/u--input",
+    "u-datetime-picker": "/uni_modules/uview-ui/components/u-datetime-picker/u-datetime-picker",
+    "u-tag": "/uni_modules/uview-ui/components/u-tag/u-tag",
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "u-modal": "/uni_modules/uview-ui/components/u-modal/u-modal"
+  }
 }

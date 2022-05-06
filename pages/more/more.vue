@@ -54,7 +54,7 @@
 		<view v-show="showtype==0" class="listcontent" :style="{height: topheight,overflow: 'auto'}">
 			<view class="allitem">
 				<!-- 纪念日 -->
-				<Submemorial></Submemorial>
+				<Submemorial :memorialdata="memorialdata"></Submemorial>
 			</view>
 		</view>
 		<!-- 类型2 -->
@@ -84,6 +84,9 @@
 			Submemorial
 		},
 		created() {},
+		onShow() {
+			this.getmemorial()
+		},
 		onReady() {
 			uni.createSelectorQuery().in(this).select(".listcontent").boundingClientRect((data) => {
 					this.topheight = "calc(100% - " + data.top + "px)";
@@ -96,10 +99,34 @@
 				showtype: 0,
 				// 距离top高度
 				topheight: "",
+				// 用户纪念日数据
+				memorialdata: []
 			}
 		},
 		methods: {
-
+			// 获取用户所有纪念日数据
+			async getmemorial() {
+				const { data:res } = await this.$http({
+					url: "memorial/usermemorial",
+					method: "POST"
+				})
+				// console.log(res)
+				if(res.code == '200') {
+					let nowTIme = new Date();
+					this.memorialdata = res.data
+					this.memorialdata.forEach((item,index) => {
+						let setTime = new Date(item.datetime)
+						this.memorialdata[index].nums = parseInt((setTime.getTime() - nowTIme.getTime()) / (60*60*24*1000))
+					})
+				}else {
+					this.$refs.uToast.show({
+						type: 'error',
+						icon: false,
+						message: "纪念日数据获取失败",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
+					})
+				}
+			}
 		}
 	}
 </script>

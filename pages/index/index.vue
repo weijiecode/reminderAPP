@@ -64,7 +64,7 @@
 		<!-- 消息提示 -->
 		<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
 		<!-- 新建按钮 -->
-		<view @click="shownewbacklog=true" id="addbacklog" class="t-icon t-icon-add"></view>
+		<view @click="shownewbacklog=true" class="addbacklog t-icon t-icon-add"></view>
 		<!-- 新建待办 -->
 		<view class="newbacklog">
 			<u-popup :show="shownewbacklog" :round="10" mode="bottom" @close="shownewbacklog=false">
@@ -310,7 +310,7 @@
 				wHeight: "",
 				// 距离top高度
 				topheight: "",
-				// 新建待办清单
+				// 新建待办清单弹窗
 				shownewbacklog: false,
 				// 日历显示
 				showcalendar: false,
@@ -680,7 +680,7 @@
 		align-items: center;
 	}
 
-	#addbacklog {
+	.addbacklog {
 		width: 120rpx;
 		height: 120rpx;
 		z-index: 99;
@@ -736,10 +736,6 @@
 		margin-left: 60rpx;
 		font-size: 23px;
 		font-weight: bold;
-	}
-
-	::v-deep .u-popup__content {
-		padding: 30rpx;
 	}
 
 	.iconbtn {
@@ -935,5 +931,9 @@
 
 	::v-deep .u-popup__content {
 		opacity: 0.9 !important;
+	}
+	
+	::v-deep .u-popup__content {
+		padding: 30rpx;
 	}
 </style>

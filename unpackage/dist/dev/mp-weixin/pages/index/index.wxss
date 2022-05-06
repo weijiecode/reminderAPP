@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
 }
-#addbacklog.data-v-57280228 {
+.addbacklog.data-v-57280228 {
   width: 120rpx;
   height: 120rpx;
   z-index: 99;
@@ -71,9 +71,6 @@
   margin-left: 60rpx;
   font-size: 23px;
   font-weight: bold;
-}
-.data-v-57280228 .u-popup__content {
-  padding: 30rpx;
 }
 .iconbtn.data-v-57280228 {
   width: 40rpx;
@@ -239,5 +236,8 @@
 }
 .data-v-57280228 .u-popup__content {
   opacity: 0.9 !important;
+}
+.data-v-57280228 .u-popup__content {
+  padding: 30rpx;
 }
 

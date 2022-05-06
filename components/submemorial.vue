@@ -17,64 +17,35 @@
 			</view>
 		</view>
 		<view class="twoblock">
-			<view class="subcontent">
+			<view v-for="item in memorialdata" :key="item.id" class="subcontent">
 				<view class="subcontentl">
-					距&nbsp;测试测试1
+					距&nbsp;{{item.content}}
 				</view>
 				<view class="subcontentr">
-					还有<view class="subcontentrtext">25</view>天
-				</view>
-			</view>
-			<view class="subcontent">
-				<view class="subcontentl">
-					距&nbsp;测试测试2
-				</view>
-				<view class="subcontentr">
-					还有<view class="subcontentrtext">25</view>天
-				</view>
-			</view>
-			<view class="subcontent">
-				<view class="subcontentl">
-					距&nbsp;测试测试3
-				</view>
-				<view class="subcontentr">
-					还有<view class="subcontentrtext">25</view>天
-				</view>
-			</view>
-			<view class="subcontent">
-				<view class="subcontentl">
-					距&nbsp;测试测试4
-				</view>
-				<view class="subcontentr">
-					还有<view class="subcontentrtext">25</view>天
-				</view>
-			</view>
-			<view class="subcontent">
-				<view class="subcontentl">
-					距&nbsp;测试测试5
-				</view>
-				<view class="subcontentr">
-					还有<view class="subcontentrtext">25</view>天
+					还有<view class="subcontentrtext">{{item.nums}}</view>天
 				</view>
 			</view>
 		</view>
+		<!-- 消息提示 -->
+		<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
 	</view>
 </template>
 
 <script>
 	export default {
+		props: ["memorialdata"],
 		name: "submemorial",
 		data() {
 			return {
-
 			};
 		},
 		methods: {
+			// 跳转纪念日详情页面
 			memorialpage() {
 				uni.navigateTo({
 					url: "../../pages/memorial/memorial"
 				})
-			}
+			},
 		}
 	}
 </script>
@@ -120,11 +91,11 @@
 	}
 
 	.onetitle {
-		font-size: 18px;
+		font-size: 16px;
 	}
 
 	.twotitle {
-		font-size: 14px;
+		font-size: 12px;
 		color: #aaa;
 		margin-top: 14rpx;
 	}
@@ -141,6 +112,7 @@
 	}
 
 	.subcontent {
+		font-size: 15px;
 		display: flex;
 		align-items: center;
 		height: 80rpx;

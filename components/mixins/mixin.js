@@ -60,6 +60,8 @@ export const getstatusBarHeight = {
 		return {
 			statusBarHeight: 0,
 			titleBarHeight: 0,
+			alltop: "",
+			unalltop: ""
 		}
 	},
 	onLoad() {
@@ -70,8 +72,11 @@ export const getstatusBarHeight = {
 	onReady() {
 		this.titleBarHeight = (uni.getMenuButtonBoundingClientRect().top - this.statusBarHeight) * 2 +
 			uni.getMenuButtonBoundingClientRect().height;
+			this.alltop = this.statusBarHeight+this.titleBarHeight+'px'
+			this.unalltop = 'calc(100% - '+this.alltop+')'
 			this.statusBarHeight = this.statusBarHeight + 'px'
 			this.titleBarHeight = this.titleBarHeight + 'px'
+			// console.log(this.alltop)
 			// console.log(this.statusBarHeight)
 			// console.log(this.titleBarHeight)
 	},
