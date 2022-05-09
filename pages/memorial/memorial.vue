@@ -3,7 +3,7 @@
 		<!-- #ifdef MP-WEIXIN -->
 		<view :style="{paddingTop: statusBarHeight}">
 			<view :style="{height: titleBarHeight, display: 'flex',alignItems: 'center',paddingLeft: '40rpx'}">
-				<span @click="backmycenter" id="backtop" class="t-icon t-icon-fanhui2"></span>
+				<span @click="backmycenter" class="t-icon t-icon-fanhui2"></span>
 				<view style="padding-right: 80rpx;margin: 0 auto;" class="title">
 					纪念日
 				</view>
@@ -13,7 +13,7 @@
 		<!-- #ifndef MP-WEIXIN -->
 		<view class="topback">
 			<!-- <u-icon size="25" @click="backmycenter" name="arrow-left"></u-icon> -->
-			<span @click="backmycenter" id="backtop" class="t-icon t-icon-fanhui2"></span>
+			<span @click="backmycenter" class="t-icon t-icon-fanhui2"></span>
 		</view>
 		<view class="title">
 			纪念日
@@ -102,8 +102,8 @@
 						<u-icon @click="showconfirm=true" name="trash" color="#fe738a" size="28"></u-icon>
 					</view>
 					<!-- 确认提示框 -->
-					<u-modal content="你确认删除该条纪念日吗？" :show="showconfirm" showCancelButton closeOnClickOverlay @confirm="delconfirm"
-						@cancel="showconfirm=false" @close="showconfirm=false"></u-modal>
+					<u-modal content="你确认删除该条纪念日吗？" :show="showconfirm" showCancelButton closeOnClickOverlay
+						@confirm="delconfirm" @cancel="showconfirm=false" @close="showconfirm=false"></u-modal>
 				</view>
 			</u-popup>
 		</view>
@@ -183,6 +183,8 @@
 							60 * 60 * 24 * 1000))
 					})
 					//console.log(this.memorialdata)
+				} else if (res.code == '201') {
+					this.memorialdata = ""
 				} else {
 					this.$refs.uToast.show({
 						type: 'error',
@@ -246,8 +248,9 @@
 								datetime: this.memorialForm.datetime
 							}
 						})
-						console.log(res)
+						// console.log(res)
 						if (res.code == '200') {
+							this.getmemorial()
 							this.memorialForm.content = ""
 							this.memorialForm.datetime = ""
 							this.shownewmemorial = false
@@ -311,7 +314,7 @@
 			},
 			// 删除纪念日
 			async delconfirm() {
-				this.showconfirm=false
+				this.showconfirm = false
 				const {
 					data: res
 				} = await this.$http({

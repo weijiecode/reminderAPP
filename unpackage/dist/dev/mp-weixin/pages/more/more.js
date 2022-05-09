@@ -211,7 +211,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var Submemorial = function Submemorial() {__webpack_require__.e(/*! require.ensure | components/submemorial */ "components/submemorial").then((function () {return resolve(__webpack_require__(/*! ../../components/submemorial.vue */ 290));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var Submemorial = function Submemorial() {__webpack_require__.e(/*! require.ensure | components/submemorial */ "components/submemorial").then((function () {return resolve(__webpack_require__(/*! ../../components/submemorial.vue */ 322));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Submemo = function Submemo() {__webpack_require__.e(/*! require.ensure | components/submemo */ "components/submemo").then((function () {return resolve(__webpack_require__(/*! ../../components/submemo */ 329));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Subdiary = function Subdiary() {__webpack_require__.e(/*! require.ensure | components/subdiary */ "components/subdiary").then((function () {return resolve(__webpack_require__(/*! ../../components/subdiary */ 336));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
 
 
 
@@ -222,11 +230,15 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
   mixins: [_mixin.getstatusBarHeight],
 
   components: {
-    Submemorial: Submemorial },
+    Submemorial: Submemorial,
+    Submemo: Submemo,
+    Subdiary: Subdiary },
 
   created: function created() {},
   onShow: function onShow() {
     this.getmemorial();
+    this.getmemo();
+    this.getdiary();
   },
   onReady: function onReady() {var _this = this;
     uni.createSelectorQuery().in(this).select(".listcontent").boundingClientRect(function (data) {
@@ -241,7 +253,24 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
       // 距离top高度
       topheight: "",
       // 用户纪念日数据
-      memorialdata: [] };
+      memorialdata: [],
+      // 用户备忘录数据
+      memodata: {
+        title: "",
+        content: "",
+        createdatetime: "",
+        nums: 0 },
+
+      // 用户日记数据
+      diarydata: {
+        // 日
+        onedatetime: "",
+        // 月
+        twodatetime: "",
+        // 数量
+        nums: 0,
+        content: "" } };
+
 
   },
   methods: {
@@ -259,7 +288,10 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
                     var setTime = new Date(item.datetime);
                     _this2.memorialdata[index].nums = parseInt((setTime.getTime() - nowTIme.getTime()) / (60 * 60 * 24 * 1000));
                   });
-                } else {
+                } else if (res.code == '201') {
+                  _this2.memorialdata = "";
+                } else
+                {
                   _this2.$refs.uToast.show({
                     type: 'error',
                     icon: false,
@@ -267,6 +299,76 @@ var _mixin = __webpack_require__(/*! ../../components/mixins/mixin.js */ 145);fu
                     iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png' });
 
                 }case 5:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    // 获取用户所有备忘录数据
+    getmemo: function getmemo() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _yield$_this3$$http, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _this3.$http({
+                    url: "memo/usermemo",
+                    method: "POST" }));case 2:_yield$_this3$$http = _context2.sent;res = _yield$_this3$$http.data;
+
+                // console.log(res)
+                if (res.code == '200') {
+                  _this3.memodata.title = res.data[0].title;
+                  _this3.memodata.content = res.data[0].content;
+                  _this3.memodata.createdatetime = res.data[0].createdatetime.split(":")[0] + ":" + res.data[0].createdatetime.split(":")[1];
+                  _this3.memodata.nums = res.data.length;
+                } else if (res.code == '201') {
+                  _this3.memodata.title = "";
+                  _this3.memodata.content = "";
+                  _this3.memodata.createdatetime = "";
+                  _this3.memodata.nums = 0;
+                } else
+                {
+                  _this3.$refs.uToast.show({
+                    type: 'error',
+                    icon: false,
+                    message: "备忘录数据获取失败",
+                    iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png' });
+
+                }case 5:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+    // 获取用户所有日记数据
+    getdiary: function getdiary() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var _yield$_this4$$http, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
+                  _this4.$http({
+                    url: "diary/userdiary",
+                    method: "POST" }));case 2:_yield$_this4$$http = _context3.sent;res = _yield$_this4$$http.data;if (!(
+
+
+                res.code == '200')) {_context3.next = 39;break;}
+                // this.diarydata = res[0].data
+                _this4.diarydata.nums = res.data.length;
+                _this4.diarydata.content = res.data[0].content;
+                _this4.diarydata.onedatetime = res.data[0].datetime.split("-")[2].split(" ")[0];_context3.t0 =
+                res.data[0].datetime.split("-")[1];_context3.next = _context3.t0 ===
+                '01' ? 11 : _context3.t0 ===
+                '02' ? 13 : _context3.t0 ===
+                '03' ? 15 : _context3.t0 ===
+                '04' ? 17 : _context3.t0 ===
+                '05' ? 19 : _context3.t0 ===
+                '06' ? 21 : _context3.t0 ===
+                '07' ? 23 : _context3.t0 ===
+                '08' ? 25 : _context3.t0 ===
+                '09' ? 27 : _context3.t0 ===
+                '10' ? 29 : _context3.t0 ===
+                '11' ? 31 : _context3.t0 ===
+                '12' ? 33 : 35;break;case 11:_this4.diarydata.twodatetime = '一月';return _context3.abrupt("break", 36);case 13:_this4.diarydata.twodatetime = '二月';return _context3.abrupt("break", 36);case 15:_this4.diarydata.twodatetime = '三月';return _context3.abrupt("break", 36);case 17:_this4.diarydata.twodatetime = '四月';return _context3.abrupt("break", 36);case 19:_this4.diarydata.twodatetime = '五月';return _context3.abrupt("break", 36);case 21:_this4.diarydata.twodatetime = '六月';return _context3.abrupt("break", 36);case 23:_this4.diarydata.twodatetime = '七月';return _context3.abrupt("break", 36);case 25:_this4.diarydata.twodatetime = '八月';return _context3.abrupt("break", 36);case 27:_this4.diarydata.twodatetime = '九月';return _context3.abrupt("break", 36);case 29:_this4.diarydata.twodatetime = '十月';return _context3.abrupt("break", 36);case 31:_this4.diarydata.twodatetime = '十一月';return _context3.abrupt("break", 36);case 33:_this4.diarydata.twodatetime = '十二月';return _context3.abrupt("break", 36);case 35:
+                console.log("wrong...");case 36:
+
+                console.log(_this4.diarydata);_context3.next = 40;break;case 39:
+                if (res.code == '201') {
+                  _this4.diarydata.onedatetime = "";
+                  _this4.diarydata.twodatetime = "";
+                  _this4.diarydata.content = "";
+                  _this4.diarydata.nums = 0;
+                } else
+                {
+                  _this4.$refs.uToast.show({
+                    type: 'error',
+                    icon: false,
+                    message: "备忘录数据获取失败",
+                    iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png' });
+
+                }case 40:case "end":return _context3.stop();}}}, _callee3);}))();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

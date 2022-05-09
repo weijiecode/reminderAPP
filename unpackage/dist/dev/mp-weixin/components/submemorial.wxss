@@ -28,9 +28,18 @@
 .memorial.data-v-6ac6699e {
   padding-top: 2rpx;
   margin-top: 40rpx;
-  border-radius: 10px;
+  border-radius: 15px;
   width: 640rpx;
   height: 420rpx;
+  background-color: #ffffff;
+  box-shadow: 5px 5px 10px #efeded;
+}
+.memorial1.data-v-6ac6699e {
+  padding-top: 2rpx;
+  margin-top: 40rpx;
+  border-radius: 15px;
+  width: 640rpx;
+  height: 280rpx;
   background-color: #ffffff;
   box-shadow: 5px 5px 10px #efeded;
 }

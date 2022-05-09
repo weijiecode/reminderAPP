@@ -21,7 +21,7 @@
 }
 #typetop {
 	width: 38rpx;
-	height: 38rpx;
+	height: 36rpx;
 }
 .btnsty {
 	background-color: rgb(119, 102, 231);

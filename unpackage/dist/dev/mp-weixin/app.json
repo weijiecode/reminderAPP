@@ -10,7 +10,12 @@
     "pages/mycenter/submycenter",
     "pages/backlog/backlog",
     "pages/backlog/allbacklog",
-    "pages/memorial/memorial"
+    "pages/memorial/memorial",
+    "pages/memo/memo",
+    "pages/memo/showmemo",
+    "pages/diary/diary",
+    "pages/diary/showdiary",
+    "pages/diary/adddiary"
   ],
   "subPackages": [],
   "window": {

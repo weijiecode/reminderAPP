@@ -2,13 +2,18 @@ export const datetimes = {
 	data() {
 		return {
 			todaydate: "",
+			todaydate1: "",
 			todaydatem: "",
 			today: "",
 			todaymd: "",
 			sevendate: "",
 			yeardate: "",
 			oldsevendate: "",
+			time: "",
 			hours: "",
+			minutes: "",
+			hmtime: "",
+			weekday: "",
 			week: []
 		}
 	},
@@ -20,8 +25,13 @@ export const datetimes = {
 		var date = data.getDate() <= 9 ? "0" + data.getDate() : data.getDate();
 		var sdate =
 			data.getDate() <= 1 ? "0" + (data.getDate() + 8) : data.getDate() + 8;
+		let hh = data.getHours();
+		let mf = data.getMinutes()<10 ? '0'+data.getMinutes() : data.getMinutes();
+		this.time = hh + ":" + mf
 		// 当天 年-月-日
 		this.todaydate = data.getFullYear() + "-" + month + "-" + date;
+		// 当天 年-月-日
+		this.todaydate1 = data.getFullYear() + "/" + month + "/" + date;
 		// 当天 月-日
 		this.todaymd = month + "-" + date;
 		// 当天 日
@@ -30,6 +40,10 @@ export const datetimes = {
 		this.todaydatem = data.getFullYear() + "-" + month;
 		// 当前小时
 		this.hours = data.getHours();
+		// 当前分钟
+		this.minutes = data.getMinutes();
+		// 当天 时：分
+		this.hmtime = this.hours + ":" + this.minutes
 		// 未来七天的日期
 		this.sevendate = data.getFullYear() + "-" + month + "-" + sdate;
 		// 今年的年份
@@ -44,6 +58,7 @@ export const datetimes = {
 		var new_Date = new Date()
 		var timesStamp = new_Date.getTime();
 		var currenDay = new_Date.getDay();
+		//console.log(currenDay)
 		var dates = [];
 		for (var i = 0; i < 7; i++) {
 			dates.push(new Date(timesStamp + 24 * 60 * 60 * 1000 * (i - (currenDay + 6) % 7)).toLocaleDateString()
@@ -51,6 +66,18 @@ export const datetimes = {
 			this.week[i] = dates[i].split('/')[2] <= 9 ? "0" + dates[i].split('/')[2] : dates[i].split('/')[2]
 		}
 		//console.log(this.week)   
+		// 周几
+		switch(currenDay) {
+			case 1: this.weekday = "周一";break;
+			case 2: this.weekday = "周二";break;
+			case 3: this.weekday = "周三";break;
+			case 4: this.weekday = "周四";break;
+			case 5: this.weekday = "周五";break;
+			case 6: this.weekday = "周六";break;
+			case 7: this.weekday = "周天";break;
+			default : console.log("error...")
+		}
+		//console.log(this.weekday)
 	},
 	methods: {}
 }

@@ -1,33 +1,63 @@
 <template>
-	<view class="memorial">
-		<view class="oneblock"  @click="memorialpage">
-			<view class="iconbg">
-				<span class="typeicon t-icon t-icon-jinianrix"></span>
-			</view>
-			<view class="memorialtitle">
-				<view class="onetitle">
-					纪念日
+	<view>
+		<view v-if="memorialdata.length > 0" class="memorial" :style="{height: memorialdata.length==1 ? '240rpx' : memorialdata.length==2 ? '320rpx' : '420rpx'}">
+			<view class="oneblock"  @click="memorialpage">
+				<view class="iconbg">
+					<span class="typeicon t-icon t-icon-jinianrix"></span>
 				</view>
-				<view class="twotitle">
-					有21个重要日子
+				<view class="memorialtitle">
+					<view class="onetitle">
+						纪念日
+					</view>
+					<view class="twotitle">
+						有{{memorialdata.length}}个重要日子
+					</view>
+				</view>
+				<view class="rightback">
+					<span class="backicon t-icon t-icon-xiangyou1"></span>
 				</view>
 			</view>
-			<view class="rightback">
-				<span class="backicon t-icon t-icon-xiangyou1"></span>
+			<view class="twoblock">
+				<view v-for="item in memorialdata" :key="item.id" class="subcontent">
+					<view class="subcontentl">
+						距&nbsp;{{item.content}}
+					</view>
+					<view class="subcontentr">
+						还有<view class="subcontentrtext">{{item.nums}}</view>天
+					</view>
+				</view>
 			</view>
+			<!-- 消息提示 -->
+			<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
 		</view>
-		<view class="twoblock">
-			<view v-for="item in memorialdata" :key="item.id" class="subcontent">
-				<view class="subcontentl">
-					距&nbsp;{{item.content}}
+		
+		<view v-if="memorialdata.length == 0" class="memorial1">
+			<view class="oneblock"  @click="memorialpage">
+				<view class="iconbg">
+					<span class="typeicon t-icon t-icon-jinianrix"></span>
 				</view>
-				<view class="subcontentr">
-					还有<view class="subcontentrtext">{{item.nums}}</view>天
+				<view class="memorialtitle">
+					<view class="onetitle">
+						纪念日
+					</view>
+					<view class="twotitle">
+						有0个重要日子
+					</view>
+				</view>
+				<view class="rightback">
+					<span class="backicon t-icon t-icon-xiangyou1"></span>
 				</view>
 			</view>
+			<view class="twoblock">
+				<view class="subcontent">
+					<view class="subcontentl">
+						暂未添加纪念日，点击添加吧~
+					</view>
+				</view>
+			</view>
+			<!-- 消息提示 -->
+			<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
 		</view>
-		<!-- 消息提示 -->
-		<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
 	</view>
 </template>
 
@@ -54,9 +84,18 @@
 	.memorial {
 		padding-top: 2rpx;
 		margin-top: 40rpx;
-		border-radius: 10px;
+		border-radius: 15px;
 		width: 640rpx;
 		height: 420rpx;
+		background-color: #ffffff;
+		box-shadow: 5px 5px 10px #efeded;
+	}
+	.memorial1 {
+		padding-top: 2rpx;
+		margin-top: 40rpx;
+		border-radius: 15px;
+		width: 640rpx;
+		height: 280rpx;
 		background-color: #ffffff;
 		box-shadow: 5px 5px 10px #efeded;
 	}

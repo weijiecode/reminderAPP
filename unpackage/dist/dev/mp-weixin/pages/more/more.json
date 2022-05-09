@@ -4,6 +4,8 @@
   "navigationBarTextStyle": "black",
   "backgroundColor": "#F8F8FB",
   "usingComponents": {
-    "submemorial": "/components/submemorial"
+    "submemorial": "/components/submemorial",
+    "submemo": "/components/submemo",
+    "subdiary": "/components/subdiary"
   }
 }

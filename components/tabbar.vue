@@ -3,7 +3,7 @@
 		<!-- #ifdef MP-WEIXIN -->
 		<view :style="{paddingTop: statusBarHeight}">
 			<view :style="{height: titleBarHeight, display: 'flex',alignItems: 'center',paddingLeft: '40rpx'}">
-				<span @click="backmycenter" id="backtop" class="t-icon t-icon-fanhui2"></span>
+				<span @click="backmycenter" class="t-icon t-icon-fanhui2"></span>
 				<view style="padding-right: 80rpx;margin: 0 auto;" class="title">
 					纪念日
 				</view>
@@ -13,7 +13,7 @@
 		<!-- #ifndef MP-WEIXIN -->
 		<view class="topback">
 			<!-- <u-icon size="25" @click="backmycenter" name="arrow-left"></u-icon> -->
-			<span @click="backmycenter" id="backtop" class="t-icon t-icon-fanhui2"></span>
+			<span @click="backmycenter" class="t-icon t-icon-fanhui2"></span>
 		</view>
 		<view class="title">
 			纪念日
