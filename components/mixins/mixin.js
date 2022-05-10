@@ -10,9 +10,6 @@ export const datetimes = {
 			yeardate: "",
 			oldsevendate: "",
 			time: "",
-			hours: "",
-			minutes: "",
-			hmtime: "",
 			weekday: "",
 			week: []
 		}
@@ -27,7 +24,6 @@ export const datetimes = {
 			data.getDate() <= 1 ? "0" + (data.getDate() + 8) : data.getDate() + 8;
 		let hh = data.getHours();
 		let mf = data.getMinutes()<10 ? '0'+data.getMinutes() : data.getMinutes();
-		this.time = hh + ":" + mf
 		// 当天 年-月-日
 		this.todaydate = data.getFullYear() + "-" + month + "-" + date;
 		// 当天 年-月-日
@@ -38,12 +34,8 @@ export const datetimes = {
 		this.today = date;
 		// 当月 月
 		this.todaydatem = data.getFullYear() + "-" + month;
-		// 当前小时
-		this.hours = data.getHours();
-		// 当前分钟
-		this.minutes = data.getMinutes();
 		// 当天 时：分
-		this.hmtime = this.hours + ":" + this.minutes
+		this.time = hh + ":" + mf
 		// 未来七天的日期
 		this.sevendate = data.getFullYear() + "-" + month + "-" + sdate;
 		// 今年的年份

@@ -21,7 +21,7 @@
 		<view class="listcontent" :style="{height: topheight,overflow: 'auto'}">
 			<view class="diarytitle">
 				<view class="diarytime">
-					{{todaydate1}}&nbsp;&nbsp;{{hmtime}}&nbsp;&nbsp;{{weekday}}
+					{{todaydate1}}&nbsp;&nbsp;{{time}}&nbsp;&nbsp;{{weekday}}
 				</view>
 				<view class="diaryweather">
 					<span v-if="showw==0" @click="showweather=true" class="t-icon t-icon-qing"></span>
@@ -75,9 +75,8 @@
 				topheight: "",
 				// 日记数据
 				diarydata: {
-					weather: "",
+					weather: "晴天",
 					content: "",
-					datetime: ""
 				},
 				// 天气选择器
 				showweather: false,
@@ -97,11 +96,45 @@
 			},
 			// 天气选择
 			selectweather(e) {
+				this.diarydata.weather = e.value[0]
 				this.showw = e.indexs[0]
 				this.showweather = false
 			},
 			// 提交日记
-			adddiary() {}
+			async adddiary() {
+				// console.log(this.diarydata.weather)
+				// console.log(this.diarydata.content)
+				const { data: res } = await this.$http({
+					url: "diary/adddiary",
+					method: "POST",
+					data: {
+						weather: this.diarydata.weather,
+						content: this.diarydata.content,
+						datetime: this.todaydate1+" "+this.time+" "+this.weekday
+					}
+				})
+				//console.log(res)
+				if(res.code == '200'){
+					setTimeout(()=>{
+						uni.navigateTo({
+							url: "./diary"
+						})
+					},1000)
+					this.$refs.uToast.show({
+						type: 'success',
+						duration: 1000,
+						message: "添加日记成功",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/success.png'
+					})
+				}else {
+					this.$refs.uToast.show({
+						type: 'error',
+						icon: false,
+						message: "添加日记失败",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
+					})
+				}
+			}
 		},
 	}
 </script>

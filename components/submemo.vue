@@ -20,7 +20,7 @@
 			<view v-if="memodata.nums > 0" class="twoblock">
 				<view class="subtitle">{{memodata.title}}</view>
 				<view class="subcontent">
-					{{memodata.createdatetime}} {{memodata.content}}
+					{{memodata.datetime}} {{memodata.content}}
 				</view>
 			</view>
 			<view v-if="memodata.nums == 0" class="twoblock">

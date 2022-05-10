@@ -74,7 +74,7 @@
 				// 距离top高度
 				topheight: "",
 				// 用户所有日记数据
-				diarydata: [],
+				diarydata: []
 			}
 		},
 		methods: {
@@ -102,9 +102,9 @@
 				if (res.code == '200') {
 					this.diarydata = res.data
 					this.diarydata.forEach((item, index) => {
-						this.diarydata[index].onedatetime = (res.data[index].datetime.split("-")[2]).split(
-							" ")[0]
-						switch (res.data[index].datetime.split("-")[1]) {
+						this.diarydata[index].onedatetime = (res.data[index].datetime.split(" ")[0]).split("/")[2]
+						// this.diarydata[index].twodatetime = res.data[index].datetime.split(" ")[1]
+						switch (res.data[index].datetime.split("/")[1]) {
 							case '01':
 								this.diarydata[index].twodatetime = '一月';
 								break;
@@ -144,8 +144,7 @@
 							default:
 								console.log("wrong...");
 						}
-						this.diarydata[index].threetime = res.data[index].datetime.split(":")[0] + ":" + res
-							.data[index].datetime.split(":")[1]
+						this.diarydata[index].threetime = res.data[index].datetime.split(" ")[2]
 					})
 					//console.log(this.diarydata)
 				} else if (res.code == '201') {
@@ -158,6 +157,13 @@
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
 					})
 				}
+			},
+			// 跳转详情页面
+			showmemopage(item){
+				console.log(item)
+				uni.navigateTo({
+					url: "./showdiary?data=" + JSON.stringify(item)
+				})
 			}
 		}
 	}

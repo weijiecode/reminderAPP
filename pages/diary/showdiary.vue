@@ -19,20 +19,31 @@
 		</view>
 		<!-- #endif -->
 		<view class="listcontent" :style="{height: topheight,overflow: 'auto'}">
-			<u--input maxlength="15" border="none" fontSize="25" v-model="diarydata.title" clearable></u--input>
-			<view class="diarytime">今天{{timename}} {{time}}</view>
+			<view class="diarytitle">
+				<view class="diarytime">
+					{{diarydata.datetime}}
+				</view>
+				<view class="diaryweather">
+					<span v-if="diarydata.weather=='晴天'" @click="showweather=true" class="t-icon t-icon-qing"></span>
+					<span v-if="diarydata.weather=='雨天'" @click="showweather=true" class="t-icon t-icon-zhongyu"></span>
+					<span v-if="diarydata.weather=='雷阵雨'" @click="showweather=true" class="t-icon t-icon-zhenyu"></span>
+					<span v-if="diarydata.weather=='阴天'" @click="showweather=true" class="t-icon t-icon-yintian"></span>
+					<span v-if="diarydata.weather=='多云'" @click="showweather=true" class="t-icon t-icon-duoyun"></span>
+					<span v-if="diarydata.weather=='大风'" @click="showweather=true" class="t-icon t-icon-feng"></span>
+					<span v-if="diarydata.weather=='雾天'" @click="showweather=true" class="t-icon t-icon-wuqi"></span>
+					<span v-if="diarydata.weather=='下雪'" @click="showweather=true" class="t-icon t-icon-xiaoxue"></span>
+				</view>
+			</view>
 			<u--textarea border="none" height="280" maxlength="255" v-model="diarydata.content" count></u--textarea>
-			<view class="subcontent">
-				<u-icon name="calendar" color="#aaa" size="25"></u-icon>{{diarydata.createdatetime}}
-				<u-icon @click="showconfirm=true" name="trash" color="#f50000" size="24"></u-icon>
-				<u-icon @click="updatediary" v-if="showupdate || showupdate1" name="checkbox-mark" color="#7766E7" size="28"></u-icon>
+			<view class="addicon">
+				<u-icon v-if="showupdate || showupdate1" @click="updatediary" name="checkbox-mark" color="#FFCD00" size="30"></u-icon>
 			</view>
 		</view>
 		<!-- 消息提示 -->
 		<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
-		<!-- 确认提示框 -->
-		<u-modal content="你确认删除该条日记吗？" :show="showconfirm" showCancelButton closeOnClickOverlay
-			@confirm="delconfirm" @cancel="showconfirm=false" @close="showconfirm=false"></u-modal>
+		<!-- 天气选择器 -->
+		<u-picker closeOnClickOverlay :show="showweather" @confirm="selectweather" :columns="columnsw" @cancel="showweather=false"
+			@close="showweather=false"></u-picker>
 	</view>
 </template>
 
@@ -56,22 +67,12 @@
 				})
 				.exec();
 		},
-		onShow() {
-			const t = this.time.split(':')[0]
-			if(t>=6 && t<11)this.timename = '上午'
-			if(t>=11 && t<17)this.timename = '下午'
-			if(t>=17 && t<19)this.timename = '傍晚'
-			if(t>=19 && t<24)this.timename = '晚上'
-			if(t>=9 && t<6)this.timename = '凌晨'
-			
-		},
 		onLoad(option) {
 			this.diarydata = JSON.parse(option.data)
 			this.loadcontent = this.diarydata.content
-			this.loadtitle = this.diarydata.title
+			this.loadweather = this.diarydata.weather
+
 			// console.log(this.diarydata)
-			// this.todayBacklog = uni.getStorageSync('todayBacklog')
-			// console.log(this.todayBacklog)
 		},
 		data() {
 			return {
@@ -79,7 +80,14 @@
 				topheight: "",
 				// 日记数据
 				diarydata: [],
-				// 时间段名称
+				// 天气选择器
+				showweather: false,
+				// 天气数据
+				columnsw: [
+					['晴天', '雨天', '雷阵雨', '阴天', '多云', '大风', '雾天', '下雪']
+				],
+				showw: 0,
+				// 日期
 				timename: "",
 				// 是否显示提交按钮
 				showupdate: false,
@@ -89,7 +97,7 @@
 				showconfirm: false,
 				// 初始值(判断是否更改)
 				loadcontent: "",
-				loadtitle: ""
+				loadweather: ""
 			}
 		},
 		methods: {
@@ -105,7 +113,7 @@
 					url: "diary/updatediary",
 					method: "POST",
 					data: {
-						title: this.diarydata.title,
+						weather: this.diarydata.weather,
 						content: this.diarydata.content,
 						id: this.diarydata.id
 					}
@@ -128,6 +136,12 @@
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
 					})
 				}
+			},
+			// 选择天气
+			selectweather(e) {
+				//console.log(e)
+				this.showweather=false
+				this.diarydata.weather = e.value[0]
 			},
 			// 删除日记
 			async delconfirm() {
@@ -165,8 +179,8 @@
 			}
 		},
 		watch: {
-			'diarydata.title'(newvalue){
-				if(this.loadtitle != newvalue){
+			'diarydata.weather'(newvalue){
+				if(this.loadweather != newvalue){
 					this.showupdate = true
 				}else {
 					this.showupdate = false
@@ -200,22 +214,37 @@
 		text-align: center;
 	}
 
-	.subcontent {
-		margin-top: 4rpx;
-		color: #aaa;
-		display: flex;
-		align-items: center;
-	}
-	
 	.diarytime {
-		margin-top: 16rpx;
 		margin-left: 20px;
 		font-size: 12px;
-		color: #aaa;
+		color: #6a6868;
 	}
 
-	::v-deep .u-input {
-		padding: 40rpx 40rpx 0 40rpx !important;
+	.diaryweather {
+		.t-icon {
+			margin-right: 40rpx;
+			margin-top: 10rpx;
+			width: 60rpx;
+			height: 60rpx;
+		}
+
+	}
+	
+	.addicon {
+		::v-deep .u-icon__icon {
+			margin: -50rpx 40rpx !important;
+		}
+	}
+
+	.diarytitle {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.weathericon {
+		display: flex;
+		justify-content: space-evenly;
 	}
 
 	::v-deep .u-textarea--radius {
@@ -225,17 +254,14 @@
 	::v-deep .uni-textarea-textarea {
 		font-size: 16px !important;
 	}
-	
+
 	::v-deep .u-textarea {
 		background-color: #F8F8FB !important;
 		margin: 0 40rpx !important;
 		padding: 18rpx 0 !important;
 	}
-	
-	::v-deep .u-icon{
-		margin-left: 40rpx !important;
-	}
-	
+
+
 	::v-deep .u-textarea__count {
 		background-color: #F8F8FB !important;
 	}

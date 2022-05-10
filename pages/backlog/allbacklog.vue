@@ -31,6 +31,7 @@
 				</view>
 			</view>
 		</u-popup>
+		
 		<view class="subtitle">
 			<view class="subtitleleft">
 				{{backlogtype}}清单有
@@ -264,6 +265,8 @@
 				},
 				// 是否删除提示框
 				showdel: false,
+				// 是否编辑提示框
+				showedit: false,
 				// 指定待办的id、按钮索引、所属分类
 				toid: "",
 				toindex: "",

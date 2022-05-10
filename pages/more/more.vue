@@ -117,7 +117,7 @@
 				memodata: {
 					title: "",
 					content: "",
-					createdatetime: "",
+					datetime: "",
 					nums: 0
 				},
 				// 用户日记数据
@@ -129,7 +129,8 @@
 					// 数量
 					nums: 0,
 					content: ""
-				}
+				},
+				test: ""
 			}
 		},
 		methods: {
@@ -169,12 +170,12 @@
 				if(res.code == '200') {
 					this.memodata.title = res.data[0].title
 					this.memodata.content = res.data[0].content
-					this.memodata.createdatetime = res.data[0].createdatetime.split(":")[0]+":"+res.data[0].createdatetime.split(":")[1]
+					this.memodata.datetime = res.data[0].datetime.split(":")[0]+":"+res.data[0].datetime.split(":")[1]
 					this.memodata.nums = res.data.length
 				}else if(res.code == '201'){
 					this.memodata.title = ""
 					this.memodata.content = ""
-					this.memodata.createdatetime = ""
+					this.memodata.datetime = ""
 					this.memodata.nums = 0
 				}
 				else {
@@ -197,8 +198,13 @@
 					// this.diarydata = res[0].data
 					this.diarydata.nums = res.data.length
 					this.diarydata.content = res.data[0].content
-					this.diarydata.onedatetime = (res.data[0].datetime.split("-")[2]).split(" ")[0]
-					switch(res.data[0].datetime.split("-")[1]){
+					this.test = res.data[0].datetime
+					console.log(this.test)
+					
+					this.diarydata.onedatetime = (this.test.split(" ")[0]).split("/")[2]
+					this.diarydata.twodatetime = this.test.split(" ")[1]
+					// console.log(this.diarydata.onedatetime)
+					switch(res.data[0].datetime.split("/")[1]){
 						case '01': this.diarydata.twodatetime = '一月';break;
 						case '02': this.diarydata.twodatetime = '二月';break;
 						case '03': this.diarydata.twodatetime = '三月';break;
@@ -213,7 +219,7 @@
 						case '12': this.diarydata.twodatetime = '十二月';break;
 						default: console.log("wrong...");
 					}
-					console.log(this.diarydata)
+					// console.log(this.diarydata)
 				}else if(res.code == '201'){
 					this.diarydata.onedatetime = ""
 					this.diarydata.twodatetime = ""

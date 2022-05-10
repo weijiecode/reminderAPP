@@ -23,7 +23,7 @@
 			<view class="memotime">今天{{timename}} {{time}}</view>
 			<u--textarea border="none" height="280" maxlength="255" v-model="memodata.content" count></u--textarea>
 			<view class="subcontent">
-				<u-icon name="calendar" color="#aaa" size="25"></u-icon>{{memodata.createdatetime}}
+				<u-icon name="calendar" color="#aaa" size="25"></u-icon>{{memodata.datetime}}
 				<u-icon @click="showconfirm=true" name="trash" color="#f50000" size="24"></u-icon>
 				<u-icon @click="updatememo" v-if="showupdate || showupdate1" name="checkbox-mark" color="#7766E7" size="28"></u-icon>
 			</view>

@@ -38,20 +38,28 @@
   margin-top: 60rpx;
   text-align: center;
 }
-.subcontent.data-v-67013b31 {
-  margin-top: 4rpx;
-  color: #aaa;
-  display: flex;
-  align-items: center;
-}
 .diarytime.data-v-67013b31 {
-  margin-top: 16rpx;
   margin-left: 20px;
   font-size: 12px;
-  color: #aaa;
+  color: #6a6868;
 }
-.data-v-67013b31 .u-input {
-  padding: 40rpx 40rpx 0 40rpx !important;
+.diaryweather .t-icon.data-v-67013b31 {
+  margin-right: 40rpx;
+  margin-top: 10rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+.addicon.data-v-67013b31  .u-icon__icon {
+  margin: -50rpx 40rpx !important;
+}
+.diarytitle.data-v-67013b31 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.weathericon.data-v-67013b31 {
+  display: flex;
+  justify-content: space-evenly;
 }
 .data-v-67013b31 .u-textarea--radius {
   margin-top: 40rpx !important;
@@ -63,9 +71,6 @@
   background-color: #F8F8FB !important;
   margin: 0 40rpx !important;
   padding: 18rpx 0 !important;
-}
-.data-v-67013b31 .u-icon {
-  margin-left: 40rpx !important;
 }
 .data-v-67013b31 .u-textarea__count {
   background-color: #F8F8FB !important;
