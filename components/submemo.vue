@@ -56,7 +56,7 @@
 		padding-top: 2rpx;
 		margin-top: 40rpx;
 		border-radius: 15px;
-		width: 640rpx;
+		width: 680rpx;
 		height: 260rpx;
 		background-color: #ffffff;
 		box-shadow: 5px 5px 10px #efeded;
@@ -65,7 +65,7 @@
 		padding-top: 2rpx;
 		margin-top: 40rpx;
 		border-radius: 15px;
-		width: 640rpx;
+		width: 680rpx;
 		height: 280rpx;
 		background-color: #ffffff;
 		box-shadow: 5px 5px 10px #efeded;

@@ -61,6 +61,8 @@
 				<Submemo :memodata="memodata"></Submemo>
 				<!-- 日记 -->
 				<Subdiary :diarydata="diarydata"></Subdiary>
+				<!-- 记账 -->
+				<Subtally :tallydata="tallydata"></Subtally>
 			</view>
 		</view>
 		<!-- 类型2 -->
@@ -84,6 +86,7 @@
 	import Submemorial from '../../components/submemorial.vue'
 	import Submemo from '../../components/submemo'
 	import Subdiary from '../../components/subdiary'
+    import Subtally from '../../components/subtally'
 	export default {
 		// #ifdef MP-WEIXIN
 		mixins: [getstatusBarHeight],
@@ -91,7 +94,8 @@
 		components: {
 			Submemorial,
 			Submemo,
-			Subdiary
+			Subdiary,
+			Subtally
 		},
 		created() {},
 		onShow() {
@@ -130,6 +134,8 @@
 					nums: 0,
 					content: ""
 				},
+				// 记账天数数据
+				tallydata: 0,
 				test: ""
 			}
 		},
@@ -199,7 +205,7 @@
 					this.diarydata.nums = res.data.length
 					this.diarydata.content = res.data[0].content
 					this.test = res.data[0].datetime
-					console.log(this.test)
+					//console.log(this.test)
 					
 					this.diarydata.onedatetime = (this.test.split(" ")[0]).split("/")[2]
 					this.diarydata.twodatetime = this.test.split(" ")[1]
@@ -263,7 +269,7 @@
 	}
 
 	#typetop {
-		width: 38rpx;
+		width: 36rpx;
 		height: 36rpx;
 	}
 

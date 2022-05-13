@@ -38,12 +38,18 @@
 			<view class="addicon">
 				<u-icon v-if="showupdate || showupdate1" @click="updatediary" name="checkbox-mark" color="#FFCD00" size="30"></u-icon>
 			</view>
+			<view class="delicon">
+				<u-icon @click="showconfirm=true" name="trash" color="#f50000" size="24"></u-icon>
+			</view>
 		</view>
 		<!-- 消息提示 -->
 		<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
 		<!-- 天气选择器 -->
 		<u-picker closeOnClickOverlay :show="showweather" @confirm="selectweather" :columns="columnsw" @cancel="showweather=false"
 			@close="showweather=false"></u-picker>
+		<!-- 确认提示框 -->
+		<u-modal content="你确认删除该条备忘录吗？" :show="showconfirm" showCancelButton closeOnClickOverlay
+			@confirm="delconfirm" @cancel="showconfirm=false" @close="showconfirm=false"></u-modal>
 	</view>
 </template>
 
@@ -103,9 +109,7 @@
 		methods: {
 			// 返回
 			backmycenter() {
-				uni.navigateTo({
-					url: "./diary"
-				})
+				uni.navigateBack()
 			},
 			// 提交修改
 			async updatediary() {
@@ -140,7 +144,7 @@
 			// 选择天气
 			selectweather(e) {
 				//console.log(e)
-				this.showweather=false
+				this.showweather = false
 				this.diarydata.weather = e.value[0]
 			},
 			// 删除日记
@@ -231,6 +235,11 @@
 	}
 	
 	.addicon {
+		::v-deep .u-icon__icon {
+			margin: -50rpx 100rpx !important;
+		}
+	}
+	.delicon {
 		::v-deep .u-icon__icon {
 			margin: -50rpx 40rpx !important;
 		}

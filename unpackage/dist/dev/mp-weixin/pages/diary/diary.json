@@ -2,7 +2,5 @@
   "navigationBarTitleText": "",
   "navigationBarTextStyle": "black",
   "enablePullDownRefresh": false,
-  "usingComponents": {
-    "u-divider": "/uni_modules/uview-ui/components/u-divider/u-divider"
-  }
+  "usingComponents": {}
 }

@@ -6,6 +6,7 @@
   "usingComponents": {
     "submemorial": "/components/submemorial",
     "submemo": "/components/submemo",
-    "subdiary": "/components/subdiary"
+    "subdiary": "/components/subdiary",
+    "subtally": "/components/subtally"
   }
 }

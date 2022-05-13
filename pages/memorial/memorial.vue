@@ -70,6 +70,7 @@
 							<u-tag v-if="memorialForm.datetime!=''" :show="tagshow1" @close="tagclose" color="#4f4f4f"
 								borderColor="#FE738A" :text="memorialForm.datetime" type="success" plain size="large"
 								closable></u-tag>
+								<view v-if="memorialForm.datetime==''" style="width: 240rpx;height: 68rpx;"></view>
 						</view>
 					</view>
 					<view class="bottomadd">

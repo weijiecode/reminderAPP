@@ -96,7 +96,7 @@
 		overflow: auto;
 		height: 90%;
 		border-radius: 10px;
-		width: 640rpx;
+		width: 680rpx;
 		background-color: white;
 		box-shadow: 5px 5px 10px #efeded;
 		display: flex;

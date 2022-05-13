@@ -46,10 +46,6 @@
   width: 40rpx;
   height: 40rpx;
 }
-#textone.data-v-0d696d02 {
-  font-size: 16px;
-  font-weight: bold;
-}
 .line.data-v-0d696d02 {
   height: 60rpx;
   width: 10rpx;
@@ -141,5 +137,42 @@
 }
 .data-v-0d696d02 .u-swipe-action-item__content {
   background-color: #F8F8FB !important;
+}
+.data-v-0d696d02 .swipe-action__content__text {
+  font-size: 12px !important;
+}
+#textone.data-v-0d696d02 {
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+.allbtns.data-v-0d696d02 {
+  margin-top: 20rpx;
+}
+.iconbtn.data-v-0d696d02 {
+  width: 40rpx;
+  height: 40rpx;
+  float: left;
+  margin-right: 60rpx;
+}
+.choosedata.data-v-0d696d02 {
+  display: flex;
+  margin-top: 20rpx;
+}
+.bottomadd.data-v-0d696d02 {
+  display: flex;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+.data-v-0d696d02 .u-empty__text {
+  margin-top: -80rpx !important;
+}
+.data-v-0d696d02 .u-popup__content {
+  opacity: 0.9 !important;
+}
+.data-v-0d696d02 .u-popup__content {
+  padding: 30rpx;
+}
+.data-v-0d696d02 .u-swipe-action-item {
+  touch-action: auto !important;
 }
 

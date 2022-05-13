@@ -50,6 +50,9 @@
   height: 60rpx;
 }
 .addicon.data-v-67013b31  .u-icon__icon {
+  margin: -50rpx 100rpx !important;
+}
+.delicon.data-v-67013b31  .u-icon__icon {
   margin: -50rpx 40rpx !important;
 }
 .diarytitle.data-v-67013b31 {

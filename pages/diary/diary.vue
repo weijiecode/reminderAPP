@@ -47,7 +47,6 @@
 								{{item.threetime}}
 							</view>
 						</view>
-						<u-divider :dashed="true"></u-divider>
 					</view>
 				</view>
 				<!-- 新建按钮 -->
@@ -80,9 +79,7 @@
 		methods: {
 			// 返回
 			backmycenter() {
-				uni.switchTab({
-					url: "../more/more"
-				})
+				uni.navigateBack()
 			},
 			// 跳转添加页面
 			toaddpage() {

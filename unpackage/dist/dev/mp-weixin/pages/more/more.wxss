@@ -20,7 +20,7 @@
 	font-size: larger;
 }
 #typetop {
-	width: 38rpx;
+	width: 36rpx;
 	height: 36rpx;
 }
 .btnsty {

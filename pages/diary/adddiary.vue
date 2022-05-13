@@ -90,9 +90,7 @@
 		methods: {
 			// 返回
 			backmycenter() {
-				uni.navigateTo({
-					url: "./diary"
-				})
+				uni.navigateBack()
 			},
 			// 天气选择
 			selectweather(e) {

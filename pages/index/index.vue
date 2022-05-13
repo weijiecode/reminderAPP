@@ -204,7 +204,7 @@
 							<view class="subnums">{{item.contents}}</view>
 						</view>
 					</view>
-					<u-empty v-if="todayaback==''" text="今日暂无待办" iconSize="10"
+					<u-empty v-if="todayaback==''" text=" " iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 				</view>
@@ -216,7 +216,7 @@
 							<view class="subnums">{{item.contents}}</view>
 						</view>
 					</view>
-					<u-empty v-if="todaybback==''" text="今日暂无待办" iconSize="10"
+					<u-empty v-if="todaybback==''" text=" " iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 				</view>
@@ -230,7 +230,7 @@
 							<view class="subnums">{{item.contents}}</view>
 						</view>
 					</view>
-					<u-empty v-if="todaycback==''" text="今日暂无待办" iconSize="10"
+					<u-empty v-if="todaycback==''" text=" " iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 				</view>
@@ -242,7 +242,7 @@
 							<view class="subnums">{{item.contents}}</view>
 						</view>
 					</view>
-					<u-empty v-if="todaydback==''" text="今日暂无待办" iconSize="10"
+					<u-empty v-if="todaydback==''" text=" " iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 				</view>
@@ -256,7 +256,7 @@
 							<view class="subnums">{{item.contents}}</view>
 						</view>
 					</view>
-					<u-empty v-if="todayeback==''" text="今日暂无待办" iconSize="10"
+					<u-empty v-if="todayeback==''" text=" " iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 				</view>
@@ -268,7 +268,7 @@
 							<view class="subnums">{{item.contents}}</view>
 						</view>
 					</view>
-					<u-empty v-if="todayfback==''" text="今日暂无待办" iconSize="10"
+					<u-empty v-if="todayfback==''" text=" " iconSize="10"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
 					</u-empty>
 				</view>
@@ -280,21 +280,23 @@
 <script>
 	import {
 		datetimes
-	} from "../../components/mixins/mixin.js"
+	} from '../../components/mixins/mixin.js'
 	// #ifdef MP-WEIXIN
 	import {
 		getstatusBarHeight
 	} from '../../components/mixins/mixin.js'
 	// #endif
 	export default {
+		// #ifdef MP-WEIXIN
+		mixins: [datetimes, getstatusBarHeight],
+		// #endif
 		// #ifndef MP-WEIXIN
 		mixins: [datetimes],
 		// #endif
-		// #ifdef MP-WEIXIN
-		mixins: [getstatusBarHeight, datetimes],
-		// #endif
-		created() {},
-		onLoad() {},
+		created() {
+		},
+		onLoad() {
+		},
 		onReady() {
 			uni.createSelectorQuery().in(this).select(".listbox").boundingClientRect((data) => {
 					this.topheight = "calc(100% - " + data.top + "px)";
@@ -704,11 +706,12 @@
 	}
 
 	.topcontent {
+		background-image: url('indexbg.png');
 		opacity: 0.9;
 		width: 100%;
-		// height: 350rpx;
-		background-color: #ffffff;
-		background-image: linear-gradient(62deg, #ffffff 9%, #8EC5FC 49%, #E0C3FC 63%);
+		height: 375rpx;
+		// background-color: #ffffff;
+		// background-image: linear-gradient(62deg, #ffffff 9%, #8EC5FC 49%, #E0C3FC 63%);
 	}
 
 	// .colorbg {
@@ -849,7 +852,7 @@
 
 	.classname {
 		color: #383636;
-		font-size: 28px;
+		font-size: 24px;
 		margin: 40rpx 0 20rpx 40rpx;
 		font-weight: bold;
 	}

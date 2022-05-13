@@ -19,10 +19,53 @@
 			{{backlogtype}}
 		</view>
 		<!-- #endif -->
-		<!-- toast消息提示 -->
-		<u-toast ref="uToast"></u-toast>
+		<!-- 消息提示 -->
+		<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
+		<!-- 编辑弹框 -->
+		<view class="editbacklog">
+			<u-popup :show="showedit" :round="10" mode="bottom" @close="showedit=false">
+				<view style="height: 360rpx;">
+					<u--input v-model="tocontents" border="bottom" maxlength="30" clearable :focus="true"></u--input>
+					<view class="allbtns">
+						<!-- 日历按钮 -->
+						<view @click="showcalendar=true" class="iconbtn t-icon t-icon-riqi"></view>
+						<!-- 日历显示器 -->
+						<u-calendar color="#7766E7" closeOnClickOverlay monthNum="10" :show="showcalendar"
+							@confirm="confirmdate" @close="showcalendar=false">
+						</u-calendar>
+						<!-- 时间按钮 -->
+						<view @click="showdatetime=true" class="iconbtn t-icon t-icon-shijian"></view>
+						<!-- 时间显示器 -->
+						<u-datetime-picker confirmColor="#7766E7" :show="showdatetime" mode="time" closeOnClickOverlay
+							@confirm="confirmdatetime" @cancel="showdatetime=false" @close="showdatetime=false">
+						</u-datetime-picker>
+						<!-- 类别按钮 -->
+						<view style="float: none;" @click="showtypepicker=true" class="iconbtn t-icon t-icon-leibie">
+						</view>
+						<!-- 类别选择器 -->
+						<u-picker confirmColor="#7766E7" closeOnClickOverlay showLunar @confirm="confirmtype"
+							:show="showtypepicker" :columns="columns" keyName="name" @cancel="showtypepicker=false"
+							@close="showtypepicker=false"></u-picker>
+					</view>
+					<view class="choosedata">
+						<u-tag v-if="datebacklog!=''" :show="tagshow1" @close="tagclose1" color="#4f4f4f"
+							borderColor="#7766E7" :text="datebacklog" type="success" plain size="large" closable>
+						</u-tag>
+						<u-tag v-if="timebacklog!=''" :show="tagshow2" @close="tagclose2" color="#4f4f4f"
+							borderColor="#7766E7" :text="timebacklog" type="success" plain size="large" closable>
+						</u-tag>
+						<u-tag v-if="toname!=''" :show="tagshow3" @close="tagclose3" color="#4f4f4f"
+							borderColor="#7766E7" :text="toname" type="success" plain size="large" closable></u-tag>
+					</view>
+					<view class="bottomadd">
+						<!-- <view @click="addbacklog" class="addbtn t-icon t-icon-tianjia2"></view> -->
+						<u-button @click="savebacklog" text="保存修改" size="normal" type="info"></u-button>
+					</view>
+				</view>
+			</u-popup>
+		</view>
 		<!-- 是否删除 -->
-		<u-popup :show="showdel" :round="10" mode="bottom" @close="close" @open="open">
+		<u-popup :show="showdel" :round="10" mode="bottom" @close="showdel=false" @open="showdel=true">
 			<view>
 				<view class="popuptext">确认是否删除该条待办事项？</view>
 				<view class="bothbtn">
@@ -52,8 +95,8 @@
 		<view class="listcontent" :style="{height: topheight,overflow: 'auto'}">
 			<view v-if="backlogtype==='生活'">
 				<u-swipe-action>
-					<u-swipe-action-item v-for="(item) in todaya" :key="item.id" :options="options2" :name="item.id+' '+'todaya'"
-						@click="changebacklog">
+					<u-swipe-action-item v-for="(item) in todaya" :key="item.id" :options="options2"
+						:name="JSON.stringify(item)" @click="changebacklog">
 						<view class="swipe-action u-border-top u-border-bottom">
 							<view @click="todone(item,'todaya')" v-if="item.done===1"
 								style="background-color: #E3E0F3;border: 1px solid #7766E7;"
@@ -77,8 +120,8 @@
 			</view>
 			<view v-if="backlogtype==='工作'">
 				<u-swipe-action>
-					<u-swipe-action-item v-for="(item) in todayb" :key="item.id" :options="options2" :name="item.id+' '+'todayb'"
-						@click="changebacklog">
+					<u-swipe-action-item v-for="(item) in todayb" :key="item.id" :options="options2"
+						:name="JSON.stringify(item)" @click="changebacklog">
 						<view class="swipe-action u-border-top u-border-bottom">
 							<view @click="todone(item,'todayb')" v-if="item.done===1"
 								style="background-color: #CDDDF7;border: 1px solid #518BF1;"
@@ -102,8 +145,8 @@
 			</view>
 			<view v-if="backlogtype==='学习'">
 				<u-swipe-action>
-					<u-swipe-action-item v-for="(item) in todayc" :key="item.id" :options="options2" :name="item.id+' '+'todayc'"
-						@click="changebacklog">
+					<u-swipe-action-item v-for="(item) in todayc" :key="item.id" :options="options2"
+						:name="JSON.stringify(item)" @click="changebacklog">
 						<view class="swipe-action u-border-top u-border-bottom">
 							<view @click="todone(item,'todayc')" v-if="item.done===1"
 								style="background-color: #f9f4e2;border: 1px solid #FFCD00;"
@@ -127,8 +170,8 @@
 			</view>
 			<view v-if="backlogtype==='健康'">
 				<u-swipe-action>
-					<u-swipe-action-item v-for="(item) in todayd" :key="item.id" :options="options2" :name="item.id+' '+'todayd'"
-						@click="changebacklog">
+					<u-swipe-action-item v-for="(item) in todayd" :key="item.id" :options="options2"
+						:name="JSON.stringify(item)" @click="changebacklog">
 						<view class="swipe-action u-border-top u-border-bottom">
 							<view @click="todone(item,'todayd')" v-if="item.done===1"
 								style="background-color: #E2F2F0;border: 1px solid #1DBD84;"
@@ -152,8 +195,8 @@
 			</view>
 			<view v-if="backlogtype==='社交'">
 				<u-swipe-action>
-					<u-swipe-action-item v-for="(item) in todaye" :key="item.id" :options="options2" :name="item.id+' '+'todaye'"
-						@click="changebacklog">
+					<u-swipe-action-item v-for="(item) in todaye" :key="item.id" :options="options2"
+						:name="JSON.stringify(item)" @click="changebacklog">
 						<view class="swipe-action u-border-top u-border-bottom">
 							<view @click="todone(item,'todaye')" v-if="item.done===1"
 								style="background-color: #FFF1F4;border: 1px solid #FE738A;"
@@ -177,8 +220,8 @@
 			</view>
 			<view v-if="backlogtype==='其它'">
 				<u-swipe-action>
-					<u-swipe-action-item v-for="(item) in todayf" :key="item.id" :options="options2" :name="item.id+' '+'todayf'"
-						@click="changebacklog">
+					<u-swipe-action-item v-for="(item) in todayf" :key="item.id" :options="options2"
+						:name="JSON.stringify(item)" @click="changebacklog">
 						<view class="swipe-action u-border-top u-border-bottom">
 							<view @click="todone(item,'todayf')" v-if="item.done===1"
 								style="background-color: #E8E8E8;border: 1px solid #C4C4C4;"
@@ -259,10 +302,82 @@
 				topheight: "",
 				// 是否删除提示框
 				showdel: false,
-				// 指定待办的id、按钮索引、所属分类
+				// 是否编辑提示框
+				showedit: false,
+				// 日历选择弹框
+				showcalendar: false,
+				// 时间选择弹框
+				showdatetime: false,
+				// 类别选择器
+				showtypepicker: false,
+				// 指定待办的id、按钮索引、所属分类...
 				toid: "",
-				toindex: "",
 				totype: "",
+				tocontents: "",
+				todatetime: "",
+				toclassvalue: "",
+				tocolorbg: "",
+				toname: "",
+				// 类别选择器
+				columns: [
+					[{
+						name: "生活",
+						names: {
+							cvalue: "#icon-life",
+							cbg: "#7766E7",
+							cname: "生活"
+						},
+						classvalue: "#icon-life"
+					}, {
+						name: "工作",
+						names: {
+							cvalue: "#icon-work",
+							cbg: "#518BF1",
+							cname: "工作"
+						},
+						classvalue: "#icon-work"
+					}, {
+						name: "学习",
+						names: {
+							cvalue: "#icon-study",
+							cbg: "#FFCD00",
+							cname: "学习"
+						},
+						classvalue: "#icon-study"
+					}, {
+						name: "健康",
+						names: {
+							cvalue: "#icon-health",
+							cbg: "#1DBD84",
+							cname: "健康"
+						},
+						classvalue: "#icon-health"
+					}, {
+						name: "社交",
+						names: {
+							cvalue: "#icon-social",
+							cbg: "#FE738A",
+							cname: "社交"
+						},
+						classvalue: "#icon-social"
+					}, {
+						name: "其它",
+						names: {
+							cvalue: "#icon-other",
+							cbg: "#C4C4C4",
+							cname: "其它"
+						},
+						classvalue: "#icon-other"
+					}]
+				],
+				// 临时日期（待拼接）
+				datebacklog: "",
+				// 临时时间（待拼接）
+				timebacklog: "",
+				// tag三个标签
+				tagshow1: false,
+				tagshow2: false,
+				tagshow3: false,
 				// 类别
 				backlogtype: "",
 				// 向左滑动两个按钮
@@ -288,7 +403,7 @@
 			}
 		},
 		methods: {
-			// 返回首页
+			// 返回
 			backmycenter() {
 				uni.switchTab({
 					url: "../index/index"
@@ -341,43 +456,151 @@
 				}
 			},
 			changebacklog(data) {
-				this.toid = data.name.split(' ')[0]
-				this.totype = data.name.split(' ')[1]
-				this.toindex = data.index
-				console.log(this.toid)
-				console.log(this.totype)
-				console.log(this.toindex)
-				console.log(data)
+				// console.log(document.getElementsByClassName('u-swipe-action-item__content')[0])
+				// document.getElementsByClassName('u-swipe-action-item__content')[0].style.transform = 'translateX(0px)'
+				// console.log(JSON.parse(data.name))
+				this.toid = JSON.parse(data.name).id
+				this.tocontents = JSON.parse(data.name).contents
+				this.todatetime = JSON.parse(data.name).datetime
+				// console.log(this.todatetime)
+				this.datebacklog = this.todatetime.split(' ')[0]
+				this.timebacklog = this.todatetime.split(' ')[1]
+				this.tagshow1 = true
+				this.tagshow2 = true
+				this.tagshow3 = true
+				this.toclassvalue = JSON.parse(data.name).classvalue
+				this.tocolorbg = JSON.parse(data.name).colorbg
+				switch (JSON.parse(data.name).classvalue) {
+					case '#icon-life':
+						this.totype = 'todaya';
+						this.toname = '生活';
+						break;
+					case '#icon-work':
+						this.totype = 'todayb';
+						this.toname = '工作';
+						break;
+					case '#icon-study':
+						this.totype = 'todayc';
+						this.toname = '学习';
+						break;
+					case '#icon-health':
+						this.totype = 'todayd';
+						this.toname = '健康';
+						break;
+					case '#icon-social':
+						this.totype = 'todaye';
+						this.toname = '社交';
+						break;
+					case '#icon-other':
+						this.totype = 'todayf';
+						this.toname = '其它';
+						break;
+					default:
+						console.log('error...')
+				}
 				if (data.index == '1') {
 					this.showdel = true
-					
+
 				} else if (data.index == '0') {
-					console.log('65')
+					this.showedit = true
 				}
 			},
 			async confirmdel() {
-				const { data:res } = await this.$http({
+				const {
+					data: res
+				} = await this.$http({
 					url: "backlog/deletebacklog",
 					method: "POST",
 					data: {
 						id: this.toid
 					}
 				})
-				if(res.code == '200') {
+				if (res.code == '200') {
 					this.showdel = false
 					this[this.totype].forEach((p, index) => {
 						if (this.toid == p.id) {
-							this[this.totype].splice(index,1)
+							this[this.totype].splice(index, 1)
 						}
 					})
 				}
 			},
-			open() {
-				// console.log('open');
+			// 日期确定
+			confirmdate(e) {
+				this.showcalendar = false
+				this.datebacklog = e[0]
+				this.tagshow1 = true
+				// console.log(this.datebacklog)
 			},
-			close() {
-				this.showdel = false
-				// console.log('close');
+			// 时间确定
+			confirmdatetime(e) {
+				this.showdatetime = false
+				this.timebacklog = e.value
+				this.tagshow2 = true
+				// console.log(this.timebacklog)
+			},
+			// 类别确定
+			confirmtype(e) {
+				// console.log(e)
+				this.showtypepicker = false
+				this.toclassvalue = e.value[0].names.cvalue
+				this.tocolorbg = e.value[0].names.cbg
+				this.toname = e.value[0].name
+				this.tagshow3 = true
+			},
+			// tag关闭
+			tagclose1() {
+				this.tagshow1 = false
+				this.datebacklog = ""
+			},
+			tagclose2() {
+				this.tagshow2 = false
+				this.timebacklog = ""
+			},
+			tagclose3() {
+				this.tagshow3 = false
+				this.toname = ""
+			},
+			// 提交修改
+			async savebacklog() {
+				const {
+					data: res
+				} = await this.$http({
+					url: "backlog/updatecontents",
+					method: "POST",
+					data: {
+						contents: this.tocontents,
+						datetime: this.datebacklog + " " + this.timebacklog,
+						classvalue: this.toclassvalue,
+						colorbg: this.tocolorbg,
+						id: this.toid
+					}
+				})
+				if (res.code == '200') {
+					this.showedit = false
+					this[this.totype].forEach((p, index) => {
+						if (this.toid == p.id) {
+							this[this.totype][index].contents = this.tocontents
+							this[this.totype][index].datetime = this.datebacklog + " " + this.timebacklog
+							if (this.toclassvalue != this[this.totype][index].classvalue) {
+								this[this.totype].splice(index, 1)
+							}
+						}
+					})
+					this.$refs.uToast.show({
+						type: 'success',
+						duration: 1000,
+						message: "该条待办清单修改成功",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/success.png'
+					})
+				} else {
+					this.showedit = false
+					this.$refs.uToast.show({
+						type: 'error',
+						icon: false,
+						message: "该条待办清单修改失败,请重试",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
+					})
+				}
 			}
 		}
 	}
@@ -408,11 +631,6 @@
 	#backtop {
 		width: 40rpx;
 		height: 40rpx;
-	}
-
-	#textone {
-		font-size: 16px;
-		font-weight: bold;
 	}
 
 	.line {
@@ -533,5 +751,54 @@
 
 	::v-deep .u-swipe-action-item__content {
 		background-color: #F8F8FB !important;
+	}
+	
+	::v-deep .swipe-action__content__text {
+		font-size: 12px !important;
+	}
+	
+	#textone {
+		font-size: 16px !important;
+		font-weight: bold !important;
+	}
+	
+
+
+	.allbtns {
+		margin-top: 20rpx;
+	}
+
+	.iconbtn {
+		width: 40rpx;
+		height: 40rpx;
+		float: left;
+		margin-right: 60rpx;
+	}
+
+	.choosedata {
+		display: flex;
+		margin-top: 20rpx;
+	}
+
+	.bottomadd {
+		display: flex;
+		justify-content: center;
+		margin-top: 40rpx;
+	}
+
+	::v-deep .u-empty__text {
+		margin-top: -80rpx !important;
+	}
+
+	::v-deep .u-popup__content {
+		opacity: 0.9 !important;
+	}
+
+	::v-deep .u-popup__content {
+		padding: 30rpx;
+	}
+
+	::v-deep .u-swipe-action-item {
+		touch-action: auto !important; //组件内屏蔽了 touch-action: none
 	}
 </style>

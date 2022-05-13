@@ -11,7 +11,14 @@ export const datetimes = {
 			oldsevendate: "",
 			time: "",
 			weekday: "",
-			week: []
+			week: [],
+			// week1: "",
+			// week2: "",
+			// week3: "",
+			// week4: "",
+			// week5: "",
+			// week6: "",
+			// week7: "",
 		}
 	},
 	created() {
@@ -52,12 +59,22 @@ export const datetimes = {
 		var currenDay = new_Date.getDay();
 		//console.log(currenDay)
 		var dates = [];
+		//#ifndef APP-PLUS
 		for (var i = 0; i < 7; i++) {
 			dates.push(new Date(timesStamp + 24 * 60 * 60 * 1000 * (i - (currenDay + 6) % 7)).toLocaleDateString()
 				.replace(/[年月]/g, '-').replace(/[日上下午]/g, ''));
+				//console.log(dates)
 			this.week[i] = dates[i].split('/')[2] <= 9 ? "0" + dates[i].split('/')[2] : dates[i].split('/')[2]
 		}
-		//console.log(this.week)   
+		//#endif
+		//#ifdef APP-PLUS
+		for (var i = 0; i < 7; i++) {
+			dates.push(new Date(timesStamp + 24 * 60 * 60 * 1000 * (i - (currenDay + 6) % 7)).toLocaleDateString()
+				.replace(/[年月]/g, '-').replace(/[日上下午]/g, ''));
+			this.week[i] = dates[i].split(' ')[2]
+			//console.log(this.week[i])
+		}
+		//#endif
 		// 周几
 		switch(currenDay) {
 			case 1: this.weekday = "周一";break;

@@ -94,9 +94,7 @@
 		methods: {
 			// 返回
 			backmycenter() {
-				uni.switchTab({
-					url: "../more/more"
-				})
+				uni.navigateBack()
 			},
 			// 添加备忘录
 			async addmemo() {
@@ -253,7 +251,7 @@
 		align-items: center;
 		font-size: 12px;
 		color: #aaa;
-		margin-top: 8rpx;
+		margin-top: 20rpx;
 		padding-left: 40rpx;
 		width: 540rpx;
 		overflow: hidden;
@@ -299,6 +297,10 @@
 	
 	::v-deep .u-textarea {
 		margin-top: 40rpx;
+	}
+	
+	::v-deep .u-divider {
+		margin: 20rpx 0;
 	}
 
 </style>

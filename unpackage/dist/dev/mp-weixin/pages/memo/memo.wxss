@@ -80,7 +80,7 @@
   align-items: center;
   font-size: 12px;
   color: #aaa;
-  margin-top: 8rpx;
+  margin-top: 20rpx;
   padding-left: 40rpx;
   width: 540rpx;
   overflow: hidden;
@@ -119,5 +119,8 @@
 }
 .data-v-d7d86d74 .u-textarea {
   margin-top: 40rpx;
+}
+.data-v-d7d86d74 .u-divider {
+  margin: 20rpx 0;
 }
 
