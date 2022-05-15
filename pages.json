@@ -162,6 +162,34 @@
             }
             
         }
+        ,{
+            "path" : "pages/tally/tally",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+				"navigationBarTextStyle": "white",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tally/addtally",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tally/asset",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom" ,// 去掉小程顶部的导航

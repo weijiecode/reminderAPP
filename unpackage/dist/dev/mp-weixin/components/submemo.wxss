@@ -47,7 +47,7 @@
   width: 100rpx;
   height: 100rpx;
   border-radius: 10px;
-  background-color: #B5AAF1;
+  background-color: #ded8f9;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,20 +81,21 @@
   height: 40rpx;
 }
 .twoblock.data-v-9414d1e2 {
-  margin-top: -20rpx;
+  margin-top: -40rpx;
   overflow: auto;
 }
 .subtitle.data-v-9414d1e2 {
   font-size: 15px;
   color: #505050;
   padding-left: 40rpx;
+  margin-top: 20rpx;
 }
 .subcontent.data-v-9414d1e2 {
   font-size: 12px;
   color: #aaa;
   margin-top: 8rpx;
   padding-left: 40rpx;
-  width: 500rpx;
+  width: 600rpx;
   overflow: hidden;
   white-space: nowrap;
 }

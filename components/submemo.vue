@@ -75,7 +75,7 @@
 		width: 100rpx;
 		height: 100rpx;
 		border-radius: 10px;
-		background-color: #B5AAF1;
+		background-color: #ded8f9;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -116,7 +116,7 @@
 	}
 
 	.twoblock {
-		margin-top: -20rpx;
+		margin-top: -40rpx;
 		overflow: auto;
 	}
 	
@@ -124,6 +124,7 @@
 		font-size: 15px;
 		color: #505050;
 		padding-left: 40rpx;
+		margin-top: 20rpx;
 	}
 	
 	.subcontent {
@@ -131,7 +132,7 @@
 		color: #aaa;
 		margin-top: 8rpx;
 		padding-left: 40rpx;
-		width: 500rpx;
+		width: 600rpx;
 		overflow: hidden;
 		white-space: nowrap;
 	}

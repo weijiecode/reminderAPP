@@ -15,7 +15,10 @@
     "pages/memo/showmemo",
     "pages/diary/diary",
     "pages/diary/showdiary",
-    "pages/diary/adddiary"
+    "pages/diary/adddiary",
+    "pages/tally/tally",
+    "pages/tally/addtally",
+    "pages/tally/asset"
   ],
   "subPackages": [],
   "window": {

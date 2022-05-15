@@ -104,7 +104,7 @@
 		width: 100rpx;
 		height: 100rpx;
 		border-radius: 10px;
-		background-color: #FFCBD4;
+		background-color: #ffe6eb;
 		display: flex;
 		justify-content: center;
 		align-items: center;

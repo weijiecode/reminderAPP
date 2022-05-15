@@ -30,7 +30,6 @@
   margin-top: 40rpx;
   border-radius: 15px;
   width: 680rpx;
-  height: 300rpx;
   background-color: #ffffff;
   box-shadow: 5px 5px 10px #efeded;
 }
@@ -38,7 +37,7 @@
   width: 100rpx;
   height: 100rpx;
   border-radius: 10px;
-  background-color: #A9C6F7;
+  background-color: #dce8fb;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,5 +123,51 @@
   width: 500rpx;
   overflow: auto;
   display: flex;
+}
+.oneinput.data-v-41130967 {
+  margin: 16rpx 30rpx;
+}
+.twoinput.data-v-41130967 {
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  margin: 30rpx 30rpx;
+  position: relative;
+}
+.twosubinput.data-v-41130967 {
+  width: 300rpx;
+  position: absolute;
+  right: 0;
+}
+.twotime.data-v-41130967 {
+  font-size: 14px;
+  padding: 0 10rpx;
+}
+.threeblock.data-v-41130967  .remarkinput {
+  padding: 8rpx 20rpx !important;
+  border-radius: 12rpx !important;
+}
+.count.data-v-41130967 {
+  width: 100%;
+  height: 400rpx;
+  display: flex;
+  flex-direction: column;
+}
+.countline.data-v-41130967 {
+  height: 100rpx;
+  border-top: 1px solid #dedede;
+  display: flex;
+}
+.countcol.data-v-41130967 {
+  width: 170rpx;
+  border-right: 1px solid #dedede;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #403f3f;
+}
+.countcol.data-v-41130967:active {
+  background-color: #eaeaea;
 }
 

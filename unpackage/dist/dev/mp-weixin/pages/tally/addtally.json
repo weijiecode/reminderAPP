@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-subsection": "/uni_modules/uview-ui/components/u-subsection/u-subsection",
+    "u--input": "/uni_modules/uview-ui/components/u--input/u--input",
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "u-toast": "/uni_modules/uview-ui/components/u-toast/u-toast",
+    "u-datetime-picker": "/uni_modules/uview-ui/components/u-datetime-picker/u-datetime-picker"
+  }
+}

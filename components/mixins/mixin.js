@@ -84,7 +84,7 @@ export const datetimes = {
 			case 5: this.weekday = "周五";break;
 			case 6: this.weekday = "周六";break;
 			case 7: this.weekday = "周天";break;
-			default : console.log("error...")
+			default : return;
 		}
 		//console.log(this.weekday)
 	},

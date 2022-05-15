@@ -32,7 +32,7 @@
 			<view @click="showmemopage(item)" class="itemmemo" v-for="item in memodata" :key="item.id">
 				<view class="subtitle">{{item.title}}</view>
 				<view class="subcontent">
-					<u-icon name="calendar" color="#aaa" size="16"></u-icon>{{item.datetime}} {{item.content}}
+					<u-icon name="calendar" color="#aaa" size="16"></u-icon> {{item.datetime}} {{item.content}}
 				</view>
 				<u-divider :dashed="true"></u-divider>
 			</view>
@@ -159,8 +159,8 @@
 					this.memodata = res.data
 					res.data.forEach((item,index) => {
 						this.memodata[index].title = item.title
-						this.memodata[index].content = item.title
-						this.memodata[index].datetime = item.datetime.split(":")[0]+":"+item.datetime.split(":")[1]
+						this.memodata[index].content = item.content
+						this.memodata[index].datetime = (item.datetime.split(" ")[0]).split('-')[1]+"/"+(item.datetime.split(" ")[0]).split('-')[2]
 					})
 				}else if(res.code == '201'){
 					this.memodata = ""

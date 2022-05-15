@@ -19182,8 +19182,8 @@ platform;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.http = void 0; //const BASE_URL = 'http://localhost:5001/'//接口地址
-var BASE_URL = 'http://101.37.91.171:8887/';
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.http = void 0;var BASE_URL = 'http://localhost:5001/'; //接口地址
+//const BASE_URL = 'http://101.37.91.171:8887/'
 var http = function http(options) {
   return new Promise(function (resolve, reject) {
     uni.request({
@@ -19313,7 +19313,7 @@ var http = function http(options) {
       case 5:this.weekday = "周五";break;
       case 6:this.weekday = "周六";break;
       case 7:this.weekday = "周天";break;
-      default:console.log("error...");}
+      default:return;}
 
     //console.log(this.weekday)
   },
@@ -19480,7 +19480,15 @@ var getstatusBarHeight = {
 /* 275 */,
 /* 276 */,
 /* 277 */,
-/* 278 */
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */
 /*!********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-popup/props.js ***!
   \********************************************************************************************************/
@@ -19567,14 +19575,14 @@ var getstatusBarHeight = {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 279 */,
-/* 280 */,
-/* 281 */,
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */,
-/* 286 */
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */
 /*!********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-input/props.js ***!
   \********************************************************************************************************/
@@ -19764,12 +19772,12 @@ var getstatusBarHeight = {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 287 */,
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */
 /*!***********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-calendar/props.js ***!
   \***********************************************************************************************************/
@@ -19921,7 +19929,7 @@ var getstatusBarHeight = {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 293 */
+/* 301 */
 /*!**********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-calendar/util.js ***!
   \**********************************************************************************************************/
@@ -20014,7 +20022,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     } } };exports.default = _default;
 
 /***/ }),
-/* 294 */
+/* 302 */
 /*!***********************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/util/dayjs.js ***!
   \***********************************************************************************************/
@@ -20330,7 +20338,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 });
 
 /***/ }),
-/* 295 */
+/* 303 */
 /*!**************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/util/calendar.js ***!
   \**************************************************************************************************/
@@ -20886,14 +20894,14 @@ var calendar = {
 calendar;exports.default = _default;
 
 /***/ }),
-/* 296 */,
-/* 297 */,
-/* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */,
-/* 302 */,
-/* 303 */
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */
 /*!******************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-datetime-picker/props.js ***!
   \******************************************************************************************************************/
@@ -21017,14 +21025,14 @@ calendar;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 304 */,
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */,
-/* 311 */
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */
 /*!*********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-picker/props.js ***!
   \*********************************************************************************************************/
@@ -21116,14 +21124,14 @@ calendar;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */
 /*!******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-tag/props.js ***!
   \******************************************************************************************************/
@@ -21215,14 +21223,14 @@ calendar;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 320 */,
-/* 321 */,
-/* 322 */,
-/* 323 */,
-/* 324 */,
-/* 325 */,
-/* 326 */,
-/* 327 */
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */
 /*!********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-empty/props.js ***!
   \********************************************************************************************************/
@@ -21289,14 +21297,6 @@ calendar;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 328 */,
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */,
-/* 333 */,
-/* 334 */,
-/* 335 */,
 /* 336 */,
 /* 337 */,
 /* 338 */,
@@ -21324,7 +21324,15 @@ calendar;exports.default = _default;
 /* 360 */,
 /* 361 */,
 /* 362 */,
-/* 363 */
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */
 /*!*********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-notify/props.js ***!
   \*********************************************************************************************************/
@@ -21381,14 +21389,14 @@ calendar;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 364 */,
-/* 365 */,
-/* 366 */,
-/* 367 */,
-/* 368 */,
-/* 369 */,
-/* 370 */,
-/* 371 */
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-form/props.js ***!
   \*******************************************************************************************************/
@@ -21441,12 +21449,12 @@ calendar;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */,
-/* 376 */,
-/* 377 */
+/* 380 */,
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */,
+/* 385 */
 /*!************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-form-item/props.js ***!
   \************************************************************************************************************/
@@ -21497,14 +21505,14 @@ calendar;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 378 */,
-/* 379 */,
-/* 380 */,
-/* 381 */,
-/* 382 */,
-/* 383 */,
-/* 384 */,
-/* 385 */
+/* 386 */,
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */,
+/* 392 */,
+/* 393 */
 /*!*************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/mixin/button.js ***!
   \*************************************************************************************************/
@@ -21525,7 +21533,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     openType: String } };exports.default = _default;
 
 /***/ }),
-/* 386 */
+/* 394 */
 /*!***************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/mixin/openType.js ***!
   \***************************************************************************************************/
@@ -21558,7 +21566,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     } } };exports.default = _default;
 
 /***/ }),
-/* 387 */
+/* 395 */
 /*!*********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-button/props.js ***!
   \*********************************************************************************************************/
@@ -21727,14 +21735,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 388 */,
-/* 389 */,
-/* 390 */,
-/* 391 */,
-/* 392 */,
-/* 393 */,
-/* 394 */,
-/* 395 */
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */,
+/* 401 */,
+/* 402 */,
+/* 403 */
 /*!********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-steps/props.js ***!
   \********************************************************************************************************/
@@ -21781,14 +21789,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 396 */,
-/* 397 */,
-/* 398 */,
-/* 399 */,
-/* 400 */,
-/* 401 */,
-/* 402 */,
-/* 403 */
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */
 /*!*************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-steps-item/props.js ***!
   \*************************************************************************************************************/
@@ -21820,14 +21828,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 404 */,
-/* 405 */,
-/* 406 */,
-/* 407 */,
-/* 408 */,
-/* 409 */,
-/* 410 */,
-/* 411 */
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */
 /*!**************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-radio-group/props.js ***!
   \**************************************************************************************************************/
@@ -21920,14 +21928,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 412 */,
-/* 413 */,
-/* 414 */,
-/* 415 */,
-/* 416 */,
-/* 417 */,
-/* 418 */,
-/* 419 */
+/* 420 */,
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */
 /*!********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-radio/props.js ***!
   \********************************************************************************************************/
@@ -21999,14 +22007,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 420 */,
-/* 421 */,
-/* 422 */,
-/* 423 */,
-/* 424 */,
-/* 425 */,
-/* 426 */,
-/* 427 */
+/* 428 */,
+/* 429 */,
+/* 430 */,
+/* 431 */,
+/* 432 */,
+/* 433 */,
+/* 434 */,
+/* 435 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-icon/icons.js ***!
   \*******************************************************************************************************/
@@ -22229,7 +22237,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   'uicon-en': "\uE692" };exports.default = _default;
 
 /***/ }),
-/* 428 */
+/* 436 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-icon/props.js ***!
   \*******************************************************************************************************/
@@ -22326,14 +22334,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 429 */,
-/* 430 */,
-/* 431 */,
-/* 432 */,
-/* 433 */,
-/* 434 */,
-/* 435 */,
-/* 436 */
+/* 437 */,
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */
 /*!*********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-upload/utils.js ***!
   \*********************************************************************************************************/
@@ -22495,7 +22503,7 @@ function chooseFile(_ref)
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 437 */
+/* 445 */
 /*!*********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-upload/mixin.js ***!
   \*********************************************************************************************************/
@@ -22523,7 +22531,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       } } } };exports.default = _default;
 
 /***/ }),
-/* 438 */
+/* 446 */
 /*!*********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-upload/props.js ***!
   \*********************************************************************************************************/
@@ -22655,14 +22663,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 439 */,
-/* 440 */,
-/* 441 */,
-/* 442 */,
-/* 443 */,
-/* 444 */,
-/* 445 */,
-/* 446 */
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */,
+/* 453 */,
+/* 454 */
 /*!***************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-swipe-action/props.js ***!
   \***************************************************************************************************************/
@@ -22679,12 +22687,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 447 */,
-/* 448 */,
-/* 449 */,
-/* 450 */,
-/* 451 */,
-/* 452 */
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */
 /*!************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/mixin/touch.js ***!
   \************************************************************************************************/
@@ -22751,7 +22759,7 @@ function getDirection(x, y) {
     } } };exports.default = _default;
 
 /***/ }),
-/* 453 */
+/* 461 */
 /*!********************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-swipe-action-item/props.js ***!
   \********************************************************************************************************************/
@@ -22800,7 +22808,7 @@ function getDirection(x, y) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 454 */
+/* 462 */
 /*!******************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-swipe-action-item/wxs.js ***!
   \******************************************************************************************************************/
@@ -22823,16 +22831,16 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     } } };exports.default = _default;
 
 /***/ }),
-/* 455 */,
-/* 456 */,
-/* 457 */,
-/* 458 */,
-/* 459 */,
-/* 460 */,
-/* 461 */,
-/* 462 */,
 /* 463 */,
-/* 464 */
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */,
+/* 470 */,
+/* 471 */,
+/* 472 */
 /*!**********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-divider/props.js ***!
   \**********************************************************************************************************/
@@ -22884,14 +22892,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 465 */,
-/* 466 */,
-/* 467 */,
-/* 468 */,
-/* 469 */,
-/* 470 */,
-/* 471 */,
-/* 472 */
+/* 473 */,
+/* 474 */,
+/* 475 */,
+/* 476 */,
+/* 477 */,
+/* 478 */,
+/* 479 */,
+/* 480 */
 /*!********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-modal/props.js ***!
   \********************************************************************************************************/
@@ -22983,14 +22991,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 473 */,
-/* 474 */,
-/* 475 */,
-/* 476 */,
-/* 477 */,
-/* 478 */,
-/* 479 */,
-/* 480 */
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */,
+/* 485 */,
+/* 486 */,
+/* 487 */,
+/* 488 */
 /*!***********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-textarea/props.js ***!
   \***********************************************************************************************************/
@@ -23112,12 +23120,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 481 */,
-/* 482 */,
-/* 483 */,
-/* 484 */,
-/* 485 */,
-/* 486 */
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */,
+/* 494 */
 /*!**********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-overlay/props.js ***!
   \**********************************************************************************************************/
@@ -23149,14 +23157,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 487 */,
-/* 488 */,
-/* 489 */,
-/* 490 */,
-/* 491 */,
-/* 492 */,
-/* 493 */,
-/* 494 */
+/* 495 */,
+/* 496 */,
+/* 497 */,
+/* 498 */,
+/* 499 */,
+/* 500 */,
+/* 501 */,
+/* 502 */
 /*!***************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-loading-icon/props.js ***!
   \***************************************************************************************************************/
@@ -23223,14 +23231,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 495 */,
-/* 496 */,
-/* 497 */,
-/* 498 */,
-/* 499 */,
-/* 500 */,
-/* 501 */,
-/* 502 */
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */,
+/* 507 */,
+/* 508 */,
+/* 509 */,
+/* 510 */
 /*!******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-gap/props.js ***!
   \******************************************************************************************************/
@@ -23262,14 +23270,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 503 */,
-/* 504 */,
-/* 505 */,
-/* 506 */,
-/* 507 */,
-/* 508 */,
-/* 509 */,
-/* 510 */
+/* 511 */,
+/* 512 */,
+/* 513 */,
+/* 514 */,
+/* 515 */,
+/* 516 */,
+/* 517 */,
+/* 518 */
 /*!*************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-transition/props.js ***!
   \*************************************************************************************************************/
@@ -23301,7 +23309,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 511 */
+/* 519 */
 /*!******************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-transition/transition.js ***!
   \******************************************************************************************************************/
@@ -23312,7 +23320,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 36));
 
 
-var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 512));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} // 定义一个一定时间后自动成功的promise，让调用nextTick方法处，进入下一个then方法
+var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 520));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} // 定义一个一定时间后自动成功的promise，让调用nextTick方法处，进入下一个then方法
 var nextTick = function nextTick() {return new Promise(function (resolve) {return setTimeout(resolve, 1000 / 50);});}; // nvue动画模块实现细节抽离在外部文件
 
 // 定义类名，通过给元素动态切换类名，赋予元素一定的css动画样式
@@ -23464,7 +23472,7 @@ var getClassNames = function getClassNames(name) {return {
     } } };exports.default = _default;
 
 /***/ }),
-/* 512 */
+/* 520 */
 /*!********************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-transition/nvue.ani-map.js ***!
   \********************************************************************************************************************/
@@ -23540,14 +23548,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     'leave-to': { opacity: 0, transform: 'scale(0.95)' } } };exports.default = _default;
 
 /***/ }),
-/* 513 */,
-/* 514 */,
-/* 515 */,
-/* 516 */,
-/* 517 */,
-/* 518 */,
-/* 519 */,
-/* 520 */
+/* 521 */,
+/* 522 */,
+/* 523 */,
+/* 524 */,
+/* 525 */,
+/* 526 */,
+/* 527 */,
+/* 528 */
 /*!*************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-status-bar/props.js ***!
   \*************************************************************************************************************/
@@ -23563,14 +23571,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 521 */,
-/* 522 */,
-/* 523 */,
-/* 524 */,
-/* 525 */,
-/* 526 */,
-/* 527 */,
-/* 528 */
+/* 529 */,
+/* 530 */,
+/* 531 */,
+/* 532 */,
+/* 533 */,
+/* 534 */,
+/* 535 */,
+/* 536 */
 /*!**************************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-safe-bottom/props.js ***!
   \**************************************************************************************************************/
@@ -23582,14 +23590,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   props: {} };exports.default = _default;
 
 /***/ }),
-/* 529 */,
-/* 530 */,
-/* 531 */,
-/* 532 */,
-/* 533 */,
-/* 534 */,
-/* 535 */,
-/* 536 */,
 /* 537 */,
 /* 538 */,
 /* 539 */,
@@ -23610,7 +23610,15 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 554 */,
 /* 555 */,
 /* 556 */,
-/* 557 */
+/* 557 */,
+/* 558 */,
+/* 559 */,
+/* 560 */,
+/* 561 */,
+/* 562 */,
+/* 563 */,
+/* 564 */,
+/* 565 */
 /*!**********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-toolbar/props.js ***!
   \**********************************************************************************************************/
@@ -23652,14 +23660,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 558 */,
-/* 559 */,
-/* 560 */,
-/* 561 */,
-/* 562 */,
-/* 563 */,
-/* 564 */,
-/* 565 */
+/* 566 */,
+/* 567 */,
+/* 568 */,
+/* 569 */,
+/* 570 */,
+/* 571 */,
+/* 572 */,
+/* 573 */
 /*!*********************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/libs/util/async-validator.js ***!
   \*********************************************************************************************************/
@@ -25011,10 +25019,10 @@ Schema.messages = messages;var _default =
 Schema;
 // # sourceMappingURL=index.js.map
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 566)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 574)))
 
 /***/ }),
-/* 566 */
+/* 574 */
 /*!********************************************************!*\
   !*** ./node_modules/node-libs-browser/mock/process.js ***!
   \********************************************************/
@@ -25045,7 +25053,7 @@ exports.binding = function (name) {
     var path;
     exports.cwd = function () { return cwd };
     exports.chdir = function (dir) {
-        if (!path) path = __webpack_require__(/*! path */ 567);
+        if (!path) path = __webpack_require__(/*! path */ 575);
         cwd = path.resolve(dir, cwd);
     };
 })();
@@ -25058,7 +25066,7 @@ exports.features = {};
 
 
 /***/ }),
-/* 567 */
+/* 575 */
 /*!***********************************************!*\
   !*** ./node_modules/path-browserify/index.js ***!
   \***********************************************/
@@ -25368,15 +25376,15 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 566)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 574)))
 
 /***/ }),
-/* 568 */,
-/* 569 */,
-/* 570 */,
-/* 571 */,
-/* 572 */,
-/* 573 */
+/* 576 */,
+/* 577 */,
+/* 578 */,
+/* 579 */,
+/* 580 */,
+/* 581 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-line/props.js ***!
   \*******************************************************************************************************/
@@ -25417,14 +25425,14 @@ var substr = 'ab'.substr(-1) === 'b'
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 574 */,
-/* 575 */,
-/* 576 */,
-/* 577 */,
-/* 578 */,
-/* 579 */,
-/* 580 */,
-/* 581 */
+/* 582 */,
+/* 583 */,
+/* 584 */,
+/* 585 */,
+/* 586 */,
+/* 587 */,
+/* 588 */,
+/* 589 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-text/props.js ***!
   \*******************************************************************************************************/
@@ -25542,19 +25550,19 @@ var substr = 'ab'.substr(-1) === 'b'
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 582 */,
-/* 583 */,
-/* 584 */,
-/* 585 */,
-/* 586 */,
-/* 587 */,
-/* 588 */,
-/* 589 */,
 /* 590 */,
 /* 591 */,
 /* 592 */,
 /* 593 */,
-/* 594 */
+/* 594 */,
+/* 595 */,
+/* 596 */,
+/* 597 */,
+/* 598 */,
+/* 599 */,
+/* 600 */,
+/* 601 */,
+/* 602 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-text/value.js ***!
   \*******************************************************************************************************/
@@ -25648,14 +25656,14 @@ var substr = 'ab'.substr(-1) === 'b'
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 595 */,
-/* 596 */,
-/* 597 */,
-/* 598 */,
-/* 599 */,
-/* 600 */,
-/* 601 */,
-/* 602 */
+/* 603 */,
+/* 604 */,
+/* 605 */,
+/* 606 */,
+/* 607 */,
+/* 608 */,
+/* 609 */,
+/* 610 */
 /*!*******************************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-link/props.js ***!
   \*******************************************************************************************************/
@@ -25699,6 +25707,132 @@ var substr = 'ab'.substr(-1) === 'b'
     text: {
       type: String,
       default: uni.$u.props.link.text } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 611 */,
+/* 612 */,
+/* 613 */,
+/* 614 */,
+/* 615 */,
+/* 616 */,
+/* 617 */,
+/* 618 */,
+/* 619 */,
+/* 620 */,
+/* 621 */,
+/* 622 */,
+/* 623 */,
+/* 624 */,
+/* 625 */,
+/* 626 */,
+/* 627 */,
+/* 628 */,
+/* 629 */,
+/* 630 */,
+/* 631 */,
+/* 632 */,
+/* 633 */,
+/* 634 */,
+/* 635 */,
+/* 636 */,
+/* 637 */,
+/* 638 */,
+/* 639 */,
+/* 640 */,
+/* 641 */,
+/* 642 */,
+/* 643 */,
+/* 644 */,
+/* 645 */,
+/* 646 */,
+/* 647 */,
+/* 648 */,
+/* 649 */,
+/* 650 */,
+/* 651 */,
+/* 652 */,
+/* 653 */,
+/* 654 */,
+/* 655 */,
+/* 656 */,
+/* 657 */,
+/* 658 */,
+/* 659 */,
+/* 660 */,
+/* 661 */,
+/* 662 */,
+/* 663 */,
+/* 664 */,
+/* 665 */,
+/* 666 */,
+/* 667 */,
+/* 668 */,
+/* 669 */,
+/* 670 */,
+/* 671 */,
+/* 672 */,
+/* 673 */,
+/* 674 */,
+/* 675 */,
+/* 676 */,
+/* 677 */,
+/* 678 */,
+/* 679 */,
+/* 680 */
+/*!*************************************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/item/reminderAPP/uni_modules/uview-ui/components/u-subsection/props.js ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  props: {
+    // tab的数据
+    list: {
+      type: Array,
+      default: uni.$u.props.subsection.list },
+
+    // 当前活动的tab的index
+    current: {
+      type: [String, Number],
+      default: uni.$u.props.subsection.current },
+
+    // 激活的颜色
+    activeColor: {
+      type: String,
+      default: uni.$u.props.subsection.activeColor },
+
+    // 未激活的颜色
+    inactiveColor: {
+      type: String,
+      default: uni.$u.props.subsection.inactiveColor },
+
+    // 模式选择，mode=button为按钮形式，mode=subsection时为分段模式
+    mode: {
+      type: String,
+      default: uni.$u.props.subsection.mode },
+
+    // 字体大小
+    fontSize: {
+      type: [String, Number],
+      default: uni.$u.props.subsection.fontSize },
+
+    // 激活tab的字体是否加粗
+    bold: {
+      type: Boolean,
+      default: uni.$u.props.subsection.bold },
+
+    // mode = button时，组件背景颜色
+    bgColor: {
+      type: String,
+      default: uni.$u.props.subsection.bgColor },
+
+    // 从list元素对象中读取的键名
+    keyName: {
+      type: String,
+      default: uni.$u.props.subsection.keyName } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })

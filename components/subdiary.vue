@@ -79,7 +79,7 @@
 		width: 100rpx;
 		height: 100rpx;
 		border-radius: 10px;
-		background-color: #FFEEA8;
+		background-color: #fff7d4;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -149,6 +149,7 @@
 	}
 
 	.subtitle1 {
+		margin-top: 20rpx;
 		font-size: 15px;
 		color: #505050;
 		padding-left: 40rpx;

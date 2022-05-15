@@ -4,7 +4,7 @@
 		<view :style="{paddingTop: statusBarHeight}">
 			<view :style="{height: titleBarHeight, display: 'flex',alignItems: 'center',paddingLeft: '40rpx'}">
 				<view class="topback">
-					<view class="allbtnsty" v-show="showtype==0">
+					<view class="allbtnsty" v-if="showtype==0">
 						<view class="btnsty">
 							<span id="typetop" class="t-icon t-icon-checkbox1-copy"></span>
 						</view>
@@ -12,7 +12,7 @@
 							<span @click="showtype=1" id="typetop" class="t-icon t-icon-checkbox"></span>
 						</view>
 					</view>
-					<view class="allbtnsty" v-show="showtype==1">
+					<view class="allbtnsty" v-if="showtype==1">
 						<view class="btnsty1">
 							<span @click="showtype=0" id="typetop" class="t-icon t-icon-checkbox1"></span>
 						</view>
@@ -29,7 +29,7 @@
 		<!-- #endif -->
 		<!-- #ifndef MP-WEIXIN -->
 		<view class="topback1">
-			<view class="allbtnsty" v-show="showtype==0">
+			<view class="allbtnsty" v-if="showtype==0">
 				<view class="btnsty">
 					<span id="typetop" class="t-icon t-icon-checkbox1-copy"></span>
 				</view>
@@ -37,7 +37,7 @@
 					<span @click="showtype=1" id="typetop" class="t-icon t-icon-checkbox"></span>
 				</view>
 			</view>
-			<view class="allbtnsty" v-show="showtype==1">
+			<view class="allbtnsty" v-if="showtype==1">
 				<view class="btnsty1">
 					<span @click="showtype=0" id="typetop" class="t-icon t-icon-checkbox1"></span>
 				</view>
@@ -53,7 +53,7 @@
 		</view>
 		<!-- #endif -->
 		<!-- 类型1 -->
-		<view v-show="showtype==0" class="listcontent" :style="{height: topheight,overflow: 'auto'}">
+		<view v-if="showtype==0" class="listcontent" :style="{height: topheight,overflow: 'auto'}">
 			<view class="allitem">
 				<!-- 纪念日 -->
 				<Submemorial :memorialdata="memorialdata"></Submemorial>
@@ -66,7 +66,7 @@
 			</view>
 		</view>
 		<!-- 类型2 -->
-		<view v-show="showtype==1" class="listcontent" :style="{height: topheight,overflow: 'auto'}">
+		<view v-if="showtype==1" class="listcontent" :style="{height: topheight,overflow: 'auto'}">
 			<view class="allitem">
 				<view style="text-align: center;">
 					应用
@@ -102,6 +102,7 @@
 			this.getmemorial()
 			this.getmemo()
 			this.getdiary()
+			this.gettally()
 		},
 		onReady() {
 			uni.createSelectorQuery().in(this).select(".listcontent").boundingClientRect((data) => {
@@ -157,14 +158,7 @@
 				}else if(res.code == '201'){
 					this.memorialdata = ""
 				}
-				else {
-					this.$refs.uToast.show({
-						type: 'error',
-						icon: false,
-						message: "纪念日数据获取失败",
-						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
-					})
-				}
+				
 			},
 			// 获取用户所有备忘录数据
 			async getmemo() {
@@ -176,21 +170,13 @@
 				if(res.code == '200') {
 					this.memodata.title = res.data[0].title
 					this.memodata.content = res.data[0].content
-					this.memodata.datetime = res.data[0].datetime.split(":")[0]+":"+res.data[0].datetime.split(":")[1]
+					this.memodata.datetime = (res.data[0].datetime.split(" ")[0]).split('-')[1]+"/"+(res.data[0].datetime.split(" ")[0]).split('-')[2]
 					this.memodata.nums = res.data.length
 				}else if(res.code == '201'){
 					this.memodata.title = ""
 					this.memodata.content = ""
 					this.memodata.datetime = ""
 					this.memodata.nums = 0
-				}
-				else {
-					this.$refs.uToast.show({
-						type: 'error',
-						icon: false,
-						message: "备忘录数据获取失败",
-						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
-					})
 				}
 			},
 			// 获取用户所有日记数据
@@ -232,14 +218,20 @@
 					this.diarydata.content = ""
 					this.diarydata.nums = 0
 				}
-				else {
-					this.$refs.uToast.show({
-						type: 'error',
-						icon: false,
-						message: "备忘录数据获取失败",
-						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
-					})
+				
+			},
+			// 获取记账数据
+			async gettally() {
+				const { data:res } = await this.$http({
+					url: "tally/usertally",
+					method: "POST"
+				})
+				if(res.code == '200') {
+					this.tallydata = res.data.length
+				}else if(res.code == '201'){
+					this.tallydata = 0
 				}
+				
 			}
 		}
 	}
