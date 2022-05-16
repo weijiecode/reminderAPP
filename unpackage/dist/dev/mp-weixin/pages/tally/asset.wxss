@@ -38,4 +38,107 @@
   margin-top: 60rpx;
   text-align: center;
 }
+.assetcard.data-v-14137bb8 {
+  width: 680rpx;
+  height: 300rpx;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  background-color: #518bf1;
+  background-image: linear-gradient(45deg, #518bf1 0%, #adc9f9 100%);
+  box-shadow: 5px 5px 10px #efeded;
+}
+.onecard.data-v-14137bb8 {
+  display: flex;
+  color: #CBD7EF;
+  font-size: 14px;
+  padding: 50rpx 0 0 40rpx;
+}
+.twocard.data-v-14137bb8 {
+  margin-left: 40rpx;
+  margin-top: 20rpx;
+  color: white;
+  font-size: 25px;
+}
+.threecard.data-v-14137bb8 {
+  margin-left: 40rpx;
+  display: flex;
+  color: #CBD7EF;
+  font-size: 14px;
+  margin-top: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.threeright.data-v-14137bb8 {
+  margin-right: 40rpx;
+}
+.allasset.data-v-14137bb8 {
+  background-color: white;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  width: 680rpx;
+  margin-bottom: 40rpx;
+}
+.alltitle.data-v-14137bb8 {
+  width: 680rpx;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.assettitle.data-v-14137bb8 {
+  margin-left: 40rpx;
+  font-weight: bold;
+}
+.assettitle1.data-v-14137bb8 {
+  color: #aaa;
+  font-size: 15px;
+  margin-right: 40rpx;
+  display: flex;
+  align-items: center;
+}
+.assettitle1 .u-icon.data-v-14137bb8 {
+  margin-left: 16rpx;
+}
+.subitemcontent.data-v-14137bb8 {
+  align-items: center;
+  display: flex;
+  height: 120rpx;
+  justify-content: space-between;
+}
+.subicon.data-v-14137bb8 {
+  margin-left: 30rpx;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+.iconsty1.data-v-14137bb8 {
+  background-color: #518BF1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75rpx;
+  height: 75rpx;
+  border-radius: 50%;
+  margin-right: 40rpx;
+}
+.iconsty1 .t-icon.data-v-14137bb8 {
+  width: 48rpx;
+  height: 48rpx;
+}
+.submoney.data-v-14137bb8 {
+  margin-right: 30rpx;
+}
+.subbotremark.data-v-14137bb8 {
+  color: #A1A1A1;
+  font-size: 12px;
+}
+.submoneytitle.data-v-14137bb8 {
+  text-align: end;
+  color: #A1A1A1;
+  font-size: 12px;
+}
 

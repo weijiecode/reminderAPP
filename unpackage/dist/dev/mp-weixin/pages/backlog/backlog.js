@@ -96,37 +96,37 @@ var components
 try {
   components = {
     uToast: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 274))
+      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 290))
     },
     uPopup: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 281))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 297))
     },
     "u-Input": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 289))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 305))
     },
     uCalendar: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-calendar/u-calendar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-calendar/u-calendar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-calendar/u-calendar.vue */ 295))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-calendar/u-calendar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-calendar/u-calendar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-calendar/u-calendar.vue */ 311))
     },
     uDatetimePicker: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-datetime-picker/u-datetime-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-datetime-picker/u-datetime-picker")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-datetime-picker/u-datetime-picker.vue */ 306))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-datetime-picker/u-datetime-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-datetime-picker/u-datetime-picker")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-datetime-picker/u-datetime-picker.vue */ 322))
     },
     uPicker: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-picker/u-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-picker/u-picker")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-picker/u-picker.vue */ 314))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-picker/u-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-picker/u-picker")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-picker/u-picker.vue */ 330))
     },
     uTag: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tag/u-tag */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tag/u-tag")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tag/u-tag.vue */ 322))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tag/u-tag */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tag/u-tag")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tag/u-tag.vue */ 338))
     },
     uButton: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 388))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 404))
     },
     uIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 430))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 446))
     },
     uSwipeAction: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swipe-action/u-swipe-action */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swipe-action/u-swipe-action")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swipe-action/u-swipe-action.vue */ 449))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swipe-action/u-swipe-action */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swipe-action/u-swipe-action")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swipe-action/u-swipe-action.vue */ 465))
     },
     uSwipeActionItem: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swipe-action-item/u-swipe-action-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swipe-action-item/u-swipe-action-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swipe-action-item/u-swipe-action-item.vue */ 455))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swipe-action-item/u-swipe-action-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swipe-action-item/u-swipe-action-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swipe-action-item/u-swipe-action-item.vue */ 471))
     }
   }
 } catch (e) {

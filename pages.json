@@ -177,6 +177,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
+				"navigationBarTextStyle": "black",
                 "enablePullDownRefresh": false
             }
             
@@ -186,6 +187,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
+				"navigationBarTextStyle": "black",
                 "enablePullDownRefresh": false
             }
             

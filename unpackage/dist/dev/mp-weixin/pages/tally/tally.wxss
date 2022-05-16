@@ -195,4 +195,33 @@
   color: #A1A1A1;
   font-size: 12px;
 }
+.poptitle.data-v-43221aa0 {
+  padding: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.oneitemcontent.data-v-43221aa0 {
+  display: flex;
+  padding: 40rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+.data-v-43221aa0 .u-input {
+  padding: 0 !important;
+  width: 160rpx !important;
+}
+.rightdate.data-v-43221aa0 {
+  font-size: 14px;
+  display: flex;
+}
+.rightdate.data-v-43221aa0  .u-icon {
+  margin-left: 12rpx !important;
+}
+.zhangweitally.data-v-43221aa0 {
+  height: 200rpx;
+}
+.bothbtn.data-v-43221aa0 {
+  display: flex;
+}
 

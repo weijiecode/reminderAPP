@@ -52,7 +52,7 @@
 			</view>
 			<view class="zhanwei"></view>
 			<view class="twoitem">
-				<view class="icontype">
+				<view class="icontype" @click="toasset">
 					<view class="icon">
 						<span class="t-icon t-icon-zichan"></span>
 					</view>
@@ -87,7 +87,7 @@
 				<view class="subitemtitle">
 					{{item.datetime}}
 				</view>
-				<view class="subitemcontent" v-for="subitem in item.subList" :key="subitem.id">
+				<view class="subitemcontent" v-for="subitem in item.subList" :key="subitem.id" @click="showitemdata(subitem)">
 					<view class="subicon">
 						<view class="iconsty1" v-if="subitem.tallytype=='工资'">
 							<span class="t-icon t-icon-tallywaihui1"></span>
@@ -175,6 +175,102 @@
 		<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
 		<!-- 新建按钮 -->
 		<view @click="tonewtally" class="addbacklog t-icon t-icon-add-copy-copy"></view>
+		<!-- 指定项弹窗 -->
+		<u-popup :show="showtally" :round="10" mode="bottom" @close="showtally=false" @open="showtally=true">
+				<view>
+		            <view class="poptitle">
+		            	<span @click="showtally=false" class="t-icon t-icon-fanhui11"></span>
+						<view class="subpoptitle">
+							账单详情
+						</view>
+						<view class="subpoptitle"></view>
+		            </view>
+					<view class="allitemcontent">
+						<view class="oneitemcontent">
+							<view class="titlename">
+								金额
+							</view> 
+							<view class="rightdate" v-if="updateForm.num.toString().indexOf('-')>=0">
+								 <u--input
+								 inputAlign="right"
+								 color="#F06872"
+								    v-model="updateForm.num"
+								    border="none"
+								    clearable
+								  ></u--input>
+							</view>
+							<view class="rightdate" v-if="updateForm.num.toString().indexOf('-')<0" style="color:#518BF1">
+								<u--input
+								inputAlign="right"
+								color="#518BF1"
+								   v-model="updateForm.num"
+								   border="none"
+								   clearable
+								 ></u--input>
+							</view>
+						</view>
+						
+						<view class="oneitemcontent">
+							<view class="titlename">
+								分类
+							</view> 
+							<view @click="showout=true" class="rightdate" v-if="updateForm.num.toString().indexOf('-')>=0">
+								 {{updateForm.tallytype}}
+								 <u-icon name="arrow-right" color="#aaa" size="14"></u-icon>
+							</view>
+							<view @click="showin=true" class="rightdate" v-if="updateForm.num.toString().indexOf('-')<0">
+								{{updateForm.tallytype}}
+								<u-icon name="arrow-right" color="#aaa" size="14"></u-icon>
+							</view>
+						</view>
+						
+						<view class="oneitemcontent">
+							<view class="titlename">
+								时间
+							</view> 
+							<view @click="showtime=true" class="rightdate">
+								 {{updateForm.datetime}}
+								 <u-icon name="arrow-right" color="#aaa" size="14"></u-icon>
+							</view>
+						</view>
+						
+						<view class="oneitemcontent">
+							<view class="titlename">
+								备注
+							</view> 
+							<view class="rightdate">
+								 <u--input
+								 inputAlign="right"
+								    border="none"
+								    clearable
+									v-model="updateForm.remark"
+								  ></u--input>
+							</view>
+						</view>
+						
+						<view class="zhangweitally">
+							
+						</view>
+						
+						<view class="bothbtn" v-if="updateForm.num.toString().indexOf('-')>=0">
+							<u-button @click="updatetallout" type="primary" :plain="true">修改</u-button>
+							<u-button @click="deltall" type="error" :plain="true">删除</u-button>
+						</view>
+						<view class="bothbtn" v-if="updateForm.num.toString().indexOf('-')<0">
+							<u-button @click="updatetallin" type="primary" :plain="true">修改</u-button>
+							<u-button @click="deltall" type="error" :plain="true">删除</u-button>
+						</view>
+						
+					</view>
+				</view>
+		</u-popup>
+		<!-- 类型选择1 -->
+		 <u-picker closeOnClickOverlay :show="showout" ref="uPicker" :columns="columnsout" @close="showout=false" @cancel="showout=false" @confirm="confirmout"></u-picker>
+		 <!-- 类型选择2 -->
+		  <u-picker closeOnClickOverlay :show="showin" ref="uPicker" :columns="columnsin" @close="showin=false" @cancel="showin=false" @confirm="confirmin"></u-picker>
+		  <!-- 日期选择器 -->
+		  <u-datetime-picker closeOnClickOverlay @close="showtime=false" confirmColor="#518BF1" @confirm="confirmtime"
+		  	@cancel="showtime=false" :show="showtime" v-model="datetime" mode="date"></u-datetime-picker>
 	</view>
 </template>
 
@@ -206,6 +302,28 @@
 				innum: 0,
 				// 支出
 				outnum: 0,
+				// 显示弹出框
+				showtally: false,
+				// 修改表单
+				updateForm: {
+					tallytype: "",
+					datetime: "",
+					remark: "",
+					num: "",
+					id: ""
+				},
+				// 类型选择器
+				showin: false,
+				 columnsin: [
+				    ['工资', '理财', '红包', '兼职', '现金', '收银', '其它']
+				],
+				showout: false,
+				 columnsout: [
+				    ['餐饮', '娱乐', '日用', '住房', '旅行', '医疗', '交通']
+				],
+				// 时间选择器
+				showtime: false,
+				datetime: Number(new Date()),
 			}
 		},
 		onShow() {
@@ -239,7 +357,7 @@
 			// 获取用户所有记账数据
 			async gettally() {
 				// 初始化
-				this.initArrtally=[]
+				this.initArrtally = []
 				const {
 					data: res
 				} = await this.$http({
@@ -283,30 +401,42 @@
 					url: "./addtally"
 				})
 			},
+			// 跳转到资产页面
+			toasset() {
+				uni.navigateTo({
+					url: "./asset"
+				})
+			},
 			// 当前月份数据过滤
 			async nowgettally() {
 				// 初始化
 				this.outnum = 0
 				this.innum = 0
-				this.gettally().then(()=>{
-				console.log(this.initArrtally)
-				const timeFormat = uni.$u.timeFormat
-					const newtallys =  this.initArrtally.filter(item => {
-						return item.datetime.substring(0,7) == timeFormat(this.dateym, 'yyyy/mm');
-					})
-					this.newArrtally = newtallys
-					this.newArrtally.forEach(item => {
-						item.subList.forEach(items => {
-							if(items.num.indexOf('-')>=0){
-								this.outnum += items.num*(-1)
-							}else{
-								this.innum += items.num*1
-							}
+				this.gettally().then(() => {
+					if (this.initArrtally.length == 0) {
+						return
+					} else {
+						// console.log(this.initArrtally)
+						const timeFormat = uni.$u.timeFormat
+						const newtallys = this.initArrtally.filter(item => {
+							return item.datetime.substring(0, 7) == timeFormat(this.dateym, 'yyyy/mm');
 						})
-					})
-					this.outnum = this.outnum.toString().indexOf('.')>=0?this.outnum:this.outnum.toString()+'.00'
-					this.innum = this.innum.toString().indexOf('.')>=0?this.innum:this.innum.toString()+'.00'
-					})
+						this.newArrtally = newtallys
+						this.newArrtally.forEach(item => {
+							item.subList.forEach(items => {
+								if (items.num.indexOf('-') >= 0) {
+									this.outnum += items.num * (-1)
+								} else {
+									this.innum += items.num * 1
+								}
+							})
+						})
+						this.outnum = this.outnum.toString().indexOf('.') >= 0 ? this.outnum : this.outnum
+							.toString() + '.00'
+						this.innum = this.innum.toString().indexOf('.') >= 0 ? this.innum : this.innum
+							.toString() + '.00'
+					}
+				})
 			},
 			// 指定日期数据过滤
 			async confirmdate(e) {
@@ -318,22 +448,142 @@
 				this.datey = (timeFormat(e.value, 'yyyy-mm')).split('-')[0]
 				this.datem = (timeFormat(e.value, 'yyyy-mm')).split('-')[1]
 				this.gettally().then(() => {
-					const newtallys =  this.initArrtally.filter(item => {
-						return item.datetime.substring(0,7) == timeFormat(e.value, 'yyyy/mm');
+					const newtallys = this.initArrtally.filter(item => {
+						return item.datetime.substring(0, 7) == timeFormat(e.value, 'yyyy/mm');
 					})
 					this.newArrtally = newtallys
 					this.newArrtally.forEach(item => {
 						item.subList.forEach(items => {
-							if(items.num.indexOf('-')>=0){
-								this.outnum += items.num*(-1)
-							}else{
-								this.innum += items.num*1
+							if (items.num.indexOf('-') >= 0) {
+								this.outnum += items.num * (-1)
+							} else {
+								this.innum += items.num * 1
 							}
 						})
 					})
-					this.outnum = this.outnum.toString().indexOf('.')>=0?this.outnum:this.outnum.toString()+'.00'
-					this.innum = this.innum.toString().indexOf('.')>=0?this.innum:this.innum.toString()+'.00'
+					this.outnum = this.outnum.toString().indexOf('.') >= 0 ? this.outnum : this.outnum
+						.toString() + '.00'
+					this.innum = this.innum.toString().indexOf('.') >= 0 ? this.innum : this.innum
+						.toString() + '.00'
 				})
+			},
+			// 显示指定数据的详情弹框
+			showitemdata(item) {
+				this.showtally = true
+				this.updateForm.tallytype = item.tallytype
+				this.updateForm.datetime = item.datetime
+				this.updateForm.remark = item.remark
+				this.updateForm.num = item.num
+				this.updateForm.id = item.id
+			},
+			// 类型选择器1
+			confirmin(e) {
+				this.showin = false
+				this.updateForm.tallytype = e.value[0]
+			},
+			// 类型选择器2
+			confirmout(e) {
+				this.showout = false
+				this.updateForm.tallytype = e.value[0]
+			},
+			// 确定日期
+			confirmtime(e) {
+				this.showtime = false
+				const timeFormat = uni.$u.timeFormat
+				this.$nextTick(() => {
+					this.updateForm.datetime = timeFormat(e.value, 'yyyy/mm/dd')
+				})
+			},
+			// 修改账单1
+			async updatetallout() {
+				this.showtally = false
+				this.updateForm.num = this.updateForm.num.toString().indexOf('-')>=0?this.updateForm.num:"-"+this.updateForm.num.toString()
+				const { data: res } = await this.$http({
+					url: "tally/updatetally",
+					method: "POST",
+					data: {	
+						tallytype: this.updateForm.tallytype,
+						datetime: this.updateForm.datetime,
+						remark: this.updateForm.remark,
+						num: this.updateForm.num,
+						id: this.updateForm.id
+					}
+				})
+				if(res.code == "200") {
+					this.nowgettally()
+					this.$refs.uToast.show({
+						type: 'success',
+						duration: 1000,
+						message: "该账单已修改成功",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/success.png'
+					})
+				}else {
+					this.$refs.uToast.show({
+						type: 'error',
+						icon: false,
+						message: "修改失败，请重试",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
+					})
+				}
+			},
+			// 修改账单2
+			async updatetallin() {
+				this.showtally = false
+				const { data: res } = await this.$http({
+					url: "tally/updatetally",
+					method: "POST",
+					data: {	
+						tallytype: this.updateForm.tallytype,
+						datetime: this.updateForm.datetime,
+						remark: this.updateForm.remark,
+						num: this.updateForm.num,
+						id: this.updateForm.id
+					}
+				})
+				if(res.code == "200") {
+					this.nowgettally()
+					this.$refs.uToast.show({
+						type: 'success',
+						duration: 1000,
+						message: "该账单已修改成功",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/success.png'
+					})
+				}else {
+					this.$refs.uToast.show({
+						type: 'error',
+						icon: false,
+						message: "修改失败，请重试",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
+					})
+				}
+			},
+			
+			// 删除账单
+			async deltall() {
+				this.showtally = false
+				const { data: res } = await this.$http({
+					url: "tally/deletally",
+					method: "POST",
+					data: {
+						id: this.updateForm.id
+					}
+				})
+				if(res.code == "200") {
+					this.nowgettally()
+					this.$refs.uToast.show({
+						type: 'success',
+						duration: 1000,
+						message: "该账单已删除成功",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/success.png'
+					})
+				}else {
+					this.$refs.uToast.show({
+						type: 'error',
+						icon: false,
+						message: "删除失败，请重试",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
+					})
+				}
 			}
 		}
 	}
@@ -417,7 +667,7 @@
 		justify-content: space-around;
 		display: flex;
 	}
-	
+
 	.addbacklog {
 		width: 120rpx;
 		height: 120rpx;
@@ -523,7 +773,6 @@
 		justify-content: space-between;
 	}
 
-	.submoneytitle {}
 
 	.subicon {
 		margin-left: 30rpx;
@@ -542,4 +791,43 @@
 		color: #A1A1A1;
 		font-size: 12px;
 	}
+	
+	.poptitle {
+		padding: 40rpx;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
+	.oneitemcontent {
+		display: flex;
+		padding: 40rpx;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
+
+		::v-deep .u-input {
+			padding: 0 !important;
+			width: 160rpx !important;
+		}
+		
+		.rightdate {
+			font-size: 14px;
+			display: flex;
+			::v-deep .u-icon {
+				margin-left: 12rpx !important;
+			}
+		}
+		
+		.zhangweitally {
+			height: 200rpx;
+		}
+		
+		.bothbtn {
+			display: flex;
+		}
+		
+		
+
 </style>
