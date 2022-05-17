@@ -58,7 +58,7 @@
 					</view>
 					<view class="icontitle">资产</view>
 				</view>
-				<view class="icontype">
+				<view class="icontype" @click="tostatistics">
 					<view class="icon">
 						<span class="t-icon t-icon-tongji"></span>
 					</view>
@@ -407,7 +407,12 @@
 					url: "./asset"
 				})
 			},
-			// 当前月份数据过滤
+			// 跳转到统计页面
+			tostatistics() {
+				uni.navigateTo({
+					url: "./statistics"
+				})
+			},			// 当前月份数据过滤
 			async nowgettally() {
 				// 初始化
 				this.outnum = 0

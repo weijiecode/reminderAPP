@@ -18,7 +18,8 @@
     "pages/diary/adddiary",
     "pages/tally/tally",
     "pages/tally/addtally",
-    "pages/tally/asset"
+    "pages/tally/asset",
+    "pages/tally/statistics"
   ],
   "subPackages": [],
   "window": {

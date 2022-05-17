@@ -38,9 +38,9 @@
 						<view class="title">昵称</view>
 						<view class="listcontent">
 							<u-form-item prop="nickname">
-								<u--input v-model="mycenterForm.nickname" placeholder="请输入内容" border="none"></u--input>
+								<u--input inputAlign="right" v-model="mycenterForm.nickname" placeholder="请输入内容" border="none"></u--input>
 							</u-form-item>
-							<view style="margin-left: 80rpx;" class="t-icon t-icon-xiangyou1"></view>
+							<view style="margin-left: 10rpx;" class="t-icon t-icon-xiangyou1"></view>
 						</view>
 					</view>
 					<view class="sex" @click="mycenterForm.sex==0?mycenterForm.sex=1:mycenterForm.sex=0">
@@ -50,38 +50,38 @@
 								class="t-icon t-icon-xingbie"></span>
 							<span v-if="mycenterForm.sex==1" style="margin-left: 20rpx;"
 								class="t-icon t-icon-xingbie1"></span>
-							<view style="margin-left: 380rpx;" class="t-icon t-icon-xiangyou1"></view>
+							<view style="margin-left: 10rpx;" class="t-icon t-icon-xiangyou1"></view>
 						</view>
 					</view>
 					<view class="phone">
 						<view class="title">手机号码</view>
 						<view class="listcontent">
 							<u-form-item>
-								<u--input type="number" maxlength="11" v-model="mycenterForm.phone" placeholder="请输入号码"
+								<u--input inputAlign="right" type="number" maxlength="11" v-model="mycenterForm.phone" placeholder="请输入号码"
 									border="none"></u--input>
 							</u-form-item>
-							<view style="margin-left: 80rpx;" class="t-icon t-icon-xiangyou1"></view>
+							<view style="margin-left: 10rpx;" class="t-icon t-icon-xiangyou1"></view>
 						</view>
 					</view>
 					<view class="email">
 						<view class="title">电子邮箱</view>
 						<view class="listcontent">
 							<u-form-item>
-								<u--input maxlength="20" v-model="mycenterForm.email" placeholder="请输入电子邮箱"
+								<u--input inputAlign="right" maxlength="20" v-model="mycenterForm.email" placeholder="请输入电子邮箱"
 									border="none"></u--input>
 							</u-form-item>
-							<view style="margin-left: 80rpx;" class="t-icon t-icon-xiangyou1"></view>
+							<view style="margin-left: 10rpx;" class="t-icon t-icon-xiangyou1"></view>
 						</view>
 					</view>
 					<view class="introduction">
 						<view class="title">个人简介</view>
 						<view class="listcontent">
 							<u-form-item>
-								<u--input maxlength="15" v-model="mycenterForm.introduction" placeholder="请输入个人简介"
+								<u--input inputAlign="right" maxlength="15" v-model="mycenterForm.introduction" placeholder="请输入个人简介"
 									border="none">
 								</u--input>
 							</u-form-item>
-							<view style="margin-left: 80rpx;" class="t-icon t-icon-xiangyou1"></view>
+							<view style="margin-left: 10rpx;" class="t-icon t-icon-xiangyou1"></view>
 						</view>
 					</view>
 				</u--form>

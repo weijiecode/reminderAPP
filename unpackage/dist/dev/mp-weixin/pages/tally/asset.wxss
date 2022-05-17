@@ -50,7 +50,7 @@
 }
 .onecard.data-v-14137bb8 {
   display: flex;
-  color: #CBD7EF;
+  color: #eaf1ff;
   font-size: 14px;
   padding: 50rpx 0 0 40rpx;
 }
@@ -63,7 +63,7 @@
 .threecard.data-v-14137bb8 {
   margin-left: 40rpx;
   display: flex;
-  color: #CBD7EF;
+  color: #eaf1ff;
   font-size: 14px;
   margin-top: 60rpx;
   display: flex;

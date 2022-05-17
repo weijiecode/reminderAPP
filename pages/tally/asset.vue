@@ -27,9 +27,9 @@
 				<view class="assetcard">
 					<view class="onecard">
 						净资产 <u-icon @click="isshownum=!isshownum" v-if="isshownum" style="margin-left: 15rpx;"
-							name="eye-fill" color="#CBD7EF" size="18"></u-icon>
+							name="eye-fill" color="#eaf1ff" size="18"></u-icon>
 						<u-icon @click="isshownum=!isshownum" v-if="!isshownum" style="margin-left: 15rpx;"
-							name="eye-off" color="#CBD7EF" size="18"></u-icon>
+							name="eye-off" color="#eaf1ff" size="18"></u-icon>
 					</view>
 					<view class="twocard" v-if="isshownum">
 						{{subassetnum}}
@@ -211,6 +211,8 @@
 				</view>
 
 			</view>
+			<!-- 消息提示 -->
+			<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
 		</view>
 	</view>
 </template>
@@ -332,7 +334,7 @@
 
 	.onecard {
 		display: flex;
-		color: #CBD7EF;
+		color: #eaf1ff;
 		font-size: 14px;
 		padding: 50rpx 0 0 40rpx;
 	}
@@ -347,7 +349,7 @@
 	.threecard {
 		margin-left: 40rpx;
 		display: flex;
-		color: #CBD7EF;
+		color: #eaf1ff;
 		font-size: 14px;
 		margin-top: 60rpx;
 		display: flex;

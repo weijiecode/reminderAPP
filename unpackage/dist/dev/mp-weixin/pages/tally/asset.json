@@ -3,6 +3,7 @@
   "navigationBarTextStyle": "black",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon"
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "u-toast": "/uni_modules/uview-ui/components/u-toast/u-toast"
   }
 }
