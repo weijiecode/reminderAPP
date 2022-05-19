@@ -471,6 +471,8 @@
 
 	::v-deep .u-popup__content {
 		opacity: 0.9 !important;
+		border-top-right-radius: 15px !important;
+		border-top-left-radius: 15px !important;
 	}
 
 	::v-deep .u-popup__content {

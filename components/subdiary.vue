@@ -139,8 +139,8 @@
 	}
 
 	.subtitle {
-		font-size: 15px;
-		color: #505050;
+		font-size: 13px;
+		color: #aaa;
 		padding-left: 40rpx;
 		padding-right: 40rpx;
 		width: 90rpx;
@@ -150,8 +150,8 @@
 
 	.subtitle1 {
 		margin-top: 20rpx;
-		font-size: 15px;
-		color: #505050;
+		font-size: 13px;
+		color: #aaa;
 		padding-left: 40rpx;
 		width: 500rpx;
 	}

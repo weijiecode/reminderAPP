@@ -23,8 +23,8 @@
 					{{memodata.datetime}} {{memodata.content}}
 				</view>
 			</view>
-			<view v-if="memodata.nums == 0" class="twoblock">
-				<view class="subtitle">暂无备忘录信息</view>
+			<view v-if="memodata.nums == 0" class="twoblock" style="margin-top: -20rpx;">
+				<view class="subtitle1">暂无备忘录信息</view>
 			</view>
 			<!-- 消息提示 -->
 			<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
@@ -123,6 +123,13 @@
 	.subtitle {
 		font-size: 15px;
 		color: #505050;
+		padding-left: 40rpx;
+		margin-top: 20rpx;
+	}
+	
+	.subtitle1 {
+		font-size: 13px;
+		color: #aaa;
 		padding-left: 40rpx;
 		margin-top: 20rpx;
 	}

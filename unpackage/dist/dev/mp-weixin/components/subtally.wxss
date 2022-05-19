@@ -170,4 +170,8 @@
 .countcol.data-v-41130967:active {
   background-color: #eaeaea;
 }
+.data-v-41130967 .u-popup__content {
+  border-top-right-radius: 15px !important;
+  border-top-left-radius: 15px !important;
+}
 

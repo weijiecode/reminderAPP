@@ -85,25 +85,25 @@
 					
 					<view class="subitemcontent" v-for="subitem in assetdata" :key="subitem.id">
 						<view class="subicon">
-							<view class="iconsty1" v-if="subitem.tallytype=='工资'">
+							<view class="iconsty1" v-if="subitem.tallytype=='工资'" style="background-color: #518BF1;">
 								<span class="t-icon t-icon-tallywaihui1"></span>
 							</view>
-							<view class="iconsty1" v-if="subitem.tallytype=='理财'">
+							<view class="iconsty1" v-if="subitem.tallytype=='理财'" style="background-color: #74C783;">
 								<span class="t-icon t-icon-tallygushi1"></span>
 							</view>
-							<view class="iconsty1" v-if="subitem.tallytype=='红包'">
+							<view class="iconsty1" v-if="subitem.tallytype=='红包'" style="background-color: #FA623D;">
 								<span class="t-icon t-icon-tallyhongbao1"></span>
 							</view>
-							<view class="iconsty1" v-if="subitem.tallytype=='兼职'">
+							<view class="iconsty1" v-if="subitem.tallytype=='兼职'" style="background-color: #F3B32B;">
 								<span class="t-icon t-icon-tallyjianzhi1"></span>
 							</view>
-							<view class="iconsty1" v-if="subitem.tallytype=='现金'">
+							<view class="iconsty1" v-if="subitem.tallytype=='现金'" style="background-color: #798EBB;">
 								<span class="t-icon t-icon-tallyxianjin1-copy"></span>
 							</view>
-							<view class="iconsty1" v-if="subitem.tallytype=='收银'">
+							<view class="iconsty1" v-if="subitem.tallytype=='收银'" style="background-color: #A97FE6;">
 								<span class="t-icon t-icon-tallyjieru1"></span>
 							</view>
-							<view class="iconsty1" v-if="subitem.tallytype=='其它'">
+							<view class="iconsty1" v-if="subitem.tallytype=='其它'" style="background-color: #07BD73;">
 								<span class="t-icon t-icon-tallyother1"></span>
 							</view>
 							<view class="bothcontent">
@@ -119,14 +119,14 @@
 							style="color: #518BF1;">
 							+{{subitem.num}}
 							<view class="submoneytitle">
-								收入
+								{{subitem.datetime}}
 							</view>
 						</view>
 						<view class="submoney" v-if="subitem.num.indexOf('-')<0 && subitem.num.indexOf('.')<0"
 							style="color: #518BF1;">
 							+{{subitem.num}}.00
 							<view class="submoneytitle">
-								收入
+								{{subitem.datetime}}
 							</view>
 						</view>
 					</view>
@@ -162,25 +162,25 @@
 								
 					<view class="subitemcontent" v-for="subitem in outdata" :key="subitem.id">
 						<view class="subicon">
-						<view class="iconsty1" v-if="subitem.tallytype=='餐饮'">
+						<view class="iconsty1" v-if="subitem.tallytype=='餐饮'" style="background-color: #518BF1;">
 							<span class="t-icon t-icon-tally1foot1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='娱乐'">
+						<view class="iconsty1" v-if="subitem.tallytype=='娱乐'" style="background-color: #74C783;">
 							<span class="t-icon t-icon-tally1game1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='日用'">
+						<view class="iconsty1" v-if="subitem.tallytype=='日用'" style="background-color: #F3B32B;">
 							<span class="t-icon t-icon-tally1riyong1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='住房'">
+						<view class="iconsty1" v-if="subitem.tallytype=='住房'" style="background-color: #FA623D;">
 							<span class="t-icon t-icon-tally1home1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='旅行'">
+						<view class="iconsty1" v-if="subitem.tallytype=='旅行'" style="background-color: #798EBB;">
 							<span class="t-icon t-icon-tally1lvxing1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='医疗'">
+						<view class="iconsty1" v-if="subitem.tallytype=='医疗'" style="background-color: #07BD73;">
 							<span class="t-icon t-icon-tally1yiliao1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='交通'">
+						<view class="iconsty1" v-if="subitem.tallytype=='交通'" style="background-color: #518BF1;">
 							<span class="t-icon t-icon-tally1car1-copy1-copy"></span>
 						</view>
 							<view class="bothcontent">
@@ -196,14 +196,14 @@
 							style="color: #F06872;">
 							{{subitem.num}}
 							<view class="submoneytitle">
-								支出
+								{{subitem.datetime}}
 							</view>
 						</view>
 						<view class="submoney" v-if="subitem.num.indexOf('-')>=0 && subitem.num.indexOf('.')<0"
 							style="color: #F06872;">
 							{{subitem.num}}.00
 							<view class="submoneytitle">
-								支出
+								{{subitem.datetime}}
 							</view>
 						</view>
 					</view>
@@ -324,7 +324,7 @@
 	.assetcard {
 		width: 680rpx;
 		height: 300rpx;
-		border-radius: 10px;
+		border-radius: 15px;
 		margin: 0 auto;
 		margin-top: 20rpx;
 		background-color: #518bf1;
@@ -363,7 +363,7 @@
 	
 	.allasset {
 		background-color: white;
-		border-radius: 10px;
+		border-radius: 15px;
 		margin: 0 auto;
 		margin-top: 40rpx;
 		width: 680rpx;
@@ -410,7 +410,6 @@
 	}
 	
 	.iconsty1 {
-		background-color: #518BF1;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -427,6 +426,7 @@
 	
 	.submoney {
 		margin-right: 30rpx;
+		text-align: end;
 	}
 	
 	.subbotremark {

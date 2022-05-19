@@ -26,7 +26,7 @@
 					<view v-if="submitForm.tallytype!='工资'" class="iconsty">
 						<span class="t-icon t-icon-tallywaihui"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='工资'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='工资'" class="iconsty1" style="background-color: #518BF1;">
 						<span class="t-icon t-icon-tallywaihui1"></span>
 					</view>
 					<view class="icontitle">工资</view>
@@ -35,7 +35,7 @@
 					<view v-if="submitForm.tallytype!='理财'" class="iconsty">
 						<span class="t-icon t-icon-tallygushi"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='理财'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='理财'" class="iconsty1" style="background-color: #74C783;">
 						<span class="t-icon t-icon-tallygushi1"></span>
 					</view>
 					<view class="icontitle">理财</view>
@@ -44,7 +44,7 @@
 					<view v-if="submitForm.tallytype!='红包'" class="iconsty">
 						<span class="t-icon t-icon-tallyhongbao"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='红包'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='红包'" class="iconsty1" style="background-color: #FA623D;">
 						<span class="t-icon t-icon-tallyhongbao1"></span>
 					</view>
 					<view class="icontitle">红包</view>
@@ -53,7 +53,7 @@
 					<view v-if="submitForm.tallytype!='兼职'" class="iconsty">
 						<span class="t-icon t-icon-tallyjianzhi"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='兼职'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='兼职'" class="iconsty1" style="background-color: #F3B32B;">
 						<span class="t-icon t-icon-tallyjianzhi1"></span>
 					</view>
 					<view class="icontitle">兼职</view>
@@ -64,7 +64,7 @@
 					<view v-if="submitForm.tallytype!='现金'" class="iconsty">
 						<span class="t-icon t-icon-tallyxianjin"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='现金'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='现金'" class="iconsty1" style="background-color: #798EBB;">
 						<span class="t-icon t-icon-tallyxianjin1-copy"></span>
 					</view>
 					<view class="icontitle">现金</view>
@@ -73,7 +73,7 @@
 					<view v-if="submitForm.tallytype!='收银'" class="iconsty">
 						<span class="t-icon t-icon-tallyjieru"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='收银'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='收银'" class="iconsty1" style="background-color: #A97FE6;">
 						<span class="t-icon t-icon-tallyjieru1"></span>
 					</view>
 					<view class="icontitle">收银</view>
@@ -82,7 +82,7 @@
 					<view v-if="submitForm.tallytype!='其它'" class="iconsty">
 						<span class="t-icon t-icon-tallyother"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='其它'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='其它'" class="iconsty1" style="background-color: #07BD73;">
 						<span class="t-icon t-icon-tallyother1"></span>
 					</view>
 					<view class="icontitle">其它</view>
@@ -101,7 +101,7 @@
 					<view v-if="submitForm.tallytype!='餐饮'" class="iconsty">
 						<span class="t-icon t-icon-tally1foot"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='餐饮'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='餐饮'" class="iconsty1" style="background-color: #518BF1;">
 						<span class="t-icon t-icon-tally1foot1-copy"></span>
 					</view>
 					<view class="icontitle">餐饮</view>
@@ -110,7 +110,7 @@
 					<view v-if="submitForm.tallytype!='娱乐'" class="iconsty">
 						<span class="t-icon t-icon-tally1game"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='娱乐'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='娱乐'" class="iconsty1" style="background-color: #74C783;">
 						<span class="t-icon t-icon-tally1game1-copy"></span>
 					</view>
 					<view class="icontitle">娱乐</view>
@@ -119,7 +119,7 @@
 					<view v-if="submitForm.tallytype!='日用'" class="iconsty">
 						<span class="t-icon t-icon-tally1riyong"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='日用'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='日用'" class="iconsty1" style="background-color: #F3B32B;">
 						<span class="t-icon t-icon-tally1riyong1-copy"></span>
 					</view>
 					<view class="icontitle">日用</view>
@@ -128,7 +128,7 @@
 					<view v-if="submitForm.tallytype!='住房'" class="iconsty">
 						<span class="t-icon t-icon-tally1home"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='住房'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='住房'" class="iconsty1" style="background-color: #FA623D;">
 						<span class="t-icon t-icon-tally1home1-copy"></span>
 					</view>
 					<view class="icontitle">住房</view>
@@ -139,7 +139,7 @@
 					<view v-if="submitForm.tallytype!='旅行'" class="iconsty">
 						<span class="t-icon t-icon-tally1lvxing"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='旅行'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='旅行'" class="iconsty1" style="background-color: #798EBB;">
 						<span class="t-icon t-icon-tally1lvxing1-copy"></span>
 					</view>
 					<view class="icontitle">旅行</view>
@@ -148,7 +148,7 @@
 					<view v-if="submitForm.tallytype!='医疗'" class="iconsty">
 						<span class="t-icon t-icon-tally1yiliao"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='医疗'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='医疗'" class="iconsty1" style="background-color: #07BD73;">
 						<span class="t-icon t-icon-tally1yiliao1-copy"></span>
 					</view>
 					<view class="icontitle">医疗</view>
@@ -157,7 +157,7 @@
 					<view v-if="submitForm.tallytype!='交通'" class="iconsty">
 						<span class="t-icon t-icon-tally1car"></span>
 					</view>
-					<view v-if="submitForm.tallytype=='交通'" class="iconsty1">
+					<view v-if="submitForm.tallytype=='交通'" class="iconsty1" style="background-color: #518BF1;">
 						<span class="t-icon t-icon-tally1car1-copy"></span>
 					</view>
 					<view class="icontitle">交通</view>
@@ -511,7 +511,6 @@
 	}
 
 	.iconsty1 {
-		background-color: #518BF1;
 		display: flex;
 		justify-content: center;
 		align-items: center;

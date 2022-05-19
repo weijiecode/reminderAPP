@@ -127,6 +127,8 @@
 }
 .data-v-e58563f4 .u-popup__content {
   opacity: 0.9 !important;
+  border-top-right-radius: 15px !important;
+  border-top-left-radius: 15px !important;
 }
 .data-v-e58563f4 .u-popup__content {
   padding: 30rpx;

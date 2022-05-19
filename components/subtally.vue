@@ -33,7 +33,7 @@
 						<view v-if="submitForm.tallytype!='工资'" class="iconsty">
 							<span class="t-icon t-icon-tallywaihui"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='工资'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='工资'" class="iconsty1" style="background-color: #518BF1;">
 							<span class="t-icon t-icon-tallywaihui1"></span>
 						</view>
 						<view class="icontitle">工资</view>
@@ -42,7 +42,7 @@
 						<view v-if="submitForm.tallytype!='理财'" class="iconsty">
 							<span class="t-icon t-icon-tallygushi"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='理财'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='理财'" class="iconsty1" style="background-color: #74C783;">
 							<span class="t-icon t-icon-tallygushi1"></span>
 						</view>
 						<view class="icontitle">理财</view>
@@ -51,7 +51,7 @@
 						<view v-if="submitForm.tallytype!='红包'" class="iconsty">
 							<span class="t-icon t-icon-tallyhongbao"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='红包'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='红包'" class="iconsty1" style="background-color: #FA623D;">
 							<span class="t-icon t-icon-tallyhongbao1"></span>
 						</view>
 						<view class="icontitle">红包</view>
@@ -60,7 +60,7 @@
 						<view v-if="submitForm.tallytype!='兼职'" class="iconsty">
 							<span class="t-icon t-icon-tallyjianzhi"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='兼职'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='兼职'" class="iconsty1" style="background-color: #F3B32B;">
 							<span class="t-icon t-icon-tallyjianzhi1"></span>
 						</view>
 						<view class="icontitle">兼职</view>
@@ -69,7 +69,7 @@
 						<view v-if="submitForm.tallytype!='现金'" class="iconsty">
 							<span class="t-icon t-icon-tallyxianjin"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='现金'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='现金'" class="iconsty1" style="background-color: #798EBB;">
 							<span class="t-icon t-icon-tallyxianjin1-copy"></span>
 						</view>
 						<view class="icontitle">现金</view>
@@ -78,7 +78,7 @@
 						<view v-if="submitForm.tallytype!='收银'" class="iconsty">
 							<span class="t-icon t-icon-tallyjieru"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='收银'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='收银'" class="iconsty1" style="background-color: #A97FE6;">
 							<span class="t-icon t-icon-tallyjieru1"></span>
 						</view>
 						<view class="icontitle">收银</view>
@@ -87,7 +87,7 @@
 						<view v-if="submitForm.tallytype!='其它'" class="iconsty">
 							<span class="t-icon t-icon-tallyother"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='其它'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='其它'" class="iconsty1" style="background-color: #07BD73;">
 							<span class="t-icon t-icon-tallyother1"></span>
 						</view>
 						<view class="icontitle">其它</view>
@@ -99,7 +99,7 @@
 						<view v-if="submitForm.tallytype!='餐饮'" class="iconsty">
 							<span class="t-icon t-icon-tally1foot"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='餐饮'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='餐饮'" class="iconsty1" style="background-color: #518BF1;">
 							<span class="t-icon t-icon-tally1foot1-copy"></span>
 						</view>
 						<view class="icontitle">餐饮</view>
@@ -108,7 +108,7 @@
 						<view v-if="submitForm.tallytype!='娱乐'" class="iconsty">
 							<span class="t-icon t-icon-tally1game"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='娱乐'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='娱乐'" class="iconsty1" style="background-color: #74C783;">
 							<span class="t-icon t-icon-tally1game1-copy"></span>
 						</view>
 						<view class="icontitle">娱乐</view>
@@ -117,7 +117,7 @@
 						<view v-if="submitForm.tallytype!='日用'" class="iconsty">
 							<span class="t-icon t-icon-tally1riyong"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='日用'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='日用'" class="iconsty1" style="background-color: #F3B32B;">
 							<span class="t-icon t-icon-tally1riyong1-copy"></span>
 						</view>
 						<view class="icontitle">日用</view>
@@ -126,7 +126,7 @@
 						<view v-if="submitForm.tallytype!='住房'" class="iconsty">
 							<span class="t-icon t-icon-tally1home"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='住房'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='住房'" class="iconsty1" style="background-color: #FA623D;">
 							<span class="t-icon t-icon-tally1home1-copy"></span>
 						</view>
 						<view class="icontitle">住房</view>
@@ -135,7 +135,7 @@
 						<view v-if="submitForm.tallytype!='旅行'" class="iconsty">
 							<span class="t-icon t-icon-tally1lvxing"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='旅行'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='旅行'" class="iconsty1" style="background-color: #798EBB;">
 							<span class="t-icon t-icon-tally1lvxing1-copy"></span>
 						</view>
 						<view class="icontitle">旅行</view>
@@ -144,7 +144,7 @@
 						<view v-if="submitForm.tallytype!='医疗'" class="iconsty">
 							<span class="t-icon t-icon-tally1yiliao"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='医疗'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='医疗'" class="iconsty1" style="background-color: #07BD73;">
 							<span class="t-icon t-icon-tally1yiliao1-copy"></span>
 						</view>
 						<view class="icontitle">医疗</view>
@@ -153,7 +153,7 @@
 						<view v-if="submitForm.tallytype!='交通'" class="iconsty">
 							<span class="t-icon t-icon-tally1car"></span>
 						</view>
-						<view v-if="submitForm.tallytype=='交通'" class="iconsty1">
+						<view v-if="submitForm.tallytype=='交通'" class="iconsty1" style="background-color: #518BF1;">
 							<span class="t-icon t-icon-tally1car1-copy"></span>
 						</view>
 						<view class="icontitle">交通</view>
@@ -300,15 +300,15 @@
 			},
 			// 点击收入
 			btnin() {
-				this.income=!this.income;
-				this.submitForm.tallytype='餐饮';
-				this.isincome=false
+				this.income = !this.income;
+				this.submitForm.tallytype = '餐饮';
+				this.isincome = false
 			},
 			// 点击支出
 			btnout() {
-				this.income=!this.income;
-				this.submitForm.tallytype='工资';
-				this.isincome=true
+				this.income = !this.income;
+				this.submitForm.tallytype = '工资';
+				this.isincome = true
 			},
 			// 计算器按钮
 			btntyp(type) {
@@ -352,62 +352,68 @@
 						};
 						break;
 					case '+':
-						if(this.onenum==""){
+						if (this.onenum == "") {
 							this.onenum = this.submitForm.num;
 							this.submitForm.num += '+';
-						}else {
-							if(this.submitForm.num.indexOf("+")>=0){
+						} else {
+							if (this.submitForm.num.indexOf("+") >= 0) {
 								this.twonum = this.submitForm.num.split('+')[1];
-								this.submitForm.num = (this.onenum*1+this.twonum*1).toFixed(2)
+								this.submitForm.num = (this.onenum * 1 + this.twonum * 1).toFixed(2)
 								this.onenum = this.submitForm.num
 								this.submitForm.num += '+';
-							}else if(this.submitForm.num.indexOf("-")>=0){
+							} else if (this.submitForm.num.indexOf("-") >= 0) {
 								this.twonum = this.submitForm.num.split('-')[1];
-								this.submitForm.num = (this.onenum*1-this.twonum*1).toFixed(2)
+								this.submitForm.num = (this.onenum * 1 - this.twonum * 1).toFixed(2)
 								this.onenum = this.submitForm.num
 								this.submitForm.num += '+';
-							}else {this.submitForm.num += '+'}
+							} else {
+								this.submitForm.num += '+'
+							}
 						}
 						this.isdot = false;
 						break;
 					case '-':
-						if(this.onenum==""){
+						if (this.onenum == "") {
 							this.onenum = this.submitForm.num;
 							this.submitForm.num += '-';
-						}else {
-							if(this.submitForm.num.indexOf("-")>=0){
+						} else {
+							if (this.submitForm.num.indexOf("-") >= 0) {
 								this.twonum = this.submitForm.num.split('-')[1];
-								this.submitForm.num = (this.onenum*1-this.twonum*1).toFixed(2)
+								this.submitForm.num = (this.onenum * 1 - this.twonum * 1).toFixed(2)
 								this.onenum = this.submitForm.num
 								this.submitForm.num += '-';
-							}else if(this.submitForm.num.indexOf("+")>=0){
+							} else if (this.submitForm.num.indexOf("+") >= 0) {
 								this.twonum = this.submitForm.num.split('+')[1];
-								this.submitForm.num = (this.onenum*1+this.twonum*1).toFixed(2)
+								this.submitForm.num = (this.onenum * 1 + this.twonum * 1).toFixed(2)
 								this.onenum = this.submitForm.num
 								this.submitForm.num += '-';
-							}else {this.submitForm.num += '-'}
-							
-							
+							} else {
+								this.submitForm.num += '-'
+							}
+
+
 						}
 						this.isdot = false;
 						break;
 					case '=':
-						if(this.submitForm.num.indexOf('+')>=0){
+						if (this.submitForm.num.indexOf('+') >= 0) {
 							this.onenum = this.submitForm.num.split('+')[0];
 							this.twonum = this.submitForm.num.split('+')[1];
-							this.submitForm.num = (this.onenum*1+this.twonum*1).toFixed(2)
+							this.submitForm.num = (this.onenum * 1 + this.twonum * 1).toFixed(2)
 							this.onenum = this.submitForm.num
-						}else {
-								this.onenum = this.submitForm.num.split('-')[0];
-								this.twonum = this.submitForm.num.split('-')[1];
-								this.submitForm.num = (this.onenum*1-this.twonum*1).toFixed(2)
-								this.onenum = this.submitForm.num
-							}
+						} else {
+							this.onenum = this.submitForm.num.split('-')[0];
+							this.twonum = this.submitForm.num.split('-')[1];
+							this.submitForm.num = (this.onenum * 1 - this.twonum * 1).toFixed(2)
+							this.onenum = this.submitForm.num
+						}
 						this.isdot = false;
 						break;
 					case 'back':
-							this.submitForm.num = this.submitForm.num.substring(0,this.submitForm.num.length-1)
-							if(this.submitForm.num.indexOf('.')<0){this.isdot=false}
+						this.submitForm.num = this.submitForm.num.substring(0, this.submitForm.num.length - 1)
+						if (this.submitForm.num.indexOf('.') < 0) {
+							this.isdot = false
+					}
 							break;
 					default:
 						console.log('...')
@@ -415,20 +421,23 @@
 			},
 			// 添加
 			async addtally() {
-				if(this.submitForm.num=="" || this.submitForm.num==0.00 || this.submitForm.num.indexOf('+')>=0 || this.submitForm.num.indexOf('-')>=0){
+				if (this.submitForm.num == "" || this.submitForm.num == 0.00 || this.submitForm.num.indexOf('+') >=
+					0 || this.submitForm.num.indexOf('-') >= 0) {
 					this.$refs.uToast.show({
 						type: 'error',
 						icon: false,
 						message: "请输入正确的数字后再添加",
 						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
 					})
-				}else {
-					if(this.isincome==false){
-						this.submitForm.num = this.submitForm.num*(-1)
-					}else {
-						this.submitForm.num*1
+				} else {
+					if (this.isincome == false) {
+						this.submitForm.num = this.submitForm.num * (-1)
+					} else {
+						this.submitForm.num * 1
 					}
-					const { data: res } = await this.$http({
+					const {
+						data: res
+					} = await this.$http({
 						url: "tally/addtally",
 						method: "POST",
 						data: {
@@ -439,7 +448,7 @@
 						}
 					})
 					//console.log(res)
-					if(res.code == '200') {
+					if (res.code == '200') {
 						this.$refs.uToast.show({
 							type: 'success',
 							duration: 1000,
@@ -449,7 +458,7 @@
 						this.submitForm.remark = ""
 						this.submitForm.num = ""
 						this.isdot = false;
-					}else {
+					} else {
 						this.$refs.uToast.show({
 							type: 'error',
 							icon: false,
@@ -632,5 +641,10 @@
 
 	.countcol:active {
 		background-color: #eaeaea;
+	}
+
+	::v-deep .u-popup__content {
+		border-top-right-radius: 15px !important;
+		border-top-left-radius: 15px !important;
 	}
 </style>

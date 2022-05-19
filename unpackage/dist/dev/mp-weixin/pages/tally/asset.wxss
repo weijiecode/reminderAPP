@@ -41,7 +41,7 @@
 .assetcard.data-v-14137bb8 {
   width: 680rpx;
   height: 300rpx;
-  border-radius: 10px;
+  border-radius: 15px;
   margin: 0 auto;
   margin-top: 20rpx;
   background-color: #518bf1;
@@ -75,7 +75,7 @@
 }
 .allasset.data-v-14137bb8 {
   background-color: white;
-  border-radius: 10px;
+  border-radius: 15px;
   margin: 0 auto;
   margin-top: 40rpx;
   width: 680rpx;
@@ -116,7 +116,6 @@
   font-size: 15px;
 }
 .iconsty1.data-v-14137bb8 {
-  background-color: #518BF1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -131,6 +130,7 @@
 }
 .submoney.data-v-14137bb8 {
   margin-right: 30rpx;
+  text-align: end;
 }
 .subbotremark.data-v-14137bb8 {
   color: #A1A1A1;

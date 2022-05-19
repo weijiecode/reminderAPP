@@ -114,7 +114,7 @@
   right: 0;
   bottom: -80rpx;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -137,7 +137,6 @@
   font-size: 12px;
 }
 .iconsty1.data-v-43221aa0 {
-  background-color: #518BF1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -158,7 +157,7 @@
 }
 .tallyitem.data-v-43221aa0 {
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: 15px;
   margin-top: 20rpx;
   width: 680rpx;
   background-color: white;
@@ -206,6 +205,10 @@
   padding: 40rpx;
   align-items: center;
   justify-content: space-between;
+}
+.data-v-43221aa0 .u-popup__content {
+  border-top-right-radius: 15px !important;
+  border-top-left-radius: 15px !important;
 }
 .data-v-43221aa0 .u-input {
   padding: 0 !important;

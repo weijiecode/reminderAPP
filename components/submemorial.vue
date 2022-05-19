@@ -49,7 +49,7 @@
 				</view>
 			</view>
 			<view class="twoblock">
-				<view class="subcontent">
+				<view class="subcontent1">
 					<view class="subcontentl">
 						暂未添加纪念日，点击添加吧~
 					</view>
@@ -95,7 +95,7 @@
 		margin-top: 40rpx;
 		border-radius: 15px;
 		width: 680rpx;
-		height: 280rpx;
+		height: 260rpx;
 		background-color: #ffffff;
 		box-shadow: 5px 5px 10px #efeded;
 	}
@@ -158,6 +158,16 @@
 		justify-content: space-between;
 		margin: 0 40rpx;
 		color: #505050;
+	}
+	
+	.subcontent1 {
+		font-size: 13px;
+		display: flex;
+		align-items: center;
+		height: 60rpx;
+		justify-content: space-between;
+		margin: 0 40rpx;
+		color: #aaa;
 	}
 
 	.subcontentr {

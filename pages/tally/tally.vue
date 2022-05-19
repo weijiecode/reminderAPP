@@ -89,46 +89,46 @@
 				</view>
 				<view class="subitemcontent" v-for="subitem in item.subList" :key="subitem.id" @click="showitemdata(subitem)">
 					<view class="subicon">
-						<view class="iconsty1" v-if="subitem.tallytype=='工资'">
+						<view class="iconsty1" v-if="subitem.tallytype=='工资'" style="background-color: #518BF1;">
 							<span class="t-icon t-icon-tallywaihui1"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='理财'">
+						<view class="iconsty1" v-if="subitem.tallytype=='理财'" style="background-color: #74C783;">
 							<span class="t-icon t-icon-tallygushi1"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='红包'">
+						<view class="iconsty1" v-if="subitem.tallytype=='红包'" style="background-color: #FA623D;">
 							<span class="t-icon t-icon-tallyhongbao1"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='兼职'">
+						<view class="iconsty1" v-if="subitem.tallytype=='兼职'" style="background-color: #F3B32B;">
 							<span class="t-icon t-icon-tallyjianzhi1"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='现金'">
+						<view class="iconsty1" v-if="subitem.tallytype=='现金'" style="background-color: #798EBB;">
 							<span class="t-icon t-icon-tallyxianjin1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='收银'">
+						<view class="iconsty1" v-if="subitem.tallytype=='收银'" style="background-color: #A97FE6;">
 							<span class="t-icon t-icon-tallyjieru1"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='其它'">
+						<view class="iconsty1" v-if="subitem.tallytype=='其它'" style="background-color: #07BD73;">
 							<span class="t-icon t-icon-tallyother1"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='餐饮'">
+						<view class="iconsty1" v-if="subitem.tallytype=='餐饮'" style="background-color: #518BF1;">
 							<span class="t-icon t-icon-tally1foot1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='娱乐'">
+						<view class="iconsty1" v-if="subitem.tallytype=='娱乐'" style="background-color: #74C783;">
 							<span class="t-icon t-icon-tally1game1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='日用'">
+						<view class="iconsty1" v-if="subitem.tallytype=='日用'" style="background-color: #F3B32B;">
 							<span class="t-icon t-icon-tally1riyong1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='住房'">
+						<view class="iconsty1" v-if="subitem.tallytype=='住房'" style="background-color: #FA623D;">
 							<span class="t-icon t-icon-tally1home1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='旅行'">
+						<view class="iconsty1" v-if="subitem.tallytype=='旅行'" style="background-color: #798EBB;">
 							<span class="t-icon t-icon-tally1lvxing1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='医疗'">
+						<view class="iconsty1" v-if="subitem.tallytype=='医疗'" style="background-color: #07BD73;">
 							<span class="t-icon t-icon-tally1yiliao1-copy"></span>
 						</view>
-						<view class="iconsty1" v-if="subitem.tallytype=='交通'">
+						<view class="iconsty1" v-if="subitem.tallytype=='交通'" style="background-color: #518BF1;">
 							<span class="t-icon t-icon-tally1car1-copy1-copy"></span>
 						</view>
 						<view class="bothcontent">
@@ -352,7 +352,10 @@
 		methods: {
 			// 返回
 			backmycenter() {
-				uni.navigateBack()
+				// uni.navigateBack()
+				uni.switchTab({
+					url: "../more/more"
+				})
 			},
 			// 获取用户所有记账数据
 			async gettally() {
@@ -699,7 +702,7 @@
 		right: 0;
 		bottom: -80rpx;
 		margin: 0 auto;
-		border-radius: 10px;
+		border-radius: 15px;
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
@@ -729,7 +732,6 @@
 	}
 
 	.iconsty1 {
-		background-color: #518BF1;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -753,7 +755,7 @@
 
 	.tallyitem {
 		margin: 0 auto;
-		border-radius: 10px;
+		border-radius: 15px;
 		margin-top: 20rpx;
 		width: 680rpx;
 		background-color: white;
@@ -809,6 +811,11 @@
 		padding: 40rpx;
 		align-items: center;
 		justify-content: space-between;
+	}
+	
+	::v-deep .u-popup__content {
+		border-top-right-radius: 15px !important;
+		border-top-left-radius: 15px !important;
 	}
 	
 

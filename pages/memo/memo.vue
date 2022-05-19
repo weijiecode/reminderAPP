@@ -94,7 +94,10 @@
 		methods: {
 			// 返回
 			backmycenter() {
-				uni.navigateBack()
+				// uni.navigateBack()
+				uni.switchTab({
+					url: "../more/more"
+				})
 			},
 			// 添加备忘录
 			async addmemo() {

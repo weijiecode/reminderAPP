@@ -57,7 +57,6 @@
   border-radius: 50%;
 }
 .iconsty1.data-v-e8740f32 {
-  background-color: #518BF1;
   display: flex;
   justify-content: center;
   align-items: center;

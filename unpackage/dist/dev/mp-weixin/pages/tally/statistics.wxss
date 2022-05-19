@@ -26,8 +26,12 @@
 /* 透明度 */
 /* 文章场景相关 */
 .content.data-v-5fd3ff1f {
+  background-color: #F4F4F8;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .topback.data-v-5fd3ff1f {
   top: 60rpx;
@@ -37,6 +41,57 @@
 .title.data-v-5fd3ff1f {
   margin-top: 60rpx;
   text-align: center;
+}
+.datechoose.data-v-5fd3ff1f {
+  margin-top: 40rpx;
+  width: 680rpx;
+  border-radius: 15px;
+  background-color: white;
+}
+.inoutsta.data-v-5fd3ff1f {
+  margin-top: 40rpx;
+  width: 680rpx;
+  height: 720rpx;
+  border-radius: 15px;
+  background-color: white;
+}
+.typesta.data-v-5fd3ff1f {
+  margin-top: 40rpx;
+  width: 680rpx;
+  height: 800rpx;
+  border-radius: 15px;
+  background-color: white;
+}
+.datecontent.data-v-5fd3ff1f {
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.subitem.data-v-5fd3ff1f {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.subtitle.data-v-5fd3ff1f {
+  font-size: 14px;
+  padding: 0 0 10rpx 0;
+  color: #aaa;
+}
+.inouttitle.data-v-5fd3ff1f {
+  padding: 40rpx 60rpx 0 60rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.datetitle.data-v-5fd3ff1f {
+  width: 280rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.data-v-5fd3ff1f .u-popup__content {
+  border-top-right-radius: 15px !important;
+  border-top-left-radius: 15px !important;
 }
 .charts-box.data-v-5fd3ff1f {
   width: 100%;

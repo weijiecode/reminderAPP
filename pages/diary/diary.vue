@@ -79,7 +79,10 @@
 		methods: {
 			// 返回
 			backmycenter() {
-				uni.navigateBack()
+				// uni.navigateBack()
+				uni.switchTab({
+					url: "../more/more"
+				})
 			},
 			// 跳转添加页面
 			toaddpage() {

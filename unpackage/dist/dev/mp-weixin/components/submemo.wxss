@@ -90,6 +90,12 @@
   padding-left: 40rpx;
   margin-top: 20rpx;
 }
+.subtitle1.data-v-9414d1e2 {
+  font-size: 13px;
+  color: #aaa;
+  padding-left: 40rpx;
+  margin-top: 20rpx;
+}
 .subcontent.data-v-9414d1e2 {
   font-size: 12px;
   color: #aaa;
