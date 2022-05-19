@@ -101,7 +101,7 @@
 	}
 
 	.onetitle {
-		font-size: 16px;
+		font-size: 15px;
 	}
 
 	.twotitle {

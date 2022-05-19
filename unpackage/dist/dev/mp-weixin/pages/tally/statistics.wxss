@@ -85,7 +85,7 @@
   justify-content: space-between;
 }
 .datetitle.data-v-5fd3ff1f {
-  width: 280rpx;
+  width: 240rpx;
   display: flex;
   justify-content: space-between;
 }

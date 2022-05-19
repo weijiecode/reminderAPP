@@ -31,11 +31,11 @@
 							账单总览
 						</view>
 						<view class="datetitle">
-							<u-icon name="arrow-left" color="#4F4F51" size="16" @click="leftdate"></u-icon>
+							<u-icon name="arrow-left" color="#4F4F51" size="13" @click="leftdate"></u-icon>
 							<view @click="showdate=true">
 								{{choosedate}}
 							</view>
-							<u-icon name="arrow-right" color="#4F4F51" size="16" @click="rightdate"></u-icon>
+							<u-icon name="arrow-right" color="#4F4F51" size="13" @click="rightdate"></u-icon>
 						</view>
 					</view>
 					<view class="datecontent">
@@ -72,11 +72,11 @@
 							收支统计
 						</view>
 						<view class="datetitle">
-							<u-icon name="arrow-left" color="#4F4F51" size="16" @click="leftdatey"></u-icon>
+							<u-icon name="arrow-left" color="#4F4F51" size="13" @click="leftdatey"></u-icon>
 							<view>
 								{{tallyyear}}
 							</view>
-							<u-icon name="arrow-right" color="#4F4F51" size="16" @click="rightdatey"></u-icon>
+							<u-icon name="arrow-right" color="#4F4F51" size="13" @click="rightdatey"></u-icon>
 						</view>
 					</view>
 					<view class="charts-box">
@@ -85,7 +85,21 @@
 				</view>
 
 				<view class="typesta">
-
+					<view class="inouttitle">
+						<view class="linouttitle">
+							分类统计
+						</view>
+						<view class="datetitle">
+							<u-icon name="arrow-left" color="#4F4F51" size="16" @click="leftdate"></u-icon>
+							<view @click="showdate=true">
+								{{choosedate}}
+							</view>
+							<u-icon name="arrow-right" color="#4F4F51" size="16" @click="rightdate"></u-icon>
+						</view>
+					</view>
+					<view class="charts-box">
+						<qiun-data-charts type="pie" :opts="optspie" :chartData="chartDatapie" />
+					</view>
 				</view>
 			</view>
 			<!-- 年月选择器 -->
@@ -122,6 +136,7 @@
 		},
 		onReady() {
 			this.getServerData();
+			this.getServerDatapie();
 		},
 		data() {
 			return {
@@ -151,9 +166,17 @@
 				subnum: "",
 				// 统计图配置
 				chartData: {},
+				chartDatapie: {},
+				// 收入支出结余
 				mondatain: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				mondataout: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				mondatainout: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				// 分类数组
+				intypedata: [],
+				outtypedata: [],
+				// 统计每个分类num值的计算
+				intypenum: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				outtypenum: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				opts: {
 					dataPointShape: false,
 					dataLabel: false,
@@ -183,6 +206,23 @@
 							width: 2
 						}
 					}
+				},
+				// pie
+				optspie: {
+					color: ["#518BF1", "#74C783", "#FA623D", "#F3B32B", "#798EBB", "#A97FE6", "#07BD73"],
+					padding: [30, 10, 0, 10],
+					extra: {
+						pie: {
+							activeOpacity: 0.5,
+							activeRadius: 10,
+							offsetAngle: 0,
+							labelWidth: 15,
+							border: true,
+							borderWidth: 3,
+							borderColor: "#FFFFFF",
+							linearType: "custom"
+						}
+					}
 				}
 			}
 		},
@@ -204,6 +244,7 @@
 					this.tallydata = res.data
 					// 按日期筛选数据
 					this.fundate()
+					this.fundatetype()
 				} else if (res.code == '201') {
 					this.initArrtally = ""
 				} else {
@@ -222,6 +263,7 @@
 				this.subnum = 0
 				// 初始化
 				this.initArrtally = []
+				// console.log(this.tallydata)
 				this.tallydata.forEach((item, i) => {
 					let index = -1;
 					let isExists = this.initArrtally.some((newItem, j) => {
@@ -239,6 +281,7 @@
 						this.initArrtally[index].subList.push(item);
 					}
 				})
+				// console.log(this.initArrtally)
 				// 统计支出和收入
 				if (this.initArrtally.length == 0) {
 					return
@@ -248,6 +291,8 @@
 						return item.datetime.substring(0, 7) == this.choosedate;
 					})
 					this.newArrtally = newtallys
+					console.log(this.newArrtally)
+					// 统计每个月的支出收入结余数据
 					this.newArrtally.forEach(item => {
 						item.subList.forEach(items => {
 							if (items.num.indexOf('-') >= 0) {
@@ -263,8 +308,104 @@
 					this.innum = this.innum.toString().indexOf('.') >= 0 ? this.innum : this.innum
 						.toString() + '.00'
 					this.subnum = this.subnum.toString().indexOf(".") >= 0 ? this.subnum : this.subnum + '.00'
+
 				}
 			},
+
+			// 定义筛选函数(每个月的每个分类数据)
+			fundatetype() {
+				// 初始化
+				this.initArrtally = []
+				this.intypenum = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+				this.outtypenum = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+				// console.log(this.tallydata)
+				this.tallydata.forEach((item, i) => {
+					let index = -1;
+					let isExists = this.initArrtally.some((newItem, j) => {
+						if (this.choosedate == newItem.datetime) {
+							index = j;
+							return true;
+						}
+					})
+					if (!isExists) {
+						this.initArrtally.push({
+							datetime: item.datetime,
+							subList: [item],
+						})
+					} else {
+						this.initArrtally[index].subList.push(item);
+					}
+				})
+				// 统计分类数据
+				if (this.initArrtally.length == 0) {
+					return
+				} else {
+					const timeFormat = uni.$u.timeFormat
+					const newtallys = this.initArrtally.filter(item => {
+						return item.datetime.substring(0, 7) == this.choosedate;
+					})
+					this.newArrtally = newtallys
+					console.log(this.newArrtally)
+					// 统计每个月的支出收入结余数据
+					this.newArrtally.forEach(item => {
+						item.subList.forEach(items => {
+							if (items.num.indexOf('-') >= 0) {
+								switch (items.tallytype) {
+									case '餐饮':
+										this.outtypenum[0] += items.num * 1
+										break;
+									case '娱乐':
+										this.outtypenum[1] += items.num * 1
+										break;
+									case '日用':
+										this.outtypenum[2] += items.num * 1
+										break;
+									case '住房':
+										this.outtypenum[3] += items.num * 1
+										break;
+									case '旅行':
+										this.outtypenum[4] += items.num * 1
+										break;
+									case '医疗':
+										this.outtypenum[5] += items.num * 1
+										break;
+									case '交通':
+										this.outtypenum[6] += items.num * 1
+										break;
+								}
+							} else {
+								switch (items.tallytype) {
+									case '工资':
+										this.intypenum[0] += items.num * 1
+										break;
+									case '理财':
+										this.intypenum[1] += items.num * 1
+										break;
+									case '红包':
+										this.intypenum[2] += items.num * 1
+										break;
+									case '兼职':
+										this.intypenum[3] += items.num * 1
+										break;
+									case '现金':
+										this.intypenum[4] += items.num * 1
+										break;
+									case '收银':
+										this.intypenum[5] += items.num * 1
+										break;
+									case '其它':
+										this.intypenum[6] += items.num * 1
+										break;
+								}
+							}
+						})
+					})
+					console.log(this.outtypenum)
+					console.log(this.intypenum)
+
+				}
+			},
+
 			// 指定年月日期数据过滤
 			confirmdate(e) {
 				this.showdate = false
@@ -325,7 +466,7 @@
 			},
 			// 减年份
 			leftdatey() {
-				this.tallyyear = this.tallyyear*1 - 1
+				this.tallyyear = this.tallyyear * 1 - 1
 				this.gettally()
 				this.getServerData()
 			},
@@ -378,7 +519,7 @@
 			},
 			// 加年份
 			rightdatey() {
-				this.tallyyear = this.tallyyear*1 + 1
+				this.tallyyear = this.tallyyear * 1 + 1
 				this.gettally()
 				this.getServerData()
 			},
@@ -544,6 +685,40 @@
 					this.chartData = JSON.parse(JSON.stringify(res));
 				}, 500);
 			},
+			// pie统计图
+			getServerDatapie() {
+				//模拟从服务器获取数据时的延时
+				setTimeout(() => {
+					//模拟服务器返回数据，如果数据格式和标准格式不同，需自行按下面的格式拼接
+					let res = {
+						series: [{
+							data: [{
+								"name": "工资",
+								"value": 50
+							}, {
+								"name": "理财",
+								"value": 30
+							}, {
+								"name": "红包",
+								"value": 20
+							}, {
+								"name": "兼职",
+								"value": 18
+							}, {
+								"name": "现金",
+								"value": 8
+							}, {
+								"name": "收银",
+								"value": 8
+							}, {
+								"name": "其它",
+								"value": 8
+							}]
+						}]
+					};
+					this.chartDatapie = JSON.parse(JSON.stringify(res));
+				}, 500);
+			},
 
 		}
 
@@ -621,7 +796,7 @@
 	}
 
 	.datetitle {
-		width: 280rpx;
+		width: 240rpx;
 		display: flex;
 		justify-content: space-between;
 	}
