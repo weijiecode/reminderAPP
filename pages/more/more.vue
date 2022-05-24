@@ -68,8 +68,13 @@
 		<!-- 类型2 -->
 		<view v-if="showtype==1" class="listcontent" :style="{height: topheight,overflow: 'auto'}">
 			<view class="allitem">
-				<view style="text-align: center;">
-					应用
+				<view class="sublist">
+					<view class="subbox">
+						
+					</view>
+					<view class="subbox">
+						
+					</view>
 				</view>
 			</view>
 		</view>
@@ -294,11 +299,19 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		
+		background-color: aquamarine;
 		
 		height: 1800px;
 		width: 100%;
 
+	}
+	
+	.sublist {
+		margin-top: 20rpx;
+		width: 680rpx;
+		height: 320rpx;
+		background-color: palevioletred;
+		display: flex;
 	}
 	
 	

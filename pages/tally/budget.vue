@@ -36,40 +36,43 @@
 				<view class="budgetnum" v-if="budgetnum!=0">
 					总额：{{budgetnum}}
 				</view>
-				<u-line-progress v-if="vsnum<=100 || budgetnum==0" :percentage="vsnum" activeColor="#518BF1" :showText="false"></u-line-progress>
-				<u-line-progress v-if="vsnum>100 && budgetnum!=0" :percentage="vsnum" activeColor="#f70000" :showText="false"></u-line-progress>
+				<u-line-progress v-if="vsnum<=100 || budgetnum==0" :percentage="vsnum" activeColor="#518BF1"
+					:showText="false"></u-line-progress>
+				<u-line-progress v-if="vsnum>100 && budgetnum!=0" :percentage="vsnum" activeColor="#f70000"
+					:showText="false"></u-line-progress>
+			</view>
+			<view class="viewitem">
+				<view class="charts-box">
+					<qiun-data-charts type="column" :opts="opts" :chartData="chartData" />
+				</view>
 			</view>
 		</view>
 		<!-- 年月选择器 -->
 		<u-datetime-picker :show="showdate" v-model="dateym" mode="year-month" closeOnClickOverlay
 			@confirm="confirmdate" @cancel="showdate=false" @close="showdate=false"></u-datetime-picker>
-			<!-- 消息提示 -->
-			<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
-			<!-- 输入金额弹窗 -->
-			<u-popup :show="showpop" closeOnClickOverlay :round="10" mode="bottom" @close="showpop=false" @open="showpop=true">
-					<view>
-			           <view class="inputtitle">
-							<view class="leftbtn" @click="showpop=false">
-								取消
-							</view>
-							<view class="rightbtn" v-if="isdata==true" @click="updatebudget">
-								修改
-							</view>
-							<view class="rightbtn" v-if="isdata==false" @click="addbudget">
-								添加
-							</view>
-			           </view>
-					   <view class="twoinput">
-							  <u--input
-							  maxlength="8"
-							    placeholder="请输入预算金额"
-							    border="bottom"
-							    clearable
-								v-model="budgetnum"
-							  ></u--input>
-					   </view>
+		<!-- 消息提示 -->
+		<u-toast style="z-index: 999 !important;" ref="uToast"></u-toast>
+		<!-- 输入金额弹窗 -->
+		<u-popup :show="showpop" closeOnClickOverlay :round="10" mode="bottom" @close="showpop=false"
+			@open="showpop=true">
+			<view>
+				<view class="inputtitle">
+					<view class="leftbtn" @click="showpop=false">
+						取消
 					</view>
-				</u-popup>
+					<view class="rightbtn" v-if="isdata==true" @click="updatebudget">
+						修改
+					</view>
+					<view class="rightbtn" v-if="isdata==false" @click="addbudget">
+						添加
+					</view>
+				</view>
+				<view class="twoinput">
+					<u--input maxlength="8" placeholder="请输入预算金额" border="bottom" clearable v-model="budgetnum">
+					</u--input>
+				</view>
+			</view>
+		</u-popup>
 	</view>
 </template>
 
@@ -86,11 +89,14 @@
 		async onShow() {
 			this.getbudget()
 			this.gettally().then(() => {
-				this.vsnum = (this.outnum/this.budgetnum)*100
+				this.vsnum = (this.outnum / this.budgetnum) * 100
 			})
 			// 当前年-月
 			this.choosedate = uni.$u.timeFormat(Number(new Date())).split("-")[0] + '/' + uni.$u.timeFormat(Number(
 				new Date())).split("-")[1]
+		},
+		onReady() {
+			this.getServerData();
 		},
 		data() {
 			return {
@@ -111,7 +117,46 @@
 				// 显示输入金额弹窗
 				showpop: false,
 				// 占比
-				vsnum: 0
+				vsnum: 0,
+				// 统计图配置
+				chartData: {},
+				opts: {
+					color: ["#1890FF", "#91CB74"],
+					padding: [15, 15, 0, 15],
+					enableMarkLine: true,
+					legend: {
+						show: false
+					},
+					xAxis: {
+						disableGrid: true
+					},
+					yAxis: {
+						data: [{
+							min: 0
+						}]
+					},
+					extra: {
+						column: {
+							type: "group",
+							width: 30,
+							activeBgColor: "#000000",
+							activeBgOpacity: 0.08,
+							seriesGap: 5,
+							barBorderRadius: [
+								6,
+								6,
+								6,
+								6
+							]
+						},
+						markLine: {
+							data: [{
+								value: 21,
+								showLabel: true
+							}]
+						}
+					}
+				}
 			}
 		},
 		methods: {
@@ -120,23 +165,27 @@
 				uni.navigateBack()
 			},
 			// 指定年月日期数据过滤
-			confirmdate(e) {
+			async confirmdate(e) {
 				this.showdate = false
 				const timeFormat = uni.$u.timeFormat
 				this.choosedate = (timeFormat(e.value, 'yyyy-mm')).split('-')[0] + '/' + (timeFormat(e.value,
 						'yyyy-mm'))
 					.split('-')[1]
-				this.gettally()
+				this.gettally().then(() => {
+					this.getServerData()
+				})
 			},
 			//
 			// 获取预算金额
 			async getbudget() {
-				const { data: res } = await this.$http({
+				const {
+					data: res
+				} = await this.$http({
 					url: "tally/userbudget",
 					method: "POST"
 				})
 				console.log(res)
-				if(res.code == '200'){
+				if (res.code == '200') {
 					this.isdata = true
 					this.budgetnum = res.data[0].budget
 				} else if (res.code == '201') {
@@ -154,15 +203,18 @@
 			// 新增预算金额数据
 			async addbudget() {
 				this.showpop = false
-				const { data: res } = await this.$http({
+				const {
+					data: res
+				} = await this.$http({
 					url: "tally/addbudget",
 					method: "POST",
 					data: {
 						budget: this.budgetnum
 					}
 				})
-				if(res.code == '200'){
-					this.vsnum = (this.outnum/this.budgetnum)*100
+				if (res.code == '200') {
+					this.getServerData()
+					this.vsnum = (this.outnum / this.budgetnum) * 100
 					this.isdata = true
 					this.$refs.uToast.show({
 						type: 'success',
@@ -182,15 +234,18 @@
 			// 修改预算金额数据
 			async updatebudget() {
 				this.showpop = false
-				const { data: res } = await this.$http({
+				const {
+					data: res
+				} = await this.$http({
 					url: "tally/updatebudget",
 					method: "POST",
 					data: {
 						budget: this.budgetnum
 					}
 				})
-				if(res.code == '200'){
-					this.vsnum = (this.outnum/this.budgetnum)*100
+				if (res.code == '200') {
+					this.getServerData()
+					this.vsnum = (this.outnum / this.budgetnum) * 100
 					console.log(this.vsnum)
 					this.$refs.uToast.show({
 						type: 'success',
@@ -274,6 +329,27 @@
 					})
 				}
 			},
+			// 统计图配置
+			getServerData() {
+				//模拟从服务器获取数据时的延时
+				setTimeout(() => {
+					this.opts.extra.markLine.data[0].value = this.budgetnum
+					//模拟服务器返回数据，如果数据格式和标准格式不同，需自行按下面的格式拼接
+					let res = {
+						categories: ["月支出", "月预算"],
+						series: [
+							{
+								name: "月支出",
+								data: [this.outnum,{
+									"value": this.budgetnum,
+									"color": "#EE6666"
+								}]
+							}
+						]
+					};
+					this.chartData = JSON.parse(JSON.stringify(res));
+				}, 500);
+			},
 		}
 	}
 </script>
@@ -310,7 +386,7 @@
 	.boxview {
 		margin-top: 40rpx;
 		width: 680rpx;
-		height: 720rpx;
+		height: 800rpx;
 		border-radius: 15px;
 		background-color: white;
 		margin: 0 auto;
@@ -326,22 +402,27 @@
 		font-size: 12px;
 		color: #aaa;
 	}
-	
+
 	.inputtitle {
 		display: flex;
 		padding: 40rpx;
 		justify-content: space-between;
 	}
-	
+
 	.leftbtn {
 		color: #aaa;
 	}
-	
+
 	.rightbtn {
 		color: #518BF1;
 	}
-	
+
 	::v-deep .u-line-progress {
 		margin: 10rpx 32rpx !important;
+	}
+
+	.charts-box {
+		width: 100%;
+		height: 300px;
 	}
 </style>

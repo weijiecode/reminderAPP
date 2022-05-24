@@ -40,6 +40,9 @@
   margin-left: 40rpx;
   align-self: flex-start;
 }
+.title.data-v-28de85ac {
+  font-size: 15px;
+}
 .listdata.data-v-28de85ac {
   margin-top: 50rpx;
   width: 600rpx;
@@ -48,8 +51,9 @@
   box-shadow: 5px 5px 10px #efeded;
   display: flex;
   flex-direction: column;
-  padding: 40rpx;
+  padding: 20rpx 40rpx;
 }
+.listdata .username.data-v-28de85ac,
 .listdata .photo.data-v-28de85ac,
 .listdata .nickname.data-v-28de85ac,
 .listdata .sex.data-v-28de85ac,
@@ -59,7 +63,7 @@
   display: flex;
   flex-direction: row;
   background-color: #ffffff;
-  height: 120rpx;
+  height: 110rpx;
   align-items: center;
   position: relative;
 }

@@ -72,7 +72,7 @@
 				</view>
 				<view class="icontype">
 					<view class="icon">
-						<span class="t-icon t-icon-baobiao"></span>
+						<span class="t-icon t-icon-baobiao" @click="statement"></span>
 					</view>
 					<view class="icontitle">报表</view>
 				</view>
@@ -420,6 +420,12 @@
 			budget() {
 				uni.navigateTo({
 					url: "./budget"
+				})
+			},
+			// 跳转到报表页面
+			statement() {
+				uni.navigateTo({
+					url: "./statement"
 				})
 			},
 			// 当前月份数据过滤

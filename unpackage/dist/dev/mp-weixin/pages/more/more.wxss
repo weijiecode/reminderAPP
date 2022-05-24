@@ -49,10 +49,17 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	
+	background-color: aquamarine;
 	
 	height: 1800px;
 	width: 100%;
+}
+.sublist {
+	margin-top: 20rpx;
+	width: 680rpx;
+	height: 320rpx;
+	background-color: palevioletred;
+	display: flex;
 }
 
 

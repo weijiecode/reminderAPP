@@ -20,7 +20,8 @@
     "pages/tally/addtally",
     "pages/tally/asset",
     "pages/tally/statistics",
-    "pages/tally/budget"
+    "pages/tally/budget",
+    "pages/tally/statement"
   ],
   "subPackages": [],
   "window": {

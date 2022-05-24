@@ -13,15 +13,70 @@
 				<span v-if="sex==0" style="margin-left: 20rpx;" class="t-icon t-icon-xingbie"></span>
 				<span v-if="sex==1" style="margin-left: 20rpx;" class="t-icon t-icon-xingbie1"></span>
 				</view>
-				<view style="position: absolute;bottom: 80rpx;right: 20rpx;" class="t-icon t-icon-xiangyou1"></view>
+				<view style="position: absolute;bottom: 80rpx;right: 40rpx;" class="t-icon t-icon-xiangyou1"></view>
 				<p v-if="introduction!=null" class="pintroduction">{{introduction}}</p>
 				<p v-if="introduction==null" class="pintroduction">暂无简介</p>
 			</navigator>
 			<view class="setting">
-
+				<view class="subtitlename">
+					设置
+				</view>
+				<view class="onecontent">
+					<view class="subleft">
+						<span class="t-icon t-icon-xingbie"></span>
+						小组件
+					</view>
+					<view class="subright">
+						<view class="t-icon t-icon-xiangyou1"></view>
+					</view>
+				</view>
+				<u-divider :dashed="true"></u-divider>
+				<view class="onecontent">
+					<view class="subleft">
+						<span class="t-icon t-icon-xingbie"></span>
+						提醒管理
+					</view>
+					<view class="subright">
+						<view class="t-icon t-icon-xiangyou1"></view>
+					</view>
+				</view>
+				<u-divider :dashed="true"></u-divider>
+				<view class="onecontent">
+					<view class="subleft">
+						<span class="t-icon t-icon-xingbie"></span>
+						提醒管理
+					</view>
+					<view class="subright">
+						<view class="t-icon t-icon-xiangyou1"></view>
+					</view>
+				</view>
+				<u-divider :dashed="true"></u-divider>
+				
 			</view>
 			<view class="others">
-
+				<view class="subtitlename">
+					其它
+				</view>
+				<view class="onecontent">
+					<view class="subleft">
+						<span class="t-icon t-icon-xingbie"></span>
+						提醒管理
+					</view>
+					<view class="subright">
+						<view class="t-icon t-icon-xiangyou1"></view>
+					</view>
+				</view>
+				<u-divider :dashed="true"></u-divider>
+				<view class="onecontent">
+					<view class="subleft">
+						<span class="t-icon t-icon-xingbie"></span>
+						提醒管理
+					</view>
+					<view class="subright">
+						<view class="t-icon t-icon-xiangyou1"></view>
+					</view>
+				</view>
+				<u-divider :dashed="true"></u-divider>
 			</view>
 		</view>
 	</view>
@@ -129,17 +184,48 @@
 		margin-top: 40rpx;
 		border-radius: 10px;
 		width: 640rpx;
-		height: 400rpx;
+		padding-bottom: 40rpx;
 		background-color: #ffffff;
 		box-shadow: 5px 5px 10px #efeded;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.subtitlename {
+		font-size: 12px;
+		color: #aaa;
+		padding: 40rpx 40rpx 0 40rpx;
 	}
 
 	.others {
 		width: 640rpx;
-		height: 120rpx;
+		padding-bottom: 40rpx;
 		margin-top: 40rpx;
 		border-radius: 10px;
 		background-color: #ffffff;
 		box-shadow: 5px 5px 10px #efeded;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.onecontent {
+		padding: 30rpx 40rpx 30rpx 40rpx;
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	.subleft {
+		display: flex;
+		align-items: center;
+		font-size: 14px;
+		color: #6a6767;
+		.t-icon {
+			margin-right: 12rpx !important;
+		}
+	}
+	
+	::v-deep .u-divider {
+		width: 560rpx !important;
+		margin: -10rpx auto !important;
 	}
 </style>

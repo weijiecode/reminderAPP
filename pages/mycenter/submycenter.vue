@@ -34,6 +34,15 @@
 			</view>
 			<view class="listdata">
 				<u--form labelPosition="left" :model="mycenterForm" :rules="mycenterrules" ref="mycenterRef">
+					<view class="username" @click="noupdate">
+						<view class="title">用户名</view>
+						<view class="listcontent">
+							<u-form-item prop="nickname">
+								<u--input inputAlign="right" v-model="mycenterForm.username" disabledColor="#ffffff" disabled border="none"></u--input>
+							</u-form-item>
+							<view style="margin-left: 10rpx;" class="t-icon t-icon-xiangyou1"></view>
+						</view>
+					</view>
 					<view class="nickname">
 						<view class="title">昵称</view>
 						<view class="listcontent">
@@ -108,6 +117,7 @@
 		data() {
 			return {
 				mycenterForm: {
+					username: "",
 					nickname: "",
 					photo: "",
 					sex: "",
@@ -161,6 +171,7 @@
 					method: "POST"
 				})
 				if (result.data.code == 200) {
+					this.mycenterForm.username = result.data.data[0].username
 					this.mycenterForm.nickname = result.data.data[0].nickname
 					this.mycenterForm.photo = result.data.data[0].photo
 					this.mycenterForm.sex = result.data.data[0].sex
@@ -244,7 +255,11 @@
 					uni.$u.toast('修改头像成功')
 				}
 			},
-			submitdata() {
+			// 提示禁止修改用户名
+			noupdate() {
+				uni.$u.toast('用户名不允许修改')
+			},
+ 			submitdata() {
 				this.$refs.mycenterRef.validate().then(async res => {
 					const result = await this.$http({
 						url: "mycenter/updateuserdata",
@@ -307,6 +322,10 @@
 		margin-left: 40rpx;
 		align-self: flex-start;
 	}
+	
+	.title {
+		font-size: 15px;
+	}
 
 	.listdata {
 		margin-top: 50rpx;
@@ -316,8 +335,9 @@
 		box-shadow: 5px 5px 10px #efeded;
 		display: flex;
 		flex-direction: column;
-		padding: 40rpx;
+		padding: 20rpx 40rpx;
 
+		.username,
 		.photo,
 		.nickname,
 		.sex,
@@ -327,7 +347,7 @@
 			display: flex;
 			flex-direction: row;
 			background-color: #ffffff;
-			height: 120rpx;
+			height: 110rpx;
 			align-items: center;
 			position: relative;
 		}
