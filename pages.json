@@ -202,6 +202,16 @@
             }
             
         }
+        ,{
+            "path" : "pages/tally/budget",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+				"navigationBarTextStyle": "black",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom" ,// 去掉小程顶部的导航
@@ -222,12 +232,12 @@
 				"iconPath": "static/tabbar/more.png",
 				"selectedIconPath": "static/tabbar/more1.png"
 			},
-			{
-				"pagePath": "pages/clock/clock",
-				"text": "打卡",
-				"iconPath": "static/tabbar/clock.png",
-				"selectedIconPath": "static/tabbar/clock1.png"
-			},
+			// {
+			// 	"pagePath": "pages/clock/clock",
+			// 	"text": "打卡",
+			// 	"iconPath": "static/tabbar/clock.png",
+			// 	"selectedIconPath": "static/tabbar/clock1.png"
+			// },
 			{
 				"pagePath": "pages/mycenter/mycenter",
 				"text": "我的",

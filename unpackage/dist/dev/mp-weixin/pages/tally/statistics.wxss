@@ -61,6 +61,7 @@
   height: 800rpx;
   border-radius: 15px;
   background-color: white;
+  margin-bottom: 40rpx;
 }
 .datecontent.data-v-5fd3ff1f {
   padding-top: 40rpx;
@@ -96,5 +97,22 @@
 .charts-box.data-v-5fd3ff1f {
   width: 100%;
   height: 300px;
+}
+.typebtn.data-v-5fd3ff1f {
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btnitem.data-v-5fd3ff1f {
+  color: #A7A7A9;
+  margin: 0 20rpx;
+  width: 140rpx;
+  height: 60rpx;
+  background-color: #F4F4F6;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 

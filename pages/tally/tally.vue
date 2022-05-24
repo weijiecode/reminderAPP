@@ -64,7 +64,7 @@
 					</view>
 					<view class="icontitle">统计</view>
 				</view>
-				<view class="icontype">
+				<view class="icontype" @click="budget">
 					<view class="icon">
 						<span class="t-icon t-icon-yusuanguanli"></span>
 					</view>
@@ -415,7 +415,14 @@
 				uni.navigateTo({
 					url: "./statistics"
 				})
-			},			// 当前月份数据过滤
+			},
+			// 跳转到统计页面 
+			budget() {
+				uni.navigateTo({
+					url: "./budget"
+				})
+			},
+			// 当前月份数据过滤
 			async nowgettally() {
 				// 初始化
 				this.outnum = 0

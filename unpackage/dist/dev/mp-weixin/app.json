@@ -19,7 +19,8 @@
     "pages/tally/tally",
     "pages/tally/addtally",
     "pages/tally/asset",
-    "pages/tally/statistics"
+    "pages/tally/statistics",
+    "pages/tally/budget"
   ],
   "subPackages": [],
   "window": {
@@ -38,12 +39,6 @@
         "text": "应用",
         "iconPath": "static/tabbar/more.png",
         "selectedIconPath": "static/tabbar/more1.png"
-      },
-      {
-        "pagePath": "pages/clock/clock",
-        "text": "打卡",
-        "iconPath": "static/tabbar/clock.png",
-        "selectedIconPath": "static/tabbar/clock1.png"
       },
       {
         "pagePath": "pages/mycenter/mycenter",

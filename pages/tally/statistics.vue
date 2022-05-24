@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<!-- #ifdef MP-WEIXIN -->
-		<view :style="{paddingTop: statusBarHeight}">
+		<view :style="{paddingTop: statusBarHeight,width: '100%'}">
 			<view :style="{height: titleBarHeight, display: 'flex',alignItems: 'center',paddingLeft: '40rpx'}">
 				<span @click="backmycenter" class="t-icon t-icon-fanhui2"></span>
 				<view style="padding-right: 80rpx;margin: 0 auto;" class="title">
@@ -90,21 +90,41 @@
 							分类统计
 						</view>
 						<view class="datetitle">
-							<u-icon name="arrow-left" color="#4F4F51" size="16" @click="leftdate"></u-icon>
-							<view @click="showdate=true">
-								{{choosedate}}
+							<u-icon name="arrow-left" color="#4F4F51" size="16" @click="leftdatepie"></u-icon>
+							<view @click="showdatepie=true">
+								{{choosedatepie}}
 							</view>
-							<u-icon name="arrow-right" color="#4F4F51" size="16" @click="rightdate"></u-icon>
+							<u-icon name="arrow-right" color="#4F4F51" size="16" @click="rightdatepie"></u-icon>
 						</view>
 					</view>
-					<view class="charts-box">
+					<view class="charts-box" v-if="btnitem==1">
 						<qiun-data-charts type="pie" :opts="optspie" :chartData="chartDatapie" />
+					</view>
+					<view class="charts-box" v-if="btnitem==0">
+						<qiun-data-charts type="pie" :opts="optspie" :chartData="chartDatapie1" />
+					</view>
+					<view class="typebtn">
+						<view class="btnitem" v-if="btnitem==0" @click="inbtnitem">
+							收入
+						</view>
+						<view class="btnitem" v-if="btnitem==1" @click="inbtnitem" :style="{color: 'white',backgroundColor: '#518BF1'}">
+							收入
+						</view>
+						<view class="btnitem" v-if="btnitem==1" @click="outbtnitem">
+							支出
+						</view>
+						<view class="btnitem" v-if="btnitem==0" @click="outbtnitem" :style="{color: 'white',backgroundColor: '#518BF1'}">
+							支出
+						</view>
 					</view>
 				</view>
 			</view>
 			<!-- 年月选择器 -->
 			<u-datetime-picker :show="showdate" v-model="dateym" mode="year-month" closeOnClickOverlay
 				@confirm="confirmdate" @cancel="showdate=false" @close="showdate=false"></u-datetime-picker>
+				<!-- 年月选择器pie -->
+			<u-datetime-picker :show="showdatepie" v-model="dateympie" mode="year-month" closeOnClickOverlay
+				@confirm="confirmdatepie" @cancel="showdatepie=false" @close="showdatepie=false"></u-datetime-picker>
 
 		</view>
 	</view>
@@ -133,10 +153,17 @@
 				new Date())).split("-")[1]
 			// 当前年
 			this.tallyyear = uni.$u.timeFormat(Number(new Date())).split("-")[0]
+			// 当前年pie
+			this.choosedatepie = uni.$u.timeFormat(Number(new Date())).split("-")[0] + '/' + uni.$u.timeFormat(Number(
+				new Date())).split("-")[1]
+				// 当前年pie1
+			// this.choosedatepie1 = uni.$u.timeFormat(Number(new Date())).split("-")[0] + '/' + uni.$u.timeFormat(Number(
+			// 	new Date())).split("-")[1]
 		},
 		onReady() {
 			this.getServerData();
 			this.getServerDatapie();
+			this.getServerDatapie1();
 		},
 		data() {
 			return {
@@ -152,14 +179,24 @@
 				tallyyear: "",
 				// 指定年份的每月数据
 				tallydatamonth: [],
+				// pie图显示类别
+				btnitem: 1,
 				// 显示年月日历选择器
 				showdate: false,
+				// 显示年月日历选择器pie
+				showdatepie: false,
 				// 日期年月
 				dateym: Number(new Date()),
+				// 日期年月pie
+				dateympie: Number(new Date()),
 				// 选择的时间
 				choosedate: "",
 				choosedatey: "",
 				choosedatem: "",
+				// 选择的时间pie
+				choosedatepie: "",
+				choosedateypie: "",
+				choosedatempie: "",
 				// 支出、收入和结余
 				innum: "",
 				outnum: "",
@@ -167,13 +204,16 @@
 				// 统计图配置
 				chartData: {},
 				chartDatapie: {},
+				chartDatapie1: {},
 				// 收入支出结余
 				mondatain: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				mondataout: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				mondatainout: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				// 分类数组
-				intypedata: [],
-				outtypedata: [],
+				intypedata: [{name: '工资',value: 0},{name: '理财',value: 0},{name: '红包',value: 0},
+				{name: '兼职',value: 0},{name: '现金',value: 0},{name: '收银',value: 0},{name: '其它',value: 0}],
+				outtypedata:  [{name: '餐饮',value: 0},{name: '娱乐',value: 0},{name: '日用',value: 0},
+				{name: '住房',value: 0},{name: '旅行',value: 0},{name: '医疗',value: 0},{name: '交通',value: 0}],
 				// 统计每个分类num值的计算
 				intypenum: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				outtypenum: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -239,7 +279,7 @@
 					url: "tally/usertally",
 					method: "POST"
 				})
-				console.log(res.data)
+				// console.log(res.data)
 				if (res.code == '200') {
 					this.tallydata = res.data
 					// 按日期筛选数据
@@ -291,7 +331,7 @@
 						return item.datetime.substring(0, 7) == this.choosedate;
 					})
 					this.newArrtally = newtallys
-					console.log(this.newArrtally)
+					// console.log(this.newArrtally)
 					// 统计每个月的支出收入结余数据
 					this.newArrtally.forEach(item => {
 						item.subList.forEach(items => {
@@ -316,13 +356,13 @@
 			fundatetype() {
 				// 初始化
 				this.initArrtally = []
-				this.intypenum = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-				this.outtypenum = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+				this.intypenum = [0, 0, 0, 0, 0, 0, 0]
+				this.outtypenum = [0, 0, 0, 0, 0, 0, 0]
 				// console.log(this.tallydata)
 				this.tallydata.forEach((item, i) => {
 					let index = -1;
 					let isExists = this.initArrtally.some((newItem, j) => {
-						if (this.choosedate == newItem.datetime) {
+						if (this.choosedatepie == newItem.datetime) {
 							index = j;
 							return true;
 						}
@@ -342,10 +382,10 @@
 				} else {
 					const timeFormat = uni.$u.timeFormat
 					const newtallys = this.initArrtally.filter(item => {
-						return item.datetime.substring(0, 7) == this.choosedate;
+						return item.datetime.substring(0, 7) == this.choosedatepie;
 					})
 					this.newArrtally = newtallys
-					console.log(this.newArrtally)
+					// console.log(this.newArrtally)
 					// 统计每个月的支出收入结余数据
 					this.newArrtally.forEach(item => {
 						item.subList.forEach(items => {
@@ -400,8 +440,15 @@
 							}
 						})
 					})
-					console.log(this.outtypenum)
-					console.log(this.intypenum)
+					this.intypenum.forEach((item,index) => {
+						this.intypedata[index].value = item*1
+					}) 
+					this.outtypenum.forEach((item,index) => {
+						this.outtypedata[index].value = item*1
+					}) 
+					// console.log(this.intypedata)
+					// console.log(this.outtypedata)
+					// console.log(this.intypenum)
 
 				}
 			},
@@ -414,6 +461,20 @@
 						'yyyy-mm'))
 					.split('-')[1]
 				this.fundate()
+			},
+			
+			// 指定年月日期数据过滤pie
+			confirmdatepie(e) {
+				// console.log('123')
+				this.showdatepie = false
+				const timeFormat = uni.$u.timeFormat
+				this.choosedatepie = (timeFormat(e.value, 'yyyy-mm')).split('-')[0] + '/' + (timeFormat(e.value,
+						'yyyy-mm'))
+					.split('-')[1]
+					// console.log(this.choosedatepie)
+				this.fundatetype()
+				this.getServerDatapie()
+				this.getServerDatapie1()
 			},
 
 			// 减月份
@@ -463,6 +524,55 @@
 				this.choosedate = this.choosedatey + '/' + this.choosedatem
 				this.fundate()
 
+			},
+			// 减月份pie
+			leftdatepie() {
+				this.choosedateypie = this.choosedatepie.split('/')[0]
+				switch (this.choosedatepie.split('/')[1]) {
+					case '01':
+						this.choosedateypie = this.choosedatepie.split('/')[0] * 1 - 1;
+						this.choosedatempie = '12';
+						break;
+					case '02':
+						this.choosedatempie = '01';
+						break;
+					case '03':
+						this.choosedatempie = '02';
+						break;
+					case '04':
+						this.choosedatempie = '03';
+						break;
+					case '05':
+						this.choosedatempie = '04';
+						break;
+					case '06':
+						this.choosedatempie = '05';
+						break;
+					case '07':
+						this.choosedatempie = '06';
+						break;
+					case '08':
+						this.choosedatempie = '07';
+						break;
+					case '09':
+						this.choosedatempie = '08';
+						break;
+					case '10':
+						this.choosedatempie = '09';
+						break;
+					case '11':
+						this.choosedatempie = '10';
+						break;
+					case '12':
+						this.choosedatempie = '11';
+						break;
+					default:
+						return;
+				}
+				this.choosedatepie = this.choosedateypie + '/' + this.choosedatempie
+				this.fundatetype()
+			    this.getServerDatapie()
+				this.getServerDatapie1()
 			},
 			// 减年份
 			leftdatey() {
@@ -516,6 +626,55 @@
 				}
 				this.choosedate = this.choosedatey + '/' + this.choosedatem
 				this.fundate()
+			},
+			// 加月份pie
+			rightdatepie() {
+				this.choosedateypie = this.choosedatepie.split('/')[0]
+				switch (this.choosedatepie.split('/')[1]) {
+					case '01':
+						this.choosedatempie = '02';
+						break;
+					case '02':
+						this.choosedatempie = '03';
+						break;
+					case '03':
+						this.choosedatempie = '04';
+						break;
+					case '04':
+						this.choosedatempie = '05';
+						break;
+					case '05':
+						this.choosedatempie = '06';
+						break;
+					case '06':
+						this.choosedatempie = '07';
+						break;
+					case '07':
+						this.choosedatempie = '08';
+						break;
+					case '08':
+						this.choosedatempie = '09';
+						break;
+					case '09':
+						this.choosedatempie = '10';
+						break;
+					case '10':
+						this.choosedatempie = '11';
+						break;
+					case '11':
+						this.choosedatempie = '12';
+						break;
+					case '12':
+						this.choosedateypie = this.choosedatepie.split('/')[0] * 1 + 1;
+						this.choosedatempie = '01';
+						break;
+					default:
+						return;
+				}
+				this.choosedatepie = this.choosedateypie + '/' + this.choosedatempie
+				this.fundatetype()
+				this.getServerDatapie()
+				this.getServerDatapie1()
 			},
 			// 加年份
 			rightdatey() {
@@ -692,34 +851,34 @@
 					//模拟服务器返回数据，如果数据格式和标准格式不同，需自行按下面的格式拼接
 					let res = {
 						series: [{
-							data: [{
-								"name": "工资",
-								"value": 50
-							}, {
-								"name": "理财",
-								"value": 30
-							}, {
-								"name": "红包",
-								"value": 20
-							}, {
-								"name": "兼职",
-								"value": 18
-							}, {
-								"name": "现金",
-								"value": 8
-							}, {
-								"name": "收银",
-								"value": 8
-							}, {
-								"name": "其它",
-								"value": 8
-							}]
+							data: this.intypedata
+							
 						}]
 					};
 					this.chartDatapie = JSON.parse(JSON.stringify(res));
 				}, 500);
 			},
-
+			// pie1统计图
+			getServerDatapie1() {
+				//模拟从服务器获取数据时的延时
+				setTimeout(() => {
+					//模拟服务器返回数据，如果数据格式和标准格式不同，需自行按下面的格式拼接
+					let res = {
+						series: [{
+							data: this.outtypedata
+							
+						}]
+					};
+					this.chartDatapie1 = JSON.parse(JSON.stringify(res));
+				}, 500);
+			},
+			inbtnitem() {
+				this.btnitem=1
+			},
+			outbtnitem() {
+				this.btnitem=0
+				//this.getServerDatapie1()
+			}
 		}
 
 	}
@@ -767,6 +926,7 @@
 		height: 800rpx;
 		border-radius: 15px;
 		background-color: white;
+		margin-bottom: 40rpx;
 	}
 
 	.datecontent {
@@ -811,5 +971,24 @@
 	.charts-box {
 		width: 100%;
 		height: 300px;
+	}
+	
+	.typebtn {
+		margin-top: 30rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.btnitem {
+		color: #A7A7A9;
+		margin: 0 20rpx;
+		width: 140rpx;
+		height: 60rpx;
+		background-color: #F4F4F6;
+		border-radius: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 </style>
