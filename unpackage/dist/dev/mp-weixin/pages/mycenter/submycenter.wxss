@@ -29,6 +29,7 @@
   width: 100%;
   height: 100%;
   background-color: #F8F8FB;
+  overflow: hidden;
 }
 .submycenterbox.data-v-28de85ac {
   display: flex;
@@ -74,7 +75,7 @@
   align-items: center;
 }
 .submit.data-v-28de85ac {
-  margin-top: 100rpx;
+  margin-top: 60rpx;
   width: 340rpx;
 }
 .data-v-28de85ac .u-border-bottom {
@@ -108,5 +109,13 @@ image.data-v-28de85ac {
   font-size: 13px;
   color: #aaa;
   margin-top: 10rpx;
+}
+.login.data-v-28de85ac {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 

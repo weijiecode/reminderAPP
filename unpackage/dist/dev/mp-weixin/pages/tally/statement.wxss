@@ -38,4 +38,40 @@
   margin-top: 60rpx;
   text-align: center;
 }
+.inoutsta.data-v-b39109ba {
+  margin: 60rpx auto;
+  width: 680rpx;
+  padding-bottom: 40rpx;
+  border-radius: 15px;
+  background-color: white;
+}
+.inouttitle.data-v-b39109ba {
+  padding: 40rpx 60rpx 0 60rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.datetitle.data-v-b39109ba {
+  width: 240rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.listbox.data-v-b39109ba {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx 60rpx 0 60rpx;
+}
+.listtitle.data-v-b39109ba {
+  padding-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #aaa;
+}
+.listcontent.data-v-b39109ba {
+  padding-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #202020;
+}
 

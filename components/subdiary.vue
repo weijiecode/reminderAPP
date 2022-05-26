@@ -109,6 +109,7 @@
 	}
 
 	.subonetitle {
+		color: #505050;
 		font-size: 18px;
 		font-weight: bold;
 		text-align: center;

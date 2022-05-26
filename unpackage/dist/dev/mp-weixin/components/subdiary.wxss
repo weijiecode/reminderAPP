@@ -72,6 +72,7 @@
   font-size: 15px;
 }
 .subonetitle.data-v-002e083e {
+  color: #505050;
   font-size: 18px;
   font-weight: bold;
   text-align: center;

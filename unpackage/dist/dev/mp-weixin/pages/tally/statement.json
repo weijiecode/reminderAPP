@@ -2,5 +2,7 @@
   "navigationBarTitleText": "",
   "navigationBarTextStyle": "black",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon"
+  }
 }

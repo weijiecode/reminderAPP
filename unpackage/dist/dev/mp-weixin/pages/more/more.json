@@ -4,6 +4,7 @@
   "navigationBarTextStyle": "black",
   "backgroundColor": "#F8F8FB",
   "usingComponents": {
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
     "submemorial": "/components/submemorial",
     "submemo": "/components/submemo",
     "subdiary": "/components/subdiary",

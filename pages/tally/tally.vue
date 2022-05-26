@@ -437,12 +437,13 @@
 					if (this.initArrtally.length == 0) {
 						return
 					} else {
-						// console.log(this.initArrtally)
+						console.log(this.initArrtally)
 						const timeFormat = uni.$u.timeFormat
 						const newtallys = this.initArrtally.filter(item => {
 							return item.datetime.substring(0, 7) == timeFormat(this.dateym, 'yyyy/mm');
 						})
 						this.newArrtally = newtallys
+						console.log(this.newArrtally)
 						this.newArrtally.forEach(item => {
 							item.subList.forEach(items => {
 								if (items.num.indexOf('-') >= 0) {

@@ -38,7 +38,8 @@
 						<view class="title">用户名</view>
 						<view class="listcontent">
 							<u-form-item prop="nickname">
-								<u--input inputAlign="right" v-model="mycenterForm.username" disabledColor="#ffffff" disabled border="none"></u--input>
+								<u--input inputAlign="right" v-model="mycenterForm.username" disabledColor="#ffffff"
+									disabled border="none"></u--input>
 							</u-form-item>
 							<view style="margin-left: 10rpx;" class="t-icon t-icon-xiangyou1"></view>
 						</view>
@@ -47,7 +48,8 @@
 						<view class="title">昵称</view>
 						<view class="listcontent">
 							<u-form-item prop="nickname">
-								<u--input inputAlign="right" v-model="mycenterForm.nickname" placeholder="请输入内容" border="none"></u--input>
+								<u--input inputAlign="right" v-model="mycenterForm.nickname" placeholder="请输入内容"
+									border="none"></u--input>
 							</u-form-item>
 							<view style="margin-left: 10rpx;" class="t-icon t-icon-xiangyou1"></view>
 						</view>
@@ -66,8 +68,8 @@
 						<view class="title">手机号码</view>
 						<view class="listcontent">
 							<u-form-item>
-								<u--input inputAlign="right" type="number" maxlength="11" v-model="mycenterForm.phone" placeholder="请输入号码"
-									border="none"></u--input>
+								<u--input inputAlign="right" type="number" maxlength="11" v-model="mycenterForm.phone"
+									placeholder="请输入号码" border="none"></u--input>
 							</u-form-item>
 							<view style="margin-left: 10rpx;" class="t-icon t-icon-xiangyou1"></view>
 						</view>
@@ -76,8 +78,8 @@
 						<view class="title">电子邮箱</view>
 						<view class="listcontent">
 							<u-form-item>
-								<u--input inputAlign="right" maxlength="20" v-model="mycenterForm.email" placeholder="请输入电子邮箱"
-									border="none"></u--input>
+								<u--input inputAlign="right" maxlength="20" v-model="mycenterForm.email"
+									placeholder="请输入电子邮箱" border="none"></u--input>
 							</u-form-item>
 							<view style="margin-left: 10rpx;" class="t-icon t-icon-xiangyou1"></view>
 						</view>
@@ -86,8 +88,8 @@
 						<view class="title">个人简介</view>
 						<view class="listcontent">
 							<u-form-item>
-								<u--input inputAlign="right" maxlength="15" v-model="mycenterForm.introduction" placeholder="请输入个人简介"
-									border="none">
+								<u--input inputAlign="right" maxlength="15" v-model="mycenterForm.introduction"
+									placeholder="请输入个人简介" border="none">
 								</u--input>
 							</u-form-item>
 							<view style="margin-left: 10rpx;" class="t-icon t-icon-xiangyou1"></view>
@@ -96,17 +98,19 @@
 				</u--form>
 			</view>
 			<view class="submit">
-				<u-button @click="submitdata" type="primary" text="保存"></u-button>
+				<!-- <u-button @click="submitdata" type="primary" text="保存" :plain="true"></u-button> -->
 			</view>
-			<view class="login" @click="logintest">
-				登录test
-			</view>
+		</view>
+		<view class="login" @click="logintest">
+			<u-button type="error" :plain="true">退出登录</u-button>
 		</view>
 	</view>
 </template>
 
 <script>
-	import {getstatusBarHeight} from '../../components/mixins/mixin.js'
+	import {
+		getstatusBarHeight
+	} from '../../components/mixins/mixin.js'
 	export default {
 		// #ifdef MP-WEIXIN
 		mixins: [getstatusBarHeight],
@@ -154,6 +158,7 @@
 		},
 		methods: {
 			logintest() {
+				uni.clearStorageSync()
 				uni.navigateTo({
 					url: "../login/login"
 				})
@@ -163,6 +168,7 @@
 				uni.switchTab({
 					url: "mycenter"
 				})
+				this.submitdata()
 			},
 			// 获取个人信息
 			async getuserdata() {
@@ -259,7 +265,7 @@
 			noupdate() {
 				uni.$u.toast('用户名不允许修改')
 			},
- 			submitdata() {
+			submitdata() {
 				this.$refs.mycenterRef.validate().then(async res => {
 					const result = await this.$http({
 						url: "mycenter/updateuserdata",
@@ -273,9 +279,9 @@
 						}
 					})
 					if (result.data.code == 200) {
-						setTimeout(() => {
-							uni.$u.toast('修改个人信息成功')
-						}, 500)
+						// setTimeout(() => {
+						// 	uni.$u.toast('修改个人信息成功')
+						// }, 500)
 						// uni.setStorageSync('nickname', this.mycenterForm.nickname)
 						// uni.setStorageSync('phone', this.mycenterForm.phone)
 						// uni.setStorageSync('sex', this.mycenterForm.sex)
@@ -309,6 +315,7 @@
 		width: 100%;
 		height: 100%;
 		background-color: #F8F8FB;
+		overflow: hidden;
 	}
 
 	.submycenterbox {
@@ -322,7 +329,7 @@
 		margin-left: 40rpx;
 		align-self: flex-start;
 	}
-	
+
 	.title {
 		font-size: 15px;
 	}
@@ -361,7 +368,7 @@
 	}
 
 	.submit {
-		margin-top: 100rpx;
+		margin-top: 60rpx;
 		width: 340rpx;
 	}
 
@@ -369,13 +376,13 @@
 		border-bottom-style: none;
 	}
 
-	::v-deep .u-upload__wrap__preview__image { 
+	::v-deep .u-upload__wrap__preview__image {
 		width: 140rpx !important;
 		height: 140rpx !important;
 		border-radius: 100%;
 		box-shadow: 0 0 0 3px #f3efef;
 	}
-	
+
 	::v-deep .uni-input-input {
 		color: #aaa !important;
 	}
@@ -402,5 +409,13 @@
 		font-size: 13px;
 		color: #aaa;
 		margin-top: 10rpx;
+	}
+
+	.login {
+		position: absolute;
+		bottom: 0;
+		width: 90%;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 </style>

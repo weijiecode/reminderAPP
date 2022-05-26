@@ -69,10 +69,64 @@
 		<view v-if="showtype==1" class="listcontent" :style="{height: topheight,overflow: 'auto'}">
 			<view class="allitem">
 				<view class="sublist">
-					<view class="subbox">
-						
+					<view class="subbox" @click="memorial">
+						<view class="iconbg" style="background-color: #ffe6eb;">
+							<span class="typeicon t-icon t-icon-jinianrix"></span>
+						</view>
+						<view class="contenttitle">
+							纪念日
+						</view>
+						<view class="contenttext">
+							有{{memorialdata.length}}个重要日子
+						</view>
 					</view>
+					<view class="subbox" @click="memo">
+						<view class="iconbg" style="background-color: #ded8f9;">
+							<span class="typeicon t-icon t-icon-beiwanglu"></span>
+						</view>
+						<view class="contenttitle">
+							备忘录
+						</view>
+						<view class="contenttext">
+							有{{memodata.nums}}篇备忘录
+						</view>
+					</view>
+				</view>
+				<view class="sublist">
+					<view class="subbox" @click="diary">
+						<view class="iconbg" style="background-color: #fff7d4;">
+							<span class="typeicon t-icon t-icon-jishiben"></span>
+						</view>
+						<view class="contenttitle">
+							日记
+						</view>
+						<view class="contenttext">
+							有{{diarydata.nums}}篇日记
+						</view>
+					</view>
+					<view class="subbox" @click="tally">
+						<view class="iconbg" style="background-color: #dce8fb;">
+							<span class="typeicon t-icon t-icon-qianbao"></span>
+						</view>
+						<view class="contenttitle">
+							记账
+						</view>
+						<view class="contenttext">
+							有{{tallydata}}条账单
+						</view>
+					</view>
+				</view>
+				<view class="sublist">
 					<view class="subbox">
+						<view class="iconbg" style="background-color: #e0e0e0;">
+							<u-icon name="pushpin-fill" color="#aaa" size="28"></u-icon>
+						</view>
+
+						<view class="contenttext" style="margin-top: 40rpx;">
+							更多功能正在开发中
+						</view>
+					</view>
+					<view class="subbox" style="background-color: #F8F8FB;">
 						
 					</view>
 				</view>
@@ -146,6 +200,27 @@
 			}
 		},
 		methods: {
+			// 页面跳转
+			memorial() {
+				uni.navigateTo({
+					url: '../memorial/memorial'
+				})
+			},
+			memo() {
+				uni.navigateTo({
+					url: '../memo/memo'
+				})
+			},
+			diary() {
+				uni.navigateTo({
+					url: '../diary/diary'
+				})
+			},
+			tally() {
+				uni.navigateTo({
+					url: '../tally/tally'
+				})
+			},
 			// 获取用户所有纪念日数据
 			async getmemorial() {
 				const { data:res } = await this.$http({
@@ -299,22 +374,54 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		background-color: aquamarine;
 		
-		height: 1800px;
+		/* height: 1800px; */
 		width: 100%;
 
 	}
 	
 	.sublist {
-		margin-top: 20rpx;
+		margin-top: 40rpx;
 		width: 680rpx;
 		height: 320rpx;
-		background-color: palevioletred;
 		display: flex;
+		justify-content: space-around;
 	}
 	
+	.subbox {
+		width: 300rpx;
+		border-radius: 15px;
+		background-color: white;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 	
+	.iconbg {
+		margin-top: 20rpx;
+		width: 100rpx;
+		height: 100rpx;
+		border-radius: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		float: left;
+	}
 	
+	.typeicon {
+		width: 70rpx;
+		height: 70rpx;
+	}
+	
+	.contenttitle {
+		font-size: 14px;
+		padding: 20rpx;
+	}
+	
+	.contenttext {
+		font-size: 12px;
+		color: #aaa;
+	}
 	
 </style>
