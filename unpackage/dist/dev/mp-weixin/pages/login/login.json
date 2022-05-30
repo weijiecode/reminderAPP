@@ -9,6 +9,7 @@
     "u-form-item": "/uni_modules/uview-ui/components/u-form-item/u-form-item",
     "u--input": "/uni_modules/uview-ui/components/u--input/u--input",
     "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
+    "u-divider": "/uni_modules/uview-ui/components/u-divider/u-divider",
     "u-steps": "/uni_modules/uview-ui/components/u-steps/u-steps",
     "u-steps-item": "/uni_modules/uview-ui/components/u-steps-item/u-steps-item",
     "u-radio-group": "/uni_modules/uview-ui/components/u-radio-group/u-radio-group",

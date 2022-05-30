@@ -3,37 +3,49 @@
 		<!-- 注册成功后的提示 -->
 		<u-notify ref="uNotify"></u-notify>
 		<view class="loginbox">
-			<image v-if="isloginorregister==0" style="height: 380rpx;" src="../../static/bg.svg" mode=""></image>
 			<!-- 登录界面 -->
+			<view v-if="isloginorregister==0" class="toptitle">
+				登录/注册账号，记录从此刻开始
+				<view class="subtoptitle">
+					快捷账号登录如未注册将自动创建账号
+				</view>
+			</view>
 			<view v-if="isloginorregister==0" class="accountbox">
-				<view class="title">
+				<!-- <view class="title">
 					欢迎访问日暮清单
 				</view>
 				<view class="subtitle">
 					请输入您的凭证访问账户
-				</view>
+				</view> -->
 				<u--form labelPosition="left" :model="loginForm" :rules="loginrules" ref="loginRef">
 					<u-form-item prop="username">
-						<u--input v-model="loginForm.username" clearable maxlength="8" shape="circle"
+						<!-- <u--input v-model="loginForm.username" clearable maxlength="8" shape="circle"
 							placeholder="请输入账号" prefixIcon="account" prefixIconStyle="font-size: 22px;color: #909399">
-						</u--input>
+						</u--input> -->
+						<u--input placeholder="登录账号" border="bottom" clearable v-model="loginForm.username"
+							maxlength="8"></u--input>
 					</u-form-item>
 					<u-form-item prop="password">
-						<u--input v-model="loginForm.password" clearable maxlength="15" password shape="circle"
+						<!-- <u--input v-model="loginForm.password" clearable maxlength="15" password shape="circle"
 							placeholder="请输入密码" prefixIcon="lock" prefixIconStyle="font-size: 22px;color: #909399">
-						</u--input>
+						</u--input> -->
+						<u--input placeholder="密码" border="bottom" clearable password v-model="loginForm.password"
+							maxlength="8"></u--input>
 					</u-form-item>
-					<text class="findpwd" @click="findpwd">找回密码</text>
-					<u-form-item>
-						<u-button style="width: 320rpx;" @click="submit" type="primary" shape="circle">登录</u-button>
-					</u-form-item>
+					<view class="botbtn">
+						<view class="findpwd" @click="findpwd">找回密码</view>
+						<u-form-item>
+							<u-button @click="submit" type="primary" shape="circle">登录</u-button>
+						</u-form-item>
+					</view>
 				</u--form>
+				<u-divider text="其他方式登录"></u-divider>
 				<text @click="isloginorregister=1" class="nouser">还没有账号？<text class="subnouser">注册账号</text></text>
 			</view>
 			<!-- 注册界面 -->
-			<view style="margin-top: 120rpx;height: 1120rpx;" v-if="isloginorregister==1" class="accountbox">
+			<view style="margin-top: 120rpx;height: 1120rpx;" v-if="isloginorregister==1" class="accountbox1">
 				<view class="title" style="margin-bottom: 20rpx;">
-					欢迎访问日暮清单
+					账号注册
 				</view>
 				<u-steps style="margin-top: 60rpx;" :current="indexnum">
 					<u-steps-item title="账号密码">
@@ -42,21 +54,28 @@
 					<u-steps-item title="确认信息"></u-steps-item>
 				</u-steps>
 				<!-- 步骤1输入账号密码 -->
-				<u--form v-if="indexnum==0" labelPosition="left" :model="regForm" :rules="regrules" ref="regRef">
-					<u-form-item :required="true" label="账号" prop="reg_username">
-						<u--input v-model="regForm.reg_username" clearable maxlength="8" shape="circle"
+				<u--form style="margin: 0 auto !important;width: 600rpx !important;" v-if="indexnum==0"
+					labelPosition="left" :model="regForm" :rules="regrules" ref="regRef">
+					<u-form-item :required="true" label="账号 :" prop="reg_username">
+						<!-- <u--input v-model="regForm.reg_username" clearable maxlength="8" shape="circle"
 							placeholder="请输入账号" prefixIconStyle="font-size: 22px;color: #909399">
-						</u--input>
+						</u--input> -->
+						<u--input placeholder="请输入账号" border="bottom" clearable v-model="regForm.reg_username"
+							maxlength="8"></u--input>
 					</u-form-item>
-					<u-form-item :required="true" label="密码" prop="reg_password">
-						<u--input v-model="regForm.reg_password" clearable maxlength="15" password shape="circle"
+					<u-form-item :required="true" label="密码 :" prop="reg_password">
+						<!-- <u--input v-model="regForm.reg_password" clearable maxlength="15" password shape="circle"
 							placeholder="请输入密码" prefixIconStyle="font-size: 22px;color: #909399">
-						</u--input>
+						</u--input> -->
+						<u--input placeholder="请输入密码" border="bottom" password clearable v-model="regForm.reg_password"
+							maxlength="15"></u--input>
 					</u-form-item>
-					<u-form-item :required="true" label="确认密码" prop="reg_checkPassword">
-						<u--input placeholder="请再次输入密码" clearable maxlength="15" password
+					<u-form-item labelWidth="140rpx" :required="true" label="确认密码 :" prop="reg_checkPassword">
+						<!-- <u--input placeholder="请再次输入密码" clearable maxlength="15" password
 							v-model="regForm.reg_checkPassword" shape="circle">
-						</u--input>
+						</u--input> -->
+						<u--input placeholder="请再次输入密码" border="bottom" password clearable
+							v-model="regForm.reg_checkPassword" maxlength="15"></u--input>
 					</u-form-item>
 					<u-form-item>
 						<u-button style="margin-top: 30rpx;" @click="nextbtn" shape="circle">下一步</u-button>
@@ -65,17 +84,21 @@
 				<!-- 步骤2个人资料 -->
 				<u--form v-if="indexnum==1" labelPosition="left" :model="regdataForm" :rules="regdatarules"
 					ref="regdataRef">
-					<u-form-item :required="true" label="昵称" prop="reg_nickname">
-						<u--input v-model="regdataForm.reg_nickname" clearable shape="circle" placeholder="昵称"
+					<u-form-item :required="true" label="昵称 :">
+						<!-- <u--input v-model="regdataForm.reg_nickname" clearable shape="circle" placeholder="昵称"
 							prefixIconStyle="font-size: 22px;color: #909399">
-						</u--input>
+						</u--input> -->
+						<u--input placeholder="昵称" border="bottom" clearable v-model="regdataForm.reg_nickname"
+							maxlength="8"></u--input>
 					</u-form-item>
-					<u-form-item label="手机">
-						<u--input v-model="regdataForm.reg_phone" maxlength="11" clearable shape="circle"
+					<u-form-item label="手机 :">
+						<!-- <u--input v-model="regdataForm.reg_phone" maxlength="11" clearable shape="circle"
 							placeholder="手机号码" prefixIconStyle="font-size: 22px;color: #909399">
-						</u--input>
+						</u--input> -->
+						<u--input placeholder="手机号码" border="bottom" clearable v-model="regdataForm.reg_phone"
+							maxlength="11"></u--input>
 					</u-form-item>
-					<u-form-item label="性别" prop="reg_phone">
+					<u-form-item label="性别 :" prop="reg_phone">
 						<u-radio-group v-model="regdataForm.reg_sex">
 							<u-radio :name="0" shape="circle"></u-radio>
 							<view style="margin-right: 20rpx;" class="t-icon t-icon-xingbie1"></view>
@@ -94,27 +117,33 @@
 				</u--form>
 				<!-- 步骤3个人资料 -->
 				<u--form v-if="indexnum==2" labelPosition="left">
-					<u-form-item label="账号">
-						<u--input disabled v-model="regForm.reg_username" shape="circle"
+					<u-form-item label="账号 :">
+						<!-- <u--input disabled v-model="regForm.reg_username" shape="circle"
 							prefixIconStyle="font-size: 22px;color: #909399">
-						</u--input>
+						</u--input> -->
+						<u--input disabledColor="#fff" color="#909399" disabled placeholder="手机号码" border="bottom" clearable v-model="regForm.reg_username"
+							maxlength="11"></u--input>
 					</u-form-item>
-					<u-form-item label="昵称">
-						<u--input disabled v-model="regdataForm.reg_nickname" clearable shape="circle" placeholder="昵称"
+					<u-form-item label="昵称 :">
+						<!-- <u--input disabled v-model="regdataForm.reg_nickname" clearable shape="circle" placeholder="昵称"
 							prefixIconStyle="font-size: 22px;color: #909399">
-						</u--input>
+						</u--input> -->
+						<u--input disabledColor="#fff" color="#909399" disabled placeholder="昵称" border="bottom" clearable
+							v-model="regdataForm.reg_nickname"></u--input>
 					</u-form-item>
-					<u-form-item label="手机">
-						<u--input disabled v-model="regdataForm.reg_phone" clearable shape="circle"
+					<u-form-item label="手机 :" v-if="regdataForm.reg_phone!==''">
+						<!-- <u--input disabled v-model="regdataForm.reg_phone" clearable shape="circle"
 							prefixIconStyle="font-size: 22px;color: #909399">
-						</u--input>
+						</u--input> -->
+						<u--input disabledColor="#fff" color="#909399" disabled border="bottom" clearable
+							v-model="regdataForm.reg_phone"></u--input>
 					</u-form-item>
-					<u-form-item label="性别" prop="reg_phone">
+					<u-form-item label="性别 :" prop="reg_phone">
 						<u-radio-group disabled v-model="regdataForm.reg_sex">
-							<u-radio :name="1" style="margin-left: 25rpx;" shape="circle"></u-radio>
-							<view class="t-icon t-icon-xingbie1"></view>
-							<u-radio :name="0" shape="circle"></u-radio>
-							<view style="margin-right: 20rpx;" class="t-icon t-icon-xingbie"></view>
+							<!-- <u-radio v-if="regdataForm.reg_sex==1" :name="1" style="margin-left: 25rpx;" shape="circle"></u-radio> -->
+							<view v-if="regdataForm.reg_sex==0" class="t-icon t-icon-xingbie1"></view>
+							<!-- <u-radio v-if="regdataForm.reg_sex==0" :name="0" shape="circle"></u-radio> -->
+							<view v-if="regdataForm.reg_sex==1" style="margin-right: 20rpx;" class="t-icon t-icon-xingbie"></view>
 						</u-radio-group>
 					</u-form-item>
 					<u-form-item>
@@ -124,8 +153,7 @@
 						<u-button @click="regbtn" type="primary" shape="circle">确认注册</u-button>
 					</u-form-item>
 				</u--form>
-				<text style="margin-top: 100rpx;" @click="isloginorregister=0" class="nouser">已经有账号？<text
-						class="subnouser">登录账号</text></text>
+				<text @click="isloginorregister=0" class="nouser">已经有账号？<text class="subnouser">登录账号</text></text>
 			</view>
 			<p class="agree">登录或完成注册即代表你同意<navigator style="display: inline;" url="../agreement/agreement"
 					class="subtitle">用户协议</navigator>和<navigator class="subtitle" style="display: inline;"
@@ -368,11 +396,17 @@
 			},
 			// 步骤2的下一步
 			twonextbtn() {
-				this.$refs.regdataRef.validate().then(res => {
-					this.indexnum = 2
-				}).catch(errors => {
-					uni.$u.toast('请填写正确后，重试')
-				})
+				if(this.regdataForm.reg_nickname===''){
+					this.indexnum = 1
+					uni.$u.toast('请填写昵称后，重试')
+				}else{
+					this.$refs.regdataRef.validate().then(res => {
+						this.indexnum = 2
+					}).catch(errors => {
+						uni.$u.toast('请填写正确后，重试')
+					})
+				}
+				
 			},
 			// 确认注册
 			async regbtn() {
@@ -404,13 +438,13 @@
 
 <style scoped lang="scss">
 	page {
-		background-color: #f3f6fe;
+		background-color: #fff;
 		height: 100%;
 	}
 
 	.content {
 		height: 100%;
-		background-color: #f3f6fe;
+		background-color: #fff;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -430,13 +464,61 @@
 		}
 	}
 
+	.toptitle {
+		align-self: start;
+		font-size: 18px;
+		font-weight: 600;
+		color: #525151;
+		margin-top: -80rpx;
+
+		.subtoptitle {
+			font-size: 12px;
+			color: #d2d8dc;
+		}
+	}
+	
+	::v-depp .u-form-item__body__left__content__required {
+		font-size: 10px !important;
+	}
+
+	::v-deep .u-button--circle {
+		width: 680rpx !important;
+	}
+
+	.botbtn {
+		display: flex;
+		flex-direction: column;
+	}
+
 	.accountbox {
-		box-shadow: 5px 5px 10px #efeded;
+		// box-shadow: 5px 5px 10px #efeded;
+		// border-radius: 10px;
+		// margin-top: 60rpx;
+		width: 680rpx;
+		height: 780rpx;
+		// background-color: #FFFFFF;
+
+		// .title {
+		// 	margin-top: 60rpx;
+		// 	text-align: center;
+		// 	font-size: 22px;
+		// 	font-weight: 600;
+		// 	color: #525151;
+		// }
+
+		// .subtitle {
+		// 	margin-top: 20rpx;
+		// 	text-align: center;
+		// 	color: #aaa;
+		// 	font-size: 15px;
+		// }
+	}
+
+	.accountbox1 {
 		border-radius: 10px;
 		margin-top: 60rpx;
 		width: 680rpx;
 		height: 780rpx;
-		background-color: #FFFFFF;
 
 		.title {
 			margin-top: 60rpx;
@@ -454,26 +536,38 @@
 		}
 	}
 
+	// ::v-deep .u-form-item {
+	// 	width: 600rpx !important;
+	// }
+
 	::v-deep .u-form-item {
-		width: 500rpx;
+
 		height: 80rpx;
 		margin: 50rpx auto;
 	}
+	
+	::v-deep .u-form-item__body__left__content__label{
+		font-size: 14px !important;
+	}
 
 	.findpwd {
-		font-size: 15px;
+		font-size: 14px;
 		float: right;
 		margin-right: 90rpx;
 		color: #5da7f1;
+		align-self: end;
+		margin-right: 0;
+	}
+
+	::v-deep .u-form-item__body__right__message {
+		margin-left: 20rpx !important;
 	}
 
 	.nouser {
-		margin-left: 60rpx;
 		font-size: 14px;
 		float: left;
 		cursor: default;
 		color: #aaa;
-		margin-top: 40rpx;
 	}
 
 	.subnouser {
