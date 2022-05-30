@@ -15,8 +15,8 @@
 					欢迎访问日暮清单
 				</view>
 				<view class="subtitle">
-					请输入您的凭证访问账户
-				</view> -->
+					请输入您的凭证访问账户 
+				</view> --> 
 				<u--form labelPosition="left" :model="loginForm" :rules="loginrules" ref="loginRef">
 					<u-form-item prop="username">
 						<!-- <u--input v-model="loginForm.username" clearable maxlength="8" shape="circle"
@@ -39,13 +39,19 @@
 						</u-form-item>
 					</view>
 				</u--form>
-				<u-divider text="其他方式登录"></u-divider>
 				<text @click="isloginorregister=1" class="nouser">还没有账号？<text class="subnouser">注册账号</text></text>
+				<u-divider text="其他方式登录"></u-divider>
+				<view class="iconlogin" @click="loginother">
+					<view style="margin-right: 20rpx;" class="t-icon t-icon-weixin1"></view>
+					<view style="margin-right: 20rpx;" class="t-icon t-icon-QQ"></view>
+					<view style="margin-right: 20rpx;" class="t-icon t-icon-weibo1"></view>
+					<view style="margin-right: 20rpx;" class="t-icon t-icon-tuitetwitter43"></view>
+				</view>
 			</view>
 			<!-- 注册界面 -->
 			<view style="margin-top: 120rpx;height: 1120rpx;" v-if="isloginorregister==1" class="accountbox1">
 				<view class="title" style="margin-bottom: 20rpx;">
-					账号注册
+					账号注册信息
 				</view>
 				<u-steps style="margin-top: 60rpx;" :current="indexnum">
 					<u-steps-item title="账号密码">
@@ -155,11 +161,11 @@
 				</u--form>
 				<text @click="isloginorregister=0" class="nouser">已经有账号？<text class="subnouser">登录账号</text></text>
 			</view>
-			<p class="agree">登录或完成注册即代表你同意<navigator style="display: inline;" url="../agreement/agreement"
-					class="subtitle">用户协议</navigator>和<navigator class="subtitle" style="display: inline;"
-					url="../private/private">隐私政策</navigator>
-			</p>
 		</view>
+		<p class="agree">登录或完成注册即代表你同意<navigator style="display: inline;" url="../agreement/agreement"
+				class="subtitle">用户协议</navigator>和<navigator class="subtitle" style="display: inline;"
+				url="../private/private">隐私政策</navigator>
+		</p>
 	</view>
 </template>
 
@@ -357,6 +363,10 @@
 			findpwd() {
 				uni.$u.toast("请联系管理员找回")
 			},
+			// 其他方式登录
+			loginother() {
+				uni.$u.toast("下版本接入以下登录方式")
+			},
 			// 下一步
 			nextbtn() {
 				if (this.regForm.reg_password != this.regForm.reg_checkPassword) {
@@ -448,6 +458,8 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-direction: column;
+		position: relative;
 	}
 
 	.loginbox {
@@ -488,6 +500,16 @@
 	.botbtn {
 		display: flex;
 		flex-direction: column;
+	}
+	
+	.iconlogin {
+		display: flex;
+		justify-content: center;
+		.t-icon {
+			margin: 0 16rpx;
+			width: 70rpx !important;
+			height: 70rpx !important;
+		}
 	}
 
 	.accountbox {
@@ -564,6 +586,7 @@
 	}
 
 	.nouser {
+		display: contents;
 		font-size: 14px;
 		float: left;
 		cursor: default;
@@ -575,12 +598,17 @@
 		cursor: pointer;
 		font-size: 14px;
 	}
+	
+	::v-deep .u-divider {
+		margin: 100rpx 0 30rpx 0 !important;
+	}
 
 	.agree {
 		margin-top: 20rpx;
 		color: #aaa;
 		font-size: 12px;
-
+		position: absolute;
+		bottom: 20rpx;
 		.subtitle {
 			text-decoration: underline;
 			margin: 0 10rpx;
