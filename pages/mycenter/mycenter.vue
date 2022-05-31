@@ -21,10 +21,11 @@
 				<view class="subtitlename">
 					设置
 				</view>
-				<view class="onecontent">
+				<view class="onecontent" @click="tomessage">
 					<view class="subleft">
 						<span class="t-icon t-icon-xingbie"></span>
-						小组件
+						我的消息
+						<u-badge v-if="msgnum>0" shape="horn" type="warning" max="99" :value="msgnum"></u-badge>
 					</view>
 					<view class="subright">
 						<view class="t-icon t-icon-xiangyou1"></view>
@@ -90,13 +91,16 @@
 			this.photo = photo
 			this.sex = sex
 			this.introduction = introduction
+			this.getUserMsgNum()
 		},
 		data() {
 			return {
 				nickname: "",
 				photo: "",
 				sex: "",
-				introduction: ""
+				introduction: "",
+				// 未读消息数
+				msgnum: 0,
 			}
 		},
 		methods: {
@@ -104,6 +108,25 @@
 				const res = await this.$http({
 					url:"account/userdata"
 				})
+			},
+			// 跳转我的消息页面
+			tomessage() {
+				uni.navigateTo({
+					url: "../message/message"
+				})
+			},
+			// 获取未读消息数
+			async getUserMsgNum() {
+				const { data: res } = await this.$http({
+					url: 'message/usermessage',
+					method: 'GET'
+				})
+				if(res.code == '200') {
+					this.msgnum = 0;
+					res.data.forEach(item => {
+						if(item.isread == 0)this.msgnum++
+					})
+				}
 			}
 		}
 	}
@@ -227,5 +250,9 @@
 	::v-deep .u-divider {
 		width: 560rpx !important;
 		margin: -10rpx auto !important;
+	}
+	
+	::v-deep .u-badge--warning {
+		margin-left: 20rpx;
 	}
 </style>

@@ -63,6 +63,9 @@
 				<Subdiary :diarydata="diarydata"></Subdiary>
 				<!-- 记账 -->
 				<Subtally :tallydata="tallydata"></Subtally>
+				<view class="zhanwei" style="height: 40rpx;">
+					
+				</view>
 			</view>
 		</view>
 		<!-- 类型2 -->

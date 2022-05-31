@@ -16,7 +16,7 @@
 				</view>
 				<view class="subtitle">
 					请输入您的凭证访问账户 
-				</view> --> 
+				</view> -->
 				<u--form labelPosition="left" :model="loginForm" :rules="loginrules" ref="loginRef">
 					<u-form-item prop="username">
 						<!-- <u--input v-model="loginForm.username" clearable maxlength="8" shape="circle"
@@ -127,15 +127,15 @@
 						<!-- <u--input disabled v-model="regForm.reg_username" shape="circle"
 							prefixIconStyle="font-size: 22px;color: #909399">
 						</u--input> -->
-						<u--input disabledColor="#fff" color="#909399" disabled placeholder="手机号码" border="bottom" clearable v-model="regForm.reg_username"
-							maxlength="11"></u--input>
+						<u--input disabledColor="#fff" color="#909399" disabled placeholder="手机号码" border="bottom"
+							clearable v-model="regForm.reg_username" maxlength="11"></u--input>
 					</u-form-item>
 					<u-form-item label="昵称 :">
 						<!-- <u--input disabled v-model="regdataForm.reg_nickname" clearable shape="circle" placeholder="昵称"
 							prefixIconStyle="font-size: 22px;color: #909399">
 						</u--input> -->
-						<u--input disabledColor="#fff" color="#909399" disabled placeholder="昵称" border="bottom" clearable
-							v-model="regdataForm.reg_nickname"></u--input>
+						<u--input disabledColor="#fff" color="#909399" disabled placeholder="昵称" border="bottom"
+							clearable v-model="regdataForm.reg_nickname"></u--input>
 					</u-form-item>
 					<u-form-item label="手机 :" v-if="regdataForm.reg_phone!==''">
 						<!-- <u--input disabled v-model="regdataForm.reg_phone" clearable shape="circle"
@@ -149,7 +149,8 @@
 							<!-- <u-radio v-if="regdataForm.reg_sex==1" :name="1" style="margin-left: 25rpx;" shape="circle"></u-radio> -->
 							<view v-if="regdataForm.reg_sex==0" class="t-icon t-icon-xingbie1"></view>
 							<!-- <u-radio v-if="regdataForm.reg_sex==0" :name="0" shape="circle"></u-radio> -->
-							<view v-if="regdataForm.reg_sex==1" style="margin-right: 20rpx;" class="t-icon t-icon-xingbie"></view>
+							<view v-if="regdataForm.reg_sex==1" style="margin-right: 20rpx;"
+								class="t-icon t-icon-xingbie"></view>
 						</u-radio-group>
 					</u-form-item>
 					<u-form-item>
@@ -159,12 +160,12 @@
 						<u-button @click="regbtn" type="primary" shape="circle">确认注册</u-button>
 					</u-form-item>
 				</u--form>
-				<text @click="isloginorregister=0" class="nouser">已经有账号？<text class="subnouser">登录账号</text></text>
+				<text v-if="indexnum!=2" @click="isloginorregister=0" class="nouser">已经有账号？<text class="subnouser">登录账号</text></text>
 			</view>
 		</view>
-		<p class="agree">登录或完成注册即代表你同意<navigator style="display: inline;" url="../agreement/agreement"
-				class="subtitle">用户协议</navigator>和<navigator class="subtitle" style="display: inline;"
-				url="../private/private">隐私政策</navigator>
+		<p class="agree">登录或完成注册即代表你同意<navigator style="display: inline;" url="../agreement/agreement" class="subtitle">
+				用户协议</navigator>和<navigator class="subtitle" style="display: inline;" url="../private/private">隐私政策
+			</navigator>
 		</p>
 	</view>
 </template>
@@ -195,6 +196,8 @@
 			return {
 				// 注册和登录界面
 				isloginorregister: 0,
+				// 所有消息的id
+				messageid: [],
 				// storage用户数据
 				userdata: {
 					nickname: '',
@@ -406,17 +409,17 @@
 			},
 			// 步骤2的下一步
 			twonextbtn() {
-				if(this.regdataForm.reg_nickname===''){
+				if (this.regdataForm.reg_nickname === '') {
 					this.indexnum = 1
 					uni.$u.toast('请填写昵称后，重试')
-				}else{
+				} else {
 					this.$refs.regdataRef.validate().then(res => {
 						this.indexnum = 2
 					}).catch(errors => {
 						uni.$u.toast('请填写正确后，重试')
 					})
 				}
-				
+
 			},
 			// 确认注册
 			async regbtn() {
@@ -433,13 +436,49 @@
 				})
 				console.log(res)
 				if (res.data.code == 200) {
-					this.$refs.uNotify.success('注册成功，请登录')
-					uni.navigateTo({
-						url: '../login/login'
-					})
+					this.$refs.uNotify.success('注册成功，请输入账号密码登录')
+					this.getmessageid();
 				} else {
 					this.$refs.uNotify.error('注册失败，请重试')
 				}
+			},
+			// 获取所有消息id
+			async getmessageid() {
+				const {
+					data: res
+				} = await this.$http({
+					url: 'account/selectmessageid',
+					method: 'POST',
+					data: {
+						username: this.regForm.reg_username
+					}
+				})
+				if (res.code == 200) {
+					this.messageid = res.data;
+					this.addmessage()
+				}
+				// console.log(this.messageid);
+			},
+			// 给新用户添加未读消息
+			addmessage() {
+				this.messageid.forEach(async (element) => {
+					const {
+						data: res
+					} = await this.$http({
+						url: "account/addmessage",
+						method: 'POST',
+						data: {
+							message_id: element.id,
+							username: this.regForm.reg_username
+						}
+					});
+					// console.log(res)
+				});
+				setTimeout(()=> {
+					uni.navigateTo({
+						url: '../login/login'
+					});
+				},2000)
 			},
 		}
 
@@ -488,7 +527,7 @@
 			color: #d2d8dc;
 		}
 	}
-	
+
 	::v-depp .u-form-item__body__left__content__required {
 		font-size: 10px !important;
 	}
@@ -501,10 +540,11 @@
 		display: flex;
 		flex-direction: column;
 	}
-	
+
 	.iconlogin {
 		display: flex;
 		justify-content: center;
+
 		.t-icon {
 			margin: 0 16rpx;
 			width: 70rpx !important;
@@ -567,8 +607,8 @@
 		height: 80rpx;
 		margin: 50rpx auto;
 	}
-	
-	::v-deep .u-form-item__body__left__content__label{
+
+	::v-deep .u-form-item__body__left__content__label {
 		font-size: 14px !important;
 	}
 
@@ -598,7 +638,7 @@
 		cursor: pointer;
 		font-size: 14px;
 	}
-	
+
 	::v-deep .u-divider {
 		margin: 100rpx 0 30rpx 0 !important;
 	}
@@ -609,6 +649,7 @@
 		font-size: 12px;
 		position: absolute;
 		bottom: 20rpx;
+
 		.subtitle {
 			text-decoration: underline;
 			margin: 0 10rpx;

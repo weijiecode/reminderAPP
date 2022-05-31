@@ -3,14 +3,14 @@
 		<!-- #ifdef MP-WEIXIN -->
 		<view :style="{paddingTop: statusBarHeight}">
 			<view :style="{height: titleBarHeight, display: 'flex',alignItems: 'center',paddingLeft: '40rpx'}">
-				<span @click="backmycenter" id="backtop" class="btnshow t-icon t-icon-fanhui2"></span>
+				<span @click="submitdata" id="backtop" class="btnshow t-icon t-icon-fanhui2"></span>
 			</view>
 		</view>
 		<!-- #endif -->
 		<!-- #ifndef MP-WEIXIN -->
 		<view class="topback">
 			<!-- <u-icon size="25" @click="backmycenter" name="arrow-left"></u-icon> -->
-			<span @click="backmycenter" id="backtop" class="btnshow t-icon t-icon-fanhui2"></span>
+			<span @click="submitdata" id="backtop" class="btnshow t-icon t-icon-fanhui2"></span>
 		</view>
 		<!-- #endif -->
 		<view class="submycenterbox">
@@ -23,9 +23,9 @@
 				<u-upload :fileList="fileList6" @afterRead="afterRead" @delete="deletePic" name="6" multiple
 					:maxCount="1" :max-size="2 * 1024 * 1024" @oversize="oversize">
 					<image v-if="mycenterForm.photo!=null" :src="mycenterForm.photo" mode="">
-						<span id="nophoto" v-if="mycenterForm.photo==null && sex==0"
+						<span id="nophoto" v-if="mycenterForm.photo==null && mycenterForm.sex==0"
 							class="t-icon t-icon-icon-test"></span>
-						<span id="nophoto" v-if="mycenterForm.photo==null && sex==1"
+						<span id="nophoto" v-if="mycenterForm.photo==null && mycenterForm.sex==1"
 							class="t-icon t-icon-icon-test2"></span>
 				</u-upload>
 			</view>
@@ -37,7 +37,7 @@
 					<view class="username" @click="noupdate">
 						<view class="title">用户名</view>
 						<view class="listcontent">
-							<u-form-item prop="nickname">
+							<u-form-item>
 								<u--input inputAlign="right" v-model="mycenterForm.username" disabledColor="#ffffff"
 									disabled border="none"></u--input>
 							</u-form-item>
@@ -54,7 +54,7 @@
 							<view style="margin-left: 10rpx;" class="t-icon t-icon-xiangyou1"></view>
 						</view>
 					</view>
-					<view class="sex" @click="mycenterForm.sex==0?mycenterForm.sex=1:mycenterForm.sex=0">
+					<view class="sex" @click="changesex">
 						<view class="title">性别</view>
 						<view class="listcontent">
 							<span v-if="mycenterForm.sex==0" style="margin-left: 20rpx;"
@@ -164,12 +164,14 @@
 				})
 			},
 			// 返回我的
-			backmycenter() {
-				uni.switchTab({
-					url: "mycenter"
-				})
-				this.submitdata()
-			},
+			// async backmycenter() {
+			// 	this.submitdata().then(()=>{
+			// 		uni.switchTab({
+			// 			url: "mycenter"
+			// 		})
+			// 	})
+					
+			// },
 			// 获取个人信息
 			async getuserdata() {
 				const result = await this.$http({
@@ -194,6 +196,15 @@
 					title: "图片最大不能超过2M",
 					icon: 'none'
 				})
+			},
+			// 修改性别
+			changesex() {
+				if(this.mycenterForm.sex==0)
+				{
+					this.mycenterForm.sex = 1
+				}else{
+					this.mycenterForm.sex = 0
+				}
 			},
 			// 删除图片
 			deletePic(event) {
@@ -257,6 +268,7 @@
 						sex: this.mycenterForm.sex,
 						introduction: this.mycenterForm.introduction
 					}
+					this.mycenterForm.photo = this.newphoto
 					uni.setStorageSync('userdata', JSON.stringify(this.userdata))
 					uni.$u.toast('修改头像成功')
 				}
@@ -303,7 +315,7 @@
 						uni.$u.toast('修改失败，请重试')
 					}
 				}).catch(errors => {
-					uni.$u.toast('服务器异常，请重试')
+					uni.$u.toast('异常，请重试')
 				})
 			}
 		}

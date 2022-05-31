@@ -323,7 +323,6 @@
 
 	.assetcard {
 		width: 680rpx;
-		height: 300rpx;
 		border-radius: 15px;
 		margin: 0 auto;
 		margin-top: 20rpx;
